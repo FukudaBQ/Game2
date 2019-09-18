@@ -42,6 +42,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="I_Noun_like\Enemies.cs" />
+    <Compile Include="I_Noun_like\Blocks.cs" />
+    <Compile Include="I_Noun_like\Projectiles.cs" />
+    <Compile Include="I_Noun_like\Items.cs" />
+    <Compile Include="I_Noun_like\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
