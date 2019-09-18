@@ -13,6 +13,7 @@ namespace Game2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        //Bowei QU
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
