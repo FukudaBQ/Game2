@@ -14,7 +14,7 @@ namespace Game2
         SpriteBatch spriteBatch;
         //Zijie Wei
         //Bowei QU
-        // simon 
+        //Hangyu Ying 
         //Yong Zhang
         public Game1()
         {
