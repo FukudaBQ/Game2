@@ -14,6 +14,7 @@ namespace Game2
         SpriteBatch spriteBatch;
         //Zijie Wei
         //Bowei QU
+        // simon 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
