@@ -47,6 +47,9 @@
     <Compile Include="I_Noun_like\Projectiles.cs" />
     <Compile Include="I_Noun_like\Items.cs" />
     <Compile Include="I_Noun_like\Player.cs" />
+    <Compile Include="I_verb_like\Drawables.cs" />
+    <Compile Include="I_verb_like\Collectiables.cs" />
+    <Compile Include="I_verb_like\Updateables.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
