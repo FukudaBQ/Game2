@@ -12,7 +12,7 @@ namespace Game2
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        //Zijie Wei
         //Bowei QU
         public Game1()
         {
