@@ -15,6 +15,7 @@ namespace Game2
 
         //Bowei QU
         // simon 
+        //Yong Zhang
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
