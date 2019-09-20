@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.I_Noun_like
+namespace Game2.Factory
 {
-    interface Projectiles
+    class linkFactory
     {
     }
 }

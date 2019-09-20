@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.I_verb_like
+namespace Game2.IFactory
 {
-    interface Updateables
+    public interface BackGroundFactory
     {
     }
 }

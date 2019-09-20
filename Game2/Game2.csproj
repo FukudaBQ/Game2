@@ -41,15 +41,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Factory\BackgroundFactory.cs" />
+    <Compile Include="Factory\linkFactory.cs" />
+    <Compile Include="IFactory\BackGroundFactory.cs" />
+    <Compile Include="IFactory\IFactory.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="I_Noun_like\Enemies.cs" />
-    <Compile Include="I_Noun_like\Blocks.cs" />
-    <Compile Include="I_Noun_like\Projectiles.cs" />
-    <Compile Include="I_Noun_like\Items.cs" />
-    <Compile Include="I_Noun_like\Player.cs" />
-    <Compile Include="I_verb_like\Drawables.cs" />
-    <Compile Include="I_verb_like\Collectiables.cs" />
-    <Compile Include="I_verb_like\Updateables.cs" />
+    <Compile Include="IFactory\LinkFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Game2.IFactory;
+using Game2.Factory;
 
 namespace Game2
 {
@@ -10,8 +12,10 @@ namespace Game2
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private BackGroundFactory background;
+        private linkFactory link;
         //Zijie Wei
         //Bowei QU
         //Hangyu Ying 
@@ -43,7 +47,8 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            background = new BackgroundFactory();
+            link = new linkFactory();
             // TODO: use this.Content to load your game content here
         }
 
