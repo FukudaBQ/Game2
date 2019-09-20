@@ -49,6 +49,7 @@ namespace Game2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = new BackgroundFactory();
             link = new linkFactory();
+            Texture2D image = Content.Load<Texture2D>("Link");
             // TODO: use this.Content to load your game content here
         }
 
