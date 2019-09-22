@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Game2.IFactory;
 using Game2.Factory;
+using Game2.Object;
 
 namespace Game2
 {
@@ -16,6 +17,8 @@ namespace Game2
         private SpriteBatch spriteBatch;
         private BackGroundFactory background;
         private linkFactory link;
+        Texture2D player_Sprite;
+        Player player=new Player();
         //Zijie Wei
         //Bowei QU
         //Hangyu Ying 
@@ -24,6 +27,8 @@ namespace Game2
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.PreferredBackBufferWidth=1280;
+            graphics.PreferredBackBufferHeight=720;
         }
 
         /// <summary>
@@ -49,7 +54,7 @@ namespace Game2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             background = new BackgroundFactory();
             link = new linkFactory();
-            Texture2D image = Content.Load<Texture2D>("Link");
+            player_Sprite = Content.Load<Texture2D>("Link");
             // TODO: use this.Content to load your game content here
         }
 
@@ -86,6 +91,9 @@ namespace Game2
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            spriteBatch.Draw(player_Sprite,player.Position,Color.White);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
