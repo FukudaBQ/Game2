@@ -15,9 +15,8 @@ namespace Game2
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Texture2D player_Sprite;
         Link player;
-        private new ContentManager Content = new ContentManager(new GameServiceContainer());
+        private static ContentManager myContent;
         //Zijie Wei
         //Bowei QU
         //Hangyu Ying 
@@ -52,7 +51,7 @@ namespace Game2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            player = new Link();
+            player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
         }
 
@@ -86,7 +85,7 @@ namespace Game2
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();

@@ -11,20 +11,29 @@ namespace Game2.Sprites
 {
     class LinkSprite : ISprite
     {
-        public LinkSprite()
+        private Texture2D texture;
+        private SpriteBatch spriteBatch;
+        private Vector2 position;
+        private int x = 1;
+        private int y = 9;
+        private int width = 15;
+        private int height = 20;
+        public LinkSprite(Texture2D texture, SpriteBatch spriteBatch, Vector2 position)
         {
-
+            this.texture = texture;
+            this.spriteBatch = spriteBatch;
+            this.position = position;
         }
         public void Draw()
         {
-            throw new NotImplementedException();
+            Rectangle sourceRectangle = new Rectangle(x, y, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)position.X, (int)position.Y, width, height);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
         public void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
         }
-
-        public static 
+        
     }
 }

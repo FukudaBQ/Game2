@@ -2,6 +2,7 @@
 using Game2.Interfaces;
 using Game2.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,11 @@ namespace Game2.Object
     class Link
     {
         private LinkStateMachine stateMachine;
-        public Link()
+        private SpriteBatch spriteBatch;
+        public Link(SpriteBatch spriteBatch)
         {
             stateMachine = new LinkStateMachine();
+            this.spriteBatch = spriteBatch;
         }
 
         public void ChangeDirection()
@@ -35,7 +38,8 @@ namespace Game2.Object
 
         public void Draw()
         {
-            ISprite nonMovingnonAnimated = LinkSpriteFactory.Instance.CreateRedLinkSprite();
+            ISprite nonMovingNonAnimated = LinkSpriteFactory.Instance.CreateRedLinkSprite(spriteBatch, new Vector2(100, 100));
+            nonMovingNonAnimated.Draw();
         }
 
     }
