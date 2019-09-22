@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Game2.IFactory;
 using Game2.Factory;
 using Game2.Object;
+using Microsoft.Xna.Framework.Content;
 
 namespace Game2
 {
@@ -15,10 +15,9 @@ namespace Game2
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private BackGroundFactory background;
-        private linkFactory link;
         Texture2D player_Sprite;
-        Player player=new Player();
+        Link player;
+        private new ContentManager Content = new ContentManager(new GameServiceContainer());
         //Zijie Wei
         //Bowei QU
         //Hangyu Ying 
@@ -52,9 +51,8 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            background = new BackgroundFactory();
-            link = new linkFactory();
-            player_Sprite = Content.Load<Texture2D>("Link");
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            player = new Link();
             // TODO: use this.Content to load your game content here
         }
 
@@ -92,7 +90,8 @@ namespace Game2
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(player_Sprite,player.Position,Color.White);
+            //spriteBatch.Draw(player_Sprite, player.Position, Color.White);
+            player.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);

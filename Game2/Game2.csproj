@@ -42,15 +42,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Factory\BackgroundFactory.cs" />
-    <Compile Include="Factory\linkFactory.cs" />
-    <Compile Include="IFactory\BackGroundFactory.cs" />
-    <Compile Include="IFactory\IFactory.cs" />
+    <Compile Include="Factory\LinkSpriteFactory.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="IFactory\LinkFactory.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
-    <Compile Include="Object\Player.cs" />
+    <Compile Include="Object\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\LinkSprite.cs" />
@@ -63,7 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Enemy1.png" />
+    <Content Include="Content\Enemy2.png" />
+    <Content Include="Content\Item.png" />
     <Content Include="Content\Link.png" />
+    <Content Include="Content\NPC.png" />
     <Content Include="Content\World.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>

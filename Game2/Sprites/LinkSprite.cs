@@ -11,6 +11,20 @@ namespace Game2.Sprites
 {
     class LinkSprite : ISprite
     {
+        public LinkSprite()
+        {
 
+        }
+        public void Draw()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static 
     }
 }
