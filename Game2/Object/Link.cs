@@ -1,6 +1,5 @@
 ﻿using Game2.Factory;
 using Game2.Interfaces;
-using Game2.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -21,20 +20,11 @@ namespace Game2.Object
             this.spriteBatch = spriteBatch;
         }
 
-        public void ChangeDirection()
+        public void changeDirection()
         {
-            stateMachine.ChangeDirection();
+
         }
 
-        public void BeStomped()
-        {
-            stateMachine.BeStomped();
-        }
-
-        public void BeFlipped()
-        {
-            stateMachine.BeFlipped();
-        }
 
         public void Draw()
         {
@@ -42,35 +32,17 @@ namespace Game2.Object
             nonMovingNonAnimated.Draw();
         }
 
+        public void Update()
+        {
+
+        }
+
     }
 
     public class LinkStateMachine
     {
-        private bool facingLeft = true;
-        private enum GoombaHealth { Normal, Stomped, Flipped };
-        private GoombaHealth health = GoombaHealth.Normal;
-        public void BeFlipped()
-        {
-            if (health != GoombaHealth.Flipped) // Note: the if is needed so we only do the transition once
-            {
-                health = GoombaHealth.Flipped;
-                // Compute and construct goomba sprite - requires if-else logic with value of health
-            }
-        }
 
-        public void BeStomped()
-        {
-            if (health != GoombaHealth.Stomped) // Note: the if is needed so we only do the transition once
-            {
-                health = GoombaHealth.Stomped;
-                // Compute and construct goomba sprite - requires if-else logic with value of health
-            }
-        }
-
-        public void ChangeDirection()
-        {
-            facingLeft = !facingLeft;
-        }
+        
 
         public void Update()
         {

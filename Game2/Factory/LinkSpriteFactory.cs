@@ -1,13 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Game2.Interfaces;
-using Game2.Sprites;
+using Game2.Sprites.Link;
 
 namespace Game2.Factory
 {
@@ -35,7 +30,7 @@ namespace Game2.Factory
 
         public ISprite CreateRedLinkSprite(SpriteBatch spriteBatch, Vector2 position)
         {
-            return new LinkSprite(redLink, spriteBatch, position);
+            return new LinkSpriteFaceDown(redLink, spriteBatch, position);
         }
     }
 }

@@ -50,7 +50,10 @@
     <Compile Include="Object\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprites\LinkSprite.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceLeft.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceRight.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceUp.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceDown.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -63,6 +66,7 @@
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\Enemy2.png" />
     <Content Include="Content\Item.png" />
+    <Content Include="Content\Link.png" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\World.png" />
     <Content Include="Icon.ico" />

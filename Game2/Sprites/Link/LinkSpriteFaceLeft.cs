@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites
+namespace Game2.Sprites.Link
 {
-    class LinkSprite : ISprite
+    class LinkSpriteFaceLeft : ISprite
     {
         private Texture2D texture;
         private SpriteBatch spriteBatch;
         private Vector2 position;
         private int x = 1;
-        private int y = 1;
+        private int y = 0;
         private int width = 15;
         private int height = 25;
-        public LinkSprite(Texture2D texture, SpriteBatch spriteBatch, Vector2 position)
+        public LinkSpriteFaceLeft(Texture2D texture, SpriteBatch spriteBatch, Vector2 position)
         {
             this.texture = texture;
             this.spriteBatch = spriteBatch;
@@ -33,7 +33,8 @@ namespace Game2.Sprites
 
         public void Update(GameTime gameTime)
         {
+
         }
-        
+
     }
 }
