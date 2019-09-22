@@ -15,9 +15,9 @@ namespace Game2.Sprites
         private SpriteBatch spriteBatch;
         private Vector2 position;
         private int x = 1;
-        private int y = 9;
+        private int y = 1;
         private int width = 15;
-        private int height = 20;
+        private int height = 25;
         public LinkSprite(Texture2D texture, SpriteBatch spriteBatch, Vector2 position)
         {
             this.texture = texture;
