@@ -14,7 +14,7 @@ namespace Game2.Sprites.Link
         private Texture2D texture;
         private SpriteBatch spriteBatch;
         private Vector2 position;
-        private int x = 1;
+        private int x = 60;
         private int y = 0;
         private int width = 15;
         private int height = 25;

@@ -14,8 +14,8 @@ namespace Game2.Sprites.Link
         private Texture2D texture;
         private SpriteBatch spriteBatch;
         private Vector2 position;
-        private int x = 1;
-        private int y = 0;
+        private int x = 90;
+        private int y = 25;
         private int width = 15;
         private int height = 25;
         public LinkSpriteFaceRight(Texture2D texture, SpriteBatch spriteBatch, Vector2 position)
