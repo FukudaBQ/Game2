@@ -5,9 +5,15 @@ using Microsoft.Xna.Framework.Input;
 using Game2.Factory;
 using Game2.Object;
 using Microsoft.Xna.Framework.Content;
+using Game2.Sprites.Link;
+using Game2.Interfaces;
 
 namespace Game2
 {
+    enum Dir
+    {
+        Down,Up,Left,Right
+    }
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -15,7 +21,13 @@ namespace Game2
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Link player;
+        Player player=new Player();
+        Texture2D playerSprite;
+        public ISprite animated;
+        public MoveDown downSprite;
+        private MoveUp upSprite;
+        private Vector2 position = new Vector2(100, 100);
+        //Link player;
         private static ContentManager myContent;
         //Zijie Wei
         //Bowei QU
@@ -49,9 +61,13 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            player = new Link(spriteBatch);
+            //LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
+            playerSprite = Content.Load<Texture2D>("Link");
+            //downSprite = new LinkSpriteFaceDown(playerSprite, spriteBatch, position);
+            downSprite = new MoveDown(playerSprite, position, spriteBatch, graphics);
+            upSprite = new MoveUp(playerSprite, position, spriteBatch, graphics);
         }
 
         /// <summary>
@@ -74,6 +90,9 @@ namespace Game2
                 Exit();
 
             // TODO: Add your update logic here
+            player.Update(gameTime);
+            downSprite.Update(gameTime);
+            upSprite.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -88,8 +107,12 @@ namespace Game2
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            //spriteBatch.Draw(player_Sprite, player.Position, Color.White);
-            player.Draw();
+            Rectangle sourceRectangle = new Rectangle(1, 0, 15, 25);
+            Rectangle destinationRectangle = new Rectangle((int)player.Position.X, (int)player.Position.Y, 15, 25);
+            //spriteBatch.Draw(playerSprite,destinationRectangle, sourceRectangle, Color.White);
+            //animated.Draw();
+            downSprite.Draw();
+            //upSprite.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);

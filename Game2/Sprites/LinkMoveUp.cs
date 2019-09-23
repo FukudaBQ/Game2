@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Interfaces
+namespace Game2.Sprites
 {
-    interface ICommand
+    class LinkMoveUp
     {
-        void Execute();
     }
 }

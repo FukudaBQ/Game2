@@ -28,7 +28,7 @@ namespace Game2.Object
 
         public void Draw()
         {
-            ISprite nonMovingNonAnimated = LinkSpriteFactory.Instance.CreateRedLinkSprite(spriteBatch, new Vector2(100, 100));
+            ISprite nonMovingNonAnimated = LinkSpriteFactory.Instance.CreateRedLinkSpriteFaceUp(spriteBatch, new Vector2(100, 100));
             nonMovingNonAnimated.Draw();
         }
 
