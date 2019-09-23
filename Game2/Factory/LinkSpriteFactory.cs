@@ -28,9 +28,25 @@ namespace Game2.Factory
             redLink = content.Load<Texture2D>("Link");
         }
 
-        public ISprite CreateRedLinkSprite(SpriteBatch spriteBatch, Vector2 position)
+        public ISprite CreateRedLinkSpriteFaceUp(SpriteBatch spriteBatch, Vector2 position)
+        {
+            return new LinkSpriteFaceUp(redLink, spriteBatch, position);
+        }
+
+        public ISprite CreateRedLinkSpriteFaceDown(SpriteBatch spriteBatch, Vector2 position)
         {
             return new LinkSpriteFaceDown(redLink, spriteBatch, position);
         }
+
+        public ISprite CreateRedLinkSpriteFaceLeft(SpriteBatch spriteBatch, Vector2 position)
+        {
+            return new LinkSpriteFaceLeft(redLink, spriteBatch, position);
+        }
+
+        public ISprite CreateRedLinkSpriteFaceRight(SpriteBatch spriteBatch, Vector2 position)
+        {
+            return new LinkSpriteFaceRight(redLink, spriteBatch, position);
+        }
+
     }
 }

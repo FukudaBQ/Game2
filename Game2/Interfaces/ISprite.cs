@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game2.Interfaces
 {
-    interface ISprite
+    public interface ISprite
     {
         void Update(GameTime gameTime);
         void Draw();
