@@ -31,6 +31,6 @@ namespace Game2.Factory
         public ISprite CreateRedLinkSprite(SpriteBatch spriteBatch, Vector2 position)
         {
             return new LinkSpriteFaceDown(redLink, spriteBatch, position);
-        }
+        } 
     }
 }
