@@ -41,6 +41,7 @@ namespace Game2
 
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1080;
+            this.IsMouseVisible = true;
 
             
         }
