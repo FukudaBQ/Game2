@@ -15,7 +15,8 @@ namespace Game2.Sprites.Link
         private int speed = 200;
         private Dir direction = Dir.Down;
         private bool isMoving = false;
-        public MoveDown anim;
+        public Animate anim;
+        public Animate[] ani = new Animate[4];
         public Vector2 Position
         {
             get
@@ -35,16 +36,41 @@ namespace Game2.Sprites.Link
         {
             KeyboardState kState = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //anim.Update();
+            switch(direction)
+            {
+                case Dir.Down:
+                    anim = ani[0];
+                    break;
+                case Dir.Up:
+                    anim = ani[1];
+                    break;
+                case Dir.Left:
+                    anim = ani[2];
+                    break;
+                case Dir.Right:
+                    anim = ani[3];
+                    break;
+                default:
+                    break;
+
+            }
+            if (isMoving)
+            {
+                anim.Update(gameTime);
+            }
+            else
+            {
+                anim.setFrame(1);
+            }
             isMoving = false;
             if (kState.IsKeyDown(Keys.A)|| kState.IsKeyDown(Keys.Left))
             {
-                direction = Dir.Right;
+                direction = Dir.Left;
                 isMoving = true;
             }
             if (kState.IsKeyDown(Keys.D)|| kState.IsKeyDown(Keys.Right))
             {
-                direction = Dir.Left;
+                direction = Dir.Right;
                 isMoving = true;
             }
             if (kState.IsKeyDown(Keys.W)|| kState.IsKeyDown(Keys.Up))
@@ -62,10 +88,10 @@ namespace Game2.Sprites.Link
                 switch (direction)
                 {
                     case Dir.Right:
-                        position.X -= speed * dt;
+                        position.X += speed * dt;
                         break;
                     case Dir.Left:
-                        position.X += speed * dt;
+                        position.X -= speed * dt;
                         break;
                     case Dir.Up:
                         position.Y -= speed * dt;
