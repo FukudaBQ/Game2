@@ -7,6 +7,7 @@ using Game2.Object;
 using Microsoft.Xna.Framework.Content;
 using Game2.Sprites.Link;
 using Game2.Interfaces;
+using Game2.Sprites.Items;
 
 namespace Game2
 {
@@ -27,9 +28,8 @@ namespace Game2
         Texture2D moveUp;
         Texture2D moveLeft;
         Texture2D moveRight;
-        Texture2D bomb;
-        Texture2D arrow;
-        Texture2D boomerang;
+        Texture2D dragon;
+        private ArrowSprite arrow;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -81,6 +81,9 @@ namespace Game2
             player.ani[1] = new Animate(moveUp, 1, 2);
             player.ani[2] = new Animate(moveLeft, 1, 2);
             player.ani[3] = new Animate(moveRight, 1, 2);
+            Texture2D boss = Content.Load<Texture2D>("Boss");
+            Texture2D item = Content.Load<Texture2D>("Item");
+
         }
 
         /// <summary>
@@ -104,7 +107,15 @@ namespace Game2
 
             // TODO: Add your update logic here
             player.Update(gameTime);
-            foreach(Projectile i in Projectile.projectile)
+            foreach(Projectile i in Projectile.projectile1)
+            {
+                i.Update(gameTime);
+            }
+            foreach (Projectile i in Projectile.projectile2)
+            {
+                i.Update(gameTime);
+            }
+            foreach (Projectile i in Projectile.projectile3)
             {
                 i.Update(gameTime);
             }
@@ -123,9 +134,17 @@ namespace Game2
             // TODO: Add your drawing code here
             player.anim.Draw(spriteBatch, player.Position);
             spriteBatch.Begin();
-            foreach (Projectile i in Projectile.projectile)
+            foreach (Projectile i in Projectile.projectile1)
             {
                 spriteBatch.Draw(moveDown, i.Position, Color.White);
+            }
+            foreach (Projectile i in Projectile.projectile2)
+            {
+                spriteBatch.Draw(moveUp, i.Position, Color.White);
+            }
+            foreach (Projectile i in Projectile.projectile3)
+            {
+                spriteBatch.Draw(moveLeft, i.Position, Color.White);
             }
 
             spriteBatch.End();

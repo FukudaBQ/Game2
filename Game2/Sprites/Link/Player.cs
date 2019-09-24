@@ -111,7 +111,15 @@ namespace Game2.Sprites.Link
 
             if (kState.IsKeyDown(Keys.NumPad1)&&previous.IsKeyUp(Keys.NumPad1))
             {
-                Projectile.projectile.Add(new Projectile(position, direction));
+                Projectile.projectile1.Add(new Projectile(position, direction));
+            }
+            if (kState.IsKeyDown(Keys.NumPad2) && previous.IsKeyUp(Keys.NumPad2))
+            {
+                Projectile.projectile2.Add(new Projectile(position, direction));
+            }
+            if (kState.IsKeyDown(Keys.NumPad3) && previous.IsKeyUp(Keys.NumPad3))
+            {
+                Projectile.projectile3.Add(new Projectile(position, direction));
             }
             previous = kState;
         }
