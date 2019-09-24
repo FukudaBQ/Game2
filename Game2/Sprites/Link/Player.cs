@@ -109,19 +109,25 @@ namespace Game2.Sprites.Link
                 }
             }
 
-            if (kState.IsKeyDown(Keys.NumPad1)&&previous.IsKeyUp(Keys.NumPad1))
+           
+            if (kState.IsKeyDown(Keys.D1)&&previous.IsKeyUp(Keys.D1))
             {
                 Projectile.projectile1.Add(new Projectile(position, direction));
             }
-            if (kState.IsKeyDown(Keys.NumPad2) && previous.IsKeyUp(Keys.NumPad2))
+            if (kState.IsKeyDown(Keys.N) && previous.IsKeyUp(Keys.N))
             {
                 Projectile.projectile2.Add(new Projectile(position, direction));
             }
-            if (kState.IsKeyDown(Keys.NumPad3) && previous.IsKeyUp(Keys.NumPad3))
+            if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
             {
                 Projectile.projectile3.Add(new Projectile(position, direction));
             }
             previous = kState;
+
+           /* if(kState.IsKeyDown(keys.Space)){
+                Projectile.projectiles.Add(new Porjectile(position, direction));
+            }*/
+
         }
     }
 }

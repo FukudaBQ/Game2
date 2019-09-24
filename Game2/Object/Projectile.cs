@@ -17,7 +17,7 @@ namespace Game2.Sprites.Link
         private int radius = 15;
         private Dir direction;
 
-        public static List<Projectile> projectiles = new List<>();
+        public static List<Projectile> projectiles = new List<Projectile>();
 
         public Projectile(Vector2 newPos, Dir newDir)
         {

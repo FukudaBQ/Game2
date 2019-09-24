@@ -29,7 +29,8 @@ namespace Game2
         Texture2D moveLeft;
         Texture2D moveRight;
         Texture2D dragon;
-        private ArrowSprite arrow;
+        //private ArrowSprite arrow;
+        Texture2D bomb;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -77,6 +78,7 @@ namespace Game2
             moveUp = Content.Load<Texture2D>("LinkBackWalking");
             moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
             moveRight = Content.Load<Texture2D>("LinkRightWalking");
+            bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             player.ani[0] = new Animate(moveDown, 1, 2);
             player.ani[1] = new Animate(moveUp, 1, 2);
             player.ani[2] = new Animate(moveLeft, 1, 2);
@@ -107,7 +109,8 @@ namespace Game2
 
             // TODO: Add your update logic here
             player.Update(gameTime);
-            foreach(Projectile i in Projectile.projectile1)
+            /*
+             * foreach(Projectile i in Projectile.projectile1)
             {
                 i.Update(gameTime);
             }
@@ -118,6 +121,9 @@ namespace Game2
             foreach (Projectile i in Projectile.projectile3)
             {
                 i.Update(gameTime);
+            }*/
+            foreach(Projectile proj in Projectile.projectile1){
+                proj.Update(gameTime);
             }
 
             base.Update(gameTime);
@@ -136,7 +142,7 @@ namespace Game2
             spriteBatch.Begin();
             foreach (Projectile i in Projectile.projectile1)
             {
-                spriteBatch.Draw(moveDown, i.Position, Color.White);
+                spriteBatch.Draw(bomb, i.Position, Color.White);
             }
             foreach (Projectile i in Projectile.projectile2)
             {
@@ -146,6 +152,11 @@ namespace Game2
             {
                 spriteBatch.Draw(moveLeft, i.Position, Color.White);
             }
+            //spriteBatch.Draw(bomb,new Rectangle(0,0,15,25));
+            
+            /*foreach(Projectile proj in Projectile.projectile1){
+                SpriteBatch.Draw(bomb,proj.Position,Color.Wihte);
+            }*/
 
             spriteBatch.End();
 
