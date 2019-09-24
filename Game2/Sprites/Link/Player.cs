@@ -17,6 +17,7 @@ namespace Game2.Sprites.Link
         private bool isMoving = false;
         public Animate anim;
         public Animate[] ani = new Animate[4];
+        private KeyboardState previous = Keyboard.GetState();
         public Vector2 Position
         {
             get
@@ -83,6 +84,10 @@ namespace Game2.Sprites.Link
                 direction = Dir.Down;
                 isMoving = true;
             }
+            if (kState.IsKeyDown(Keys.Q))
+            {
+                
+            }
             if (isMoving)
             {
                 switch (direction)
@@ -103,6 +108,12 @@ namespace Game2.Sprites.Link
                         break;
                 }
             }
+
+            if (kState.IsKeyDown(Keys.NumPad1)&&previous.IsKeyUp(Keys.NumPad1))
+            {
+                Projectile.projectile.Add(new Projectile(position, direction));
+            }
+            previous = kState;
         }
     }
 }
