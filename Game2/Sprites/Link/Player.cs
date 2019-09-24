@@ -36,44 +36,24 @@ namespace Game2.Sprites.Link
         {
             position.Y = newY;
         }
-        public Player(Game1 game, Texture2D moveDown, Texture2D moveUp, Texture2D moveLeft, Texture2D moveRight )
+        public Player(Game1 game, Texture2D moveDown, Texture2D moveUp, Texture2D moveLeft, Texture2D moveRight, Texture2D downSword )
         {
             this.ani[0] = new Animate(moveDown, 1, 2);
             this.ani[1] = new Animate(moveUp, 1, 2);
             this.ani[2] = new Animate(moveLeft, 1, 2);
             this.ani[3] = new Animate(moveRight, 1, 2);
+            this.ani[4] = new Animate(downSword, 1, 2);
             exit = new ExitCommand(game);
             facing.Add(Dir.Down, ani[0]);
             facing.Add(Dir.Up, ani[1]);
             facing.Add(Dir.Left, ani[2]);
             facing.Add(Dir.Right, ani[3]);
+            facing.Add(Dir.DownSword, ani[4]);
         }
         public void Update(GameTime gameTime)
         {
             KeyboardState kState = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            /*switch(direction)
-            {
-                case Dir.Down:
-                    anim = ani[0];
-                    break;
-                case Dir.Up:
-                    anim = ani[1];
-                    break;
-                case Dir.Left:
-                    anim = ani[2];
-                    break;
-                case Dir.Right:
-                    anim = ani[3];
-                    break;
-                case Dir.DownSword:
-                    anim = ani[4];
-                    break;
-
-                default:
-                    break;
-
-            }*/
             anim = facing[direction];
             if (isMoving)
             {

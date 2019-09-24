@@ -80,19 +80,12 @@ namespace Game2
             moveUp = Content.Load<Texture2D>("LinkBackWalking");
             moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
             moveRight = Content.Load<Texture2D>("LinkRightWalking");
-            player = new Player(this, moveDown, moveUp, moveLeft, moveRight);
+            downSword = Content.Load<Texture2D>("StandSwordDown");
+            player = new Player(this, moveDown, moveUp, moveLeft, moveRight, downSword);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
-            /*
-            player.ani[0] = new Animate(moveDown, 1, 2);
-            player.ani[1] = new Animate(moveUp, 1, 2);
-            player.ani[2] = new Animate(moveLeft, 1, 2);
-            player.ani[3] = new Animate(moveRight, 1, 2);
-            */
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
-            downSword = Content.Load<Texture2D>("StandSwordDown");
-            player.ani[4] = new Animate(downSword,1,2);
 
         }
 
