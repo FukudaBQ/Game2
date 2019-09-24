@@ -124,6 +124,8 @@ namespace Game2.Sprites.Link
             }
             previous = kState;
 
+            
+
            /* if(kState.IsKeyDown(keys.Space)){
                 Projectile.projectiles.Add(new Porjectile(position, direction));
             }*/
