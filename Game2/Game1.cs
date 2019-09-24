@@ -33,6 +33,7 @@ namespace Game2
         Texture2D bomb;
         Texture2D LinkUsingSword;
         Texture2D downSword;
+        Rupy rupy;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -87,6 +88,8 @@ namespace Game2
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
 
+             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
+
         }
 
         /// <summary>
@@ -110,6 +113,7 @@ namespace Game2
 
             // TODO: Add your update logic here
             player.Update(gameTime);
+            rupy.Update(gameTime);
             /*
              * foreach(Projectile i in Projectile.projectile1)
             {
@@ -141,6 +145,7 @@ namespace Game2
             // TODO: Add your drawing code here
             player.anim.Draw(spriteBatch, player.Position);
             spriteBatch.Begin();
+            rupy.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
