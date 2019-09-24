@@ -19,6 +19,7 @@ namespace Game2.Sprites.Link
         public Animate[] ani = new Animate[4];
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
+        private Dictionary<Dir, Animate>facing = new Dictionary<Dir, Animate>();
         public Vector2 Position
         {
             get
@@ -34,15 +35,23 @@ namespace Game2.Sprites.Link
         {
             position.Y = newY;
         }
-        public Player(Game1 game)
+        public Player(Game1 game, Texture2D moveDown, Texture2D moveUp, Texture2D moveLeft, Texture2D moveRight )
         {
+            this.ani[0] = new Animate(moveDown, 1, 2);
+            this.ani[1] = new Animate(moveUp, 1, 2);
+            this.ani[2] = new Animate(moveLeft, 1, 2);
+            this.ani[3] = new Animate(moveRight, 1, 2);
             exit = new ExitCommand(game);
+            facing.Add(Dir.Down, ani[0]);
+            facing.Add(Dir.Up, ani[1]);
+            facing.Add(Dir.Left, ani[2]);
+            facing.Add(Dir.Right, ani[3]);
         }
         public void Update(GameTime gameTime)
         {
             KeyboardState kState = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            switch(direction)
+            /*switch(direction)
             {
                 case Dir.Down:
                     anim = ani[0];
@@ -59,7 +68,8 @@ namespace Game2.Sprites.Link
                 default:
                     break;
 
-            }
+            }*/
+            anim = facing[direction];
             if (isMoving)
             {
                 anim.Update(gameTime);
@@ -136,6 +146,36 @@ namespace Game2.Sprites.Link
            /* if(kState.IsKeyDown(keys.Space)){
                 Projectile.projectiles.Add(new Porjectile(position, direction));
             }*/
+
+        }
+    }
+
+    public class StateMachine
+    {
+        private Dir direction = Dir.Down;
+        private bool isMoving = false;
+        public void LeftMove()
+        {
+            isMoving = true;
+            direction = Dir.Left;
+        }
+        public void RightMove()
+        {
+            isMoving = true;
+            direction = Dir.Right;
+        }
+        public void UpMove()
+        {
+            isMoving = true;
+            direction = Dir.Up;
+        }
+        public void DownMove()
+        {
+            isMoving = true;
+            direction = Dir.Down;
+        }
+        public void Update(GameTime gameTime)
+        {
 
         }
     }

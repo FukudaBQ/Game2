@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Items\ArrowSprite.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
+    <Compile Include="Sprites\Link\Command.cs" />
     <Compile Include="Sprites\Link\ExitCommand.cs" />
     <Compile Include="Sprites\Link\LinkSpriteFaceDown.cs" />
     <Compile Include="Sprites\Link\MoveDown.cs" />
@@ -72,8 +73,16 @@
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\Item.png" />
     <Content Include="Content\Link.png" />
+    <Content Include="Content\LinkBackWalking.png" />
+    <Content Include="Content\LinkFaceFront.png" />
+    <Content Include="Content\LinkFront.png" />
+    <Content Include="Content\LinkLeftWalking.png" />
+    <Content Include="Content\LinkRightWalking.png" />
+    <Content Include="Content\LinkUsingSword.png" />
     <Content Include="Content\NPC.png" />
+    <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\World.png" />
+    <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
