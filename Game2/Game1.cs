@@ -72,16 +72,16 @@ namespace Game2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            //LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            LinkSpriteFactory.Instance.LoadAllTextures(Content);
             //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
-            playerSprite = Content.Load<Texture2D>("Link");
+            playerSprite = Content.Load<Texture2D>("Link");/*
             moveDown = Content.Load<Texture2D>("LinkFaceFront");
             moveUp = Content.Load<Texture2D>("LinkBackWalking");
             moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
             moveRight = Content.Load<Texture2D>("LinkRightWalking");
-            downSword = Content.Load<Texture2D>("StandSwordDown");
-            player = new Player(this, moveDown, moveUp, moveLeft, moveRight, downSword);
+            downSword = Content.Load<Texture2D>("StandSwordDown");*/
+            player = new Player(this);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
             Texture2D boss = Content.Load<Texture2D>("Boss");

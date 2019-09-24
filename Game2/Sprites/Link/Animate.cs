@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game2.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -62,5 +63,6 @@ namespace Game2.Sprites.Link
         {
             currentFrame = newFrame;
         }
+        
     }
 }

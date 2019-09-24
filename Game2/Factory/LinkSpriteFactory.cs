@@ -8,7 +8,11 @@ namespace Game2.Factory
 {
     class LinkSpriteFactory
     {
-        private Texture2D redLink;
+        Texture2D moveDown;
+        Texture2D moveUp;
+        Texture2D moveLeft;
+        Texture2D moveRight;
+        Texture2D downSword;
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
         public static LinkSpriteFactory Instance
@@ -25,28 +29,37 @@ namespace Game2.Factory
 
         public void LoadAllTextures(ContentManager content)
         {
-            redLink = content.Load<Texture2D>("Link");
+            moveDown = content.Load<Texture2D>("LinkFaceFront");
+            moveUp = content.Load<Texture2D>("LinkBackWalking");
+            moveLeft = content.Load<Texture2D>("LinkLeftWalking");
+            moveRight = content.Load<Texture2D>("LinkRightWalking");
+            downSword = content.Load<Texture2D>("StandSwordDown");
         }
 
-        public ISprite CreateRedLinkSpriteFaceUp(SpriteBatch spriteBatch, Vector2 position)
+        public Animate CreateMoveDown(int rows, int columns)
         {
-            return new LinkSpriteFaceUp(redLink, spriteBatch, position);
-        }
+            return new Animate(moveDown, rows, columns);
 
-        public ISprite CreateRedLinkSpriteFaceDown(SpriteBatch spriteBatch, Vector2 position)
+        }
+        public Animate CreateMoveUp(int rows, int columns)
         {
-            return new LinkSpriteFaceDown(redLink, spriteBatch, position);
-        }
+            return new Animate(moveUp, rows, columns);
 
-        public ISprite CreateRedLinkSpriteFaceLeft(SpriteBatch spriteBatch, Vector2 position)
+        }
+        public Animate CreateMoveLeft(int rows, int columns)
         {
-            return new LinkSpriteFaceLeft(redLink, spriteBatch, position);
-        }
+            return new Animate(moveLeft, rows, columns);
 
-        public ISprite CreateRedLinkSpriteFaceRight(SpriteBatch spriteBatch, Vector2 position)
+        }
+        public Animate CreateMoveRight(int rows, int columns)
         {
-            return new LinkSpriteFaceRight(redLink, spriteBatch, position);
-        }
+            return new Animate(moveRight, rows, columns);
 
+        }
+        public Animate CreateDownSword(int rows, int columns)
+        {
+            return new Animate(downSword, rows, columns);
+
+        }
     }
 }

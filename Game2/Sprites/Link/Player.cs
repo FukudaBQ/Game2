@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Factory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -36,19 +37,14 @@ namespace Game2.Sprites.Link
         {
             position.Y = newY;
         }
-        public Player(Game1 game, Texture2D moveDown, Texture2D moveUp, Texture2D moveLeft, Texture2D moveRight, Texture2D downSword )
+        public Player(Game1 game)
         {
-            this.ani[0] = new Animate(moveDown, 1, 2);
-            this.ani[1] = new Animate(moveUp, 1, 2);
-            this.ani[2] = new Animate(moveLeft, 1, 2);
-            this.ani[3] = new Animate(moveRight, 1, 2);
-            this.ani[4] = new Animate(downSword, 1, 2);
             exit = new ExitCommand(game);
-            facing.Add(Dir.Down, ani[0]);
-            facing.Add(Dir.Up, ani[1]);
-            facing.Add(Dir.Left, ani[2]);
-            facing.Add(Dir.Right, ani[3]);
-            facing.Add(Dir.DownSword, ani[4]);
+            facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
+            facing.Add(Dir.Up, LinkSpriteFactory.Instance.CreateMoveUp(1, 2));
+            facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
+            facing.Add(Dir.Right, LinkSpriteFactory.Instance.CreateMoveRight(1, 2));
+            facing.Add(Dir.DownSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
         }
         public void Update(GameTime gameTime)
         {
