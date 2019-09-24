@@ -15,8 +15,9 @@ namespace Game2.Sprites.Link
         private int speed = 200;
         private Dir direction = Dir.Down;
         private bool isMoving = false;
+        private bool isSwording = false;
         public Animate anim;
-        public Animate[] ani = new Animate[4];
+        public Animate[] ani = new Animate[7];
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
         private Dictionary<Dir, Animate>facing = new Dictionary<Dir, Animate>();
@@ -65,6 +66,10 @@ namespace Game2.Sprites.Link
                 case Dir.Right:
                     anim = ani[3];
                     break;
+                case Dir.DownSword:
+                    anim = ani[4];
+                    break;
+
                 default:
                     break;
 
@@ -78,6 +83,7 @@ namespace Game2.Sprites.Link
             {
                 anim.setFrame(1);
             }
+
             isMoving = false;
             if (kState.IsKeyDown(Keys.A)|| kState.IsKeyDown(Keys.Left))
             {
@@ -98,6 +104,20 @@ namespace Game2.Sprites.Link
             {
                 direction = Dir.Down;
                 isMoving = true;
+            }
+            if (kState.IsKeyDown(Keys.Z)|| kState.IsKeyDown(Keys.N))
+            {
+                direction = Dir.DownSword;
+                
+                //isSwording = true;
+                
+                /*
+                 * if(kState.IsKeyUp(Keys.Z)){
+                   direction = Dir.Down;
+                }*/
+
+                //isMoving = false;
+                
             }
             if (kState.IsKeyDown(Keys.Q))
             {
@@ -123,10 +143,7 @@ namespace Game2.Sprites.Link
                         break;
                 }
             }
-            if (kState.IsKeyDown(Keys.Q))
-            {
-
-            }
+           
             if (kState.IsKeyDown(Keys.D1)&&previous.IsKeyUp(Keys.D1))
             {
                 Projectile.bomb.Add(new Projectile(position, direction));
