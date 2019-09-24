@@ -122,7 +122,7 @@ namespace Game2
             {
                 i.Update(gameTime);
             }*/
-            foreach(Projectile proj in Projectile.projectile1){
+            foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
             }
 
@@ -140,15 +140,15 @@ namespace Game2
             // TODO: Add your drawing code here
             player.anim.Draw(spriteBatch, player.Position);
             spriteBatch.Begin();
-            foreach (Projectile i in Projectile.projectile1)
+            foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
             }
-            foreach (Projectile i in Projectile.projectile2)
+            foreach (Projectile i in Projectile.arrow)
             {
                 spriteBatch.Draw(moveUp, i.Position, Color.White);
             }
-            foreach (Projectile i in Projectile.projectile3)
+            foreach (Projectile i in Projectile.boomerang)
             {
                 spriteBatch.Draw(moveLeft, i.Position, Color.White);
             }

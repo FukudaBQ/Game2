@@ -13,9 +13,9 @@ namespace Game2.Sprites.Link
         private int speed = 600;
         private Dir direction;
 
-        public static List<Projectile> projectile1 = new List<Projectile>();
-        public static List<Projectile> projectile2 = new List<Projectile>();
-        public static List<Projectile> projectile3 = new List<Projectile>();
+        public static List<Projectile> bomb = new List<Projectile>();
+        public static List<Projectile> arrow = new List<Projectile>();
+        public static List<Projectile> boomerang = new List<Projectile>();
 
         public Projectile(Vector2 location, Dir newDir)
         {
