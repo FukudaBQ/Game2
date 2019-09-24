@@ -13,7 +13,7 @@ namespace Game2
 {
     enum Dir
     {
-        Down,Up,Left,Right
+        Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
     }
     /// <summary>
     /// This is the main type for your game.
@@ -32,6 +32,7 @@ namespace Game2
         //private ArrowSprite arrow;
         Texture2D bomb;
         Texture2D LinkUsingSword;
+        Texture2D downSword;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -86,8 +87,11 @@ namespace Game2
             player.ani[1] = new Animate(moveUp, 1, 2);
             player.ani[2] = new Animate(moveLeft, 1, 2);
             player.ani[3] = new Animate(moveRight, 1, 2);
+            
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
+            downSword = Content.Load<Texture2D>("StandSwordDown");
+            player.ani[4] = new Animate(downSword,1,2);
 
         }
 
