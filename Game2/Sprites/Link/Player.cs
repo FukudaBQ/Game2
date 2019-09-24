@@ -112,19 +112,23 @@ namespace Game2.Sprites.Link
            
             if (kState.IsKeyDown(Keys.D1)&&previous.IsKeyUp(Keys.D1))
             {
-                Projectile.bomb.Add(new Projectile(position, direction));
+                Projectile.projectile1.Add(new Projectile(position, direction));
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
-                Projectile.arrow.Add(new Projectile(position, direction));
+                Projectile.projectile2.Add(new Projectile(position, direction));
             }
-            if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
+            if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
             {
-                Projectile.boomerang.Add(new Projectile(position, direction));
+                Projectile.projectile3.Add(new Projectile(position, direction));
             }
             previous = kState;
+                                                                
+            
 
-           
+           /* if(kState.IsKeyDown(keys.Space)){
+                Projectile.projectiles.Add(new Porjectile(position, direction));
+            }*/
 
         }
     }

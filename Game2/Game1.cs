@@ -31,6 +31,7 @@ namespace Game2
         Texture2D dragon;
         //private ArrowSprite arrow;
         Texture2D bomb;
+        Texture2D LinkUsingSword;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -79,6 +80,7 @@ namespace Game2
             moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
             moveRight = Content.Load<Texture2D>("LinkRightWalking");
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
+            LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
             player.ani[0] = new Animate(moveDown, 1, 2);
             player.ani[1] = new Animate(moveUp, 1, 2);
             player.ani[2] = new Animate(moveLeft, 1, 2);
@@ -146,7 +148,7 @@ namespace Game2
             }
             foreach (Projectile i in Projectile.arrow)
             {
-                spriteBatch.Draw(moveUp, i.Position, Color.White);
+                spriteBatch.Draw(LinkUsingSword, i.Position, Color.White);
             }
             foreach (Projectile i in Projectile.boomerang)
             {
