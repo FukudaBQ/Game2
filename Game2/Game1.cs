@@ -22,7 +22,7 @@ namespace Game2
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Player player=new Player();
+        Player player;
         Texture2D playerSprite;
         Texture2D moveDown;
         Texture2D moveUp;
@@ -69,6 +69,7 @@ namespace Game2
         /// </summary>
         protected override void LoadContent()
         {
+            player = new Player(this);
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //LinkSpriteFactory.Instance.LoadAllTextures(Content);

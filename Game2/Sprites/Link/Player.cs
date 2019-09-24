@@ -18,6 +18,7 @@ namespace Game2.Sprites.Link
         public Animate anim;
         public Animate[] ani = new Animate[4];
         private KeyboardState previous = Keyboard.GetState();
+        private ExitCommand exit;
         public Vector2 Position
         {
             get
@@ -32,6 +33,10 @@ namespace Game2.Sprites.Link
         public void setY(float newY)
         {
             position.Y = newY;
+        }
+        public Player(Game1 game)
+        {
+            exit = new ExitCommand(game);
         }
         public void Update(GameTime gameTime)
         {
@@ -86,7 +91,7 @@ namespace Game2.Sprites.Link
             }
             if (kState.IsKeyDown(Keys.Q))
             {
-                
+                exit.Execute();
             }
             if (isMoving)
             {
@@ -108,19 +113,21 @@ namespace Game2.Sprites.Link
                         break;
                 }
             }
+            if (kState.IsKeyDown(Keys.Q))
+            {
 
-           
+            }
             if (kState.IsKeyDown(Keys.D1)&&previous.IsKeyUp(Keys.D1))
             {
-                Projectile.projectile1.Add(new Projectile(position, direction));
+                Projectile.bomb.Add(new Projectile(position, direction));
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
-                Projectile.projectile2.Add(new Projectile(position, direction));
+                Projectile.bomb.Add(new Projectile(position, direction));
             }
             if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
             {
-                Projectile.projectile3.Add(new Projectile(position, direction));
+                Projectile.bomb.Add(new Projectile(position, direction));
             }
             previous = kState;
                                                                 
