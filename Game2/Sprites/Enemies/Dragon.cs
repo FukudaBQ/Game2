@@ -41,7 +41,7 @@ namespace Game2.Sprites.Enemies
         }
         public void Draw()
         {
-            Rectangle sourceRectangle = new Rectangle(currentFrame * 41, 1, 45, 46);
+            Rectangle sourceRectangle = new Rectangle(currentFrame * 41, 0, 45, 46);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 41 * 4, 46 * 4);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
