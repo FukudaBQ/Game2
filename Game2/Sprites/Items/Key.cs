@@ -1,6 +1,4 @@
-﻿using Game2.Factory;
-using Game2.Interfaces;
-using Game2.Sprites.Link;
+﻿using Game2.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,25 +9,26 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Items
 {
-    class Triforce
+    class Key : ISprite
     {
         public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
-        public Shining sprite;
-        public Triforce(Vector2 location, SpriteBatch batch)
+        public Key(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
+            this.texture = texture;
             this.location = location;
             spriteBatch = batch;
-            sprite = ItemFactory.Instance.CreateTriforceSprite();
-        }
-        public void Update(GameTime gametime)
-        {
-            sprite.Update(gametime);
         }
         public void Draw()
         {
-            sprite.Draw(spriteBatch, location);
+            Rectangle sourceRectangle = new Rectangle(280, 40, 20, 40);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+        }
+
+        public void Update(GameTime gametime)
+        {
         }
     }
 }

@@ -184,9 +184,9 @@ namespace Game2.Sprites.Link
                     Projectile.arrowRight.Add(new Projectile(position, direction));
                 }
             }
-            if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
+            if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
             {
-                Projectile.bomb.Add(new Projectile(position, direction));
+                Projectile.boomerang.Add(new Projectile(position, direction));
             }
             previous = kState;
                                                                 
