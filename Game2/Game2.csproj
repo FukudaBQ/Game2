@@ -58,7 +58,11 @@
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Command.cs" />
     <Compile Include="Sprites\Link\ExitCommand.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceDown.cs" />
     <Compile Include="Sprites\Link\MoveDown.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceLeft.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceRight.cs" />
+    <Compile Include="Sprites\Link\LinkSpriteFaceUp.cs" />
     <Compile Include="Sprites\Link\MoveUp.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\Projectile.cs" />
@@ -75,7 +79,7 @@
     <Content Include="Content\ArrowLeft.png" />
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
-    <Content Include="Content\Boss.png" />
+    <Content Include="Content\boomerang.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Item.png" />
