@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\ArrowDown.png" />
+    <Content Include="Content\ArrowLeft.png" />
+    <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
