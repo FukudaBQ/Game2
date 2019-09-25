@@ -111,7 +111,7 @@ namespace Game2
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
             rupy = new Rupy(new Vector2(50,50), spriteBatch);
-            triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
+            triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
