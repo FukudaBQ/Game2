@@ -45,6 +45,7 @@ namespace Game2
         Fairy fairy;
         Dragon dragon;
         OldMan oldMan;
+        Clock clock;
         HeartContainer heartContainer;
         //Link player;
         //private static ContentManager myContent;
@@ -114,6 +115,7 @@ namespace Game2
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 130),spriteBatch);
+            clock = new Clock(item, new Vector2(460, 135), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -195,6 +197,7 @@ namespace Game2
             dragon.Draw();
             oldMan.Draw();
             heartContainer.Draw();
+            clock.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
