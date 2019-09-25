@@ -51,7 +51,7 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             anim = facing[direction];
-            if (isMoving)
+            if (isMoving||isSwording)
             {
                 anim.Update(gameTime);
             }
@@ -61,6 +61,7 @@ namespace Game2.Sprites.Link
             }
 
             isMoving = false;
+            isSwording = false;
             if (kState.IsKeyDown(Keys.A)|| kState.IsKeyDown(Keys.Left))
             {
                 direction = Dir.Left;
@@ -85,14 +86,14 @@ namespace Game2.Sprites.Link
             {
                 direction = Dir.DownSword;
                 
-                //isSwording = true;
+                isSwording = true;
                 
                 /*
                  * if(kState.IsKeyUp(Keys.Z)){
                    direction = Dir.Down;
                 }*/
 
-                //isMoving = false;
+                isMoving = true;
                 
             }
             if (kState.IsKeyDown(Keys.Q))
