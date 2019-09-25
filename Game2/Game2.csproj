@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
