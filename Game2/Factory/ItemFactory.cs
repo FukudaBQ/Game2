@@ -28,17 +28,17 @@ namespace Game2.Factory
         {
             item = content.Load<Texture2D>("Item");
         }
-        public Shining CreateRupySprite(int rows, int columns)
+        public Shining CreateRupySprite()
         {
-            return new Shining(item, rows, columns, 164, 100, 20, 36, 40);
+            return new Shining(item, 164, 100, 20, 36, 40);
         }
-        public Shining CreateTriforceSprite(int rows, int columns)
+        public Shining CreateTriforceSprite()
         {
-            return new Shining(item, rows, columns, 318, 100, 20, 36, 20);
+            return new Shining(item, 318, 100, 20, 36, 20);
         }
-        public Shining CreateFariySprite(int rows, int columns)
+        public Shining CreateFariySprite()
         {
-            return new Shining(item, rows, columns, 123, 40, 20, 36, 40);
+            return new Shining(item, 123, 40, 20, 36, 40);
         }
     }
 }

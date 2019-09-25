@@ -11,8 +11,6 @@ namespace Game2.Sprites.Link
     class Shining
     {
         public Texture2D texture;
-        private int rows;
-        private int columns;
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
@@ -21,11 +19,9 @@ namespace Game2.Sprites.Link
         private int width;
         private int height;
         private int frameDistance;
-        public Shining(Texture2D texture, int rows, int columns, int x, int y, int width, int height, int frameDistance)
+        public Shining(Texture2D texture, int x, int y, int width, int height, int frameDistance)
         {
             this.texture = texture;
-            this.rows = rows;
-            this.columns = columns;
             this.x = x;
             this.y = y;
             this.width = width;
@@ -54,7 +50,7 @@ namespace Game2.Sprites.Link
         {
             Rectangle sourceRectangle = new Rectangle(x + currentFrame * frameDistance, y, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
-            spriteBatch.Draw(texture, sourceRectangle, destinationRectangle, Color.White);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
 
 
