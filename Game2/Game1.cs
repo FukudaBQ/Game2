@@ -95,7 +95,7 @@ namespace Game2
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
-            triforce = new Triforce(item, new Vector2(60, 50), spriteBatch);
+            triforce = new Triforce(item, new Vector2(800, 800), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
