@@ -37,6 +37,7 @@ namespace Game2
         Texture2D arrowUp;
         Texture2D arrowLeft;
         Texture2D arrowRight;
+        Texture2D boomerang;
         Texture2D map1Sprite;
         Texture2D GeneralBlockSprite;
         Rupy rupy;
@@ -44,6 +45,7 @@ namespace Game2
         Fairy fairy;
         Dragon dragon;
         OldMan oldMan;
+        HeartContainer heartContainer;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -99,6 +101,7 @@ namespace Game2
             arrowUp = Content.Load<Texture2D>("ArrowUp");
             arrowLeft = Content.Load<Texture2D>("ArrowLeft");
             arrowRight = Content.Load<Texture2D>("ArrowRight");
+            boomerang= Content.Load<Texture2D>("boomerang");
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
             Texture2D NPC = Content.Load<Texture2D>("NPC");
@@ -109,7 +112,8 @@ namespace Game2
             triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
             fairy=new Fairy(item, new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
-            oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch); 
+            oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
+            heartContainer = new HeartContainer(item, new Vector2(370, 130),spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -143,6 +147,7 @@ namespace Game2
             fairy.Update(gameTime);
             dragon.Update(gameTime);
             oldMan.Update(gameTime);
+            
 
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
@@ -160,6 +165,10 @@ namespace Game2
                 proj.Update(gameTime);
             }
             foreach (Projectile proj in Projectile.arrowRight)
+            {
+                proj.Update(gameTime);
+            }
+            foreach (Projectile proj in Projectile.boomerang)
             {
                 proj.Update(gameTime);
             }
@@ -185,6 +194,7 @@ namespace Game2
             fairy.Draw();
             dragon.Draw();
             oldMan.Draw();
+            heartContainer.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
@@ -207,7 +217,7 @@ namespace Game2
             }
             foreach (Projectile i in Projectile.boomerang)
             {
-                spriteBatch.Draw(moveLeft, i.Position, Color.White);
+                spriteBatch.Draw(boomerang, i.Position, Color.White);
             }
             foreach (Blocks b in Blocks.blocks)
             {
