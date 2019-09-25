@@ -46,9 +46,9 @@ namespace Game2.Sprites.Link
             facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
             facing.Add(Dir.Right, LinkSpriteFactory.Instance.CreateMoveRight(1, 2));
             facing.Add(Dir.DownSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
-            facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
-            facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
-            facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
+            facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateUpSword(1, 2));
+            facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
+            facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
         }
         public void Update(GameTime gameTime)
         {
