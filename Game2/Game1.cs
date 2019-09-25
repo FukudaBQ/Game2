@@ -84,7 +84,7 @@ namespace Game2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            //ItemFactory.Instance.LoadAllTextures(Content);
+            ItemFactory.Instance.LoadAllTextures(Content);
             //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
             playerSprite = Content.Load<Texture2D>("Link");/*
@@ -107,7 +107,7 @@ namespace Game2
 
             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
             triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
-            fairy=new Fairy(item, new Vector2(200, 130), spriteBatch);
+            fairy = new Fairy(new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch); 
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
