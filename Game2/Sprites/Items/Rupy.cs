@@ -23,13 +23,13 @@ namespace Game2.Sprites.Items
             this.location = location;
             spriteBatch = batch;
             currentFrame = 0;
-            totalFrame = 4;
+            totalFrame = 2;
         }
         public void Update(GameTime gametime)
         {
             timeLastUpdate += (float)gametime.ElapsedGameTime.TotalSeconds;
 
-            if (timeLastUpdate > 0.1f)
+            if (timeLastUpdate > 0.2f)
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)
@@ -41,7 +41,7 @@ namespace Game2.Sprites.Items
         }
         public void Draw()
         {
-            Rectangle sourceRectangle = new Rectangle(135 + currentFrame * 30, 100, 20, 40);
+            Rectangle sourceRectangle = new Rectangle(164 + currentFrame * 40, 100, 20, 36);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20*4, 40*4);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
