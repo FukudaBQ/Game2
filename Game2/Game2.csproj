@@ -75,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ArrowDown.png" />
+    <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Item.png" />
