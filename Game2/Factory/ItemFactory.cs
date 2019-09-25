@@ -40,5 +40,9 @@ namespace Game2.Factory
         {
             return new Shining(item, 123, 40, 20, 36, 40);
         }
+        public Shining CreateKeySprite()
+        {
+            return new Shining(item, 280, 40, 20, 40, 0);
+        }
     }
 }

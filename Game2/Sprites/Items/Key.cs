@@ -1,4 +1,6 @@
-﻿using Game2.Interfaces;
+﻿using Game2.Factory;
+using Game2.Interfaces;
+using Game2.Sprites.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,20 +13,18 @@ namespace Game2.Sprites.Items
 {
     class Key : ISprite
     {
-        public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
-        public Key(Texture2D texture, Vector2 location, SpriteBatch batch)
+        public Shining sprite;
+        public Key(Vector2 location, SpriteBatch batch)
         {
-            this.texture = texture;
             this.location = location;
             spriteBatch = batch;
+            sprite = ItemFactory.Instance.CreateKeySprite();
         }
         public void Draw()
         {
-            Rectangle sourceRectangle = new Rectangle(280, 40, 20, 40);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            sprite.Draw(spriteBatch, location);
         }
 
         public void Update(GameTime gametime)

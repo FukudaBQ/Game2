@@ -119,7 +119,7 @@ namespace Game2
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 130),spriteBatch);
             clock = new Clock(item, new Vector2(460, 135), spriteBatch);
-            key = new Key(item, new Vector2(550, 135), spriteBatch);
+            key = new Key(new Vector2(550, 135), spriteBatch);
             compass= new Compass(item, new Vector2(640, 135), spriteBatch);
             map = new Map(item, new Vector2(730, 50), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
