@@ -85,9 +85,13 @@
     <Content Include="Content\LinkLeftWalking.png" />
     <Content Include="Content\LinkRightWalking.png" />
     <Content Include="Content\LinkSwingSwordBack.png" />
+    <Content Include="Content\LinkSwingSwordBackStand.png" />
     <Content Include="Content\LinkSwingSwordFront.png" />
+    <Content Include="Content\LinkSwingSwordFrontStand.png" />
     <Content Include="Content\LinkSwingSwordLeft.png" />
+    <Content Include="Content\LinkSwingSwordLeftStand.png" />
     <Content Include="Content\LinkSwingSwordRight.png" />
+    <Content Include="Content\LinkSwingSwordRightStand.png" />
     <Content Include="Content\LinkUsingSword.png" />
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
