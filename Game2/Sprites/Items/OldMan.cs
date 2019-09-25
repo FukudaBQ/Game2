@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Enemies
+namespace Game2.Sprites.Items
 {
-    class Dragon : ISprite
+    class OldMan : ISprite
     {
         public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
@@ -17,13 +17,13 @@ namespace Game2.Sprites.Enemies
         int currentFrame;
         int totalFrame;
         float timeLastUpdate = 0f;
-        public Dragon(Texture2D texture, Vector2 location, SpriteBatch batch)
+        public OldMan(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;
             this.location = location;
             spriteBatch = batch;
             currentFrame = 0;
-            totalFrame = 4;
+            totalFrame = 2;
         }
         public void Update(GameTime gametime)
         {
@@ -41,8 +41,8 @@ namespace Game2.Sprites.Enemies
         }
         public void Draw()
         {
-            Rectangle sourceRectangle = new Rectangle(currentFrame * 80, 1, 20, 46);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 46 * 4);
+            Rectangle sourceRectangle = new Rectangle(currentFrame * 30, 1, 20, 36);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
     }
