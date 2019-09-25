@@ -43,6 +43,7 @@ namespace Game2
         Triforce triforce;
         Fairy fairy;
         Dragon dragon;
+        OldMan oldMan;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -100,6 +101,7 @@ namespace Game2
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
+            Texture2D NPC = Content.Load<Texture2D>("NPC");
             map1Sprite = Content.Load<Texture2D>("map1");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
@@ -107,6 +109,7 @@ namespace Game2
             triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
             fairy=new Fairy(item, new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
+            oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch); 
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -139,6 +142,7 @@ namespace Game2
             triforce.Update(gameTime);
             fairy.Update(gameTime);
             dragon.Update(gameTime);
+            oldMan.Update(gameTime);
 
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
@@ -180,6 +184,7 @@ namespace Game2
             triforce.Draw();
             fairy.Draw();
             dragon.Draw();
+            oldMan.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
