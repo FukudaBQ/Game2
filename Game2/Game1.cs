@@ -9,6 +9,7 @@ using Game2.Sprites.Link;
 using Game2.Interfaces;
 using Game2.Sprites.Items;
 using Game2.Sprites.Blocks;
+using Game2.Sprites.Enemies;
 
 namespace Game2
 {
@@ -16,6 +17,7 @@ namespace Game2
     {
         Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
     }
+    
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
@@ -29,7 +31,6 @@ namespace Game2
         Texture2D moveUp;
         Texture2D moveLeft;
         Texture2D moveRight;
-        Texture2D dragon;
         //private ArrowSprite arrow;
         Texture2D bomb;
         Texture2D arrowDown;
@@ -41,6 +42,7 @@ namespace Game2
         Rupy rupy;
         Triforce triforce;
         Fairy fairy;
+        Dragon dragon;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -103,6 +105,7 @@ namespace Game2
             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
             triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
             fairy=new Fairy(item, new Vector2(200, 130), spriteBatch);
+            dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -134,6 +137,7 @@ namespace Game2
             rupy.Update(gameTime);
             triforce.Update(gameTime);
             fairy.Update(gameTime);
+            dragon.Update(gameTime);
 
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
@@ -174,6 +178,7 @@ namespace Game2
             rupy.Draw();
             triforce.Draw();
             fairy.Draw();
+            dragon.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
