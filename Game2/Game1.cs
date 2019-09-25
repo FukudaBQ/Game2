@@ -49,6 +49,7 @@ namespace Game2
         Key key;
         Compass compass;
         HeartContainer heartContainer;
+        Map map;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -120,6 +121,7 @@ namespace Game2
             clock = new Clock(item, new Vector2(460, 135), spriteBatch);
             key = new Key(item, new Vector2(550, 135), spriteBatch);
             compass= new Compass(item, new Vector2(640, 135), spriteBatch);
+            map = new Map(item, new Vector2(730, 50), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -204,6 +206,7 @@ namespace Game2
             clock.Draw();
             key.Draw();
             compass.Draw();
+            map.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
