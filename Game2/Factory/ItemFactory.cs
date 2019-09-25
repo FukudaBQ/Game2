@@ -44,5 +44,9 @@ namespace Game2.Factory
         {
             return new Shining(item, 280, 40, 20, 40, 0);
         }
+        public Shining CreateClockSprite()
+        {
+            return new Shining(item, 360, 0, 13, 40, 0);
+        }
     }
 }

@@ -122,7 +122,7 @@ namespace Game2
             dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
-            clock = new Clock(item, new Vector2(460, 135), spriteBatch);
+            clock = new Clock(new Vector2(460, 135), spriteBatch);
             key = new Key(new Vector2(550, 135), spriteBatch);
             compass= new Compass(item, new Vector2(640, 135), spriteBatch);
             map = new Map(item, new Vector2(730, 50), spriteBatch);
