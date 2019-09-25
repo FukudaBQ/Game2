@@ -38,6 +38,7 @@ namespace Game2
         Texture2D downSword;
         Rupy rupy;
         Triforce triforce;
+        Fairy fairy;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -95,7 +96,8 @@ namespace Game2
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
-            triforce = new Triforce(item, new Vector2(800, 800), spriteBatch);
+            triforce = new Triforce(item, new Vector2(100, 50), spriteBatch);
+            fairy=new Fairy(item, new Vector2(200, 130), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -126,6 +128,7 @@ namespace Game2
             player.Update(gameTime);
             rupy.Update(gameTime);
             triforce.Update(gameTime);
+            fairy.Update(gameTime);
             /*
              * foreach(Projectile i in Projectile.projectile1)
             {
@@ -161,6 +164,7 @@ namespace Game2
             spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             rupy.Draw();
             triforce.Draw();
+            fairy.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);

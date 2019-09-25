@@ -51,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
+    <Compile Include="Sprites\Items\Fairy.cs" />
     <Compile Include="Sprites\Items\Rupy.cs" />
     <Compile Include="Sprites\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
@@ -83,6 +84,10 @@
     <Content Include="Content\LinkFront.png" />
     <Content Include="Content\LinkLeftWalking.png" />
     <Content Include="Content\LinkRightWalking.png" />
+    <Content Include="Content\LinkSwingSwordBack.png" />
+    <Content Include="Content\LinkSwingSwordFront.png" />
+    <Content Include="Content\LinkSwingSwordLeft.png" />
+    <Content Include="Content\LinkSwingSwordRight.png" />
     <Content Include="Content\LinkUsingSword.png" />
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
