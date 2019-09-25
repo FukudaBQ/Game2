@@ -32,6 +32,10 @@ namespace Game2
         Texture2D dragon;
         //private ArrowSprite arrow;
         Texture2D bomb;
+        Texture2D arrowDown;
+        Texture2D arrowUp;
+        Texture2D arrowLeft;
+        Texture2D arrowRight;
         Texture2D map1Sprite;
         Texture2D GeneralBlockSprite;
         Texture2D LinkUsingSword;
@@ -89,6 +93,10 @@ namespace Game2
             downSword = Content.Load<Texture2D>("StandSwordDown");*/
             player = new Player(this);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
+            arrowDown = Content.Load<Texture2D>("ArrowDown");
+            arrowUp = Content.Load<Texture2D>("ArrowUp");
+            arrowLeft = Content.Load<Texture2D>("ArrowLeft");
+            arrowRight = Content.Load<Texture2D>("ArrowRight");
             LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
@@ -145,7 +153,23 @@ namespace Game2
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
             }
-            
+            foreach (Projectile proj in Projectile.arrowDown)
+            {
+                proj.Update(gameTime);
+            }
+            foreach (Projectile proj in Projectile.arrowUp)
+            {
+                proj.Update(gameTime);
+            }
+            foreach (Projectile proj in Projectile.arrowLeft)
+            {
+                proj.Update(gameTime);
+            }
+            foreach (Projectile proj in Projectile.arrowRight)
+            {
+                proj.Update(gameTime);
+            }
+
 
             base.Update(gameTime);
         }
@@ -169,9 +193,21 @@ namespace Game2
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
             }
-            foreach (Projectile i in Projectile.arrow)
+            foreach (Projectile i in Projectile.arrowDown)
             {
-                spriteBatch.Draw(LinkUsingSword, i.Position, Color.White);
+                spriteBatch.Draw(arrowDown, i.Position, Color.White);
+            }
+            foreach (Projectile i in Projectile.arrowUp)
+            {
+                spriteBatch.Draw(arrowUp, i.Position, Color.White);
+            }
+            foreach (Projectile i in Projectile.arrowLeft)
+            {
+                spriteBatch.Draw(arrowLeft, i.Position, Color.White);
+            }
+            foreach (Projectile i in Projectile.arrowRight)
+            {
+                spriteBatch.Draw(arrowRight, i.Position, Color.White);
             }
             foreach (Projectile i in Projectile.boomerang)
             {

@@ -149,7 +149,22 @@ namespace Game2.Sprites.Link
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
-                Projectile.bomb.Add(new Projectile(position, direction));
+                if (direction == Dir.Down)
+                {
+                    Projectile.arrowDown.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Up)
+                {
+                    Projectile.arrowUp.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Left)
+                {
+                    Projectile.arrowLeft.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Right)
+                {
+                    Projectile.arrowRight.Add(new Projectile(position, direction));
+                }
             }
             if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
             {
