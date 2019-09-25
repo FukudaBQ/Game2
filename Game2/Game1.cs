@@ -50,6 +50,9 @@ namespace Game2
         Compass compass;
         HeartContainer heartContainer;
         Map map;
+        Bow bow;
+        Sword sword;
+        Arrow arrow;
         //Link player;
         //private static ContentManager myContent;
         //Zijie Wei
@@ -117,11 +120,14 @@ namespace Game2
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
-            heartContainer = new HeartContainer(item, new Vector2(370, 130),spriteBatch);
+            heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
             clock = new Clock(item, new Vector2(460, 135), spriteBatch);
             key = new Key(item, new Vector2(550, 135), spriteBatch);
             compass= new Compass(item, new Vector2(640, 135), spriteBatch);
             map = new Map(item, new Vector2(730, 50), spriteBatch);
+            bow = new Bow(item, new Vector2(820, 130), spriteBatch);
+            sword = new Sword(item, new Vector2(910, 40), spriteBatch);
+            arrow = new Arrow(item, new Vector2(955, 130), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -207,6 +213,9 @@ namespace Game2
             key.Draw();
             compass.Draw();
             map.Draw();
+            bow.Draw();
+            arrow.Draw();
+            sword.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
