@@ -30,11 +30,15 @@ namespace Game2.Factory
         }
         public Shining CreateRupySprite(int rows, int columns)
         {
-            return new Shining(item, rows, columns);
+            return new Shining(item, rows, columns, 164, 100, 20, 36, 40);
         }
         public Shining CreateTriforceSprite(int rows, int columns)
         {
-            return new Shining(item, rows, columns);
+            return new Shining(item, rows, columns, 318, 100, 20, 36, 20);
+        }
+        public Shining CreateFariySprite(int rows, int columns)
+        {
+            return new Shining(item, rows, columns, 123, 40, 20, 36, 40);
         }
     }
 }

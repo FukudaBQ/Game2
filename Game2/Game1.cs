@@ -81,6 +81,7 @@ namespace Game2
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            //ItemFactory.Instance.LoadAllTextures(Content);
             //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
             playerSprite = Content.Load<Texture2D>("Link");/*

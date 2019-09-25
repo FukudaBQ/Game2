@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Items
 {
-    class Fairy : ISprite
+    class Fairy
     {
         public Texture2D texture { get; set; }
         public Vector2 location { get; set; }

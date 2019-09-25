@@ -16,11 +16,21 @@ namespace Game2.Sprites.Link
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
-        public Shining(Texture2D texture, int rows, int columns)
+        private int x;
+        private int y;
+        private int width;
+        private int height;
+        private int frameDistance;
+        public Shining(Texture2D texture, int rows, int columns, int x, int y, int width, int height, int frameDistance)
         {
             this.texture = texture;
             this.rows = rows;
             this.columns = columns;
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.frameDistance = frameDistance;
             currentFrame = 0;
             totalFrame = 2;
         }
@@ -40,9 +50,9 @@ namespace Game2.Sprites.Link
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, int a, int b, int c, int d, int e)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            Rectangle sourceRectangle = new Rectangle(a + currentFrame * e, b, c, d);
+            Rectangle sourceRectangle = new Rectangle(x + currentFrame * frameDistance, y, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
             spriteBatch.Draw(texture, sourceRectangle, destinationRectangle, Color.White);
         }
