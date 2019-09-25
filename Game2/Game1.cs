@@ -46,6 +46,7 @@ namespace Game2
         Dragon dragon;
         OldMan oldMan;
         Clock clock;
+        Key key;
         HeartContainer heartContainer;
         //Link player;
         //private static ContentManager myContent;
@@ -116,6 +117,7 @@ namespace Game2
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 130),spriteBatch);
             clock = new Clock(item, new Vector2(460, 135), spriteBatch);
+            key = new Key(item, new Vector2(550, 135), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -198,6 +200,7 @@ namespace Game2
             oldMan.Draw();
             heartContainer.Draw();
             clock.Draw();
+            key.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
                 spriteBatch.Draw(bomb, i.Position, Color.White);
