@@ -55,7 +55,7 @@
     <Compile Include="Sprites\Items\Rupy.cs" />
     <Compile Include="Sprites\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
-    <Compile Include="Sprites\Link\ItemSprite.cs" />
+    <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Command.cs" />
     <Compile Include="Sprites\Link\ExitCommand.cs" />
     <Compile Include="Sprites\Link\LinkSpriteFaceDown.cs" />

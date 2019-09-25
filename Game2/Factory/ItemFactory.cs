@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Game2.Sprites.Link;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,13 @@ namespace Game2.Factory
         {
             item = content.Load<Texture2D>("Item");
         }
-        public 
+        public Shining CreateRupySprite(int rows, int columns)
+        {
+            return new Shining(item, rows, columns);
+        }
+        public Shining CreateTriforceSprite(int rows, int columns)
+        {
+            return new Shining(item, rows, columns);
+        }
     }
 }

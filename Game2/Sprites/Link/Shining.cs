@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Link
 {
-    class ItemSprite
+    class Shining
     {
         public Texture2D texture;
         private int rows;
@@ -16,7 +16,7 @@ namespace Game2.Sprites.Link
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
-        public ItemSprite(Texture2D texture, int rows, int columns)
+        public Shining(Texture2D texture, int rows, int columns)
         {
             this.texture = texture;
             this.rows = rows;
