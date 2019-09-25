@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Game2.Sprites.Link;
 using Game2.Interfaces;
 using Game2.Sprites.Items;
+using Game2.Sprites.Blocks;
 
 namespace Game2
 {
@@ -31,6 +32,8 @@ namespace Game2
         Texture2D dragon;
         //private ArrowSprite arrow;
         Texture2D bomb;
+        Texture2D map1Sprite;
+        Texture2D GeneralBlockSprite;
         Texture2D LinkUsingSword;
         Texture2D downSword;
         Rupy rupy;
@@ -87,8 +90,14 @@ namespace Game2
             LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
+            map1Sprite = Content.Load<Texture2D>("map1");
+            GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
-             rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
+            rupy = new Rupy(item, new Vector2(50,50), spriteBatch);
+            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
+            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
+            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
+            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
 
         }
 
@@ -130,6 +139,7 @@ namespace Game2
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
             }
+            
 
             base.Update(gameTime);
         }
@@ -143,8 +153,9 @@ namespace Game2
             GraphicsDevice.Clear(Color.Gray);
 
             // TODO: Add your drawing code here
-            player.anim.Draw(spriteBatch, player.Position);
+            
             spriteBatch.Begin();
+            spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             rupy.Draw();
             foreach (Projectile i in Projectile.bomb)
             {
@@ -158,6 +169,10 @@ namespace Game2
             {
                 spriteBatch.Draw(moveLeft, i.Position, Color.White);
             }
+            foreach (Blocks b in Blocks.blocks)
+            {
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            }
             //spriteBatch.Draw(bomb,new Rectangle(0,0,15,25));
             
             /*foreach(Projectile proj in Projectile.projectile1){
@@ -165,6 +180,7 @@ namespace Game2
             }*/
 
             spriteBatch.End();
+            player.anim.Draw(spriteBatch, player.Position);
 
             base.Draw(gameTime);
         }

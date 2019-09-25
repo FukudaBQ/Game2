@@ -12,12 +12,13 @@ namespace Game2.Sprites.Link
 {
     class Player
     {
-        private Vector2 position = new Vector2(100, 100);
+        private Vector2 position = new Vector2(960, 540);
         private int speed = 200;
         private Dir direction = Dir.Down;
         private bool isMoving = false;
         private bool isSwording = false;
         public Animate anim;
+        public int radius=20;
         public Animate[] ani = new Animate[7];
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
@@ -102,19 +103,40 @@ namespace Game2.Sprites.Link
             }
             if (isMoving)
             {
+                Vector2 tempPos = position;
                 switch (direction)
                 {
                     case Dir.Right:
-                        position.X += speed * dt;
+                        tempPos.X += speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.X += speed * dt;
+                        }
+                        //position.X += speed * dt;
                         break;
                     case Dir.Left:
-                        position.X -= speed * dt;
+                        tempPos.X -= speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.X -= speed * dt;
+                        }
+                        //position.X -= speed * dt;
                         break;
                     case Dir.Up:
-                        position.Y -= speed * dt;
+                        tempPos.Y -= speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.Y -= speed * dt;
+                        }
+                        //position.Y -= speed * dt;
                         break;
                     case Dir.Down:
-                        position.Y += speed * dt;
+                        tempPos.Y += speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.Y += speed * dt;
+                        }
+                        //position.Y += speed * dt;
                         break;
                     default:
                         break;
