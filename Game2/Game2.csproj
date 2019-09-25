@@ -53,6 +53,7 @@
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
     <Compile Include="Sprites\Items\Clock.cs" />
+    <Compile Include="Sprites\Items\Compass.cs" />
     <Compile Include="Sprites\Items\Fairy.cs" />
     <Compile Include="Sprites\Items\HeartContainer.cs" />
     <Compile Include="Sprites\Items\Key.cs" />
