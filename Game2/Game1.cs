@@ -209,7 +209,9 @@ namespace Game2
             }*/
 
             spriteBatch.End();
-            player.anim.Draw(spriteBatch, player.Position);
+            
+                player.anim.Draw(spriteBatch, player.Position);
+            
 
             base.Draw(gameTime);
         }
