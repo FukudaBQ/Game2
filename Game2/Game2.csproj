@@ -52,7 +52,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
+    <Compile Include="Sprites\Enemies\Stalfos.cs" />
+    <Compile Include="Sprites\Items\Bow.cs" />
     <Compile Include="Sprites\Items\Clock.cs" />
+    <Compile Include="Sprites\Items\Arrow.cs" />
+    <Compile Include="Sprites\Items\Sword.cs" />
     <Compile Include="Sprites\Items\Compass.cs" />
     <Compile Include="Sprites\Items\Fairy.cs" />
     <Compile Include="Sprites\Items\HeartContainer.cs" />
@@ -83,6 +87,7 @@
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\boomerang.png" />
+    <Content Include="Content\Dragon.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Item.png" />
