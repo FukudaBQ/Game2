@@ -85,6 +85,7 @@
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\boomerang.png" />
+    <Content Include="Content\Dragon.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Item.png" />

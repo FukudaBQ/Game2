@@ -112,13 +112,14 @@ namespace Game2
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
             Texture2D NPC = Content.Load<Texture2D>("NPC");
+            Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
             map1Sprite = Content.Load<Texture2D>("map1");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
             rupy = new Rupy(new Vector2(50,50), spriteBatch);
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
-            dragon = new Dragon(boss, new Vector2(800, 800), spriteBatch);
+            dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
             clock = new Clock(item, new Vector2(460, 135), spriteBatch);
