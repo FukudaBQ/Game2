@@ -13,6 +13,9 @@ namespace Game2.Factory
         Texture2D moveLeft;
         Texture2D moveRight;
         Texture2D downSword;
+        Texture2D upSword;
+        Texture2D leftSword;
+        Texture2D rightSword;
         private static LinkSpriteFactory instance = new LinkSpriteFactory();
 
         public static LinkSpriteFactory Instance
@@ -33,7 +36,10 @@ namespace Game2.Factory
             moveUp = content.Load<Texture2D>("LinkBackWalking");
             moveLeft = content.Load<Texture2D>("LinkLeftWalking");
             moveRight = content.Load<Texture2D>("LinkRightWalking");
-            downSword = content.Load<Texture2D>("StandSwordDown");
+            downSword = content.Load<Texture2D>("LinkSwingSwordFrontStand");
+            upSword = content.Load<Texture2D>("LinkSwingSwordBackStand");
+            leftSword = content.Load<Texture2D>("LinkSwingSwordLeftStand");
+            rightSword = content.Load<Texture2D>("LinkSwingSwordRightStand");
         }
 
         public Animate CreateMoveDown(int rows, int columns)
@@ -61,5 +67,21 @@ namespace Game2.Factory
             return new Animate(downSword, rows, columns);
 
         }
+        public Animate CreateUpSword(int rows, int columns)
+        {
+            return new Animate(upSword, rows, columns);
+
+        }
+        public Animate CreateLeftSword(int rows, int columns)
+        {
+            return new Animate(leftSword, rows, columns);
+
+        }
+        public Animate CreateRightSword(int rows, int columns)
+        {
+            return new Animate(rightSword, rows, columns);
+
+        }
+
     }
 }

@@ -38,8 +38,6 @@ namespace Game2
         Texture2D arrowRight;
         Texture2D map1Sprite;
         Texture2D GeneralBlockSprite;
-        Texture2D LinkUsingSword;
-        Texture2D downSword;
         Rupy rupy;
         Triforce triforce;
         Fairy fairy;
@@ -97,7 +95,6 @@ namespace Game2
             arrowUp = Content.Load<Texture2D>("ArrowUp");
             arrowLeft = Content.Load<Texture2D>("ArrowLeft");
             arrowRight = Content.Load<Texture2D>("ArrowRight");
-            LinkUsingSword = Content.Load<Texture2D>("LinkUsingSword");
             Texture2D boss = Content.Load<Texture2D>("Boss");
             Texture2D item = Content.Load<Texture2D>("Item");
             map1Sprite = Content.Load<Texture2D>("map1");
@@ -137,19 +134,7 @@ namespace Game2
             rupy.Update(gameTime);
             triforce.Update(gameTime);
             fairy.Update(gameTime);
-            /*
-             * foreach(Projectile i in Projectile.projectile1)
-            {
-                i.Update(gameTime);
-            }
-            foreach (Projectile i in Projectile.projectile2)
-            {
-                i.Update(gameTime);
-            }
-            foreach (Projectile i in Projectile.projectile3)
-            {
-                i.Update(gameTime);
-            }*/
+
             foreach(Projectile proj in Projectile.bomb){
                 proj.Update(gameTime);
             }
