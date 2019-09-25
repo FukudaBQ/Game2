@@ -57,6 +57,7 @@
     <Compile Include="Sprites\Items\Fairy.cs" />
     <Compile Include="Sprites\Items\HeartContainer.cs" />
     <Compile Include="Sprites\Items\Key.cs" />
+    <Compile Include="Sprites\Items\Map.cs" />
     <Compile Include="Sprites\Items\OldMan.cs" />
     <Compile Include="Sprites\Items\Rupy.cs" />
     <Compile Include="Sprites\Items\Triforce.cs" />
