@@ -38,12 +38,20 @@ namespace Game2
         Texture2D arrowLeft;
         Texture2D arrowRight;
         Texture2D boomerang;
+        Texture2D handSprite;
+        Texture2D knightSprite;
+        Texture2D batSprite;
+        Texture2D monsterSprite;
         Texture2D map1Sprite;
         Texture2D GeneralBlockSprite;
         Rupy rupy;
         Triforce triforce;
         Fairy fairy;
         Dragon dragon;
+        Hand hand;
+        Monster monster;
+        Knight knight;
+        Bat bat;
         OldMan oldMan;
         Clock clock;
         Key key;
@@ -113,6 +121,10 @@ namespace Game2
             Texture2D item = Content.Load<Texture2D>("Item");
             Texture2D NPC = Content.Load<Texture2D>("NPC");
             Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
+            handSprite = Content.Load<Texture2D>("hand");
+            monsterSprite = Content.Load<Texture2D>("monster");
+            batSprite = Content.Load<Texture2D>("bat");
+            knightSprite = Content.Load<Texture2D>("knight");
             map1Sprite = Content.Load<Texture2D>("map1");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
 
@@ -120,6 +132,10 @@ namespace Game2
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
             dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
+            hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
+            monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
+            bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
+            knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
@@ -161,6 +177,10 @@ namespace Game2
             triforce.Update(gameTime);
             fairy.Update(gameTime);
             dragon.Update(gameTime);
+            hand.Update(gameTime);
+            knight.Update(gameTime);
+            bat.Update(gameTime);
+            monster.Update(gameTime);
             oldMan.Update(gameTime);
             
 
@@ -208,6 +228,10 @@ namespace Game2
             triforce.Draw();
             fairy.Draw();
             dragon.Draw();
+            hand.Draw();
+            bat.Draw();
+            knight.Draw();
+            monster.Draw();
             oldMan.Draw();
             heartContainer.Draw();
             clock.Draw();
