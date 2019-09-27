@@ -26,6 +26,7 @@ namespace Game2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         Player player;
+        PlayerStateMachine stateMachine;
         Texture2D playerSprite;
         Texture2D moveDown;
         Texture2D moveUp;
@@ -276,8 +277,8 @@ namespace Game2
             }*/
 
             spriteBatch.End();
-            
-                player.anim.Draw(spriteBatch, player.Position);
+
+            player.anim.Draw(spriteBatch, player.Position);
             
 
             base.Draw(gameTime);
