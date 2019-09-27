@@ -78,9 +78,6 @@
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
-    <Compile Include="Sprites\Link\Command.cs" />
-    <Compile Include="Sprites\Link\MoveDown.cs" />
-    <Compile Include="Sprites\Link\MoveUp.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\Projectile.cs" />
   </ItemGroup>
@@ -92,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Code Review\Sprint2\CodeReview_wei.780.txt" />
     <Content Include="Content\ArrowDown.png" />
     <Content Include="Content\ArrowLeft.png" />
     <Content Include="Content\ArrowRight.png" />
@@ -128,6 +126,7 @@
     <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
+    <Content Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

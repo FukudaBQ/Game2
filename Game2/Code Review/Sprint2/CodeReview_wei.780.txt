@@ -1,0 +1,8 @@
+﻿Readability:
+Author of the code review: Zijie Wei
+Date of the code review: 9/27/2019
+Sprint number: 2
+Name of the .cs file being reviewed: 
+Author of the .cs file being reviewed
+Number of minutes taken to complete the review
+Specific comments on what is readable and what is not
