@@ -62,5 +62,13 @@ namespace Game2.Factory
         {
             return new Shining(NPC, 0, 1, 20, 36, 30);
         }
+        public Shining CreateMapSprite()
+        {
+            return new Shining(item, 240, 60, 20, 40, 0);
+        }
+        public Shining CreateHeartConttainerSprite()
+        {
+            return new Shining(item, 240, 40, 20, 40, 0);
+        }
     }
 }

@@ -124,11 +124,11 @@ namespace Game2
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
-            heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
+            heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
             key = new Key(new Vector2(550, 135), spriteBatch);
             compass= new Compass(item, new Vector2(640, 135), spriteBatch);
-            map = new Map(item, new Vector2(730, 50), spriteBatch);
+            map = new Map(new Vector2(730, 50), spriteBatch);
             bow = new Bow(item, new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
             arrow = new Arrow(new Vector2(955, 130), spriteBatch);
