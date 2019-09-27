@@ -6,7 +6,6 @@ using Game2.Factory;
 using Microsoft.Xna.Framework.Content;
 using Game2.Sprites.Link;
 using Game2.Interfaces;
-using Game2.Sprites.Items;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;

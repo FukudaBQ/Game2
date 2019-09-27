@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Game2.Sprites.Link;
 using Game2.Factory;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
     class Rupy
     {
