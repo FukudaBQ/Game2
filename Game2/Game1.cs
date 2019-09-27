@@ -78,8 +78,6 @@ namespace Game2
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang= Content.Load<Texture2D>("boomerang");
             Texture2D boss = Content.Load<Texture2D>("Boss");
-            Texture2D item = Content.Load<Texture2D>("Item");
-            Texture2D NPC = Content.Load<Texture2D>("NPC");
             Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
             handSprite = Content.Load<Texture2D>("hand");
             monsterSprite = Content.Load<Texture2D>("monster");

@@ -24,9 +24,6 @@ namespace Game2.Object.Items
         }
         public void Draw()
         {
-            /*Rectangle sourceRectangle = new Rectangle(280, 100, 20, 40);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);*/
             sprite.Draw(spriteBatch, location);
         }
 
