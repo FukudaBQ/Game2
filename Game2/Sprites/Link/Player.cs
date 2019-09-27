@@ -27,7 +27,6 @@ namespace Game2.Sprites.Link
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
         private ResetCommand reset;
-        private Dictionary<Dir, Animate>facing = new Dictionary<Dir, Animate>();
         public Vector2 Position
         {
             get
@@ -46,8 +45,8 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
+            reset = new ResetCommand(this);
             stateMachine = new PlayerStateMachine(this);
-            reset = new ResetCommand(game);
             facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
             anim = facing[direction];
 
@@ -56,9 +55,19 @@ namespace Game2.Sprites.Link
 
         public void Update(GameTime gameTime)
         {
-            stateMachine.Update(gameTime);
             
-           
+            stateMachine.Update(gameTime);
+            KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.Q))
+            {
+                exit.Execute();
+            }
+            if (kState.IsKeyDown(Keys.R))
+            {
+                reset.Execute();
+            }
+
+
         }
     }
 

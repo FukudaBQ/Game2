@@ -1,4 +1,5 @@
 ﻿using Game2.Interfaces;
+using Game2.Sprites.Link;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,16 @@ namespace Game2.Commands
 {
     class ResetCommand : ICommands
     {
-        private Game1 myGame;
-        public ResetCommand(Game1 game)
+        private Player player;
+        public ResetCommand(Player player)
         {
-            myGame = game;
+            this.player = player;
         }
 
         public void Execute()
         {
-            myGame.player.setX(960);
-            myGame.player.setY(540);
+          player.setX(960);
+          player.setY(540);
         }
     }
 }
