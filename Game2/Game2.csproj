@@ -63,18 +63,18 @@
     <Compile Include="Sprites\Enemies\Monster.cs" />
     <Compile Include="Sprites\Enemies\MonsterStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Stalfos.cs" />
-    <Compile Include="Sprites\Items\Bow.cs" />
-    <Compile Include="Sprites\Items\Clock.cs" />
-    <Compile Include="Sprites\Items\Arrow.cs" />
-    <Compile Include="Sprites\Items\Sword.cs" />
-    <Compile Include="Sprites\Items\Compass.cs" />
-    <Compile Include="Sprites\Items\Fairy.cs" />
-    <Compile Include="Sprites\Items\HeartContainer.cs" />
-    <Compile Include="Sprites\Items\Key.cs" />
-    <Compile Include="Sprites\Items\Map.cs" />
-    <Compile Include="Sprites\Items\OldMan.cs" />
-    <Compile Include="Sprites\Items\Rupy.cs" />
-    <Compile Include="Sprites\Items\Triforce.cs" />
+    <Compile Include="Object\Items\Bow.cs" />
+    <Compile Include="Object\Items\Clock.cs" />
+    <Compile Include="Object\Items\Arrow.cs" />
+    <Compile Include="Object\Items\Sword.cs" />
+    <Compile Include="Object\Items\Compass.cs" />
+    <Compile Include="Object\Items\Fairy.cs" />
+    <Compile Include="Object\Items\HeartContainer.cs" />
+    <Compile Include="Object\Items\Key.cs" />
+    <Compile Include="Object\Items\Map.cs" />
+    <Compile Include="Object\Items\OldMan.cs" />
+    <Compile Include="Object\Items\Rupy.cs" />
+    <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
@@ -132,7 +132,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Sprites\Items\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

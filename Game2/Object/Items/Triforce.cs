@@ -9,26 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
-    class Clock : ISprite
+    class Triforce
     {
+        public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         public Shining sprite;
-        public Clock(Vector2 location, SpriteBatch batch)
+        public Triforce(Vector2 location, SpriteBatch batch)
         {
             this.location = location;
             spriteBatch = batch;
-            sprite = ItemFactory.Instance.CreateClockSprite();
+            sprite = ItemFactory.Instance.CreateTriforceSprite();
+        }
+        public void Update(GameTime gametime)
+        {
+            sprite.Update(gametime);
         }
         public void Draw()
         {
             sprite.Draw(spriteBatch, location);
-        }
-
-        public void Update(GameTime gametime)
-        {
         }
     }
 }

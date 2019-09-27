@@ -9,26 +9,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
-    class Fairy
+    class Clock : ISprite
     {
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         public Shining sprite;
-        public Fairy(Vector2 location, SpriteBatch batch)
+        public Clock(Vector2 location, SpriteBatch batch)
         {
             this.location = location;
-            this.sprite = ItemFactory.Instance.CreateFariySprite();
-            this.spriteBatch = batch;
-        }
-        public void Update(GameTime gameTime)
-        {
-            this.sprite.Update(gameTime);
+            spriteBatch = batch;
+            sprite = ItemFactory.Instance.CreateClockSprite();
         }
         public void Draw()
         {
-            this.sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch, location);
+        }
+
+        public void Update(GameTime gametime)
+        {
         }
     }
 }

@@ -9,22 +9,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
-    class Arrow : ISprite
+    class Map : ISprite
     {
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
-        public Shining sprite;
-        public Arrow(Vector2 location, SpriteBatch batch)
+        private Shining sprite;
+        public Map(Vector2 location, SpriteBatch batch)
         {
             this.location = location;
             spriteBatch = batch;
-            this.sprite = ItemFactory.Instance.CreateArrowSprite();
+            sprite = ItemFactory.Instance.CreateMapSprite();
         }
         public void Draw()
         {
-            this.sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch, location);
         }
 
         public void Update(GameTime gametime)

@@ -6,9 +6,9 @@ using Game2.Factory;
 using Microsoft.Xna.Framework.Content;
 using Game2.Sprites.Link;
 using Game2.Interfaces;
-using Game2.Sprites.Items;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
+using Game2.Object.Items;
 
 namespace Game2
 {
@@ -16,16 +16,11 @@ namespace Game2
     {
         Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
     }
-    
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
     public class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         Player player;
-        //private ArrowSprite arrow;
         Texture2D bomb;
         Texture2D arrowDown;
         Texture2D arrowUp;
@@ -55,12 +50,6 @@ namespace Game2
         Bow bow;
         Sword sword;
         Arrow arrow;
-        //Link player;
-        //private static ContentManager myContent;
-        //Zijie Wei
-        //Bowei QU
-        //Hangyu Ying 
-        //Yong Zhang
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -72,31 +61,15 @@ namespace Game2
 
             
         }
-
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
-            // TODO: use this.Content to load your game content here
             player = new Player(this);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             arrowDown = Content.Load<Texture2D>("ArrowDown");
@@ -105,8 +78,6 @@ namespace Game2
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang= Content.Load<Texture2D>("boomerang");
             Texture2D boss = Content.Load<Texture2D>("Boss");
-            Texture2D item = Content.Load<Texture2D>("Item");
-            Texture2D NPC = Content.Load<Texture2D>("NPC");
             Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
             handSprite = Content.Load<Texture2D>("hand");
             monsterSprite = Content.Load<Texture2D>("monster");
@@ -138,27 +109,12 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
 
         }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
             player.Update(gameTime);
             rupy.Update(gameTime);
             triforce.Update(gameTime);
@@ -198,17 +154,9 @@ namespace Game2
 
             base.Update(gameTime);
         }
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
-
-            // TODO: Add your drawing code here
-            
             spriteBatch.Begin();
             spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             rupy.Draw();
