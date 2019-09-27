@@ -70,5 +70,13 @@ namespace Game2.Factory
         {
             return new Shining(item, 240, 40, 20, 40, 0);
         }
+        public Shining CreateCompassSprite()
+        {
+            return new Shining(item, 80, 40, 20, 40, 0);
+        }
+        public Shining CreateBowSprite()
+        {
+            return new Shining(item, 320, 0, 13, 40, 0);
+        }
     }
 }
