@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Link
 {
-    class Animate
+    public class Animate
     {
         public Texture2D Texture { get; set; }
         public int Rows { get; set; }

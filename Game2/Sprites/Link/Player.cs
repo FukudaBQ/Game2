@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Commands;
 using Game2.Factory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game2.Sprites.Link
 {
-    class Player
+    public class Player
     {
         private Vector2 position = new Vector2(960, 540);
         private int speed = 200;
@@ -22,6 +23,7 @@ namespace Game2.Sprites.Link
         public Animate[] ani = new Animate[7];
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
+        private ResetCommand reset;
         private Dictionary<Dir, Animate>facing = new Dictionary<Dir, Animate>();
         public Vector2 Position
         {
@@ -41,6 +43,7 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
+            reset = new ResetCommand(game);
             facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
             facing.Add(Dir.Up, LinkSpriteFactory.Instance.CreateMoveUp(1, 2));
             facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
@@ -106,11 +109,6 @@ namespace Game2.Sprites.Link
                 }
 
                 isSwording = true;
-                
-                /*
-                 * if(kState.IsKeyUp(Keys.Z)){
-                   direction = Dir.Down;
-                }*/
 
                 isMoving = true;
                 
@@ -118,6 +116,10 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.Q))
             {
                 exit.Execute();
+            }
+            if (kState.IsKeyDown(Keys.R))
+            {
+                reset.Execute();
             }
             if (isMoving)
             {
@@ -130,7 +132,6 @@ namespace Game2.Sprites.Link
                         {
                             position.X += speed * dt;
                         }
-                        //position.X += speed * dt;
                         break;
                     case Dir.Left:
                         tempPos.X -= speed * dt;
@@ -138,7 +139,6 @@ namespace Game2.Sprites.Link
                         {
                             position.X -= speed * dt;
                         }
-                        //position.X -= speed * dt;
                         break;
                     case Dir.Up:
                         tempPos.Y -= speed * dt;
@@ -146,7 +146,6 @@ namespace Game2.Sprites.Link
                         {
                             position.Y -= speed * dt;
                         }
-                        //position.Y -= speed * dt;
                         break;
                     case Dir.Down:
                         tempPos.Y += speed * dt;
@@ -154,7 +153,6 @@ namespace Game2.Sprites.Link
                         {
                             position.Y += speed * dt;
                         }
-                        //position.Y += speed * dt;
                         break;
                     default:
                         break;
@@ -188,13 +186,7 @@ namespace Game2.Sprites.Link
             {
                 Projectile.boomerang.Add(new Projectile(position, direction));
             }
-            previous = kState;
-                                                                
-            
-
-           /* if(kState.IsKeyDown(keys.Space)){
-                Projectile.projectiles.Add(new Porjectile(position, direction));
-            }*/
+            previous = kState;                                                              
 
         }
     }

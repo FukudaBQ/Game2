@@ -25,13 +25,7 @@ namespace Game2
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        Player player;
-        Texture2D playerSprite;
-        Texture2D moveDown;
-        Texture2D moveUp;
-        Texture2D moveLeft;
-        Texture2D moveRight;
-        //private ArrowSprite arrow;
+        public Player player;
         Texture2D bomb;
         Texture2D arrowDown;
         Texture2D arrowUp;
@@ -102,14 +96,7 @@ namespace Game2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
-            //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
-            playerSprite = Content.Load<Texture2D>("Link");/*
-            moveDown = Content.Load<Texture2D>("LinkFaceFront");
-            moveUp = Content.Load<Texture2D>("LinkBackWalking");
-            moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
-            moveRight = Content.Load<Texture2D>("LinkRightWalking");
-            downSword = Content.Load<Texture2D>("StandSwordDown");*/
             player = new Player(this);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             arrowDown = Content.Load<Texture2D>("ArrowDown");
@@ -269,11 +256,6 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
-            //spriteBatch.Draw(bomb,new Rectangle(0,0,15,25));
-            
-            /*foreach(Projectile proj in Projectile.projectile1){
-                SpriteBatch.Draw(bomb,proj.Position,Color.Wihte);
-            }*/
 
             spriteBatch.End();
             
