@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game2.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,5 @@ namespace Game2.Sprites.Link
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }
-
-
     }
 }
