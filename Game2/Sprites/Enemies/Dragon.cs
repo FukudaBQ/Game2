@@ -1,6 +1,7 @@
 ﻿using Game2.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,10 @@ namespace Game2.Sprites.Enemies
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         int currentFrame;
+        public bool hitted = true;
+        public Color color = Color.White;
+        KeyboardState previous = Keyboard.GetState();
+        DragonStateMachine stateMachine;
         int totalFrame;
         float timeLastUpdate = 0f;
         public Dragon(Texture2D texture, Vector2 location, SpriteBatch batch)
@@ -24,6 +29,7 @@ namespace Game2.Sprites.Enemies
             spriteBatch = batch;
             currentFrame = 0;
             totalFrame = 4;
+            stateMachine = new DragonStateMachine(this);
         }
         public void Update(GameTime gametime)
         {
@@ -38,12 +44,27 @@ namespace Game2.Sprites.Enemies
                 }
                 timeLastUpdate = 0f;
             }
+
         }
         public void Draw()
         {
+            KeyboardState kState = Keyboard.GetState();
+
+
+            if (kState.IsKeyDown(Keys.T) && previous.IsKeyUp(Keys.T) && hitted)
+            {
+                stateMachine.ChangeColorRed();
+                hitted = !hitted;
+            }
+            else if (kState.IsKeyDown(Keys.T) && previous.IsKeyUp(Keys.T) && !hitted)
+            {
+                stateMachine.ChangeColorWhite();
+                hitted = !hitted;
+            }
+            previous = kState;
             Rectangle sourceRectangle = new Rectangle(currentFrame * 41, 1, 45, 46);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 41 * 4, 46 * 4);
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
         }
     }
 }

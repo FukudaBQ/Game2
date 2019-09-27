@@ -15,10 +15,7 @@ namespace Game2.Sprites.Link
     {
         
         public Vector2 position = new Vector2(960, 540);
-        private int speed = 200;
         private Dir direction = Dir.Down;
-        private bool isMoving = false;
-        private bool isSwording = false;
         public Animate anim;
         private PlayerStateMachine stateMachine;
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();

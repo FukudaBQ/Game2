@@ -42,7 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\MoveCommands.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
@@ -50,15 +49,19 @@
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\IController.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
-    <Compile Include="Object\Link.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
+    <Compile Include="Sprites\Enemies\BatStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
+    <Compile Include="Sprites\Enemies\DragonStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
+    <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
+    <Compile Include="Sprites\Enemies\KnightStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Monster.cs" />
+    <Compile Include="Sprites\Enemies\MonsterStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Stalfos.cs" />
     <Compile Include="Object\Items\Bow.cs" />
     <Compile Include="Object\Items\Clock.cs" />

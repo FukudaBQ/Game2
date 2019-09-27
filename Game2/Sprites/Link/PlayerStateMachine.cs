@@ -129,10 +129,6 @@ namespace Game2.Sprites.Link
 
                 isSwording = true;
 
-                /*
-                 * if(kState.IsKeyUp(Keys.Z)){
-                   direction = Dir.Down;
-                }*/
 
                 isMoving = true;
 
