@@ -103,14 +103,7 @@ namespace Game2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
-            //player = new Link(spriteBatch);
             // TODO: use this.Content to load your game content here
-            playerSprite = Content.Load<Texture2D>("Link");/*
-            moveDown = Content.Load<Texture2D>("LinkFaceFront");
-            moveUp = Content.Load<Texture2D>("LinkBackWalking");
-            moveLeft = Content.Load<Texture2D>("LinkLeftWalking");
-            moveRight = Content.Load<Texture2D>("LinkRightWalking");
-            downSword = Content.Load<Texture2D>("StandSwordDown");*/
             player = new Player(this);
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
             arrowDown = Content.Load<Texture2D>("ArrowDown");
@@ -137,15 +130,15 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
-            oldMan = new OldMan(NPC, new Vector2(270, 110), spriteBatch);
-            heartContainer = new HeartContainer(item, new Vector2(370, 140),spriteBatch);
+            oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
+            heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
             key = new Key(new Vector2(550, 135), spriteBatch);
-            compass= new Compass(item, new Vector2(640, 135), spriteBatch);
-            map = new Map(item, new Vector2(730, 50), spriteBatch);
-            bow = new Bow(item, new Vector2(820, 130), spriteBatch);
-            sword = new Sword(item, new Vector2(910, 40), spriteBatch);
-            arrow = new Arrow(item, new Vector2(955, 130), spriteBatch);
+            compass= new Compass(new Vector2(640, 135), spriteBatch);
+            map = new Map(new Vector2(730, 50), spriteBatch);
+            bow = new Bow(new Vector2(820, 130), spriteBatch);
+            sword = new Sword(new Vector2(910, 40), spriteBatch);
+            arrow = new Arrow(new Vector2(955, 130), spriteBatch);
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -270,11 +263,6 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
-            //spriteBatch.Draw(bomb,new Rectangle(0,0,15,25));
-            
-            /*foreach(Projectile proj in Projectile.projectile1){
-                SpriteBatch.Draw(bomb,proj.Position,Color.Wihte);
-            }*/
 
             spriteBatch.End();
 

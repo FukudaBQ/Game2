@@ -41,6 +41,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\MoveCommands.cs" />
+    <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
     <Compile Include="Game1.cs" />
@@ -73,7 +76,6 @@
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Command.cs" />
-    <Compile Include="Sprites\Link\ExitCommand.cs" />
     <Compile Include="Sprites\Link\MoveDown.cs" />
     <Compile Include="Sprites\Link\MoveUp.cs" />
     <Compile Include="Sprites\Link\Player.cs" />

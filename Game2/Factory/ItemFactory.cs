@@ -12,6 +12,7 @@ namespace Game2.Factory
     class ItemFactory
     {
         private Texture2D item;
+        private Texture2D NPC;
         public static ItemFactory instance = new ItemFactory();
         public static ItemFactory Instance
         {
@@ -27,6 +28,7 @@ namespace Game2.Factory
         public void LoadAllTextures(ContentManager content)
         {
             item = content.Load<Texture2D>("Item");
+            NPC = content.Load<Texture2D>("NPC");
         }
         public Shining CreateRupySprite()
         {
@@ -47,6 +49,34 @@ namespace Game2.Factory
         public Shining CreateClockSprite()
         {
             return new Shining(item, 360, 0, 13, 40, 0);
+        }
+        public Shining CreateArrowSprite()
+        {
+            return new Shining(item, 30, 40, 20, 40, 0);
+        }
+        public Shining CreateSwordSprite()
+        {
+            return new Shining(item, 280, 100, 20, 40, 0);
+        }
+        public Shining CreateOldManSprite()
+        {
+            return new Shining(NPC, 0, 1, 20, 36, 30);
+        }
+        public Shining CreateMapSprite()
+        {
+            return new Shining(item, 240, 60, 20, 40, 0);
+        }
+        public Shining CreateHeartConttainerSprite()
+        {
+            return new Shining(item, 240, 40, 20, 40, 0);
+        }
+        public Shining CreateCompassSprite()
+        {
+            return new Shining(item, 80, 40, 20, 40, 0);
+        }
+        public Shining CreateBowSprite()
+        {
+            return new Shining(item, 320, 0, 13, 40, 0);
         }
     }
 }

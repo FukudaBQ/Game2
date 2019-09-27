@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Commands;
 using Game2.Factory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Game2.Sprites.Link
 {
-    class Player
+    public class Player
     {
         
         public Vector2 position = new Vector2(960, 540);
@@ -25,6 +26,8 @@ namespace Game2.Sprites.Link
         public Animate[] ani = new Animate[7];
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
+        private ResetCommand reset;
+        private Dictionary<Dir, Animate>facing = new Dictionary<Dir, Animate>();
         public Vector2 Position
         {
             get
@@ -44,6 +47,7 @@ namespace Game2.Sprites.Link
         {
             exit = new ExitCommand(game);
             stateMachine = new PlayerStateMachine(this);
+            reset = new ResetCommand(game);
             facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
             anim = facing[direction];
 
