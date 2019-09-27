@@ -42,7 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\MoveCommands.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
