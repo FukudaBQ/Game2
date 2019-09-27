@@ -48,5 +48,9 @@ namespace Game2.Factory
         {
             return new Shining(item, 360, 0, 13, 40, 0);
         }
+        public Shining CreateArrowSprite()
+        {
+            return new Shining(item, 30, 40, 20, 40, 0);
+        }
     }
 }
