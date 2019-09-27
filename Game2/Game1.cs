@@ -10,6 +10,7 @@ using Game2.Interfaces;
 using Game2.Sprites.Items;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
+using Game2.Object.Items;
 
 namespace Game2
 {

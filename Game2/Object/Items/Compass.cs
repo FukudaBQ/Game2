@@ -9,21 +9,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
-    class Bow : ISprite
+    class Compass : ISprite
     {
+        public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         private Shining sprite;
-        public Bow( Vector2 location, SpriteBatch batch)
+        public Compass(Vector2 location, SpriteBatch batch)
         {
+            sprite = ItemFactory.Instance.CreateCompassSprite();
             this.location = location;
             spriteBatch = batch;
-            sprite = ItemFactory.Instance.CreateBowSprite();
         }
         public void Draw()
         {
+            /*Rectangle sourceRectangle = new Rectangle(80, 40, 20, 40);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 20 * 4, 40 * 4);
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);*/
             sprite.Draw(spriteBatch, location);
         }
 

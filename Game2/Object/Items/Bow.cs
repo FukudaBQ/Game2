@@ -9,18 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game2.Sprites.Items
+namespace Game2.Object.Items
 {
-    class Clock : ISprite
+    class Bow : ISprite
     {
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
-        public Shining sprite;
-        public Clock(Vector2 location, SpriteBatch batch)
+        private Shining sprite;
+        public Bow( Vector2 location, SpriteBatch batch)
         {
             this.location = location;
             spriteBatch = batch;
-            sprite = ItemFactory.Instance.CreateClockSprite();
+            sprite = ItemFactory.Instance.CreateBowSprite();
         }
         public void Draw()
         {
