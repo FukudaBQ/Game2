@@ -90,7 +90,6 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
-
         }
 
         private void Register()
