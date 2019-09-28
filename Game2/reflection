@@ -1,0 +1,12 @@
+
+Srpint 2 reflection
+
+We completed this sprint by first finishing its functional requirements only, and this 
+Led turned out to be a real mess as the number of a class and texture files increased. 
+
+Then we spent a fair amount of time to organize all the classes into different functional
+Modules. This process took a long time. For example, our first intend was to all variations of the player would all be in the player class, as player became more and more we wanted to organize the code. Since there are a lot variables that need to shared across the project, it was a challenge to finish our player state class. 
+
+Plans:
+Procrastination appeared to be a problem across the team. We will have to start earlier. 
+We plan to make our collisions more precise, since at the moment, our collisions are implemented as a circle, but they are actually rectangles. 
