@@ -71,27 +71,10 @@ namespace Game2
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
-            bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
-            arrowDown = Content.Load<Texture2D>("ArrowDown");
-            arrowUp = Content.Load<Texture2D>("ArrowUp");
-            arrowLeft = Content.Load<Texture2D>("ArrowLeft");
-            arrowRight = Content.Load<Texture2D>("ArrowRight");
-            boomerang= Content.Load<Texture2D>("boomerang");
-            Texture2D boss = Content.Load<Texture2D>("Boss");
-            Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
-            handSprite = Content.Load<Texture2D>("hand");
-            monsterSprite = Content.Load<Texture2D>("monster");
-            batSprite = Content.Load<Texture2D>("bat");
-            knightSprite = Content.Load<Texture2D>("knight");
-            map1Sprite = Content.Load<Texture2D>("map1");
-            GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
-
+            Register();
             rupy = new Rupy(new Vector2(50,50), spriteBatch);
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
-            dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
-            hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
-            monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
@@ -108,6 +91,27 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
 
+        }
+
+        private void Register()
+        {
+            bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
+            arrowDown = Content.Load<Texture2D>("ArrowDown");
+            arrowUp = Content.Load<Texture2D>("ArrowUp");
+            arrowLeft = Content.Load<Texture2D>("ArrowLeft");
+            arrowRight = Content.Load<Texture2D>("ArrowRight");
+            boomerang = Content.Load<Texture2D>("boomerang");
+            Texture2D boss = Content.Load<Texture2D>("Boss");
+            Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
+            handSprite = Content.Load<Texture2D>("hand");
+            monsterSprite = Content.Load<Texture2D>("monster");
+            batSprite = Content.Load<Texture2D>("bat");
+            knightSprite = Content.Load<Texture2D>("knight");
+            map1Sprite = Content.Load<Texture2D>("map1");
+            GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
+            dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
+            hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
+            monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
         }
         protected override void UnloadContent()
         {
