@@ -11,12 +11,12 @@ namespace Game2.Sprites.Enemies
 {
     class Stalfos : ISprite
     { 
-        public Texture2D texture { get; set; }
-        public Vector2 location { get; set; }
-        public SpriteBatch spriteBatch { get; set; }
-        int currentFrame;
-        int totalFrame;
-        float timeLastUpdate = 0f;
+        private Texture2D texture { get; set; }
+        private Vector2 location { get; set; }
+        private SpriteBatch spriteBatch { get; set; }
+        private int currentFrame;
+        private int totalFrame;
+        private float timeLastUpdate = 0f;
         public Stalfos(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;

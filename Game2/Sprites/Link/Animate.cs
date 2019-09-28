@@ -11,12 +11,12 @@ namespace Game2.Sprites.Link
 {
     public class Animate
     {
-        public Texture2D Texture { get; set; }
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        private Texture2D Texture { get; set; }
+        private int Rows { get; set; }
+        private int Columns { get; set; }
         private int currentFrame;
         private int totalFrame;
-        float timeLastUpdate = 0f;
+        private float timeLastUpdate = 0f;
 
         public Animate(Texture2D texture, int rows, int columns)
         {

@@ -11,7 +11,7 @@ namespace Game2.Sprites.Link
 {
     class Shining
     {
-        public Texture2D texture;
+        private Texture2D texture;
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;

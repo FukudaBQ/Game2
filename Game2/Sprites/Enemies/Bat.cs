@@ -12,16 +12,16 @@ namespace Game2.Sprites.Enemies
 {
     class Bat : ISprite
     {
-        public Texture2D texture { get; set; }
-        public Vector2 location { get; set; }
-        public SpriteBatch spriteBatch { get; set; }
-        public bool hitted=true;
+        private Texture2D texture { get; set; }
+        private Vector2 location { get; set; }
+        private SpriteBatch spriteBatch { get; set; }
+        private bool hitted=true;
         public Color color = Color.White;
-        KeyboardState previous = Keyboard.GetState();
-        int currentFrame;
-        int totalFrame;
-        float timeLastUpdate = 0f;
-        BatStateMachine stateMachine;
+        private KeyboardState previous = Keyboard.GetState();
+        private int currentFrame;
+        private int totalFrame;
+        private float timeLastUpdate = 0f;
+        private BatStateMachine stateMachine;
         public Bat(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;

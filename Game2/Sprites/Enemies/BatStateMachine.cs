@@ -11,7 +11,7 @@ namespace Game2.Sprites.Enemies
 {
     class BatStateMachine
     {
-        Bat bat;
+        private Bat bat;
 
         public BatStateMachine(Bat bat)
         {

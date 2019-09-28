@@ -12,16 +12,16 @@ namespace Game2.Sprites.Enemies
 {
     class Monster : ISprite
     {
-        public Texture2D texture { get; set; }
-        public Vector2 location { get; set; }
-        public SpriteBatch spriteBatch { get; set; }
-        int currentFrame;
-        int totalFrame;
-        float timeLastUpdate = 0f;
-        public bool hitted = true;
+        private Texture2D texture { get; set; }
+        private Vector2 location { get; set; }
+        private SpriteBatch spriteBatch { get; set; }
+        private int currentFrame;
+        private int totalFrame;
+        private float timeLastUpdate = 0f;
+        private bool hitted = true;
         public Color color = Color.White;
-        KeyboardState previous = Keyboard.GetState();
-        MonsterStateMachine stateMachine;
+        private KeyboardState previous = Keyboard.GetState();
+        private MonsterStateMachine stateMachine;
         public Monster(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;

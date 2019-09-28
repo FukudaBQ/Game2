@@ -17,7 +17,7 @@ namespace Game2.Sprites.Link
         private bool isMoving = false;
         private bool isSwording = false;
         private int speed = 200;
-        public int radius = 20;
+        private int radius = 20;
         Player player;
         private Vector2 position = new Vector2(960, 540);
         private KeyboardState previous = Keyboard.GetState();

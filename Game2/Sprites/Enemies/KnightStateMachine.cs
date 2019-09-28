@@ -11,7 +11,7 @@ namespace Game2.Sprites.Enemies
 {
     class KnightStateMachine
     {
-        Knight knight;
+        private Knight knight;
 
         public KnightStateMachine(Knight knight)
         {
