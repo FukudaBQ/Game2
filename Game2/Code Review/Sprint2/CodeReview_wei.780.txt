@@ -12,6 +12,9 @@ Maintainability:
 Author of the code review: Zijie Wei
 Date of the code review: 9/27/2019
 Sprint number: 2
-Name of the .cs file being reviewed: .cs
+Name of the .cs file being reviewed: block.cs
 Author of the .cs file being reviewed: Yong Zhang
-Number of minutes taken to complete the review: 10
+Number of minutes taken to complete the review: 15
+
+Each variable has a discriptive name, which can help us easier to understand what each variable does.
+There is a radius variable which creates blocks, and we just need to change the value of radius to accept different size of blocks.
