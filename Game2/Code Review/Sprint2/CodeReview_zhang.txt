@@ -1,0 +1,22 @@
+Author of the code review: Yong Zhang
+Date of the code review: 2019/9/27
+Sprint number: 2
+Name of the .cs file being reviewed :Dragon.cs
+Author of the .cs file being reviewed: Hangyu Yin
+Number of minutes taken to complete the review: 10
+Specific comments on what is readable and what is not: 
+
+All the variables and method have meaningful names. Code in each method is highly readable with variable names and method names.
+However, many magic numbers are used. Although these numbers are understanable with their variable names, it's always better to define these numbers first and avoid using magic numbers.
+
+
+Author of the code review: Yong Zhang
+Date of the code review: 2019/9/27
+Sprint number: 2
+Name of the .cs file being reviewed: ResetCommand.cs
+Author of the .cs file being reviewed: Yong Zhang
+Specific comments on code quality
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+The class is used to reset the game. However, for now, we only need to reset the player location, and it worked well. 
+If we want to reset other status of player, such as player's life, the current implementation could easily support that change since resetCommand method take the player class as its paremeter.
+However,  the current implementation may not support reseting the other classes like enemies, since resetCommand method only take the player class as its paremeter.
