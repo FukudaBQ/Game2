@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Code Review\Sprint2\CodeReview_wei.780.txt" />
+    <Content Include="Code Review\Sprint2\CodeReview_qu.txt" />
     <Content Include="Content\ArrowDown.png" />
     <Content Include="Content\ArrowLeft.png" />
     <Content Include="Content\ArrowRight.png" />
