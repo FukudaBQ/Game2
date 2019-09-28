@@ -2,7 +2,16 @@
 Author of the code review: Zijie Wei
 Date of the code review: 9/27/2019
 Sprint number: 2
-Name of the .cs file being reviewed: 
-Author of the .cs file being reviewed
-Number of minutes taken to complete the review
-Specific comments on what is readable and what is not
+Name of the .cs file being reviewed: LinkSpriteFactory.cs
+Author of the .cs file being reviewed: Beau Qu
+Number of minutes taken to complete the review: 10
+
+For LoadAllTexture method, it is really easy to understand. For every other methods under this class, it is clear to see what every method was doing in this program.
+
+Maintainability:
+Author of the code review: Zijie Wei
+Date of the code review: 9/27/2019
+Sprint number: 2
+Name of the .cs file being reviewed: .cs
+Author of the .cs file being reviewed: Yong Zhang
+Number of minutes taken to complete the review: 10
