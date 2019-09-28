@@ -1,0 +1,9 @@
+Author of the code review: Hangyu Ying
+Date of the code review: Sep 27, 2019
+Sprint number, 2
+Name of the .cs file being reviewed ItemFactory.cs
+Author of the .cs file being reviewed: Beau Qu
+Specific comments on code quality: neat, functional, and maintainable 
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+This is a well deigned class to produce items sprites that are can be adapted with other
+texture atlas. Only change the source rectangle accordingly. 
