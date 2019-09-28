@@ -7,3 +7,14 @@ Specific comments on code quality: neat, functional, and maintainable
 A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
 This is a well deigned class to produce items sprites that are can be adapted with other
 texture atlas. Only change the source rectangle accordingly. 
+
+Author of the code review: Hangyu Yin
+Date of the code review: 2019/9/27
+Sprint number: 2
+Name of the .cs file being reviewed: PlayerStateMachine.cs
+Author of the .cs file being reviewed: Yong Zhang
+Specific comments on code quality
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+If we want to add one more state of link such as holding shield. The code could easily support that change by adding a new method called holdingShield. 
+And the holdingShield can be easily called in the Player class.
+
