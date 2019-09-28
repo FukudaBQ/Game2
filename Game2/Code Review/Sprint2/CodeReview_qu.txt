@@ -14,7 +14,7 @@ Author of the code review: Beau QU
 Date of the code review: 9/27/2019
 Sprint number: 2
 Name of the .cs file being reviewed: Animated.cs
-Author of the .cs file being reviewed: Zijie Wei
+Author of the .cs file being reviewed: Hangyu Ying
 Number of minutes taken to complete the review: 10 mins
 Specific comments on what is readable and what is not: 
 	function names are very spefic and meaningful. Thus the whole logic can be easily understand
