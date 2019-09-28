@@ -1,1 +1,1 @@
-﻿
+﻿Bugs: After using Z or N to use sword, and pressing 1,2, or 3 to use projectiles, the projectiles will stay at player's location.
