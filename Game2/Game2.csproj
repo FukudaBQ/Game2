@@ -129,6 +129,8 @@
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
     <Content Include="ReadMe.txt" />
+    <Content Include="TaskDistrubation\TD1.png" />
+    <Content Include="TaskDistrubation\TD2.png" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
