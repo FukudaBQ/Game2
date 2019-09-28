@@ -19,3 +19,6 @@ Number of minutes taken to complete the review: 10 mins
 Specific comments on what is readable and what is not: 
 	function names are very spefic and meaningful. Thus the whole logic can be easily understand
 	Single point over control. If need to change values, just need to change in one variable.
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+	if the sprint has been updated and the source rectangle need to change its x and y, we only need to pass in different x and y instead of changing it all over the file
