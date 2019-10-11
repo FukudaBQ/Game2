@@ -9,6 +9,7 @@ using Game2.Interfaces;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
+using Game2.Sprites.World;
 
 namespace Game2
 {
@@ -50,9 +51,12 @@ namespace Game2
         private Bow bow;
         private Sword sword;
         private Arrow arrow;
+        private Texture2D worldSprite;
+        private Wolrd world;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.GraphicsProfile = GraphicsProfile.HiDef;
             Content.RootDirectory = "Content";
 
             graphics.PreferredBackBufferWidth = 1920;
@@ -86,10 +90,12 @@ namespace Game2
             bow = new Bow(new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
             arrow = new Arrow(new Vector2(955, 130), spriteBatch);
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
+            worldSprite = Content.Load<Texture2D>("World");
+            world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
         }
 
         private void Register()
@@ -106,8 +112,8 @@ namespace Game2
             monsterSprite = Content.Load<Texture2D>("monster");
             batSprite = Content.Load<Texture2D>("bat");
             knightSprite = Content.Load<Texture2D>("knight");
-            map1Sprite = Content.Load<Texture2D>("map1");
-            GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
+            //map1Sprite = Content.Load<Texture2D>("map1");
+            //GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
@@ -153,7 +159,7 @@ namespace Game2
             {
                 proj.Update(gameTime);
             }
-
+            world.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -161,7 +167,7 @@ namespace Game2
         {
             GraphicsDevice.Clear(Color.Gray);
             spriteBatch.Begin();
-            spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
+            //spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             rupy.Draw();
             triforce.Draw();
             fairy.Draw();
@@ -203,15 +209,16 @@ namespace Game2
             {
                 spriteBatch.Draw(boomerang, i.Position, Color.White);
             }
-            foreach (Blocks b in Blocks.blocks)
+            /*foreach (Blocks b in Blocks.blocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
-            }
+            }*/
 
+
+            world.Draw();
             spriteBatch.End();
 
             player.anim.Draw(spriteBatch, player.Position);
-            
 
             base.Draw(gameTime);
         }

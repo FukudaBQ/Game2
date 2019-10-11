@@ -79,6 +79,7 @@
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\Projectile.cs" />
+    <Compile Include="Sprites\World\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -126,6 +127,7 @@
     <Content Include="Content\monster.png" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\StandSwordDown.png" />
+    <Content Include="Content\World.png" />
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
     <Content Include="ReadMe.txt" />
