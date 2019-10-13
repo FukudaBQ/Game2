@@ -136,9 +136,6 @@ namespace Game2
             bat.Update(gameTime);
             monster.Update(gameTime);
             oldMan.Update(gameTime);
-
-
-           
             projHandler.Update(gameTime);
             //world.Update(gameTime);
 
@@ -174,31 +171,6 @@ namespace Game2
             projHandler.Draw(spriteBatch, arrowRight, Projectile.arrowRight);
             projHandler.Draw(spriteBatch, boomerang, Projectile.boomerang);
 
-            /*foreach (Projectile i in Projectile.bomb)
-            {
-                spriteBatch.Draw(bomb, i.Position, Color.White);
-            }*/
-
-            /*foreach (Projectile i in Projectile.arrowDown)
-            {
-                spriteBatch.Draw(arrowDown, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowUp)
-            {
-                spriteBatch.Draw(arrowUp, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowLeft)
-            {
-                spriteBatch.Draw(arrowLeft, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowRight)
-            {
-                spriteBatch.Draw(arrowRight, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.boomerang)
-            {
-                spriteBatch.Draw(boomerang, i.Position, Color.White);
-            }*/
             foreach (Blocks b in Blocks.blocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);

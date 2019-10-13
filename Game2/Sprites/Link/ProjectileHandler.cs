@@ -47,33 +47,5 @@ namespace Game2.Sprites.Link
                 spriteBatch.Draw(textureToDraw, i.Position, Color.White);
             }
         }
-       
-        
-
-
-
-
-
-           /*foreach (Projectile i in Projectile.arrowDown)
-           {
-               spriteBatch.Draw(arrowDown, i.Position, Color.White);
-           }
-           foreach (Projectile i in Projectile.arrowUp)
-           {
-               spriteBatch.Draw(arrowUp, i.Position, Color.White);
-           }
-           foreach (Projectile i in Projectile.arrowLeft)
-           {
-               spriteBatch.Draw(arrowLeft, i.Position, Color.White);
-           }
-           foreach (Projectile i in Projectile.arrowRight)
-           {
-               spriteBatch.Draw(arrowRight, i.Position, Color.White);
-           }
-           foreach (Projectile i in Projectile.boomerang)
-           {
-               spriteBatch.Draw(boomerang, i.Position, Color.White);
-           }*/
-
-        }
     }
+}
