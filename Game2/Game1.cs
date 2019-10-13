@@ -10,6 +10,7 @@ using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using Game2.Sprites.World;
+using Game2.Collision;
 
 namespace Game2
 {
@@ -53,6 +54,8 @@ namespace Game2
         private Arrow arrow;
         private Texture2D worldSprite;
         private Wolrd world;
+        private Texture2D item;
+        private CollisionDetection collision;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -71,6 +74,8 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            item = Content.Load<Texture2D>("Item");
+            //
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
@@ -84,8 +89,9 @@ namespace Game2
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
-            key = new Key(new Vector2(550, 135), spriteBatch);
-            compass= new Compass(new Vector2(640, 135), spriteBatch);
+            //key = new Key(new Vector2(550, 135), spriteBatch);
+            key = new Key(item, new Vector2(550, 135), spriteBatch);
+            compass = new Compass(new Vector2(640, 135), spriteBatch);
             map = new Map(new Vector2(730, 50), spriteBatch);
             bow = new Bow(new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
@@ -160,8 +166,11 @@ namespace Game2
                 proj.Update(gameTime);
             }
             //world.Update(gameTime);
+            collision = new CollisionDetection(key, player, Content.Load<Texture2D>("LinkFaceFront"));
+            collision.DetectCollision();
 
             base.Update(gameTime);
+
         }
         protected override void Draw(GameTime gameTime)
         {
