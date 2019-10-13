@@ -41,6 +41,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Collision\CollisionDetection.cs" />
+    <Compile Include="Collision\Collision.cs" />
+    <Compile Include="Collision\CollisionHandler.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
