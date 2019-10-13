@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Game2.Sprites.Link
         private int speed = 600;
         private Dir direction;
 
+
         public static List<Projectile> bomb = new List<Projectile>();
         public static List<Projectile> arrowDown = new List<Projectile>();
         public static List<Projectile> arrowUp = new List<Projectile>();
@@ -24,6 +26,7 @@ namespace Game2.Sprites.Link
         {
             position = location;
             direction = newDir;
+
         }
 
         public Vector2 Position
@@ -57,4 +60,5 @@ namespace Game2.Sprites.Link
             }
         }
     }
+
 }
