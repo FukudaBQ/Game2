@@ -145,6 +145,10 @@ namespace Game2.Sprites.Link
                         {
                             player.position.X += speed * dt;
                         }
+                        else
+                        {
+                            player.position.X -= 100;
+                        }
                         //position.X += speed * dt;
                         break;
                     case Dir.Left:
@@ -152,6 +156,10 @@ namespace Game2.Sprites.Link
                         if (!Blocks.Blocks.didCollide(tempPos, radius))
                         {
                             player.position.X -= speed * dt;
+                        }
+                        else
+                        {
+                            player.position.X += 100;
                         }
                         //position.X -= speed * dt;
                         break;
@@ -161,6 +169,10 @@ namespace Game2.Sprites.Link
                         {
                             player.position.Y -= speed * dt;
                         }
+                        else
+                        {
+                            player.position.Y += 100;
+                        }
                         //position.Y -= speed * dt;
                         break;
                     case Dir.Down:
@@ -168,6 +180,10 @@ namespace Game2.Sprites.Link
                         if (!Blocks.Blocks.didCollide(tempPos, radius))
                         {
                             player.position.Y += speed * dt;
+                        }
+                        else
+                        {
+                            player.position.Y -= 100;
                         }
                         //position.Y += speed * dt;
                         break;
