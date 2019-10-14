@@ -79,6 +79,7 @@
     <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
+    <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\Projectile.cs" />

@@ -10,6 +10,7 @@ using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using Game2.Sprites.World;
+using System.Collections.Generic;
 using Game2.Collision;
 
 namespace Game2
@@ -20,6 +21,7 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        ProjectileHandler projHandler = new ProjectileHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
@@ -140,31 +142,7 @@ namespace Game2
             bat.Update(gameTime);
             monster.Update(gameTime);
             oldMan.Update(gameTime);
-            
-
-            foreach(Projectile proj in Projectile.bomb){
-                proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.arrowDown)
-            {
-                proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.arrowUp)
-            {
-                proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.arrowLeft)
-            {
-                proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.arrowRight)
-            {
-                proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.boomerang)
-            {
-                proj.Update(gameTime);
-            }
+            projHandler.Update(gameTime);
             //world.Update(gameTime);
             collision = new CollisionDetection(key, player, Content.Load<Texture2D>("LinkFaceFront"));
             collision.DetectCollision();
@@ -194,30 +172,14 @@ namespace Game2
             bow.Draw();
             arrow.Draw();
             sword.Draw();
-            foreach (Projectile i in Projectile.bomb)
-            {
-                spriteBatch.Draw(bomb, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowDown)
-            {
-                spriteBatch.Draw(arrowDown, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowUp)
-            {
-                spriteBatch.Draw(arrowUp, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowLeft)
-            {
-                spriteBatch.Draw(arrowLeft, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.arrowRight)
-            {
-                spriteBatch.Draw(arrowRight, i.Position, Color.White);
-            }
-            foreach (Projectile i in Projectile.boomerang)
-            {
-                spriteBatch.Draw(boomerang, i.Position, Color.White);
-            }
+
+            projHandler.Draw(spriteBatch, bomb, Projectile.bomb);
+            projHandler.Draw(spriteBatch, arrowDown, Projectile.arrowDown);
+            projHandler.Draw(spriteBatch, arrowUp, Projectile.arrowUp);
+            projHandler.Draw(spriteBatch, arrowLeft, Projectile.arrowLeft);
+            projHandler.Draw(spriteBatch, arrowRight, Projectile.arrowRight);
+            projHandler.Draw(spriteBatch, boomerang, Projectile.boomerang);
+
             foreach (Blocks b in Blocks.blocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
