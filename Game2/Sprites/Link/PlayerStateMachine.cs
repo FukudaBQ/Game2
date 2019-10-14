@@ -24,7 +24,20 @@ namespace Game2.Sprites.Link
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();
         public Animate[] ani = new Animate[7];
 
+        public bool ifIsMoving()
+        {
+            return isMoving;
+        }
 
+        public bool ifIsSwording()
+        {
+            return isSwording;
+        }
+
+        public Dir getDirection()
+        {
+            return direction;
+        }
         public void ChangeDirectionLeft()
         {
             direction = Dir.Left;
@@ -45,16 +58,16 @@ namespace Game2.Sprites.Link
 
         public PlayerStateMachine(Player player)
         {
-            
-            facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
-            facing.Add(Dir.Up, LinkSpriteFactory.Instance.CreateMoveUp(1, 2));
-            facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
-            facing.Add(Dir.Right, LinkSpriteFactory.Instance.CreateMoveRight(1, 2));
-            facing.Add(Dir.DownSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
-            facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateUpSword(1, 2));
-            facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
-            facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
-            player.anim = facing[direction];
+
+            //facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
+            //facing.Add(Dir.Up, LinkSpriteFactory.Instance.CreateMoveUp(1, 2));
+            //facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
+            //facing.Add(Dir.Right, LinkSpriteFactory.Instance.CreateMoveRight(1, 2));
+            //facing.Add(Dir.DownSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
+            //facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateUpSword(1, 2));
+            //facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
+            //facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
+            //player.anim = facing[direction];
             this.player = player;
 
         }
@@ -74,9 +87,63 @@ namespace Game2.Sprites.Link
             isMoving = true;
         }
 
+        private void UseSword()
+        {
+            if (direction == Dir.Down)
+            {
+                direction = Dir.DownSword;
+            }
+            if (direction == Dir.Up)
+            {
+                direction = Dir.UpSword;
+            }
+            if (direction == Dir.Left)
+            {
+                direction = Dir.LeftSword;
+            }
+            if (direction == Dir.Right)
+            {
+                direction = Dir.RightSword;
+            }
+            isSwording = true;
+
+
+            isMoving = true;
+        }
 
         public void Update(GameTime gameTime)
         {
+            isMoving = isSwording = false;
+            KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.A) || kState.IsKeyDown(Keys.Left))
+            {
+                ChangeDirectionLeft();
+            }
+            if (kState.IsKeyDown(Keys.D) || kState.IsKeyDown(Keys.Right))
+            {
+                ChangeDirectionRight();
+            }
+            if (kState.IsKeyDown(Keys.W) || kState.IsKeyDown(Keys.Up))
+            {
+                ChangeDirectionUp();
+            }
+            if (kState.IsKeyDown(Keys.S) || kState.IsKeyDown(Keys.Down))
+            {
+                ChangeDirectionDown();
+            }
+            if (kState.IsKeyDown(Keys.Z) || kState.IsKeyDown(Keys.N))
+            {
+                UseSword();
+
+            }
+
+        }
+
+        public void Update1(GameTime gameTime)
+        {
+            
+
+
             KeyboardState kState = Keyboard.GetState();
             player.anim = facing[direction];
             if (isMoving || isSwording)

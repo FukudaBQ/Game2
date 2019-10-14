@@ -24,6 +24,7 @@ namespace Game2.Sprites.Link
         private KeyboardState previous = Keyboard.GetState();
         private ExitCommand exit;
         private ResetCommand reset;
+        private int speed = 200;
         public Vector2 Position
         {
             get
@@ -45,6 +46,13 @@ namespace Game2.Sprites.Link
             reset = new ResetCommand(this);
             stateMachine = new PlayerStateMachine(this);
             facing.Add(Dir.Down, LinkSpriteFactory.Instance.CreateMoveDown(1, 2));
+            facing.Add(Dir.Up, LinkSpriteFactory.Instance.CreateMoveUp(1, 2));
+            facing.Add(Dir.Left, LinkSpriteFactory.Instance.CreateMoveLeft(1, 2));
+            facing.Add(Dir.Right, LinkSpriteFactory.Instance.CreateMoveRight(1, 2));
+            facing.Add(Dir.DownSword, LinkSpriteFactory.Instance.CreateDownSword(1, 2));
+            facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateUpSword(1, 2));
+            facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
+            facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
             anim = facing[direction];
 
         }
@@ -54,7 +62,91 @@ namespace Game2.Sprites.Link
         {
             
             stateMachine.Update(gameTime);
+            direction = stateMachine.getDirection();
+            anim = facing[direction];
+            if (stateMachine.ifIsMoving() || stateMachine.ifIsSwording())
+            {
+                anim.Update(gameTime);
+            }
+            else
+            {
+                anim.setFrame(1);
+            }
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (stateMachine.ifIsMoving())
+            {
+                Vector2 tempPos = position;
+                switch (direction)
+                {
+                    case Dir.Right:
+                        tempPos.X += speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.X += speed * dt;
+                        }
+                        //position.X += speed * dt;
+                        break;
+                    case Dir.Left:
+                        tempPos.X -= speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.X -= speed * dt;
+                        }
+                        //position.X -= speed * dt;
+                        break;
+                    case Dir.Up:
+                        tempPos.Y -= speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.Y -= speed * dt;
+                        }
+                        //position.Y -= speed * dt;
+                        break;
+                    case Dir.Down:
+                        tempPos.Y += speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        {
+                            position.Y += speed * dt;
+                        }
+                        //position.Y += speed * dt;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+
+
             KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
+            {
+                Projectile.bomb.Add(new Projectile(position, direction));
+            }
+            if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
+            {
+                if (direction == Dir.Down)
+                {
+                    Projectile.arrowDown.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Up)
+                {
+                    Projectile.arrowUp.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Left)
+                {
+                    Projectile.arrowLeft.Add(new Projectile(position, direction));
+                }
+                if (direction == Dir.Right)
+                {
+                    Projectile.arrowRight.Add(new Projectile(position, direction));
+                }
+            }
+            if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
+            {
+                Projectile.boomerang.Add(new Projectile(position, direction));
+            }
+            previous = kState;
             if (kState.IsKeyDown(Keys.Q))
             {
                 exit.Execute();
