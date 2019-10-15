@@ -16,6 +16,22 @@ namespace Game2.Object.Items
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         public Shining sprite;
+        private bool collided = false;
+
+        private int radius = 10;
+
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
+        }
+        public static List<Fairy> fairies = new List<Fairy>();
+
+        public int Radius
+        {
+            get { return radius; }
+        }
+
         public Fairy(Vector2 location, SpriteBatch batch)
         {
             this.location = location;
