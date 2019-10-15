@@ -37,6 +37,9 @@ namespace Game2
         private Texture2D monsterSprite;
         private Texture2D map1Sprite;
         private Texture2D GeneralBlockSprite;
+        private Texture2D item;
+        private Texture2D back1;
+        
         private Rupy rupy;
         private Triforce triforce;
         private Fairy fairy;
@@ -56,6 +59,7 @@ namespace Game2
         private Arrow arrow;
         private Texture2D worldSprite;
         private Wolrd world;
+        private Background1 background;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -90,8 +94,8 @@ namespace Game2
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
-            //key = new Key(new Vector2(550, 135), spriteBatch);
-            key = new Key(item, new Vector2(550, 135), spriteBatch);
+            key = new Key(new Vector2(550, 135), spriteBatch);
+            //key = new Key(item, new Vector2(550, 135), spriteBatch);
             compass = new Compass(new Vector2(640, 135), spriteBatch);
             map = new Map(new Vector2(730, 50), spriteBatch);
             bow = new Bow(new Vector2(820, 130), spriteBatch);
@@ -159,6 +163,7 @@ namespace Game2
             oldMan.Update(gameTime);
             projHandler.Update(gameTime);
             //world.Update(gameTime);
+            background.Update(gameTime);
 
             base.Update(gameTime);
 

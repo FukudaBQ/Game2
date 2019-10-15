@@ -21,9 +21,9 @@ namespace Game2.Collision
         {
             this.key = key;
             this.link = link;
-            this.destinationRectanglekey = this.key.destinationRectangle;
-            this.LinkPos = link.position;
-            this.destinationRectangleLink = new Rectangle((int)LinkPos.X, (int)LinkPos.Y, texture.Width/2, texture.Height);
+            //this.destinationRectanglekey = this.key.destinationRectangle;
+            //this.LinkPos = link.position;
+            //this.destinationRectangleLink = new Rectangle((int)LinkPos.X, (int)LinkPos.Y, texture.Width/2, texture.Height);
         }
 
         public void DetectCollision()

@@ -13,7 +13,7 @@ namespace Game2.Object.Items
 {
     class Key : ISprite
     {
-        /*public Vector2 location { get; set; }
+        public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         public Shining sprite;
         //private KeyStateMachine stateMachine;
@@ -31,8 +31,8 @@ namespace Game2.Object.Items
         public void Update(GameTime gametime)
         {
 
-        }*/
-        public Texture2D texture { get; set; }
+        }
+        /*public Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         public SpriteBatch spriteBatch { get; set; }
         public Rectangle destinationRectangle;
@@ -66,5 +66,6 @@ namespace Game2.Object.Items
         {
             ifCollected = 1;
         }
+    }*/
     }
 }
