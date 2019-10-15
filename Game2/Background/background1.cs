@@ -14,8 +14,8 @@ namespace Game2.Background
         private Texture2D texture;
         private Vector2 position;
         private SpriteBatch batch;
-        private int nextrow = 520;
-        private int nextcolumn = 546;
+        private int nextrow = 515;
+        private int nextcolumn = 532;
         private GraphicsDevice graphics;
         private int fullScreenX;
         private int fullScreenY;
@@ -35,31 +35,27 @@ namespace Game2.Background
             int y = mouseState.Y;
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                /*if (y > 593 && y < 653 && x < 564)
-                {
-                    nextrow -= 251;
-                }*/
-                if (y > 300 && y < 600 && x < 300)
+                if (y > 400 && y < 500 && x < 850)
                 {
                     nextrow -= 20;
                 }
-                else if (y > 593 && y < 653 && x > 700)
+                else if (y > 400 && y < 500 && x > 850)
                 {
-                    nextrow += 19;
+                    nextrow += 20;
                 }
-                else if (x > 620 && x < 670 && y < 600)
+                else if (x > 650 && x < 700 && y < 500)
                 {
                     nextcolumn -= 14;
                 }
-                else if (x > 620 && x < 670 && y > 656)
+                else if (x > 620 && x < 670 && y > 900)
                 {
-                    nextcolumn += 15;
+                    nextcolumn += 13;
                 }
             }
         }
         public void Draw()
         {
-            Rectangle SourceReatangle = new Rectangle(0 + nextrow, 0 + nextcolumn, 251, 160);
+            Rectangle SourceReatangle = new Rectangle(0 + nextrow, 0 + nextcolumn, 256, 180);
             batch.Draw(texture, new Rectangle(0, 0, fullScreenX, fullScreenY), SourceReatangle, Color.White);
         }
     }
