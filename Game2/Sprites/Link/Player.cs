@@ -25,6 +25,8 @@ namespace Game2.Sprites.Link
         private ExitCommand exit;
         private ResetCommand reset;
         private int speed = 200;
+
+       
         public Vector2 Position
         {
             get
