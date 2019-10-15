@@ -56,8 +56,6 @@ namespace Game2
         private Arrow arrow;
         private Texture2D worldSprite;
         private Wolrd world;
-        private Texture2D back1;
-        private Background1 background;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -76,6 +74,8 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            item = Content.Load<Texture2D>("Item");
+            //
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
@@ -84,13 +84,15 @@ namespace Game2
             rupy = new Rupy(new Vector2(50,50), spriteBatch);
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             fairy = new Fairy(new Vector2(200, 130), spriteBatch);
+            Fairy.fairies.Add(fairy);
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
             heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             clock = new Clock(new Vector2(460, 135), spriteBatch);
-            key = new Key(new Vector2(550, 135), spriteBatch);
-            compass= new Compass(new Vector2(640, 135), spriteBatch);
+            //key = new Key(new Vector2(550, 135), spriteBatch);
+            key = new Key(item, new Vector2(550, 135), spriteBatch);
+            compass = new Compass(new Vector2(640, 135), spriteBatch);
             map = new Map(new Vector2(730, 50), spriteBatch);
             bow = new Bow(new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
@@ -134,7 +136,21 @@ namespace Game2
             player.Update(gameTime);
             rupy.Update(gameTime);
             triforce.Update(gameTime);
-            fairy.Update(gameTime);
+            //fairy.Update(gameTime);
+            foreach (Fairy fy in Fairy.fairies)
+            {
+                fy.Update(gameTime);
+            }
+            foreach (Fairy fy in Fairy.fairies)
+            {
+                int sum = player.radius + fy.Radius;
+                if (Vector2.Distance(player.Position, fy.location) < sum )
+                {
+                    fy.Collided = true;
+                }
+            }
+            Fairy.fairies.RemoveAll(p => p.Collided);
+            
             dragon.Update(gameTime);
             hand.Update(gameTime);
             knight.Update(gameTime);
@@ -143,9 +159,9 @@ namespace Game2
             oldMan.Update(gameTime);
             projHandler.Update(gameTime);
             //world.Update(gameTime);
-            background.Update(gameTime);
 
             base.Update(gameTime);
+
         }
         protected override void Draw(GameTime gameTime)
         {
@@ -154,7 +170,11 @@ namespace Game2
             spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             rupy.Draw();
             triforce.Draw();
-            fairy.Draw();
+            //fairy.Draw();
+            foreach (Fairy fy in Fairy.fairies)
+            {
+                fy.Draw();
+            }
             dragon.Draw();
             hand.Draw();
             bat.Draw();
