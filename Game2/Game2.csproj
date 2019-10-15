@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Background\Background1.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Collision\Collision.cs" />
     <Compile Include="Collision\CollisionHandler.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Object\Items\Rupy.cs" />
     <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
+    <Compile Include="Sprites\Link\MouseController.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
@@ -107,6 +109,7 @@
     <Content Include="..\..\..\..\Desktop\Enemy1.png">
       <Link>Content\Enemy1.png</Link>
     </Content>
+    <Content Include="Content\Dungeon.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\hand.png" />
     <Content Include="Content\Item.png" />

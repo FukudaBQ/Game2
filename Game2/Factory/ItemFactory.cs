@@ -1,4 +1,5 @@
 ﻿using Game2.Sprites.Link;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -14,6 +15,25 @@ namespace Game2.Factory
         private Texture2D item;
         private Texture2D NPC;
         public static ItemFactory instance = new ItemFactory();
+        protected int radius;
+        protected Vector2 hitPos;
+        public static List<ItemFactory> items = new List<ItemFactory>();
+
+        public int Radius
+        {
+            get
+            {
+                return radius;
+
+            }
+        }
+        public Vector2 HitsPos
+        {
+            get
+            {
+                return hitPos;
+            }
+        }
         public static ItemFactory Instance
         {
             get
@@ -24,7 +44,18 @@ namespace Game2.Factory
         private ItemFactory()
         {
         }
-
+        public static bool collide(Vector2 otherPos, int otherRad)
+        {
+            foreach (ItemFactory i in ItemFactory.items)
+            {
+                int sum = i.Radius + otherRad;
+                if (Vector2.Distance(i.hitPos, otherPos) < sum)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void LoadAllTextures(ContentManager content)
         {
             item = content.Load<Texture2D>("Item");

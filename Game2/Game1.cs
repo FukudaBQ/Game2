@@ -11,6 +11,7 @@ using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using Game2.Sprites.World;
 using System.Collections.Generic;
+using Game2.Background;
 
 namespace Game2
 {
@@ -55,6 +56,8 @@ namespace Game2
         private Arrow arrow;
         private Texture2D worldSprite;
         private Wolrd world;
+        private Texture2D back1;
+        private Background1 background;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -96,8 +99,10 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
-            //worldSprite = Content.Load<Texture2D>("World");
+            //worldSprite = Content.Load<Texture2D>("world");
             //world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
+            back1 = Content.Load<Texture2D>("Dungeon");
+            background = new Background1(back1, new Vector2(0, 0), spriteBatch);
         }
 
         private void Register()
@@ -138,6 +143,7 @@ namespace Game2
             oldMan.Update(gameTime);
             projHandler.Update(gameTime);
             //world.Update(gameTime);
+            background.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -178,6 +184,7 @@ namespace Game2
 
 
             //world.Draw();
+            background.Draw();
             spriteBatch.End();
 
             player.anim.Draw(spriteBatch, player.Position);
