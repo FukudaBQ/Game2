@@ -19,6 +19,13 @@ namespace Game2.Sprites.Link
         private int speed = 200;
         private int radius = 20;
         Player player;
+        private static Dictionary<Dir, Dir> changeToSword = new Dictionary<Dir, Dir>()
+        {
+            {Dir.Down, Dir.DownSword },
+            {Dir.Left, Dir.LeftSword },
+            {Dir.Right, Dir.RightSword },
+            {Dir.Up, Dir.UpSword }
+        };
         private Vector2 position = new Vector2(960, 540);
         private KeyboardState previous = Keyboard.GetState();
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();
@@ -89,21 +96,10 @@ namespace Game2.Sprites.Link
 
         private void UseSword()
         {
-            if (direction == Dir.Down)
+            if (direction == Dir.Down || direction == Dir.Up
+                || direction == Dir.Left || direction == Dir.Right)
             {
-                direction = Dir.DownSword;
-            }
-            if (direction == Dir.Up)
-            {
-                direction = Dir.UpSword;
-            }
-            if (direction == Dir.Left)
-            {
-                direction = Dir.LeftSword;
-            }
-            if (direction == Dir.Right)
-            {
-                direction = Dir.RightSword;
+                direction = changeToSword[direction];
             }
             isSwording = true;
 
