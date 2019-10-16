@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Game2.Background;
 using System.Xml;
 using System;
+using Game2.Collision;
 
 namespace Game2
 {
@@ -86,8 +87,10 @@ namespace Game2
             Register();
             rupy = new Rupy(new Vector2(50,50), spriteBatch);
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
-            fairy = new Fairy(new Vector2(200, 130), spriteBatch);
-            Fairy.fairies.Add(fairy);
+            //fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
+            Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
+            //Fairy.fairies.Add(new Fairy(new Vector2(500, 300), spriteBatch));
+
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
@@ -140,19 +143,29 @@ namespace Game2
             rupy.Update(gameTime);
             triforce.Update(gameTime);
             //fairy.Update(gameTime);
-            foreach (Fairy fy in Fairy.fairies)
+            /*foreach (Fairy fy in Fairy.fairies)
             {
                 fy.Update(gameTime);
-            }
-            foreach (Fairy fy in Fairy.fairies)
+            }*/
+
+            foreach(Item it in Item.items)
             {
-                int sum = player.radius + fy.Radius;
-                if (Vector2.Distance(player.Position, fy.location) < sum )
-                {
-                    fy.Collided = true;
-                }
+                it.Update(gameTime);
             }
-            Fairy.fairies.RemoveAll(p => p.Collided);
+            /* foreach (Fairy fy in Fairy.fairies)
+             {
+                 int sum = player.radius + fy.Radius;
+                 if (Vector2.Distance(player.Position, fy.location) < sum )
+                 {
+                     fy.Collided = true;
+                 }
+             }*/
+
+            CollisionHandler collisionHandler = new CollisionHandler();
+
+            collisionHandler.CollisionHandle(player);
+
+            //Fairy.fairies.RemoveAll(p => p.Collided);
             
             dragon.Update(gameTime);
             hand.Update(gameTime);
@@ -176,10 +189,17 @@ namespace Game2
             rupy.Draw();
             triforce.Draw();
             //fairy.Draw();
-            foreach (Fairy fy in Fairy.fairies)
+            /*foreach (Fairy fy in Fairy.fairies)
             {
                 fy.Draw();
+            }*/
+
+            foreach (Item it in Item.items)
+            {
+                it.Draw();
             }
+
+
             dragon.Draw();
             hand.Draw();
             bat.Draw();
