@@ -172,6 +172,7 @@ namespace Game2
             GraphicsDevice.Clear(Color.Gray);
             spriteBatch.Begin();
             spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
+            background.Draw();
             rupy.Draw();
             triforce.Draw();
             //fairy.Draw();
@@ -208,7 +209,6 @@ namespace Game2
 
 
             //world.Draw();
-            background.Draw();
             spriteBatch.End();
 
             player.anim.Draw(spriteBatch, player.Position);
