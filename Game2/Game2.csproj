@@ -52,6 +52,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="NamePending\NamePending.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
@@ -135,11 +136,13 @@
     <Content Include="Content\NPC.png" />
     <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\World.png" />
+    <Content Include="Content\WorldOfElements.xml" />
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
     <Content Include="ReadMe.txt" />
     <Content Include="TaskDistrubation\TD1.png" />
     <Content Include="TaskDistrubation\TD2.png" />
+    <Content Include="WorldOfElements.xml" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

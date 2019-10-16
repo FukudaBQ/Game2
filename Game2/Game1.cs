@@ -1,17 +1,16 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using Game2.Factory;
-using Microsoft.Xna.Framework.Content;
 using Game2.Sprites.Link;
-using Game2.Interfaces;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using Game2.Sprites.World;
 using System.Collections.Generic;
 using Game2.Background;
+using System.Xml;
+using System;
 
 namespace Game2
 {
@@ -215,6 +214,63 @@ namespace Game2
             player.anim.Draw(spriteBatch, player.Position);
 
             base.Draw(gameTime);
+        }
+    }
+    public class GameWorld
+    {
+        private List<object> statics;
+        private List<object> dynamics;
+        private int backgroundIndex;
+        private XMLLookUp xmlTree;
+        private String worldIndex;
+        public GameWorld(XMLLookUp xmlTree, String worldIndex)
+        {
+            statics = new List<object>();
+            dynamics = new List<object>();
+            this.xmlTree = xmlTree;
+            worldIndex = this.worldIndex;
+        }
+
+        private void initilizeWorld()
+        {
+            XmlNode a = xmlTree.FindWorld(worldIndex);
+            XmlNodeList StaticsChilds = XMLLookUp.returnStatic(a.ChildNodes);
+            foreach (XmlNode iter in StaticsChilds)
+            {
+                if (iter.Name.Equals("fairy"))
+                {
+                    //create fairy sprite
+                }
+            }
+
+        }
+
+        public void changeWorld()
+        {
+            statics.Clear();
+            dynamics.Clear();
+        }
+
+
+    }
+    public class XMLLookUp
+    {
+        private XmlDocument doc;
+        private XmlNodeList childnodes;
+        public XMLLookUp()
+        {
+            doc = new XmlDocument();
+            doc.Load("Content/WorldOfElements.xml");
+            childnodes = doc.ChildNodes;
+        }
+
+        public XmlNode FindWorld(string worldIndex)
+        {
+            return doc.GetElementsByTagName(worldIndex)[0];
+        }
+        public static XmlNodeList returnStatic(XmlNodeList level)
+        {
+            return level.Item(0).ChildNodes;
         }
     }
 }
