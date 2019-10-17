@@ -12,6 +12,7 @@ using Game2.Background;
 using System.Xml;
 using System;
 using Game2.Collision;
+using Microsoft.Xna.Framework.Input;
 
 namespace Game2
 {
@@ -21,44 +22,47 @@ namespace Game2
     }
     public class Game1 : Game
     {
-        ProjectileHandler projHandler = new ProjectileHandler();
+        //ProjectileHandler projHandler = new ProjectileHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private Player player;
-        private Texture2D bomb;
-        private Texture2D arrowDown;
-        private Texture2D arrowUp;
-        private Texture2D arrowLeft;
-        private Texture2D arrowRight;
-        private Texture2D boomerang;
-        private Texture2D handSprite;
-        private Texture2D knightSprite;
-        private Texture2D batSprite;
-        private Texture2D monsterSprite;
-        private Texture2D map1Sprite;
-        private Texture2D GeneralBlockSprite;
+        //private Player player;
+        //private Texture2D bomb;
+        //private Texture2D arrowDown;
+        //private Texture2D arrowUp;
+        //private Texture2D arrowLeft;
+        //private Texture2D arrowRight;
+        //private Texture2D boomerang;
+        //private Texture2D handSprite;
+        //private Texture2D knightSprite;
+        //private Texture2D batSprite;
+        //private Texture2D monsterSprite;
+        //private Texture2D map1Sprite;
+        //private Texture2D GeneralBlockSprite;
         private Texture2D item;
-        private Texture2D back1;
-        private Rupy rupy;
-        private Triforce triforce;
-        private Fairy fairy;
-        private Dragon dragon;
-        private Hand hand;
-        private Monster monster;
-        private Knight knight;
-        private Bat bat;
-        private OldMan oldMan;
-        private Clock clock;
-        private Key key;
-        private Compass compass;
-        private HeartContainer heartContainer;
-        private Map map;
-        private Bow bow;
-        private Sword sword;
-        private Arrow arrow;
-        private Texture2D worldSprite;
-        private Wolrd world;
-        private Background1 background;
+        //private Texture2D back1;
+        //private Rupy rupy;
+        //private Triforce triforce;
+        //private Fairy fairy;
+        //private Dragon dragon;
+        //private Hand hand;
+        //private Monster monster;
+        //private Knight knight;
+        //private Bat bat;
+        //private OldMan oldMan;
+        //private Clock clock;
+        //private Key key;
+        //private Compass compass;
+        //private HeartContainer heartContainer;
+        //private Map map;
+        //private Bow bow;
+        //private Sword sword;
+        //private Arrow arrow;
+        //private Texture2D worldSprite;
+        //private Wolrd world;
+        //private Background1 background;
+        private XMLLookUp xmlTree;
+        private GameWorld game;
+        private String temp;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -69,6 +73,7 @@ namespace Game2
             graphics.PreferredBackBufferHeight = 1080;
             this.IsMouseVisible = true;
 
+            temp = "level1";
             
         }
         protected override void Initialize()
@@ -78,59 +83,63 @@ namespace Game2
         protected override void LoadContent()
         {
             item = Content.Load<Texture2D>("Item");
-            //
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            LinkSpriteFactory.Instance.LoadAllTextures(Content);
-            ItemFactory.Instance.LoadAllTextures(Content);
-            player = new Player(this);
-            Register();
-            rupy = new Rupy(new Vector2(50,50), spriteBatch);
-            triforce = new Triforce(new Vector2(100, 50), spriteBatch);
-            //fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
-            Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
-            //Fairy.fairies.Add(new Fairy(new Vector2(500, 300), spriteBatch));
+            xmlTree = new XMLLookUp();
+            game = new GameWorld(item, xmlTree, spriteBatch);
+            ItemFactory.instance.LoadAllTextures(Content);
+            //
+            //spriteBatch = new SpriteBatch(GraphicsDevice);
+            //LinkSpriteFactory.Instance.LoadAllTextures(Content);
+            //ItemFactory.Instance.LoadAllTextures(Content);
+            //player = new Player(this);
+            //Register();
+            //rupy = new Rupy(new Vector2(50,50), spriteBatch);
+            //triforce = new Triforce(new Vector2(100, 50), spriteBatch);
+            ////fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
+            //Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
+            ////Fairy.fairies.Add(new Fairy(new Vector2(500, 300), spriteBatch));
 
-            bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
-            knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
-            oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
-            heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
-            clock = new Clock(new Vector2(460, 135), spriteBatch);
-            key = new Key(new Vector2(550, 135), spriteBatch);
-            //key = new Key(item, new Vector2(550, 135), spriteBatch);
-            compass = new Compass(new Vector2(640, 135), spriteBatch);
-            map = new Map(new Vector2(730, 50), spriteBatch);
-            bow = new Bow(new Vector2(820, 130), spriteBatch);
-            sword = new Sword(new Vector2(910, 40), spriteBatch);
-            arrow = new Arrow(new Vector2(955, 130), spriteBatch);
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
-            //worldSprite = Content.Load<Texture2D>("world");
-            //world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
-            back1 = Content.Load<Texture2D>("Dungeon");
-            background = new Background1(back1, new Vector2(0, 0), spriteBatch);
+            //bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
+            //knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
+            //oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
+            //heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
+            //clock = new Clock(new Vector2(460, 135), spriteBatch);
+            //key = new Key(new Vector2(550, 135), spriteBatch);
+            ////key = new Key(item, new Vector2(550, 135), spriteBatch);
+            //compass = new Compass(new Vector2(640, 135), spriteBatch);
+            //map = new Map(new Vector2(730, 50), spriteBatch);
+            //bow = new Bow(new Vector2(820, 130), spriteBatch);
+            //sword = new Sword(new Vector2(910, 40), spriteBatch);
+            //arrow = new Arrow(new Vector2(955, 130), spriteBatch);
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
+            //Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
+            ////worldSprite = Content.Load<Texture2D>("world");
+            ////world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
+            //back1 = Content.Load<Texture2D>("Dungeon");
+            //background = new Background1(back1, new Vector2(0, 0), spriteBatch);
         }
 
         private void Register()
         {
-            bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
-            arrowDown = Content.Load<Texture2D>("ArrowDown");
-            arrowUp = Content.Load<Texture2D>("ArrowUp");
-            arrowLeft = Content.Load<Texture2D>("ArrowLeft");
-            arrowRight = Content.Load<Texture2D>("ArrowRight");
-            boomerang = Content.Load<Texture2D>("boomerang");
-            Texture2D boss = Content.Load<Texture2D>("Boss");
-            Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
-            handSprite = Content.Load<Texture2D>("hand");
-            monsterSprite = Content.Load<Texture2D>("monster");
-            batSprite = Content.Load<Texture2D>("bat");
-            knightSprite = Content.Load<Texture2D>("knight");
-            map1Sprite = Content.Load<Texture2D>("map1");
-            GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
-            dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
-            hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
-            monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
+            //bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
+            //arrowDown = Content.Load<Texture2D>("ArrowDown");
+            //arrowUp = Content.Load<Texture2D>("ArrowUp");
+            //arrowLeft = Content.Load<Texture2D>("ArrowLeft");
+            //arrowRight = Content.Load<Texture2D>("ArrowRight");
+            //boomerang = Content.Load<Texture2D>("boomerang");
+            //Texture2D boss = Content.Load<Texture2D>("Boss");
+            //Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
+            //handSprite = Content.Load<Texture2D>("hand");
+            //monsterSprite = Content.Load<Texture2D>("monster");
+            //batSprite = Content.Load<Texture2D>("bat");
+            //knightSprite = Content.Load<Texture2D>("knight");
+            //map1Sprite = Content.Load<Texture2D>("map1");
+            //GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
+            //dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
+            //hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
+            //monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
         }
         protected override void UnloadContent()
         {
@@ -138,44 +147,52 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameTime);
-            rupy.Update(gameTime);
-            triforce.Update(gameTime);
-            //fairy.Update(gameTime);
-            /*foreach (Fairy fy in Fairy.fairies)
-            {
-                fy.Update(gameTime);
-            }*/
+            //player.Update(gameTime);
+            //rupy.Update(gameTime);
+            //triforce.Update(gameTime);
+            ////fairy.Update(gameTime);
+            ///*foreach (Fairy fy in Fairy.fairies)
+            //{
+            //    fy.Update(gameTime);
+            //}*/
 
-            foreach(Item it in Item.items)
+            //foreach(Item it in Item.items)
+            //{
+            //    it.Update(gameTime);
+            //}
+            ///* foreach (Fairy fy in Fairy.fairies)
+            // {
+            //     int sum = player.radius + fy.Radius;
+            //     if (Vector2.Distance(player.Position, fy.location) < sum )
+            //     {
+            //         fy.Collided = true;
+            //     }
+            // }*/
+
+            //CollisionHandler collisionHandler = new CollisionHandler();
+
+            //collisionHandler.CollisionHandle(player);
+
+            ////Fairy.fairies.RemoveAll(p => p.Collided);
+
+            //dragon.Update(gameTime);
+            //hand.Update(gameTime);
+            //knight.Update(gameTime);
+            //bat.Update(gameTime);
+            //monster.Update(gameTime);
+            //oldMan.Update(gameTime);
+            //projHandler.Update(gameTime);
+            ////world.Update(gameTime);
+            //background.Update(gameTime);
+
+
+            KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.A))
             {
-                it.Update(gameTime);
+                temp = "level2";
+                Console.WriteLine("World");
             }
-            /* foreach (Fairy fy in Fairy.fairies)
-             {
-                 int sum = player.radius + fy.Radius;
-                 if (Vector2.Distance(player.Position, fy.location) < sum )
-                 {
-                     fy.Collided = true;
-                 }
-             }*/
-
-            CollisionHandler collisionHandler = new CollisionHandler();
-
-            collisionHandler.CollisionHandle(player);
-
-            //Fairy.fairies.RemoveAll(p => p.Collided);
-            
-            dragon.Update(gameTime);
-            hand.Update(gameTime);
-            knight.Update(gameTime);
-            bat.Update(gameTime);
-            monster.Update(gameTime);
-            oldMan.Update(gameTime);
-            projHandler.Update(gameTime);
-            //world.Update(gameTime);
-            background.Update(gameTime);
-
+            game.Update(gameTime, temp);
             base.Update(gameTime);
 
         }
@@ -183,54 +200,56 @@ namespace Game2
         {
             GraphicsDevice.Clear(Color.Gray);
             spriteBatch.Begin();
-            spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
-            background.Draw();
-            rupy.Draw();
-            triforce.Draw();
-            //fairy.Draw();
-            /*foreach (Fairy fy in Fairy.fairies)
-            {
-                fy.Draw();
-            }*/
+            game.Draw();
+            spriteBatch.End();
+            //spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
+            //background.Draw();
+            //rupy.Draw();
+            //triforce.Draw();
+            ////fairy.Draw();
+            ///*foreach (Fairy fy in Fairy.fairies)
+            //{
+            //    fy.Draw();
+            //}*/
 
-            foreach (Item it in Item.items)
-            {
-                it.Draw();
-            }
+            //foreach (Item it in Item.items)
+            //{
+            //    it.Draw();
+            //}
 
 
-            dragon.Draw();
-            hand.Draw();
-            bat.Draw();
-            knight.Draw();
-            monster.Draw();
-            oldMan.Draw();
-            heartContainer.Draw();
-            clock.Draw();
-            key.Draw();
-            compass.Draw();
-            map.Draw();
-            bow.Draw();
-            arrow.Draw();
-            sword.Draw();
+            //dragon.Draw();
+            //hand.Draw();
+            //bat.Draw();
+            //knight.Draw();
+            //monster.Draw();
+            //oldMan.Draw();
+            //heartContainer.Draw();
+            //clock.Draw();
+            //key.Draw();
+            //compass.Draw();
+            //map.Draw();
+            //bow.Draw();
+            //arrow.Draw();
+            //sword.Draw();
 
-            projHandler.Draw(spriteBatch, bomb, Projectile.bomb);
-            projHandler.Draw(spriteBatch, arrowDown, Projectile.arrowDown);
-            projHandler.Draw(spriteBatch, arrowUp, Projectile.arrowUp);
-            projHandler.Draw(spriteBatch, arrowLeft, Projectile.arrowLeft);
-            projHandler.Draw(spriteBatch, arrowRight, Projectile.arrowRight);
-            projHandler.Draw(spriteBatch, boomerang, Projectile.boomerang);
+            //projHandler.Draw(spriteBatch, bomb, Projectile.bomb);
+            //projHandler.Draw(spriteBatch, arrowDown, Projectile.arrowDown);
+            //projHandler.Draw(spriteBatch, arrowUp, Projectile.arrowUp);
+            //projHandler.Draw(spriteBatch, arrowLeft, Projectile.arrowLeft);
+            //projHandler.Draw(spriteBatch, arrowRight, Projectile.arrowRight);
+            //projHandler.Draw(spriteBatch, boomerang, Projectile.boomerang);
 
-            foreach (Blocks b in Blocks.blocks)
-            {
-                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
-            }
+            //foreach (Blocks b in Blocks.blocks)
+            //{
+            //    spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            //}
 
 
             //world.Draw();
-            spriteBatch.End();
+            //spriteBatch.End();
 
-            player.anim.Draw(spriteBatch, player.Position);
+            //player.anim.Draw(spriteBatch, player.Position);
 
             base.Draw(gameTime);
         }
@@ -238,79 +257,134 @@ namespace Game2
     public class GameWorld
     {
         private List<Fairy> fairy;
+        private List<Map> map;
         private XMLLookUp xmlTree;
         private String worldIndex;
-        private ItemFactory itemFactory;
         private SpriteBatch spriteBatch;
-        public GameWorld(XMLLookUp xmlTree, String worldIndex, SpriteBatch spriteBatch)
+        private XmlNode currentNode;
+
+        //temp fields
+        private Texture2D texture;
+        public GameWorld(Texture2D texture, XMLLookUp xmlTree, SpriteBatch spriteBatch)
         {
+            this.texture = texture;
             fairy = new List<Fairy>();
+            map = new List<Map>();
             this.xmlTree = xmlTree;
-            worldIndex = this.worldIndex;
+            worldIndex = "level1";
             this.spriteBatch = spriteBatch;
-            initilizeWorld();
-        }
-
-        private void initilizeWorld()
-        {
-            XmlNode a = xmlTree.FindWorld(worldIndex);
-            XmlNodeList StaticsChilds = XMLLookUp.returnStatic(a.ChildNodes);
-            foreach (XmlNode iter in StaticsChilds)
-            {
-                if (iter.Name.Equals("fairy"))
-                {
-                    int x = Int32.Parse(iter.Attributes["x"].Value);
-                    int y = Int32.Parse(iter.Attributes["y"].Value);
-                    fairy.Add(new Fairy(new Vector2(x,y), spriteBatch));
-                }
-            }
-
-        }
-
-        public void changeWorld(String worldIndex)
-        {
-            fairy.Clear();
-            this.worldIndex = worldIndex;
+            this.currentNode = this.xmlTree.FindWorld("level1");
             initilizeWorld();
         }
 
         public void Draw()
         {
-            initilizeWorld();
+            foreach (Fairy item in fairy)
+            {
+                item.Draw();
+            }
+            foreach (Map item in map)
+            {
+                item.Draw();
+            }
         }
 
         public void Update(GameTime gameTime, String worldIndex)
         {
             if (this.worldIndex.Equals(worldIndex))
             {
-                //call update for each
+                foreach (Fairy item in fairy)
+                {
+                    item.Update(gameTime);
+                }
+                foreach (Map item in map)
+                {
+                    item.Update(gameTime);
+                }
             }
             else
             {
+                Console.WriteLine("Hello");
                 changeWorld(worldIndex);
             }
         }
+
+        private void initilizeWorld()
+        {
+            foreach (XmlNode item in currentNode.ChildNodes)
+            {
+                if (item.Name.Equals("fairy"))
+                {
+                    Vector2 position = processNode(item);
+                    fairy.Add(new Fairy(texture, position, spriteBatch));
+                }
+                if (item.Name.Equals("map"))
+                {
+                    Vector2 position = processNode(item);
+                    map.Add(new Map(texture, position, spriteBatch));
+                }
+            }
+        }
+
+        private Vector2 processNode(XmlNode item)
+        {
+            XmlAttributeCollection attributes = item.Attributes;
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < attributes.Count; i++)
+            {
+                if (attributes[i].Equals("x"))
+                {
+                    x = Int32.Parse(attributes[i].Value);
+                }
+                if (attributes[i].Equals("x"))
+                {
+                    y = Int32.Parse(attributes[i].Value);
+                }
+            }
+            return new Vector2(x, y);
+        }
+
+        public void changeWorld(String worldIndex)
+        {
+            for (int i = 0; i < fairy.Capacity; i++)
+            {
+                fairy.RemoveAt(i);
+            }
+            fairy.Clear();
+            map.Clear();
+            this.worldIndex = worldIndex;
+            initilizeWorld();
+        }
+
+
+
 
 
     }
     public class XMLLookUp
     {
         private XmlDocument doc;
-        private XmlNodeList childnodes;
+        private XmlNode world;
         public XMLLookUp()
         {
             doc = new XmlDocument();
             doc.Load("Content/WorldOfElements.xml");
-            childnodes = doc.ChildNodes;
+            world = doc.ChildNodes[1];
         }
 
         public XmlNode FindWorld(string worldIndex)
         {
-            return doc.GetElementsByTagName(worldIndex)[0];
+            XmlNode ans = null;
+            for (int i = 0; i < world.ChildNodes.Count; i++)
+            {
+                if (world.ChildNodes[i].Name.Equals(worldIndex))
+                {
+                    ans = world.ChildNodes[i];
+                }
+            }
+            return ans;
         }
-        public static XmlNodeList returnStatic(XmlNodeList level)
-        {
-            return level.Item(0).ChildNodes;
-        }
+
     }
 }

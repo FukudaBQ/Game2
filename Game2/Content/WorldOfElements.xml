@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <world>
-    <level1>
-      <items>
-       <Statics>
-         <fairy x ="123" y ="40"/>
-         <fairy x ="138" y ="40"/>
-        </Statics>
-      </items>
-    </level1>
-  </world>
+ <level1>
+  <fairy x ="123" y ="40"/>
+  <fairy x ="138" y ="40"/>
+ </level1>
+  <level2>
+    <map x ="123" y ="40"/>
+    <map x ="138" y ="40"/>
+  </level2>
+</world>
