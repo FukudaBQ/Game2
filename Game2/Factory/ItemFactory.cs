@@ -109,5 +109,9 @@ namespace Game2.Factory
         {
             return new Shining(item, 320, 0, 13, 40, 0);
         }
+        public Shining CreateRingSprite()
+        {
+            return new Shining(item, 117, 100, 20, 40, 0);
+        }
     }
 }

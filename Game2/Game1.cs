@@ -39,6 +39,7 @@ namespace Game2
         private Texture2D GeneralBlockSprite;
         private Texture2D item;
         private Texture2D back1;
+        
         private Rupy rupy;
         private Triforce triforce;
         private Fairy fairy;
@@ -99,14 +100,18 @@ namespace Game2
             //heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
             Item.items.Add(new Heart(new Vector2(370, 140), spriteBatch));
 
-            clock = new Clock(new Vector2(460, 135), spriteBatch);
-            key = new Key(new Vector2(550, 135), spriteBatch);
+            //clock = new Clock(new Vector2(460, 135), spriteBatch);
+            Item.items.Add(new Clock2(new Vector2(460, 135), spriteBatch));
+            Item.items.Add(new Key2(new Vector2(550, 150), spriteBatch));
             //key = new Key(item, new Vector2(550, 135), spriteBatch);
-            compass = new Compass(new Vector2(640, 135), spriteBatch);
-            map = new Map(new Vector2(730, 50), spriteBatch);
+            //compass = new Compass(new Vector2(640, 135), spriteBatch);
+            Item.items.Add(new Compass2(new Vector2(640, 135), spriteBatch));
+            //map = new Map(new Vector2(730, 50), spriteBatch);
+            Item.items.Add(new Map2(new Vector2(730, 50), spriteBatch));
             bow = new Bow(new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
             arrow = new Arrow(new Vector2(955, 130), spriteBatch);
+            Item.items.Add(new Ring(new Vector2(1050, 60), spriteBatch));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
@@ -211,10 +216,10 @@ namespace Game2
             monster.Draw();
             oldMan.Draw();
             //heartContainer.Draw();
-            clock.Draw();
-            key.Draw();
-            compass.Draw();
-            map.Draw();
+            //clock.Draw();
+            //key.Draw();
+            //compass.Draw();
+            //map.Draw();
             bow.Draw();
             arrow.Draw();
             sword.Draw();

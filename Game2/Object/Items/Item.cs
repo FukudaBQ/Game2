@@ -92,7 +92,51 @@ namespace Game2.Object.Items
             sprite = ItemFactory.Instance.CreateHeartConttainerSprite();
         }
     }
-
+    class Key2 : Item
+    {
+        public Key2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateKeySprite();
+        }
+    }
+    class Map2 : Item
+    {
+        public Map2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateMapSprite();
+        }
+    }
+    class Compass2 : Item
+    {
+        public Compass2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateCompassSprite();
+        }
+    }
+    class Clock2 : Item
+    {
+        public Clock2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateCompassSprite();
+        }
+    }
+    class Ring : Item
+    {
+        public Ring(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 13;
+            sprite = ItemFactory.Instance.CreateRingSprite();
+        }
+    }
 
 
 }
