@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <world>
-    <level hashcode = "0">
+    <level1>
       <items>
        <Statics>
          <fairy x ="123" y ="40"/>
          <fairy x ="138" y ="40"/>
         </Statics>
       </items>
-    </level>
+    </level1>
   </world>

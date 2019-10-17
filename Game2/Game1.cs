@@ -39,7 +39,6 @@ namespace Game2
         private Texture2D GeneralBlockSprite;
         private Texture2D item;
         private Texture2D back1;
-        
         private Rupy rupy;
         private Triforce triforce;
         private Fairy fairy;
@@ -234,7 +233,6 @@ namespace Game2
 
 
             //world.Draw();
-            
             spriteBatch.End();
 
             player.anim.Draw(spriteBatch, player.Position);
@@ -244,17 +242,18 @@ namespace Game2
     }
     public class GameWorld
     {
-        private List<object> statics;
-        private List<object> dynamics;
-        private int backgroundIndex;
+        private List<Fairy> fairy;
         private XMLLookUp xmlTree;
         private String worldIndex;
-        public GameWorld(XMLLookUp xmlTree, String worldIndex)
+        private ItemFactory itemFactory;
+        private SpriteBatch spriteBatch;
+        public GameWorld(XMLLookUp xmlTree, String worldIndex, SpriteBatch spriteBatch)
         {
-            statics = new List<object>();
-            dynamics = new List<object>();
+            fairy = new List<Fairy>();
             this.xmlTree = xmlTree;
             worldIndex = this.worldIndex;
+            this.spriteBatch = spriteBatch;
+            initilizeWorld();
         }
 
         private void initilizeWorld()
@@ -265,16 +264,36 @@ namespace Game2
             {
                 if (iter.Name.Equals("fairy"))
                 {
-                    //create fairy sprite
+                    int x = Int32.Parse(iter.Attributes["x"].Value);
+                    int y = Int32.Parse(iter.Attributes["y"].Value);
+                    fairy.Add(new Fairy(new Vector2(x,y), spriteBatch));
                 }
             }
 
         }
 
-        public void changeWorld()
+        public void changeWorld(String worldIndex)
         {
-            statics.Clear();
-            dynamics.Clear();
+            fairy.Clear();
+            this.worldIndex = worldIndex;
+            initilizeWorld();
+        }
+
+        public void Draw()
+        {
+            initilizeWorld();
+        }
+
+        public void Update(GameTime gameTime, String worldIndex)
+        {
+            if (this.worldIndex.Equals(worldIndex))
+            {
+                //call update for each
+            }
+            else
+            {
+                changeWorld(worldIndex);
+            }
         }
 
 
