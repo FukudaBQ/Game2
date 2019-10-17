@@ -85,7 +85,10 @@ namespace Game2
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
-            rupy = new Rupy(new Vector2(50,50), spriteBatch);
+            //rupy = new Rupy(new Vector2(50,50), spriteBatch);
+
+            Item.items.Add(new Rupy2(new Vector2(180, 50), spriteBatch));
+
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             //fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
             Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
@@ -94,7 +97,9 @@ namespace Game2
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
-            heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
+            //heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
+            Item.items.Add(new Heart(new Vector2(370, 140), spriteBatch));
+
             clock = new Clock(new Vector2(460, 135), spriteBatch);
             key = new Key(new Vector2(550, 135), spriteBatch);
             //key = new Key(item, new Vector2(550, 135), spriteBatch);
@@ -140,7 +145,7 @@ namespace Game2
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameTime);
-            rupy.Update(gameTime);
+            //rupy.Update(gameTime);
             triforce.Update(gameTime);
             //fairy.Update(gameTime);
             /*foreach (Fairy fy in Fairy.fairies)
@@ -186,7 +191,7 @@ namespace Game2
             spriteBatch.Begin();
             spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
             background.Draw();
-            rupy.Draw();
+            //rupy.Draw();
             triforce.Draw();
             //fairy.Draw();
             /*foreach (Fairy fy in Fairy.fairies)
@@ -206,7 +211,7 @@ namespace Game2
             knight.Draw();
             monster.Draw();
             oldMan.Draw();
-            heartContainer.Draw();
+            //heartContainer.Draw();
             clock.Draw();
             key.Draw();
             compass.Draw();

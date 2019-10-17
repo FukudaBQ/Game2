@@ -15,16 +15,15 @@ namespace Game2.Collision
         {
             foreach(Item it in Item.items)
             {
-                if (it.GetType() == typeof(Fairy2))
+                Type itemType = it.GetType();
+                int sum = player.radius + it.Radius;
+                if (true)
                 {
-                    
-                        int sum = player.radius + it.Radius;
-                        if (Vector2.Distance(player.Position, it.Position) < sum)
-                        {
-                            it.Collided = true;
-                        }
+                    if (Vector2.Distance(player.Position, it.Position) < sum)
+                    {
+                        it.Collided = true;
+                    }
                 }
-
             }
             Item.items.RemoveAll(p => p.Collided);
         }

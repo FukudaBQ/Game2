@@ -74,4 +74,25 @@ namespace Game2.Object.Items
         }
     }
 
+    class Rupy2 : Item
+    {
+        public Rupy2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateRupySprite();
+        }
+    }
+    class Heart : Item
+    {
+        public Heart(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateHeartConttainerSprite();
+        }
+    }
+
+
+
 }
