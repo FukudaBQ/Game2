@@ -52,7 +52,6 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
-    <Compile Include="NamePending\NamePending.cs" />
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
