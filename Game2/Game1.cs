@@ -67,6 +67,7 @@ namespace Game2
         private TiledMapRenderer mapRenderer;
         private TiledMap myMap;
         private Camera2D cam;
+        private Vector2 camLocation;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -133,6 +134,13 @@ namespace Game2
             //back1 = Content.Load<Texture2D>("Dungeon");
             //background = new Background1(back1, new Vector2(0, 0), spriteBatch);
             myMap = Content.Load<TiledMap>("map/mapD");
+            TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
+            foreach (var blo in blocks)
+            {
+                Item.items.Add(new Heart(new Vector2(blo.Position.X, blo.Position.Y+800), spriteBatch));
+                Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            camLocation = new Vector2(3200, 3880);
         }
 
         private void Register()
@@ -198,7 +206,8 @@ namespace Game2
             projHandler.Update(gameTime);
             //world.Update(gameTime);
             //background.Update(gameTime);
-            cam.LookAt(player.position);
+            //cam.LookAt(camLocation);
+            cam.LookAt(player.Position);
 
             base.Update(gameTime);
 

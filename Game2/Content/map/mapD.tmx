@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="3" nextobjectid="6">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -158,4 +158,21 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="2" name="block">
+  <object id="1" x="2878.31" y="2955.42">
+   <point/>
+  </object>
+  <object id="2" x="3197.59" y="2956.63">
+   <point/>
+  </object>
+  <object id="3" x="3438.55" y="2956.63">
+   <point/>
+  </object>
+  <object id="4" x="2879.52" y="3116.87">
+   <point/>
+  </object>
+  <object id="5" x="3440.96" y="3116.87">
+   <point/>
+  </object>
+ </objectgroup>
 </map>

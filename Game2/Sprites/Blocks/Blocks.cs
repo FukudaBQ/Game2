@@ -58,8 +58,8 @@ namespace Game2.Sprites.Blocks
     {
         public GeneralBlock(Vector2 newPos) : base(newPos)
         {
-            radius = 68;
-            hitPos = new Vector2(position.X+14, position.Y);
+            radius = 50;
+            hitPos = new Vector2(position.X-2, position.Y);
         }
     }
 }
