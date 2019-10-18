@@ -113,6 +113,8 @@ namespace Game2
             arrow = new Arrow(new Vector2(955, 130), spriteBatch);
             Item.items.Add(new Ring(new Vector2(1050, 60), spriteBatch));
             Item.items.Add(new MagicKey(new Vector2(1160, 130), spriteBatch));
+            Item.items.Add(new Ladder(new Vector2(180, 300), spriteBatch));
+            Item.items.Add(new Raft(new Vector2(400, 300), spriteBatch));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));

@@ -117,5 +117,13 @@ namespace Game2.Factory
         {
             return new Shining(item, 164, 80, 20, 40, 0);
         }
+        public Shining CreateLadderSprite()
+        {
+            return new Shining(item, 320, 40, 20, 40, 0);
+        }
+        public Shining CreateRaftSprite()
+        {
+            return new Shining(item, 320, 80, 20, 40, 0);
+        }
     }
 }

@@ -146,6 +146,24 @@ namespace Game2.Object.Items
             sprite = ItemFactory.Instance.CreateMagicKeySprite();
         }
     }
+    class Ladder : Item
+    {
+        public Ladder(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 18;
+            sprite = ItemFactory.Instance.CreateLadderSprite();
+        }
+    }
+    class Raft : Item
+    {
+        public Raft(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 18;
+            sprite = ItemFactory.Instance.CreateRaftSprite();
+        }
+    }
 
 
 }
