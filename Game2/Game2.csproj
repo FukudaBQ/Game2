@@ -90,8 +90,20 @@
     <Compile Include="Sprites\World\World.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Graphics, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.Graphics.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Tiled, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.Tiled.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Tiled.dll</HintPath>
+    </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -148,6 +160,28 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="Content\map\d1.xnb" />
+    <None Include="Content\map\d10.xnb" />
+    <None Include="Content\map\d11.xnb" />
+    <None Include="Content\map\d12.xnb" />
+    <None Include="Content\map\d13.xnb" />
+    <None Include="Content\map\d14.xnb" />
+    <None Include="Content\map\d15.xnb" />
+    <None Include="Content\map\d16.xnb" />
+    <None Include="Content\map\d17.xnb" />
+    <None Include="Content\map\d18.xnb" />
+    <None Include="Content\map\d2.xnb" />
+    <None Include="Content\map\d3.xnb" />
+    <None Include="Content\map\d4.xnb" />
+    <None Include="Content\map\d5.xnb" />
+    <None Include="Content\map\d6.xnb" />
+    <None Include="Content\map\d7.xnb" />
+    <None Include="Content\map\d8.xnb" />
+    <None Include="Content\map\d9.xnb" />
+    <None Include="Content\map\mapD.xnb" />
+    <None Include="Content\map\test.xnb" />
+    <None Include="Content\map\test1.xnb" />
+    <None Include="packages.config" />
     <None Include="reflection" />
   </ItemGroup>
   <ItemGroup />
