@@ -13,6 +13,10 @@ using System.Xml;
 using System;
 using Game2.Collision;
 
+using MonoGame.Extended.Tiled;
+using MonoGame.Extended.Tiled.Graphics;
+using MonoGame.Extended;
+
 namespace Game2
 {
     enum Dir
@@ -60,20 +64,25 @@ namespace Game2
         private Texture2D worldSprite;
         private Wolrd world;
         private Background1 background;
+        private TiledMapRenderer mapRenderer;
+        private TiledMap myMap;
+        private Camera2D cam;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.GraphicsProfile = GraphicsProfile.HiDef;
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 1920;
-            graphics.PreferredBackBufferHeight = 1080;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 880;
             this.IsMouseVisible = true;
 
             
         }
         protected override void Initialize()
         {
+            mapRenderer = new TiledMapRenderer(GraphicsDevice);
+            cam = new Camera2D(GraphicsDevice);
             base.Initialize();
         }
         protected override void LoadContent()
@@ -121,8 +130,9 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
             //worldSprite = Content.Load<Texture2D>("world");
             //world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
-            back1 = Content.Load<Texture2D>("Dungeon");
-            background = new Background1(back1, new Vector2(0, 0), spriteBatch);
+            //back1 = Content.Load<Texture2D>("Dungeon");
+            //background = new Background1(back1, new Vector2(0, 0), spriteBatch);
+            myMap = Content.Load<TiledMap>("map/mapD");
         }
 
         private void Register()
@@ -187,7 +197,8 @@ namespace Game2
             oldMan.Update(gameTime);
             projHandler.Update(gameTime);
             //world.Update(gameTime);
-            background.Update(gameTime);
+            //background.Update(gameTime);
+            cam.LookAt(player.position);
 
             base.Update(gameTime);
 
@@ -195,9 +206,10 @@ namespace Game2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
-            spriteBatch.Begin();
-            spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
-            background.Draw();
+            mapRenderer.Draw(myMap, cam.GetViewMatrix());
+            spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
+            //spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
+            //background.Draw();
             //rupy.Draw();
             triforce.Draw();
             //fairy.Draw();
@@ -241,9 +253,10 @@ namespace Game2
 
 
             //world.Draw();
+            player.anim.Draw(spriteBatch, player.Position);
             spriteBatch.End();
 
-            player.anim.Draw(spriteBatch, player.Position);
+            //player.anim.Draw(spriteBatch, player.Position);
 
             base.Draw(gameTime);
         }
