@@ -17,6 +17,10 @@ namespace Game2.Sprites.Blocks
         protected Vector2 hitPos;
 
         public static List<Blocks> blocks = new List<Blocks>();
+        public static List<Blocks> upblocks = new List<Blocks>();
+        public static List<Blocks> downblocks = new List<Blocks>();
+        public static List<Blocks> leftblocks = new List<Blocks>();
+        public static List<Blocks> rightblocks = new List<Blocks>();
 
         public Vector2 HitsPos
         {

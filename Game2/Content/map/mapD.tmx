@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="3" nextobjectid="6">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="7" nextobjectid="41">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -162,9 +162,6 @@
   <object id="1" x="2878.31" y="2955.42">
    <point/>
   </object>
-  <object id="2" x="3197.59" y="2956.63">
-   <point/>
-  </object>
   <object id="3" x="3438.55" y="2956.63">
    <point/>
   </object>
@@ -172,6 +169,119 @@
    <point/>
   </object>
   <object id="5" x="3440.96" y="3116.87">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="upblock">
+  <object id="6" x="3162.65" y="2718.07">
+   <point/>
+  </object>
+  <object id="7" x="3161.09" y="1837.84">
+   <point/>
+  </object>
+  <object id="8" x="3162.16" y="963.137">
+   <point/>
+  </object>
+  <object id="9" x="4441.79" y="2716.64">
+   <point/>
+  </object>
+  <object id="10" x="5720.36" y="1834.13">
+   <point/>
+  </object>
+  <object id="11" x="3157.89" y="3593.83">
+   <point/>
+  </object>
+  <object id="12" x="3157.89" y="4473.68">
+   <point/>
+  </object>
+  <object id="39" x="1881.98" y="2719.3">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="leftblock">
+  <object id="13" x="2634.24" y="396.066">
+   <point/>
+  </object>
+  <object id="14" x="1360.98" y="2155.77">
+   <point/>
+  </object>
+  <object id="15" x="2636.9" y="2158.43">
+   <point/>
+  </object>
+  <object id="16" x="3920.79" y="2153.11">
+   <point/>
+  </object>
+  <object id="17" x="5199.36" y="2155.77">
+   <point/>
+  </object>
+  <object id="18" x="6483.25" y="1275.92">
+   <point/>
+  </object>
+  <object id="19" x="3923.44" y="4803.3">
+   <point/>
+  </object>
+  <object id="20" x="2639.55" y="4797.98">
+   <point/>
+  </object>
+  <object id="21" x="2636.9" y="3030.3">
+   <point/>
+  </object>
+  <object id="33" x="3918.13" y="3032.96">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="downblock">
+  <object id="22" x="3155.24" y="728.336">
+   <point/>
+  </object>
+  <object id="23" x="3152.58" y="1608.19">
+   <point/>
+  </object>
+  <object id="24" x="3157.89" y="2488.04">
+   <point/>
+  </object>
+  <object id="25" x="4441.79" y="2490.7">
+   <point/>
+  </object>
+  <object id="26" x="5715.05" y="1610.85">
+   <point/>
+  </object>
+  <object id="27" x="3155.24" y="3370.55">
+   <point/>
+  </object>
+  <object id="28" x="3157.89" y="4253.06">
+   <point/>
+  </object>
+  <object id="29" x="1874" y="2490.7">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="rightblock">
+  <object id="30" x="2402.98" y="398.724">
+   <point/>
+  </object>
+  <object id="31" x="3689.53" y="3038.28">
+   <point/>
+  </object>
+  <object id="32" x="2413.61" y="3035.62">
+   <point/>
+  </object>
+  <object id="34" x="3689.53" y="4792.66">
+   <point/>
+  </object>
+  <object id="35" x="2408.29" y="4795.32">
+   <point/>
+  </object>
+  <object id="36" x="4970.76" y="2150.45">
+   <point/>
+  </object>
+  <object id="37" x="6249.34" y="1267.94">
+   <point/>
+  </object>
+  <object id="38" x="1127.06" y="2147.79">
+   <point/>
+  </object>
+  <object id="40" x="3689.53" y="2155.77">
    <point/>
   </object>
  </objectgroup>

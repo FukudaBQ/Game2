@@ -137,8 +137,27 @@ namespace Game2
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
-                Item.items.Add(new Heart(new Vector2(blo.Position.X, blo.Position.Y+800), spriteBatch));
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
+            TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
+            TiledMapObject[] leftblocks = myMap.GetLayer<TiledMapObjectLayer>("leftblock").Objects;
+            TiledMapObject[] rightblocks = myMap.GetLayer<TiledMapObjectLayer>("rightblock").Objects;
+            foreach (var blo in upblocks)
+            {
+                Blocks.upblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            foreach (var blo in downblocks)
+            {
+                Blocks.downblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            foreach (var blo in leftblocks)
+            {
+                Blocks.leftblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            foreach (var blo in rightblocks)
+            {
+                Blocks.rightblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
             }
             camLocation = new Vector2(3200, 3880);
         }
@@ -206,8 +225,8 @@ namespace Game2
             projHandler.Update(gameTime);
             //world.Update(gameTime);
             //background.Update(gameTime);
-            //cam.LookAt(camLocation);
-            cam.LookAt(player.Position);
+            cam.LookAt(player.camPosition);
+            //cam.LookAt(player.Position);
 
             base.Update(gameTime);
 

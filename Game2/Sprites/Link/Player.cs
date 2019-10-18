@@ -15,6 +15,7 @@ namespace Game2.Sprites.Link
     {
         
         public Vector2 position = new Vector2(3200, 3880);
+        public Vector2 camPosition = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
         private PlayerStateMachine stateMachine;
