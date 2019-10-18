@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="18" nextobjectid="875">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="18" nextobjectid="879">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -780,7 +780,7 @@
   <object id="256" x="6080" y="1362.67">
    <point/>
   </object>
-  <object id="257" x="6158.67" y="1358.67">
+  <object id="257" x="6162.67" y="1363.33">
    <point/>
   </object>
   <object id="258" x="5838.67" y="1040">
@@ -2214,10 +2214,10 @@
   <object id="735" x="2636" y="721.333">
    <point/>
   </object>
-  <object id="736" x="2718.67" y="717.333">
+  <object id="736" x="2718.67" y="726.667">
    <point/>
   </object>
-  <object id="737" x="2798.67" y="718.667">
+  <object id="737" x="2798.67" y="726.667">
    <point/>
   </object>
   <object id="738" x="2878.67" y="724">
@@ -2631,9 +2631,15 @@
   <object id="874" x="2800" y="1512">
    <point/>
   </object>
+  <object id="875" x="3124" y="1352">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="rupy">
   <object id="93" x="2719.73" y="2798.06">
+   <point/>
+  </object>
+  <object id="878" x="3116" y="2868">
    <point/>
   </object>
  </objectgroup>
@@ -2651,15 +2657,12 @@
   <object id="96" x="2959.34" y="2794.61">
    <point/>
   </object>
+  <object id="877" x="5452" y="1156">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="11" name="key">
   <object id="97" x="3039.97" y="2796.91">
-   <point/>
-  </object>
-  <object id="105" x="4366.67" y="3006.06">
-   <point/>
-  </object>
-  <object id="106" x="4590.91" y="2057.58">
    <point/>
   </object>
  </objectgroup>
@@ -2675,6 +2678,9 @@
  </objectgroup>
  <objectgroup id="14" name="ring">
   <object id="100" x="2798.06" y="2878.7">
+   <point/>
+  </object>
+  <object id="876" x="7244" y="1244">
    <point/>
   </object>
  </objectgroup>

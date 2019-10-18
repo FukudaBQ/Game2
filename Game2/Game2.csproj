@@ -42,8 +42,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Background\Background1.cs" />
-    <Compile Include="Collision\CollisionDetection.cs" />
-    <Compile Include="Collision\Collision.cs" />
     <Compile Include="Collision\CollisionHandler.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
@@ -80,13 +78,11 @@
     <Compile Include="Object\Items\Rupy.cs" />
     <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
-    <Compile Include="Sprites\Link\MouseController.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\Projectile.cs" />
-    <Compile Include="Sprites\World\World.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
@@ -112,6 +108,7 @@
     <Content Include="Code Review\Sprint2\CodeReview_wei.780.txt" />
     <Content Include="Code Review\Sprint2\CodeReview_qu.txt" />
     <Content Include="Code Review\Sprint2\code_review_Yig.txt" />
+    <Content Include="Code Review\Sprint3\CodeReview_Wei.txt" />
     <Content Include="Content\ArrowDown.png" />
     <Content Include="Content\ArrowLeft.png" />
     <Content Include="Content\ArrowRight.png" />
@@ -154,7 +151,6 @@
     <Content Include="ReadMe.txt" />
     <Content Include="TaskDistrubation\TD1.png" />
     <Content Include="TaskDistrubation\TD2.png" />
-    <Content Include="WorldOfElements.xml" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
