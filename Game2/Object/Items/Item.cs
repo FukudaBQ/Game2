@@ -125,7 +125,7 @@ namespace Game2.Object.Items
         {
             speed = 0;
             radius = 15;
-            sprite = ItemFactory.Instance.CreateCompassSprite();
+            sprite = ItemFactory.Instance.CreateClockSprite();
         }
     }
     class Ring : Item
@@ -135,6 +135,15 @@ namespace Game2.Object.Items
             speed = 0;
             radius = 13;
             sprite = ItemFactory.Instance.CreateRingSprite();
+        }
+    }
+    class MagicKey : Item
+    {
+        public MagicKey(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateMagicKeySprite();
         }
     }
 
