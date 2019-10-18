@@ -159,7 +159,7 @@ namespace Game2
             }
             Item.items.Add(new MagicKey(new Vector2(1160, 130), spriteBatch));
             TiledMapObject[] magickeys = myMap.GetLayer<TiledMapObjectLayer>("magickey").Objects;
-            foreach (var it in keys)
+            foreach (var it in magickeys)
             {
                 Item.items.Add(new MagicKey(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
