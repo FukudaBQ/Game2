@@ -88,6 +88,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            myMap = Content.Load<TiledMap>("map/mapD");
             item = Content.Load<Texture2D>("Item");
             //
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -96,33 +97,72 @@ namespace Game2
             player = new Player(this);
             Register();
             //rupy = new Rupy(new Vector2(50,50), spriteBatch);
-
-            Item.items.Add(new Rupy2(new Vector2(180, 50), spriteBatch));
+            
 
             triforce = new Triforce(new Vector2(100, 50), spriteBatch);
             //fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
-            Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
+            //Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
+            TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
+            foreach (var fa in fairies)
+            {
+                Fairy.fairies.Add(new Fairy(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
+            }
             //Fairy.fairies.Add(new Fairy(new Vector2(500, 300), spriteBatch));
 
             bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
             oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
             //heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
-            Item.items.Add(new Heart(new Vector2(370, 140), spriteBatch));
+            //Item.items.Add(new Heart(new Vector2(370, 140), spriteBatch));
+            TiledMapObject[] hearts = myMap.GetLayer<TiledMapObjectLayer>("heart").Objects;
+            foreach (var ha in hearts)
+            {
+                Item.items.Add(new Heart(new Vector2(ha.Position.X, ha.Position.Y + 800), spriteBatch));
+            }
 
             //clock = new Clock(new Vector2(460, 135), spriteBatch);
-            Item.items.Add(new Clock2(new Vector2(460, 135), spriteBatch));
+            //Item.items.Add(new Clock2(new Vector2(460, 135), spriteBatch));
+            TiledMapObject[] clocks = myMap.GetLayer<TiledMapObjectLayer>("clock").Objects;
+            foreach (var it in clocks)
+            {
+                Item.items.Add(new Clock2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             Item.items.Add(new Key2(new Vector2(550, 150), spriteBatch));
+            TiledMapObject[] keys = myMap.GetLayer<TiledMapObjectLayer>("key").Objects;
+            foreach (var it in keys)
+            {
+                Item.items.Add(new Key2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             //key = new Key(item, new Vector2(550, 135), spriteBatch);
             //compass = new Compass(new Vector2(640, 135), spriteBatch);
             Item.items.Add(new Compass2(new Vector2(640, 135), spriteBatch));
+            TiledMapObject[] compasses = myMap.GetLayer<TiledMapObjectLayer>("compass").Objects;
+            foreach (var it in compasses)
+            {
+                Item.items.Add(new Compass2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             //map = new Map(new Vector2(730, 50), spriteBatch);
             Item.items.Add(new Map2(new Vector2(730, 50), spriteBatch));
+            TiledMapObject[] maps = myMap.GetLayer<TiledMapObjectLayer>("map").Objects;
+            foreach (var it in maps)
+            {
+                Item.items.Add(new Map2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             bow = new Bow(new Vector2(820, 130), spriteBatch);
             sword = new Sword(new Vector2(910, 40), spriteBatch);
             arrow = new Arrow(new Vector2(955, 130), spriteBatch);
             Item.items.Add(new Ring(new Vector2(1050, 60), spriteBatch));
+            TiledMapObject[] rings = myMap.GetLayer<TiledMapObjectLayer>("ring").Objects;
+            foreach (var it in rings)
+            {
+                Item.items.Add(new Ring(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             Item.items.Add(new MagicKey(new Vector2(1160, 130), spriteBatch));
+            TiledMapObject[] magickeys = myMap.GetLayer<TiledMapObjectLayer>("magickey").Objects;
+            foreach (var it in keys)
+            {
+                Item.items.Add(new MagicKey(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             Item.items.Add(new Ladder(new Vector2(180, 300), spriteBatch));
             Item.items.Add(new Raft(new Vector2(400, 300), spriteBatch));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
@@ -133,7 +173,7 @@ namespace Game2
             //world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
             //back1 = Content.Load<Texture2D>("Dungeon");
             //background = new Background1(back1, new Vector2(0, 0), spriteBatch);
-            myMap = Content.Load<TiledMap>("map/mapD");
+            
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
