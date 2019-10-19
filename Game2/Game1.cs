@@ -66,11 +66,6 @@ namespace Game2
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
-            /*TiledMapObject[] rupies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
-            foreach (var fa in rupies)
-            {
-                Item.items.Add(new Rupy2(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
-            }*/
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -86,42 +81,41 @@ namespace Game2
             {
                 Item.items.Add(new Clock2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new Key2(new Vector2(550, 150), spriteBatch));
             TiledMapObject[] keys = myMap.GetLayer<TiledMapObjectLayer>("key").Objects;
             foreach (var it in keys)
             {
                 Item.items.Add(new Key2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new Compass2(new Vector2(640, 135), spriteBatch));
             TiledMapObject[] compasses = myMap.GetLayer<TiledMapObjectLayer>("compass").Objects;
             foreach (var it in compasses)
             {
                 Item.items.Add(new Compass2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new Map2(new Vector2(730, 50), spriteBatch));
             TiledMapObject[] maps = myMap.GetLayer<TiledMapObjectLayer>("map").Objects;
             foreach (var it in maps)
             {
                 Item.items.Add(new Map2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new Ring(new Vector2(1050, 60), spriteBatch));
             TiledMapObject[] rings = myMap.GetLayer<TiledMapObjectLayer>("ring").Objects;
             foreach (var it in rings)
             {
                 Item.items.Add(new Ring(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new MagicKey(new Vector2(1160, 130), spriteBatch));
             TiledMapObject[] magickeys = myMap.GetLayer<TiledMapObjectLayer>("magickey").Objects;
             foreach (var it in magickeys)
             {
                 Item.items.Add(new MagicKey(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            Item.items.Add(new Ladder(new Vector2(180, 300), spriteBatch));
-            Item.items.Add(new Raft(new Vector2(400, 300), spriteBatch));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
-            Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
+            TiledMapObject[] ladder = myMap.GetLayer<TiledMapObjectLayer>("ladder").Objects;
+            foreach (var it in ladder)
+            {
+                Item.items.Add(new Ladder(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
+            TiledMapObject[] raft = myMap.GetLayer<TiledMapObjectLayer>("raft").Objects;
+            foreach (var it in raft)
+            {
+                Item.items.Add(new Raft(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
