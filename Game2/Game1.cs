@@ -34,12 +34,7 @@ namespace Game2
         private Texture2D arrowLeft;
         private Texture2D arrowRight;
         private Texture2D boomerang;
-        private Texture2D handSprite;
-        private Texture2D knightSprite;
-        private Texture2D batSprite;
-        private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
-        private Texture2D item;
         
         private TiledMapRenderer mapRenderer;
         private TiledMap myMap;
@@ -66,17 +61,16 @@ namespace Game2
         protected override void LoadContent()
         {
             myMap = Content.Load<TiledMap>("map/mapD");
-            item = Content.Load<Texture2D>("Item");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
-            TiledMapObject[] rupies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
+            /*TiledMapObject[] rupies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in rupies)
             {
                 Item.items.Add(new Rupy2(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
-            }
+            }*/
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -170,12 +164,6 @@ namespace Game2
             arrowLeft = Content.Load<Texture2D>("ArrowLeft");
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang = Content.Load<Texture2D>("boomerang");
-            Texture2D boss = Content.Load<Texture2D>("Boss");
-            Texture2D dragon_sprite = Content.Load<Texture2D>("Dragon");
-            handSprite = Content.Load<Texture2D>("hand");
-            monsterSprite = Content.Load<Texture2D>("monster");
-            batSprite = Content.Load<Texture2D>("bat");
-            knightSprite = Content.Load<Texture2D>("knight");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
         }
         protected override void UnloadContent()
