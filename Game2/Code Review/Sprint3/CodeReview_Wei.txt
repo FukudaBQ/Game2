@@ -1,7 +1,7 @@
 ﻿Readability:
 Author of the code review: Zijie Wei
-Date of the code review: 9/27/2019
-Sprint number: 2
+Date of the code review: 10/18/2019
+Sprint number: 3
 Name of the .cs file being reviewed: LinkSpriteFactory.cs
 Author of the .cs file being reviewed: Beau Qu
 Number of minutes taken to complete the review: 10
@@ -10,8 +10,8 @@ For LoadAllTexture method, it is really easy to understand. For every other meth
 
 Maintainability:
 Author of the code review: Zijie Wei
-Date of the code review: 9/27/2019
-Sprint number: 2
+Date of the code review: 10/18/2019
+Sprint number: 3
 Name of the .cs file being reviewed: block.cs
 Author of the .cs file being reviewed: Yong Zhang
 Number of minutes taken to complete the review: 15

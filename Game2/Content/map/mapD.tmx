@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="19" nextobjectid="999">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="80" tileheight="80" infinite="0" nextlayerid="20" nextobjectid="1012">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -2750,9 +2750,24 @@
   <object id="937" x="2242.42" y="2978.79">
    <point/>
   </object>
+  <object id="999" x="3156" y="2000">
+   <point/>
+  </object>
+  <object id="1000" x="3404" y="2164">
+   <point/>
+  </object>
+  <object id="1001" x="3060" y="2328">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="10" name="clock">
   <object id="96" x="2959.34" y="2794.61">
+   <point/>
+  </object>
+  <object id="1002" x="2092" y="2072">
+   <point/>
+  </object>
+  <object id="1003" x="2140" y="2360">
    <point/>
   </object>
  </objectgroup>
@@ -2824,9 +2839,21 @@
   <object id="945" x="3642.42" y="348.485">
    <point/>
   </object>
+  <object id="1008" x="5508" y="1180">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="14" name="ring">
   <object id="100" x="2798.06" y="2878.7">
+   <point/>
+  </object>
+  <object id="1005" x="6912" y="1292">
+   <point/>
+  </object>
+  <object id="1006" x="7204" y="1308">
+   <point/>
+  </object>
+  <object id="1007" x="7204" y="1308">
    <point/>
   </object>
  </objectgroup>
@@ -2887,6 +2914,9 @@
   <object id="929" x="2200" y="4975.76">
    <point/>
   </object>
+  <object id="1004" x="1660" y="2136">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="17" name="raft">
   <object id="103" x="3041.12" y="2879.85">
@@ -2905,6 +2935,12 @@
    <point/>
   </object>
   <object id="934" x="3169.7" y="4760.61">
+   <point/>
+  </object>
+  <object id="1009" x="5816" y="1308">
+   <point/>
+  </object>
+  <object id="1011" x="1672" y="544">
    <point/>
   </object>
  </objectgroup>
