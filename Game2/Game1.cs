@@ -7,7 +7,6 @@ using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using System.Collections.Generic;
-using Game2.Background;
 using System.Xml;
 using System;
 using Game2.Collision;

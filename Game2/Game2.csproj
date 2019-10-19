@@ -41,7 +41,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Background\Background1.cs" />
     <Compile Include="Collision\CollisionHandler.cs" />
     <Compile Include="Commands\CamMoveDown.cs" />
     <Compile Include="Commands\CamMoveLeft.cs" />
@@ -154,6 +153,8 @@
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
     <Content Include="ReadMe.txt" />
+    <Content Include="TaskDistrubation\ChartForSprint3.png" />
+    <Content Include="TaskDistrubation\JobsForSprint3.png" />
     <Content Include="TaskDistrubation\TD1.png" />
     <Content Include="TaskDistrubation\TD2.png" />
   </ItemGroup>
@@ -183,6 +184,7 @@
     <None Include="Content\map\test1.xnb" />
     <None Include="packages.config" />
     <None Include="reflection" />
+    <None Include="reflectionFor3" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

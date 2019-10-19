@@ -1,0 +1,12 @@
+
+Srpint 3 reflection
+
+Just like what we did in sprint2, we finished all requirements first. In the meantime, we have tried a lot of methods to meet those requirments,
+we keep everything that may be useful. So in the end, we found that there are a lot of useless functions and classes which should be deleted.
+
+According to the chart, we found that we still didn't do much work at the beginning. So we should start earlier than before so that we can handle more bugs out.
+
+Plans:
+Link can access all items and pick them up, but we can't use those items.
+Also, while moving the camera, the map just switch immediately. So we need to make that move more smooth.
+Still, we plan to make our collisions more precise, since at the moment, our collisions are implemented as a circle, but they are actually rectangles. 
