@@ -2,19 +2,20 @@
 Author of the code review: Zijie Wei
 Date of the code review: 10/18/2019
 Sprint number: 3
-Name of the .cs file being reviewed: LinkSpriteFactory.cs
-Author of the .cs file being reviewed: Beau Qu
+Name of the .cs file being reviewed: player.cs
+Author of the .cs file being reviewed: Yong Zhang
 Number of minutes taken to complete the review: 10
 
-For LoadAllTexture method, it is really easy to understand. For every other methods under this class, it is clear to see what every method was doing in this program.
+These parts are really easy to read. There is a long part which is talking about the boundary of the map. When switching to other levels, there should be a boundary so that
+the user won't switch to other blank maps. Though there are full of magic numbers, which is relatively hard for people to understand.
 
 Maintainability:
 Author of the code review: Zijie Wei
 Date of the code review: 10/18/2019
 Sprint number: 3
-Name of the .cs file being reviewed: block.cs
+Name of the .cs file being reviewed: part of Game1.cs
 Author of the .cs file being reviewed: Yong Zhang
 Number of minutes taken to complete the review: 15
 
-Each variable has a discriptive name, which can help us easier to understand what each variable does.
-There is a radius variable which creates blocks, and we just need to change the value of radius to accept different size of blocks.
+Each variable has a discriptive array name, which can help us easier to understand what each variable does.
+So if people want to change the variables in the array, changing the layer names and class names are enough.

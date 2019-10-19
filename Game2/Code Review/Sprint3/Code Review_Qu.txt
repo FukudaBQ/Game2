@@ -1,0 +1,24 @@
+Readability:Easy to understand, use of data structure reflects what happens in the real world
+Author of the code review: Beau QU
+Date of the code review: 10/18/2019
+Sprint number: 3
+Name of the .cs file being reviewed: itemFactory.cs
+Author of the .cs file being reviewed: Zijie Wei
+Number of minutes taken to complete the review: 10 mins
+Specific comments on what is readable and what is not: 
+	variable names are very spefic and meaningful.
+	some magic numbers may be a burden for others to understand
+
+Maintainability: High cohension and low coupling. Single point over control
+Author of the code review: Beau QU
+Date of the code review: 10/18/2019
+Sprint number: 3
+Name of the .cs file being reviewed: item.cs
+Author of the .cs file being reviewed: ZijieWei
+Number of minutes taken to complete the review: 10 mins
+Specific comments on code quality: 
+	variable names are very spefic and meaningful. Thus the whole logic can be easily understand
+	High cohension, the class only does one thing. 
+
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+	If we want to change the mouse state, say, that mouse is invisiable, we only have to change what is inside the mouse controller without changing the other files. 
