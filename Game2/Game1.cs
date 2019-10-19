@@ -40,11 +40,7 @@ namespace Game2
         private Texture2D monsterSprite;
         private Texture2D map1Sprite;
         private Texture2D GeneralBlockSprite;
-        private Texture2D batSprite;
         private Texture2D dragonSprite;
-        private Texture2D monsterSprite;
-        private Texture2D handSprite;
-        private Texture2D knightSprite;
 
         private Bat bat;
         private Dragon dragon;
