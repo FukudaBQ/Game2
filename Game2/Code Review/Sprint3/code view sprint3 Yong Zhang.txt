@@ -1,0 +1,21 @@
+Author of the code review: Yong Zhang
+Date of the code review: 2019/10/18
+Sprint number: 3
+Name of the .cs file being reviewed : Fairy.cs
+Author of the .cs file being reviewed: Hangyu Yin
+Number of minutes taken to complete the review: 10
+Specific comments on what is readable and what is not: 
+
+All the variables and method have meaningful names. Code in each method is highly readable with variable names and method names.
+However, most methods in this class are same with the methods in the item class which is used to manage the most of item classes including fairy class. Therefore, It's a little bit confusing that Huangyu writing come repeating methods here to make this class unclear.
+
+Author of the code review: Yong Zhang
+Date of the code review: 2019/10/18
+Sprint number: 3
+Name of the .cs file being reviewed: CollisionHandler.cs
+Author of the .cs file being reviewed: Hangyu Yin
+Specific comments on code quality
+A hypothetical change to make to the game related to file being reviewed and how the current implementation could or could not easily support that change:
+The class is used to handle collisions in the game. In the future, we are going to add the collisions between projectiles, the player and enemies. 
+The collisions of projectiles and the player will be easily supported by this class since this class can see player class and its statemachine.
+However, the current implementation could not easily support collisions of enemies since this class does not see any enemy classes.
