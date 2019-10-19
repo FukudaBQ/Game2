@@ -18,8 +18,11 @@ namespace Game2.Commands
 
         public void Execute()
         {
-          player.setX(960);
-          player.setY(540);
+          player.setX(3200);
+          player.setY(3880);
+            player.camPosition.X = 3200;
+            player.camPosition.Y = 3880;
+            player.tempCam = player.camPosition;
         }
     }
 }

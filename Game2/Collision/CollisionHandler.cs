@@ -12,8 +12,7 @@ namespace Game2.Collision
 {
     class CollisionHandler
     {
-        private Game1 game;
-        private Vector2 camLocation;
+     
         public void CollisionHandle(Player player)
         {
             foreach(Item it in Item.items)
