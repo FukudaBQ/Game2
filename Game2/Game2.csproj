@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Background\Background1.cs" />
     <Compile Include="Collision\CollisionHandler.cs" />
+    <Compile Include="Commands\CamMoveDown.cs" />
+    <Compile Include="Commands\CamMoveLeft.cs" />
+    <Compile Include="Commands\CamMoveRight.cs" />
+    <Compile Include="Commands\CamMoveUp.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
