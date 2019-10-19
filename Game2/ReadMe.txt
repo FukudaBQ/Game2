@@ -6,6 +6,9 @@ Bugs: 1. After using Z or N to use sword, and pressing 1,2, or 3 to use projecti
 
 
 For sprint 3, you can still use WASD or arrow to control the sprite which is link. Then you can use 1, 2, 3 to use projectiles. In order to use sword, you can press Z or N.
+Then press R to reset, press q to quit.
+Then you want to switch to other levels, you can press F to move up, V to move down, C to move left, B to move right.
+In this sprint, we also added the blocks in water, which makes the player slow down while walking on the water.
 There are some bugs which still haven't been solve:    1. Since we use radius to construct blocks in the map, sometimes the player can't move through directly,
 												       so you may need to move around, and find a way to walk through.
 													   2. Another thing is that after using sword, then if you press 1, 2 or 3 to use projectiles right after using sword, 

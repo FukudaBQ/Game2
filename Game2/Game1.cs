@@ -35,7 +35,17 @@ namespace Game2
         private Texture2D arrowRight;
         private Texture2D boomerang;
         private Texture2D GeneralBlockSprite;
-        
+        private Texture2D batSprite;
+        private Texture2D dragonSprite;
+        private Texture2D monsterSprite;
+        private Texture2D handSprite;
+        private Texture2D knightSprite;
+
+        private Bat bat;
+        private Dragon dragon;
+        private Monster monster;
+        private Hand hand;
+        private Knight knight;
         private TiledMapRenderer mapRenderer;
         private TiledMap myMap;
         private Camera2D cam;
@@ -66,6 +76,11 @@ namespace Game2
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
+            bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
+            dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
+            monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
+            hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
+            knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -116,7 +131,6 @@ namespace Game2
             {
                 Item.items.Add(new Raft(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
@@ -159,6 +173,11 @@ namespace Game2
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang = Content.Load<Texture2D>("boomerang");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
+            batSprite = Content.Load<Texture2D>("bat");
+            dragonSprite = Content.Load<Texture2D>("Dragon");
+            monsterSprite=Content.Load<Texture2D>("monster");
+            handSprite = Content.Load<Texture2D>("hand");
+            knightSprite = Content.Load<Texture2D>("knight");
         }
         protected override void UnloadContent()
         {
@@ -167,8 +186,13 @@ namespace Game2
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameTime);
+            bat.Update(gameTime);
+            dragon.Update(gameTime);
+            monster.Update(gameTime);
+            hand.Update(gameTime);
+            knight.Update(gameTime);
 
-            foreach(Item it in Item.items)
+            foreach (Item it in Item.items)
             {
                 it.Update(gameTime);
             }
@@ -188,6 +212,11 @@ namespace Game2
             GraphicsDevice.Clear(Color.Gray);
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
+            bat.Draw();
+            dragon.Draw();
+            monster.Draw();
+            hand.Draw();
+            knight.Draw();
 
             foreach (Item it in Item.items)
             {
