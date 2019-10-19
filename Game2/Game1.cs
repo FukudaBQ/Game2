@@ -6,7 +6,6 @@ using Game2.Sprites.Link;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
-using Game2.Sprites.World;
 using System.Collections.Generic;
 using Game2.Background;
 using System.Xml;
@@ -39,31 +38,9 @@ namespace Game2
         private Texture2D knightSprite;
         private Texture2D batSprite;
         private Texture2D monsterSprite;
-        private Texture2D map1Sprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D item;
-        private Texture2D back1;
         
-        private Rupy rupy;
-        private Triforce triforce;
-        private Fairy fairy;
-        private Dragon dragon;
-        private Hand hand;
-        private Monster monster;
-        private Knight knight;
-        private Bat bat;
-        private OldMan oldMan;
-        private Clock clock;
-        private Key key;
-        private Compass compass;
-        private HeartContainer heartContainer;
-        private Map map;
-        private Bow bow;
-        private Sword sword;
-        private Arrow arrow;
-        private Texture2D worldSprite;
-        private Wolrd world;
-        private Background1 background;
         private TiledMapRenderer mapRenderer;
         private TiledMap myMap;
         private Camera2D cam;
@@ -90,38 +67,26 @@ namespace Game2
         {
             myMap = Content.Load<TiledMap>("map/mapD");
             item = Content.Load<Texture2D>("Item");
-            //
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
-            //rupy = new Rupy(new Vector2(50,50), spriteBatch);
-            
-
-            triforce = new Triforce(new Vector2(100, 50), spriteBatch);
-            //fairy = new Fairy2(new Vector2(200, 130), spriteBatch);
-            //Item.items.Add(new Fairy2(new Vector2(300,300),spriteBatch));
+            TiledMapObject[] rupies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
+            foreach (var fa in rupies)
+            {
+                Item.items.Add(new Rupy2(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
+            }
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
-                Fairy.fairies.Add(new Fairy(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
+                Item.items.Add(new Fairy2(new Vector2(fa.Position.X, fa.Position.Y + 800), spriteBatch));
             }
-            //Fairy.fairies.Add(new Fairy(new Vector2(500, 300), spriteBatch));
-
-            bat = new Bat(batSprite, new Vector2(1200, 800), spriteBatch);
-            knight = new Knight(knightSprite, new Vector2(1300, 800), spriteBatch);
-            oldMan = new OldMan(new Vector2(270, 110), spriteBatch);
-            //heartContainer = new HeartContainer(new Vector2(370, 140),spriteBatch);
-            //Item.items.Add(new Heart(new Vector2(370, 140), spriteBatch));
             TiledMapObject[] hearts = myMap.GetLayer<TiledMapObjectLayer>("heart").Objects;
             foreach (var ha in hearts)
             {
                 Item.items.Add(new Heart(new Vector2(ha.Position.X, ha.Position.Y + 800), spriteBatch));
             }
-
-            //clock = new Clock(new Vector2(460, 135), spriteBatch);
-            //Item.items.Add(new Clock2(new Vector2(460, 135), spriteBatch));
             TiledMapObject[] clocks = myMap.GetLayer<TiledMapObjectLayer>("clock").Objects;
             foreach (var it in clocks)
             {
@@ -133,24 +98,18 @@ namespace Game2
             {
                 Item.items.Add(new Key2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            //key = new Key(item, new Vector2(550, 135), spriteBatch);
-            //compass = new Compass(new Vector2(640, 135), spriteBatch);
             Item.items.Add(new Compass2(new Vector2(640, 135), spriteBatch));
             TiledMapObject[] compasses = myMap.GetLayer<TiledMapObjectLayer>("compass").Objects;
             foreach (var it in compasses)
             {
                 Item.items.Add(new Compass2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            //map = new Map(new Vector2(730, 50), spriteBatch);
             Item.items.Add(new Map2(new Vector2(730, 50), spriteBatch));
             TiledMapObject[] maps = myMap.GetLayer<TiledMapObjectLayer>("map").Objects;
             foreach (var it in maps)
             {
                 Item.items.Add(new Map2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            bow = new Bow(new Vector2(820, 130), spriteBatch);
-            sword = new Sword(new Vector2(910, 40), spriteBatch);
-            arrow = new Arrow(new Vector2(955, 130), spriteBatch);
             Item.items.Add(new Ring(new Vector2(1050, 60), spriteBatch));
             TiledMapObject[] rings = myMap.GetLayer<TiledMapObjectLayer>("ring").Objects;
             foreach (var it in rings)
@@ -159,7 +118,7 @@ namespace Game2
             }
             Item.items.Add(new MagicKey(new Vector2(1160, 130), spriteBatch));
             TiledMapObject[] magickeys = myMap.GetLayer<TiledMapObjectLayer>("magickey").Objects;
-            foreach (var it in keys)
+            foreach (var it in magickeys)
             {
                 Item.items.Add(new MagicKey(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
@@ -169,15 +128,16 @@ namespace Game2
             Blocks.blocks.Add(new GeneralBlock(new Vector2(480, 589)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 392)));
             Blocks.blocks.Add(new GeneralBlock(new Vector2(1320, 589)));
-            //worldSprite = Content.Load<Texture2D>("world");
-            //world = new Wolrd(worldSprite, new Vector2(0, 0), spriteBatch);
-            //back1 = Content.Load<Texture2D>("Dungeon");
-            //background = new Background1(back1, new Vector2(0, 0), spriteBatch);
             
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
+            TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
+            foreach (var wblo in waterblocks)
+            {
+                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -216,11 +176,7 @@ namespace Game2
             monsterSprite = Content.Load<Texture2D>("monster");
             batSprite = Content.Load<Texture2D>("bat");
             knightSprite = Content.Load<Texture2D>("knight");
-            map1Sprite = Content.Load<Texture2D>("map1");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
-            dragon = new Dragon(dragon_sprite, new Vector2(800, 800), spriteBatch);
-            hand = new Hand(handSprite, new Vector2(1000, 800), spriteBatch);
-            monster = new Monster(monsterSprite, new Vector2(1100, 800), spriteBatch);
         }
         protected override void UnloadContent()
         {
@@ -229,44 +185,18 @@ namespace Game2
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameTime);
-            //rupy.Update(gameTime);
-            triforce.Update(gameTime);
-            //fairy.Update(gameTime);
-            /*foreach (Fairy fy in Fairy.fairies)
-            {
-                fy.Update(gameTime);
-            }*/
 
             foreach(Item it in Item.items)
             {
                 it.Update(gameTime);
             }
-            /* foreach (Fairy fy in Fairy.fairies)
-             {
-                 int sum = player.radius + fy.Radius;
-                 if (Vector2.Distance(player.Position, fy.location) < sum )
-                 {
-                     fy.Collided = true;
-                 }
-             }*/
 
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player);
 
-            //Fairy.fairies.RemoveAll(p => p.Collided);
-            
-            dragon.Update(gameTime);
-            hand.Update(gameTime);
-            knight.Update(gameTime);
-            bat.Update(gameTime);
-            monster.Update(gameTime);
-            oldMan.Update(gameTime);
             projHandler.Update(gameTime);
-            //world.Update(gameTime);
-            //background.Update(gameTime);
             cam.LookAt(player.camPosition);
-            //cam.LookAt(player.Position);
 
             base.Update(gameTime);
 
@@ -276,36 +206,11 @@ namespace Game2
             GraphicsDevice.Clear(Color.Gray);
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
-            //spriteBatch.Draw(map1Sprite, new Rectangle(0,0,1920,1080),Color.White);
-            //background.Draw();
-            //rupy.Draw();
-            triforce.Draw();
-            //fairy.Draw();
-            /*foreach (Fairy fy in Fairy.fairies)
-            {
-                fy.Draw();
-            }*/
 
             foreach (Item it in Item.items)
             {
                 it.Draw();
             }
-
-
-            dragon.Draw();
-            hand.Draw();
-            bat.Draw();
-            knight.Draw();
-            monster.Draw();
-            oldMan.Draw();
-            //heartContainer.Draw();
-            //clock.Draw();
-            //key.Draw();
-            //compass.Draw();
-            //map.Draw();
-            bow.Draw();
-            arrow.Draw();
-            sword.Draw();
 
             projHandler.Draw(spriteBatch, bomb, Projectile.bomb);
             projHandler.Draw(spriteBatch, arrowDown, Projectile.arrowDown);
@@ -320,91 +225,12 @@ namespace Game2
             }
 
 
-            //world.Draw();
             player.anim.Draw(spriteBatch, player.Position);
             spriteBatch.End();
-
-            //player.anim.Draw(spriteBatch, player.Position);
 
             base.Draw(gameTime);
         }
     }
-    public class GameWorld
-    {
-        private List<Fairy> fairy;
-        private XMLLookUp xmlTree;
-        private String worldIndex;
-        private ItemFactory itemFactory;
-        private SpriteBatch spriteBatch;
-        public GameWorld(XMLLookUp xmlTree, String worldIndex, SpriteBatch spriteBatch)
-        {
-            fairy = new List<Fairy>();
-            this.xmlTree = xmlTree;
-            worldIndex = this.worldIndex;
-            this.spriteBatch = spriteBatch;
-            initilizeWorld();
-        }
-
-        private void initilizeWorld()
-        {
-            XmlNode a = xmlTree.FindWorld(worldIndex);
-            XmlNodeList StaticsChilds = XMLLookUp.returnStatic(a.ChildNodes);
-            foreach (XmlNode iter in StaticsChilds)
-            {
-                if (iter.Name.Equals("fairy"))
-                {
-                    int x = Int32.Parse(iter.Attributes["x"].Value);
-                    int y = Int32.Parse(iter.Attributes["y"].Value);
-                    fairy.Add(new Fairy(new Vector2(x,y), spriteBatch));
-                }
-            }
-
-        }
-
-        public void changeWorld(String worldIndex)
-        {
-            fairy.Clear();
-            this.worldIndex = worldIndex;
-            initilizeWorld();
-        }
-
-        public void Draw()
-        {
-            initilizeWorld();
-        }
-
-        public void Update(GameTime gameTime, String worldIndex)
-        {
-            if (this.worldIndex.Equals(worldIndex))
-            {
-                //call update for each
-            }
-            else
-            {
-                changeWorld(worldIndex);
-            }
-        }
-
-
-    }
-    public class XMLLookUp
-    {
-        private XmlDocument doc;
-        private XmlNodeList childnodes;
-        public XMLLookUp()
-        {
-            doc = new XmlDocument();
-            doc.Load("Content/WorldOfElements.xml");
-            childnodes = doc.ChildNodes;
-        }
-
-        public XmlNode FindWorld(string worldIndex)
-        {
-            return doc.GetElementsByTagName(worldIndex)[0];
-        }
-        public static XmlNodeList returnStatic(XmlNodeList level)
-        {
-            return level.Item(0).ChildNodes;
-        }
-    }
+   
+    
 }

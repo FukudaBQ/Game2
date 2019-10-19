@@ -64,6 +64,14 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             
+            if (Blocks.Blocks.inwater(position, radius))
+            {
+                speed = 50;
+            }
+            else
+            {
+                speed = 200;
+            }
             stateMachine.Update(gameTime);
             direction = stateMachine.getDirection();
             anim = facing[direction];

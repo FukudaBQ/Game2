@@ -17,6 +17,7 @@ namespace Game2.Sprites.Blocks
         protected Vector2 hitPos;
 
         public static List<Blocks> blocks = new List<Blocks>();
+        public static List<Blocks> waterblocks = new List<Blocks>();
         public static List<Blocks> upblocks = new List<Blocks>();
         public static List<Blocks> downblocks = new List<Blocks>();
         public static List<Blocks> leftblocks = new List<Blocks>();
@@ -42,6 +43,7 @@ namespace Game2.Sprites.Blocks
         {
             position = newPos;
         }
+        
         public static bool didCollide(Vector2 otherPos, int otherRad)
         {
             foreach(Blocks b in Blocks.blocks)
@@ -54,7 +56,22 @@ namespace Game2.Sprites.Blocks
             }
             return false;
         }
-        
+
+        public static bool inwater(Vector2 otherPos, int otherRad)
+        {
+            foreach (Blocks b in Blocks.waterblocks)
+            {
+                int sum = b.Radius + otherRad;
+                if (Vector2.Distance(b.hitPos, otherPos) < sum)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
 
     }
 

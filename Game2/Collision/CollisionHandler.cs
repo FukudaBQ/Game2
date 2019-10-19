@@ -78,7 +78,7 @@ namespace Game2.Collision
                 if (Vector2.Distance(player.Position, riblo.Position) < sum)
                 {
 
-                    player.position.X = player.position.X + 410;
+                    player.position.X = player.position.X + 380;
                     player.camPosition.X = player.camPosition.X + 1280;
 
 
