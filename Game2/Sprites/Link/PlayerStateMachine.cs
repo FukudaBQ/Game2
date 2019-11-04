@@ -90,6 +90,8 @@ namespace Game2.Sprites.Link
                 || direction == Dir.Left || direction == Dir.Right)
             {
                 direction = changeToSword[direction];
+                MySounds.attack.Play();
+
             }
             isSwording = true;
 
@@ -120,7 +122,7 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.Z) || kState.IsKeyDown(Keys.N))
             {
                 UseSword();
-
+                
             }
 
         }

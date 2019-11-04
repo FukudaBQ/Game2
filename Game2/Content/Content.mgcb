@@ -158,6 +158,18 @@
 /processorParam:TextureFormat=Color
 /build:hand.png
 
+#begin HUD.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:HUD.png
+
 #begin Item.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -628,6 +640,54 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:monster.png
+
+#begin music/Dungeon.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/Dungeon.mp3
+
+#begin music/Game Over.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/Game Over.mp3
+
+#begin music/GetFairy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/GetFairy.wav
+
+#begin music/GetHeart.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/GetHeart.wav
+
+#begin music/GetRupy.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/GetRupy.wav
+
+#begin music/Put Bomb.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/Put Bomb.wav
+
+#begin music/Triforce.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/Triforce.mp3
+
+#begin music/UseSword.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/UseSword.wav
 
 #begin NPC.png
 /importer:TextureImporter

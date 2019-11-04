@@ -61,6 +61,7 @@
     <Compile Include="Sprites\Enemies\BatStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
     <Compile Include="Sprites\Enemies\DragonStateMachine.cs" />
+    <Compile Include="Sprites\Enemies\Enemies.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
@@ -114,6 +115,7 @@
     <Content Include="Code Review\Sprint3\code view sprint3 Yong Zhang.txt" />
     <Content Include="Code Review\Sprint3\Code Review_Qu.txt" />
     <Content Include="Code Review\Sprint3\CodeReview_Wei.txt" />
+    <Content Include="Code Review\Sprint3\code_review_Ying.txt" />
     <Content Include="Content\ArrowDown.png" />
     <Content Include="Content\ArrowLeft.png" />
     <Content Include="Content\ArrowRight.png" />
@@ -147,6 +149,14 @@
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
     <Content Include="Content\monster.png" />
+    <Content Include="Content\music\Dungeon.mp3" />
+    <Content Include="Content\music\Game Over.mp3" />
+    <Content Include="Content\music\GetFairy.wav" />
+    <Content Include="Content\music\GetHeart.wav" />
+    <Content Include="Content\music\GetRupy.wav" />
+    <Content Include="Content\music\Put Bomb.wav" />
+    <Content Include="Content\music\Triforce.mp3" />
+    <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\World.png" />

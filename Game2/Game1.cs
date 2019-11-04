@@ -14,12 +14,20 @@ using Game2.Collision;
 using MonoGame.Extended.Tiled;
 using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace Game2
 {
     enum Dir
     {
         Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
+    }
+
+    public static class MySounds
+    {
+        public static SoundEffect attack;
+        public static Song overworld;
     }
     public class Game1 : Game
     {
@@ -177,6 +185,9 @@ namespace Game2
             monsterSprite=Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
             knightSprite = Content.Load<Texture2D>("knight");
+            MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
+            MySounds.overworld = Content.Load<Song>("music/Dungeon");
+            MediaPlayer.Play(MySounds.overworld);
         }
         protected override void UnloadContent()
         {
@@ -194,6 +205,10 @@ namespace Game2
             foreach (Item it in Item.items)
             {
                 it.Update(gameTime);
+            }
+            foreach(Enemies en in Enemies.enemies)
+            {
+                en.Update(gameTime, player.Position);
             }
 
             CollisionHandler collisionHandler = new CollisionHandler();
