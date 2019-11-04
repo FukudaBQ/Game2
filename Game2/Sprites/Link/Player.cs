@@ -22,6 +22,8 @@ namespace Game2.Sprites.Link
         private PlayerStateMachine stateMachine;
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();
         public int radius=20;
+        public int width = 10;
+        public int length = 20;
         public Animate[] ani = new Animate[7];
         public Vector2[] MapBoundary = { new Vector2(3200, 3880), new Vector2(3200, 3000), new Vector2(3200, 2120),
             new Vector2(3200, 1240), new Vector2(1920, 1240), new Vector2(640, 1240), new Vector2(1920, 3000),
@@ -78,7 +80,7 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             
-            if (Blocks.Blocks.inwater(position, radius))
+            if (Blocks.Blocks.inwater(position, length,width))
             {
                 speed = 50;
             }
@@ -101,39 +103,41 @@ namespace Game2.Sprites.Link
             if (stateMachine.ifIsMoving())
             {
                 Vector2 tempPos = position;
+                tempPos.X = position.X + 20;
+                tempPos.Y = position.Y + 10;
                 switch (direction)
                 {
                     case Dir.Right:
                         tempPos.X += speed * dt;
-                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        if (!Blocks.Blocks.didCollide(tempPos, length,width))
                         {
                             position.X += speed * dt;
                         }
-                        //position.X += speed * dt;
+                       
                         break;
                     case Dir.Left:
                         tempPos.X -= speed * dt;
-                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width))
                         {
                             position.X -= speed * dt;
                         }
-                        //position.X -= speed * dt;
+                        
                         break;
                     case Dir.Up:
                         tempPos.Y -= speed * dt;
-                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width))
                         {
                             position.Y -= speed * dt;
                         }
-                        //position.Y -= speed * dt;
+                       
                         break;
                     case Dir.Down:
                         tempPos.Y += speed * dt;
-                        if (!Blocks.Blocks.didCollide(tempPos, radius))
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width))
                         {
                             position.Y += speed * dt;
                         }
-                        //position.Y += speed * dt;
+                        
                         break;
                     default:
                         break;

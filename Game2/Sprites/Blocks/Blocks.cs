@@ -14,6 +14,8 @@ namespace Game2.Sprites.Blocks
     {
         protected Vector2 position;
         protected int radius;
+        protected int Length;
+        protected int Width;
         protected Vector2 hitPos;
 
         public static List<Blocks> blocks = new List<Blocks>();
@@ -44,12 +46,13 @@ namespace Game2.Sprites.Blocks
             position = newPos;
         }
         
-        public static bool didCollide(Vector2 otherPos, int otherRad)
+        public static bool didCollide(Vector2 otherPos, int otherL, int otherW)
         {
             foreach(Blocks b in Blocks.blocks)
             {
-                int sum = b.Radius + otherRad;
-                if (Vector2.Distance(b.hitPos, otherPos) < sum)
+                int Lsum = b.Length + otherL;
+                int Wsum = b.Width + otherW;
+                if (Math.Abs(b.hitPos.X - otherPos.X) <=Lsum && Math.Abs(b.hitPos.Y - otherPos.Y) <= Wsum)
                 {
                     return true;
                 }
@@ -57,12 +60,13 @@ namespace Game2.Sprites.Blocks
             return false;
         }
 
-        public static bool inwater(Vector2 otherPos, int otherRad)
+        public static bool inwater(Vector2 otherPos, int otherL, int otherW)
         {
             foreach (Blocks b in Blocks.waterblocks)
             {
-                int sum = b.Radius + otherRad;
-                if (Vector2.Distance(b.hitPos, otherPos) < sum)
+                int Lsum = b.Length + otherL;
+                int Wsum = b.Width + otherW;
+                if (b.hitPos.X + otherPos.X <= Lsum && b.hitPos.Y + otherPos.Y <= Wsum)
                 {
                     return true;
                 }
@@ -79,8 +83,9 @@ namespace Game2.Sprites.Blocks
     {
         public GeneralBlock(Vector2 newPos) : base(newPos)
         {
-            radius = 50;
-            hitPos = new Vector2(position.X-2, position.Y);
+            Width = 50;
+            Length = 40;
+            hitPos = new Vector2(position.X+10, position.Y-10);
         }
     }
 }
