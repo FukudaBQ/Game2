@@ -47,6 +47,7 @@ namespace Game2
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
+        private Texture2D HUD;
 
         private Bat bat;
         private Dragon dragon;
@@ -188,6 +189,7 @@ namespace Game2
             MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MediaPlayer.Play(MySounds.overworld);
+            HUD = Content.Load<Texture2D>("119728");
         }
         protected override void UnloadContent()
         {
