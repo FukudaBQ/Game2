@@ -39,6 +39,7 @@ namespace Game2
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
+        private Texture2D HUD;
 
         private Bat bat;
         private Dragon dragon;
@@ -177,6 +178,7 @@ namespace Game2
             monsterSprite=Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
             knightSprite = Content.Load<Texture2D>("knight");
+            HUD = Content.Load<Texture2D>("119728");
         }
         protected override void UnloadContent()
         {
