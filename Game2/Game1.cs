@@ -237,12 +237,12 @@ namespace Game2
                 it.Draw();
             }
 
-            projHandler.Draw(spriteBatch, bomb, bombProj.bomb);
-            projHandler.Draw(spriteBatch, arrowDown, bombProj.arrowDown);
-            projHandler.Draw(spriteBatch, arrowUp, bombProj.arrowUp);
-            projHandler.Draw(spriteBatch, arrowLeft, bombProj.arrowLeft);
-            projHandler.Draw(spriteBatch, arrowRight, bombProj.arrowRight);
-            projHandler.Draw(spriteBatch, boomerang, bombProj.boomerang);
+            projHandler.Draw(spriteBatch, bomb, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
+            projHandler.Draw(spriteBatch, arrowDown, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
+            projHandler.Draw(spriteBatch, arrowUp, bombProj.bomb, arrowProj.arrowUp, boomerangProj.boomerang);
+            projHandler.Draw(spriteBatch, arrowLeft, bombProj.bomb, arrowProj.arrowLeft, boomerangProj.boomerang);
+            projHandler.Draw(spriteBatch, arrowRight, bombProj.bomb, arrowProj.arrowRight, boomerangProj.boomerang);
+            projHandler.Draw(spriteBatch, boomerang, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
 
             foreach (Blocks b in Blocks.blocks)
             {

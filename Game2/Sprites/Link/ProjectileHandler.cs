@@ -43,9 +43,17 @@ namespace Game2.Sprites.Link
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<bombProj> projListToDraw)
+        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<bombProj> bombToDraw, List<arrowProj> arrowToDraw, List<boomerangProj> boomerangToDraw)
         {
-            foreach (bombProj i in projListToDraw)
+            foreach (bombProj i in bombToDraw)
+            {
+                spriteBatch.Draw(textureToDraw, i.Position, Color.White);
+            }
+            foreach (arrowProj i in arrowToDraw)
+            {
+                spriteBatch.Draw(textureToDraw, i.Position, Color.White);
+            }
+            foreach (boomerangProj i in boomerangToDraw)
             {
                 spriteBatch.Draw(textureToDraw, i.Position, Color.White);
             }
