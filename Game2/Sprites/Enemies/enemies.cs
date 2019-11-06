@@ -39,6 +39,14 @@ namespace Game2.Sprites.Enemies
             get { return radius; }
         }
 
+        public void setX(float newX)
+        {
+            position.X = newX;
+        }
+        public void setY(float newY)
+        {
+            position.Y = newY;
+        }
         public Enemies(Vector2 newPos)
         {
             position = newPos;
@@ -56,11 +64,42 @@ namespace Game2.Sprites.Enemies
     class Bats : Enemies {
         public Bats(Vector2 newPos) : base(newPos) {
             speed = 160;
+            radius = 10;
+            health = 1;
         }
     }
-    class Dragons : Enemies {
-        public Dragons(Vector2 newPos) : base(newPos) {
+    class Hands : Enemies {
+        public Hands(Vector2 newPos) : base(newPos) {
             speed = 80;
+            radius = 15;
+            health = 2;
         }
     }
+    class Knights : Enemies
+    {
+        public Knights(Vector2 newPos) : base(newPos)
+        {
+            speed = 80;
+            radius = 15;
+            health = 2;
+        }
+    }
+    class Monsters : Enemies
+    {
+        public Monsters(Vector2 newPos) : base(newPos)
+        {
+            speed = 80;
+            radius = 15;
+            health = 3;
+        }
+    }
+    /*class Stalfoses : Enemies
+    {
+        public Stalfoses(Vector2 newPos) : base(newPos)
+        {
+            speed = 80;
+            radius = 15;
+            health = 2;
+        }
+    }*/
 }

@@ -10,13 +10,33 @@ namespace Game2.Sprites.Link
 {
     class ProjectileHandler
     {
+        private Vector2 position;
+        private Dir direction;
 
 
         public void Update(GameTime gameTime)
         {
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (Projectile proj in Projectile.bomb)
             {
-                proj.Update(gameTime);
+                /*switch (direction)
+                {
+                    case Dir.Right:
+                        position.X -= 30;
+                        break;
+                    case Dir.Left:
+                        position.X += 30;
+                        break;
+                    case Dir.Up:
+                        position.Y += 30;
+                        break;
+                    case Dir.Down:
+                        position.Y -= 30;
+                        break;
+                    default:
+                        break;
+                }*/
+                //proj.Update(gameTime);
             }
             foreach (Projectile proj in Projectile.arrowDown)
             {

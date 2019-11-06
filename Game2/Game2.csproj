@@ -48,9 +48,11 @@
     <Compile Include="Commands\CamMoveUp.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
+    <Compile Include="Factory\EnemyFactory.cs" />
     <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Object\Items\Item.cs" />
@@ -123,12 +125,11 @@
     <Content Include="Content\bat.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\Dragon.png" />
-    <Content Include="..\..\..\..\Desktop\Enemy1.png">
-      <Link>Content\Enemy1.png</Link>
-    </Content>
     <Content Include="Content\Dungeon.png" />
+    <Content Include="Content\Enemy1.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\hand.png" />
+    <Content Include="Content\HUD.png" />
     <Content Include="Content\Item.png" />
     <Content Include="Content\knight.png" />
     <Content Include="Content\Link.png" />
