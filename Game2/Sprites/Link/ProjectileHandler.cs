@@ -10,39 +10,42 @@ namespace Game2.Sprites.Link
 {
     class ProjectileHandler
     {
+        private Vector2 position;
+        private Dir direction;
 
 
         public void Update(GameTime gameTime)
         {
-            foreach (Projectile proj in Projectile.bomb)
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            foreach (bombProj proj in bombProj.bomb)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowDown)
+            foreach (arrowProj proj in arrowProj.arrowDown)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowUp)
+            foreach (arrowProj proj in arrowProj.arrowUp)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowLeft)
+            foreach (arrowProj proj in arrowProj.arrowLeft)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowRight)
+            foreach (arrowProj proj in arrowProj.arrowRight)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.boomerang)
+            foreach (boomerangProj proj in boomerangProj.boomerang)
             {
                 proj.Update(gameTime);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<Projectile> projListToDraw)
+        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<bombProj> projListToDraw)
         {
-            foreach (Projectile i in projListToDraw)
+            foreach (bombProj i in projListToDraw)
             {
                 spriteBatch.Draw(textureToDraw, i.Position, Color.White);
             }

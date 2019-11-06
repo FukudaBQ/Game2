@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Link
 {
-    class Projectile
+    class bombProj
     {
         private Vector2 position;
         private int speed = 600;
         private Dir direction;
 
+        public static List<bombProj> bomb = new List<bombProj>();
+        public static List<bombProj> arrowDown = new List<bombProj>();
+        public static List<bombProj> arrowUp = new List<bombProj>();
+        public static List<bombProj> arrowLeft = new List<bombProj>();
+        public static List<bombProj> arrowRight = new List<bombProj>();
+        public static List<bombProj> boomerang = new List<bombProj>();
 
-        public static List<Projectile> bomb = new List<Projectile>();
-        public static List<Projectile> arrowDown = new List<Projectile>();
-        public static List<Projectile> arrowUp = new List<Projectile>();
-        public static List<Projectile> arrowLeft = new List<Projectile>();
-        public static List<Projectile> arrowRight = new List<Projectile>();
-        public static List<Projectile> boomerang = new List<Projectile>();
-
-        public Projectile(Vector2 location, Dir newDir)
+        public bombProj(Vector2 location, Dir newDir)
         {
             position = location;
             direction = newDir;
@@ -59,6 +58,7 @@ namespace Game2.Sprites.Link
                     break;
             }
         }
+
     }
 
 }

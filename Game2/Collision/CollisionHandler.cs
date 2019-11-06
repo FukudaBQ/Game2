@@ -1,5 +1,6 @@
 ﻿using Game2.Object.Items;
 using Game2.Sprites.Blocks;
+using Game2.Sprites.Enemies;
 using Game2.Sprites.Link;
 using Microsoft.Xna.Framework;
 using System;
@@ -28,6 +29,19 @@ namespace Game2.Collision
                 }
             }
             Item.items.RemoveAll(p => p.Collided);
+
+            foreach (Enemies en in Enemies.enemies)
+            {
+                Type itemType = en.GetType();
+                int sum = player.radius + en.Radius;
+                if (true)
+                {
+                    if (Vector2.Distance(player.Position, en.Position) < sum)
+                    {
+                        en.Collided = true;
+                    }
+                }
+            }
             foreach (Blocks upblo in Blocks.upblocks)
             {
                 int sum = player.radius + upblo.Radius;
@@ -77,7 +91,7 @@ namespace Game2.Collision
                 if (Vector2.Distance(player.Position, riblo.Position) < sum)
                 {
 
-                    player.position.X = player.position.X + 380;
+                    player.position.X = player.position.X + 330;
                     player.camPosition.X = player.camPosition.X + 1280;
 
 
