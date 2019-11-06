@@ -150,30 +150,30 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
             {
-                Projectile.bomb.Add(new Projectile(position, direction));
+                bombProj.bomb.Add(new bombProj(position, direction));
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
                 if (direction == Dir.Down)
                 {
-                    Projectile.arrowDown.Add(new Projectile(position, direction));
+                    bombProj.arrowDown.Add(new bombProj(position, direction));
                 }
                 if (direction == Dir.Up)
                 {
-                    Projectile.arrowUp.Add(new Projectile(position, direction));
+                    bombProj.arrowUp.Add(new bombProj(position, direction));
                 }
                 if (direction == Dir.Left)
                 {
-                    Projectile.arrowLeft.Add(new Projectile(position, direction));
+                    bombProj.arrowLeft.Add(new bombProj(position, direction));
                 }
                 if (direction == Dir.Right)
                 {
-                    Projectile.arrowRight.Add(new Projectile(position, direction));
+                    bombProj.arrowRight.Add(new bombProj(position, direction));
                 }
             }
             if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
             {
-                Projectile.boomerang.Add(new Projectile(position, direction));
+                bombProj.boomerang.Add(new bombProj(position, direction));
             }
 
             if (kState.IsKeyDown(Keys.F) && previous.IsKeyUp(Keys.F))

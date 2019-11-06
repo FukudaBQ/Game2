@@ -84,11 +84,13 @@
     <Compile Include="Object\Items\Rupy.cs" />
     <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
+    <Compile Include="Sprites\Link\arrowProj.cs" />
+    <Compile Include="Sprites\Link\boomerangProj.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
-    <Compile Include="Sprites\Link\Projectile.cs" />
+    <Compile Include="Sprites\Link\bombProj.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">

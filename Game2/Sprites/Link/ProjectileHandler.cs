@@ -17,52 +17,35 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            foreach (Projectile proj in Projectile.bomb)
-            {
-                /*switch (direction)
-                {
-                    case Dir.Right:
-                        position.X -= 30;
-                        break;
-                    case Dir.Left:
-                        position.X += 30;
-                        break;
-                    case Dir.Up:
-                        position.Y += 30;
-                        break;
-                    case Dir.Down:
-                        position.Y -= 30;
-                        break;
-                    default:
-                        break;
-                }*/
-                //proj.Update(gameTime);
-            }
-            foreach (Projectile proj in Projectile.arrowDown)
+            foreach (bombProj proj in bombProj.bomb)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowUp)
+            foreach (arrowProj proj in arrowProj.arrowDown)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowLeft)
+            foreach (arrowProj proj in arrowProj.arrowUp)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.arrowRight)
+            foreach (arrowProj proj in arrowProj.arrowLeft)
             {
                 proj.Update(gameTime);
             }
-            foreach (Projectile proj in Projectile.boomerang)
+            foreach (arrowProj proj in arrowProj.arrowRight)
+            {
+                proj.Update(gameTime);
+            }
+            foreach (boomerangProj proj in boomerangProj.boomerang)
             {
                 proj.Update(gameTime);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<Projectile> projListToDraw)
+        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<bombProj> projListToDraw)
         {
-            foreach (Projectile i in projListToDraw)
+            foreach (bombProj i in projListToDraw)
             {
                 spriteBatch.Draw(textureToDraw, i.Position, Color.White);
             }
