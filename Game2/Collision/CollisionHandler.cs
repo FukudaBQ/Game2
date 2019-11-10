@@ -13,7 +13,9 @@ namespace Game2.Collision
 {
     class CollisionHandler
     {
-
+        int rupyNum = 0;
+        int keyNum = 0;
+        int bombNum = 0;
         public void CollisionHandle(Player player)
         {
             foreach(Item it in Item.items)
@@ -26,6 +28,18 @@ namespace Game2.Collision
                     {
                         it.Collided = true;
                     }
+                }
+                if(itemType == typeof(Rupy2))
+                {
+                    rupyNum++;
+                }
+                if (itemType == typeof(Key2))
+                {
+                    keyNum++;
+                }
+                if (itemType == typeof(Bomb))
+                {
+                    bombNum+=4;
                 }
             }
             Item.items.RemoveAll(p => p.Collided);

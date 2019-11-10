@@ -164,6 +164,33 @@ namespace Game2.Object.Items
             sprite = ItemFactory.Instance.CreateRaftSprite();
         }
     }
+    class Bomb : Item
+    {
+        public Bomb(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 18;
+            sprite = ItemFactory.Instance.CreateBombSprite();
+        }
+    }
+    class Boomerang : Item
+    {
+        public Boomerang(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 14;
+            sprite = ItemFactory.Instance.CreateBoomerangSprite();
+        }
+    }
+    class Bow2 : Item
+    {
+        public Bow2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 18;
+            sprite = ItemFactory.Instance.CreateBowSprite();
+        }
+    }
 
 
 }

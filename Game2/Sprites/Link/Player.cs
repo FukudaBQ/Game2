@@ -9,6 +9,7 @@ using Game2.Sprites.Link.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace Game2.Sprites.Link
 {
@@ -203,7 +204,15 @@ namespace Game2.Sprites.Link
             {
                 reset.Execute();
             }
-            
+            if (kState.IsKeyDown(Keys.P))
+            {
+                MediaPlayer.Pause();
+            }
+            if (kState.IsKeyDown(Keys.O))
+            {
+                MediaPlayer.Resume();
+            }
+
 
 
         }

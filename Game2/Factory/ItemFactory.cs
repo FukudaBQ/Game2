@@ -125,5 +125,13 @@ namespace Game2.Factory
         {
             return new Shining(item, 320, 80, 20, 40, 0);
         }
+        public Shining CreateBombSprite()
+        {
+            return new Shining(item, 200, 0, 13, 40, 0);
+        }
+        public Shining CreateBoomerangSprite()
+        {
+            return new Shining(item, 283, 0, 13, 30, 0);
+        }
     }
 }

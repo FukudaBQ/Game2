@@ -142,6 +142,21 @@ namespace Game2
             {
                 Item.items.Add(new Raft(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
+            TiledMapObject[] bomb = myMap.GetLayer<TiledMapObjectLayer>("bomb").Objects;
+            foreach (var it in bomb)
+            {
+                Item.items.Add(new Bomb(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
+            TiledMapObject[] boomerang = myMap.GetLayer<TiledMapObjectLayer>("boomerang").Objects;
+            foreach (var it in boomerang)
+            {
+                Item.items.Add(new Boomerang(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
+            TiledMapObject[] bow = myMap.GetLayer<TiledMapObjectLayer>("bow").Objects;
+            foreach (var it in bow)
+            {
+                Item.items.Add(new Bow2(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
+            }
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
