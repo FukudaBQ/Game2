@@ -13,7 +13,7 @@ namespace Game2.Collision
 {
     class CollisionHandler
     {
-     
+
         public void CollisionHandle(Player player)
         {
             foreach(Item it in Item.items)
@@ -63,7 +63,7 @@ namespace Game2.Collision
                 if (Vector2.Distance(player.Position, dnblo.Position) < sum)
                 {
 
-                    player.position.Y = player.position.Y + 410;
+                    player.position.Y = player.position.Y + 310;
                     player.camPosition.Y = player.camPosition.Y + 880;
 
 

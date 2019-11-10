@@ -16,6 +16,7 @@ using MonoGame.Extended.Tiled.Graphics;
 using MonoGame.Extended;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
+using Game2.Sprites.Link.Projectile;
 
 namespace Game2
 {
@@ -31,7 +32,9 @@ namespace Game2
     }
     public class Game1 : Game
     {
-        ProjectileHandler projHandler = new ProjectileHandler();
+        BombHandler bombHandler = new BombHandler();
+        ArrowHandler arrowHandler = new ArrowHandler();
+        BoomerangHandler boomerangHandler = new BoomerangHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
@@ -189,7 +192,7 @@ namespace Game2
             MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MediaPlayer.Play(MySounds.overworld);
-            HUD = Content.Load<Texture2D>("119728");
+            HUD = Content.Load<Texture2D>("HUD");
         }
         protected override void UnloadContent()
         {
@@ -217,7 +220,9 @@ namespace Game2
 
             collisionHandler.CollisionHandle(player);
 
-            projHandler.Update(gameTime);
+            bombHandler.Update(gameTime);
+            arrowHandler.Update(gameTime);
+            boomerangHandler.Update(gameTime);
             cam.LookAt(player.camPosition);
 
             base.Update(gameTime);
@@ -239,12 +244,12 @@ namespace Game2
                 it.Draw();
             }
 
-            projHandler.Draw(spriteBatch, bomb, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
-            projHandler.Draw(spriteBatch, arrowDown, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
-            projHandler.Draw(spriteBatch, arrowUp, bombProj.bomb, arrowProj.arrowUp, boomerangProj.boomerang);
-            projHandler.Draw(spriteBatch, arrowLeft, bombProj.bomb, arrowProj.arrowLeft, boomerangProj.boomerang);
-            projHandler.Draw(spriteBatch, arrowRight, bombProj.bomb, arrowProj.arrowRight, boomerangProj.boomerang);
-            projHandler.Draw(spriteBatch, boomerang, bombProj.bomb, arrowProj.arrowDown, boomerangProj.boomerang);
+            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb);
+            arrowHandler.Draw(spriteBatch, arrowDown,ArrowProj.arrowDown);
+            arrowHandler.Draw(spriteBatch, arrowUp, ArrowProj.arrowUp);
+            arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
+            arrowHandler.Draw(spriteBatch, arrowRight, ArrowProj.arrowRight);
+            boomerangHandler.Draw(spriteBatch, boomerang, BoomerangProj.boomerang);
 
             foreach (Blocks b in Blocks.blocks)
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game2.Commands;
 using Game2.Factory;
+using Game2.Sprites.Link.Projectile;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -150,30 +151,30 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
             {
-                bombProj.bomb.Add(new bombProj(position, direction));
+                BombProj.bomb.Add(new BombProj(position, direction));
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
                 if (direction == Dir.Down)
                 {
-                    bombProj.arrowDown.Add(new bombProj(position, direction));
+                    ArrowProj.arrowDown.Add(new ArrowProj(position, direction));
                 }
                 if (direction == Dir.Up)
                 {
-                    bombProj.arrowUp.Add(new bombProj(position, direction));
+                    ArrowProj.arrowUp.Add(new ArrowProj(position, direction));
                 }
                 if (direction == Dir.Left)
                 {
-                    bombProj.arrowLeft.Add(new bombProj(position, direction));
+                    ArrowProj.arrowLeft.Add(new ArrowProj(position, direction));
                 }
                 if (direction == Dir.Right)
                 {
-                    bombProj.arrowRight.Add(new bombProj(position, direction));
+                    ArrowProj.arrowRight.Add(new ArrowProj(position, direction));
                 }
             }
             if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
             {
-                bombProj.boomerang.Add(new bombProj(position, direction));
+                BoomerangProj.boomerang.Add(new BoomerangProj(position, direction));
             }
 
             if (kState.IsKeyDown(Keys.F) && previous.IsKeyUp(Keys.F))

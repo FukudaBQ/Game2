@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Link
 {
-    class bombProj
+    class BoomerangProj
     {
         private Vector2 position;
-        private int speed = 0;
+        private int speed = 300;
         private Dir direction;
+        public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
 
-        public static List<bombProj> bomb = new List<bombProj>();
-
-        public bombProj(Vector2 location, Dir newDir)
+        public BoomerangProj(Vector2 location, Dir newDir)
         {
             position = location;
             direction = newDir;
@@ -53,7 +51,5 @@ namespace Game2.Sprites.Link
                     break;
             }
         }
-
     }
-
 }

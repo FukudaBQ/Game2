@@ -88,6 +88,12 @@
     <Compile Include="Sprites\Link\boomerangProj.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
+    <Compile Include="Sprites\Link\Projectile\ArrowProj.cs" />
+    <Compile Include="Sprites\Link\Projectile\BombHandler.cs" />
+    <Compile Include="Sprites\Link\Projectile\BombProj.cs" />
+    <Compile Include="Sprites\Link\Projectile\ArrowHandler.cs" />
+    <Compile Include="Sprites\Link\Projectile\BoomerangProj.cs" />
+    <Compile Include="Sprites\Link\Projectile\BoomerangHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
     <Compile Include="Sprites\Link\bombProj.cs" />

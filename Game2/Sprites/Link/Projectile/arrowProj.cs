@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +7,18 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Link
 {
-    class bombProj
+    class ArrowProj
     {
         private Vector2 position;
-        private int speed = 0;
+        private int speed = 600;
         private Dir direction;
 
-        public static List<bombProj> bomb = new List<bombProj>();
+        public static List<ArrowProj> arrowDown = new List<ArrowProj>();
+        public static List<ArrowProj> arrowUp = new List<ArrowProj>();
+        public static List<ArrowProj> arrowLeft = new List<ArrowProj>();
+        public static List<ArrowProj> arrowRight = new List<ArrowProj>();
 
-        public bombProj(Vector2 location, Dir newDir)
+        public ArrowProj(Vector2 location, Dir newDir)
         {
             position = location;
             direction = newDir;
@@ -53,7 +55,5 @@ namespace Game2.Sprites.Link
                     break;
             }
         }
-
     }
-
 }
