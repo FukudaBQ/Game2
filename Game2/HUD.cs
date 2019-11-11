@@ -136,18 +136,18 @@ namespace Game2
             private int sourceHeight = 138;
             private int destX = 5200;
             private int destY = 3820;
-            private int destWidth = 100;
+            private int destWidth = 200;
             private int destHeight = 200;
             // variables for index box
             private int indexSourceX = 0;
             private int indexSourceY = 0;
             private int indexSourceWidth = 10;
             private int indexSourceHeight = 20;
-            private int indexDestX = 70;
+            private int indexDestX = 150;
             private int indexDestY = 40;
-            private int indexDestWidth = 8;
-            private int indexDestHeight = 16;
-            private int distX = 20;
+            private int indexDestWidth = 10;
+            private int indexDestHeight = 20;
+            private int distX = 33;
             private int distY = 33;
             private int currentX = 0;
             private int currentY = 0;
