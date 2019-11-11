@@ -92,6 +92,15 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
+
+            TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
+            foreach (var bat in bats)
+            {
+                //Enemies.enemies.Add(new Bats(new Vector2(bat.Position.X, bat.Position.Y + 800)));
+                Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 800), spriteBatch));
+                
+            }
+
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -216,7 +225,7 @@ namespace Game2
         protected override void Update(GameTime gameTime)
         {
             player.Update(gameTime);
-            bat.Update(gameTime);
+            //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
             hand.Update(gameTime);
@@ -226,9 +235,9 @@ namespace Game2
             {
                 it.Update(gameTime);
             }
-            foreach(Enemies en in Enemies.enemies)
+            foreach (Bat bat in Bat.bats)
             {
-                en.Update(gameTime, player.Position);
+                bat.Update(gameTime, player.position);
             }
 
             CollisionHandler collisionHandler = new CollisionHandler();
@@ -249,13 +258,25 @@ namespace Game2
             GraphicsDevice.Clear(Color.Gray);
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
-            bat.Draw();
-            dragon.Draw();
-            monster.Draw();
-            hand.Draw();
-            knight.Draw();
+            //foreach (Enemies en in Enemies.enemies)
+            //{
+            //Texture2D spritetoDraw;
+            //if (en.GetType() == typeof(Bats))
+            //{
+            //spritetoDraw = batSprite;
+            //}
+            //else
+            //{
+            //spritetoDraw = knightSprite;
+            //}
+            //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
+            //}
+            foreach (Bat bat in Bat.bats)
+            {
+                bat.Draw(bat.location);
+            }
 
-            foreach (Item it in Item.items)
+                foreach (Item it in Item.items)
             {
                 it.Draw();
             }

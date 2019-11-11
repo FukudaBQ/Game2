@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Enemies
 {
-    class Bat : ISprite
+    class Bat
     {
         private Texture2D texture { get; set; }
-        private Vector2 location { get; set; }
+        public Vector2 location { get; set; }
         private SpriteBatch spriteBatch { get; set; }
         private bool hitted=true;
         public Color color = Color.White;
@@ -21,7 +21,19 @@ namespace Game2.Sprites.Enemies
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
-        private BatStateMachine stateMachine;
+        protected int health;
+        protected int speed=80;
+        protected int radius=10;
+        public static List<Bat> bats = new List<Bat>();
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+        public int Radius
+        {
+            get { return radius; }
+        }
         public Bat(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;
@@ -29,11 +41,12 @@ namespace Game2.Sprites.Enemies
             spriteBatch = batch;
             currentFrame = 0;
             totalFrame = 2;
-            stateMachine = new BatStateMachine(this);
         }
-        public void Update(GameTime gametime)
+        public void Update(GameTime gametime, Vector2 playerPos)
         {
-            timeLastUpdate += (float)gametime.ElapsedGameTime.TotalSeconds;
+            float dt = (float)gametime.ElapsedGameTime.TotalSeconds;
+
+            timeLastUpdate += dt;
 
             if (timeLastUpdate > 0.2f)
             {
@@ -44,23 +57,13 @@ namespace Game2.Sprites.Enemies
                 }
                 timeLastUpdate = 0f;
             }
-        }
-        public void Draw()
-        {
-            KeyboardState kState = Keyboard.GetState();
             
-
-            if (kState.IsKeyDown(Keys.I) && previous.IsKeyUp(Keys.I) && hitted)
-            {
-                stateMachine.ChangeColorRed();
-                hitted = !hitted;
-            }
-            else if (kState.IsKeyDown(Keys.I) && previous.IsKeyUp(Keys.I) && !hitted)
-            {
-                stateMachine.ChangeColorWhite();
-                hitted = !hitted;
-            }
-            previous = kState;
+            Vector2 moveDir = playerPos - location;
+            moveDir.Normalize();
+            location += moveDir * speed * dt;
+        }
+        public void Draw(Vector2 Location)
+        {
 
             Rectangle sourceRectangle = new Rectangle(4+currentFrame*24, 6, 16, 16);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 16 * 4, 16 * 4);

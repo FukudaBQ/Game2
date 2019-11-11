@@ -60,7 +60,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
-    <Compile Include="Sprites\Enemies\BatStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
     <Compile Include="Sprites\Enemies\DragonStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Enemies.cs" />

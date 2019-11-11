@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace Game2.Sprites.Enemies
         protected int health;
         protected int speed;
         protected int radius;
+        private float timeLastUpdate = 0f;
+        private int currentFrame;
+        private int totalFrame;
         private bool collided = false;
 
         public static List<Enemies> enemies = new List<Enemies>();
@@ -52,47 +56,66 @@ namespace Game2.Sprites.Enemies
             position = newPos;
         }
 
-        public void Update(GameTime gameTime,Vector2 playerPos)
+        public void Update(GameTime gameTime, Vector2 playerPos)
         {
+            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (timeLastUpdate > 0.2f)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrame)
+                {
+                    currentFrame = 0;
+                }
+                timeLastUpdate = 0f;
+            }
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             Vector2 moveDir = playerPos - position;
             moveDir.Normalize();
-            position += moveDir*speed*dt;
-        }
-    }
+            position += moveDir * speed * dt;
 
-    class Bats : Enemies {
-        public Bats(Vector2 newPos) : base(newPos) {
-            speed = 160;
-            radius = 10;
-            health = 1;
         }
-    }
-    class Hands : Enemies {
-        public Hands(Vector2 newPos) : base(newPos) {
-            speed = 80;
-            radius = 15;
-            health = 2;
-        }
-    }
-    class Knights : Enemies
-    {
-        public Knights(Vector2 newPos) : base(newPos)
+
+        class Bats : Enemies
         {
-            speed = 80;
-            radius = 15;
-            health = 2;
+            public Bats(Vector2 newPos) : base(newPos)
+            {
+                speed = 80;
+                radius = 10;
+                health = 1;
+            }
+
+
         }
-    }
-    class Monsters : Enemies
-    {
-        public Monsters(Vector2 newPos) : base(newPos)
+        class Hands : Enemies
         {
-            speed = 80;
-            radius = 15;
-            health = 3;
+            public Hands(Vector2 newPos) : base(newPos)
+            {
+                speed = 80;
+                radius = 15;
+                health = 2;
+            }
+        }
+        class Knights : Enemies
+        {
+            public Knights(Vector2 newPos) : base(newPos)
+            {
+                speed = 80;
+                radius = 15;
+                health = 2;
+            }
+        }
+        class Monsters : Enemies
+        {
+            public Monsters(Vector2 newPos) : base(newPos)
+            {
+                speed = 80;
+                radius = 15;
+                health = 3;
+            }
         }
     }
+}
     /*class Stalfoses : Enemies
     {
         public Stalfoses(Vector2 newPos) : base(newPos)
@@ -102,4 +125,4 @@ namespace Game2.Sprites.Enemies
             health = 2;
         }
     }*/
-}
+
