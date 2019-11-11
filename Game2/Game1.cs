@@ -174,6 +174,7 @@ namespace Game2
             TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
             foreach (var wblo in waterblocks)
             {
+                
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
@@ -240,6 +241,61 @@ namespace Game2
                 bat.Update(gameTime, player.position);
             }
 
+            foreach (ArrowProj arrow in ArrowProj.arrowLeft)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowRight)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowUp)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowDown)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                    }
+                }
+            }
+
+
+            ArrowProj.arrowLeft.RemoveAll(p=>p.Collided==true);
+            ArrowProj.arrowRight.RemoveAll(p => p.Collided == true);
+            ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
+            ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
+            Bat.bats.RemoveAll(e => e.Health<=0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player);

@@ -28,6 +28,7 @@ namespace Game2.Sprites.Link
             foreach (ArrowProj proj in ArrowProj.arrowLeft)
             {
                 proj.Update(gameTime);
+                
             }
             foreach (ArrowProj proj in ArrowProj.arrowRight)
             {

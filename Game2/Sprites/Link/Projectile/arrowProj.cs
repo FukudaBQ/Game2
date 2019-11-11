@@ -11,12 +11,23 @@ namespace Game2.Sprites.Link
     {
         private Vector2 position;
         private int speed = 600;
+        protected int radius = 10;
         private Dir direction;
+        private bool collided = false;
 
         public static List<ArrowProj> arrowDown = new List<ArrowProj>();
         public static List<ArrowProj> arrowUp = new List<ArrowProj>();
         public static List<ArrowProj> arrowLeft = new List<ArrowProj>();
         public static List<ArrowProj> arrowRight = new List<ArrowProj>();
+        public int Radius
+        {
+            get { return radius; }
+        }
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided=value; }
+        }
 
         public ArrowProj(Vector2 location, Dir newDir)
         {
