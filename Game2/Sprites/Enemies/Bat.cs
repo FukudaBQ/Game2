@@ -24,6 +24,8 @@ namespace Game2.Sprites.Enemies
         protected int health=1;
         protected int speed=80;
         protected int radius = 20;
+        protected int length = 20;
+        protected int width = 10;
         public static List<Bat> bats = new List<Bat>();
         public int Health
         {
@@ -60,7 +62,13 @@ namespace Game2.Sprites.Enemies
             
             Vector2 moveDir = playerPos - location;
             moveDir.Normalize();
-            location += moveDir * speed * dt;
+            Vector2 tempPos = location;
+            tempPos += moveDir * speed * dt;
+            if (!Blocks.Blocks.didCollide(tempPos, length, width))
+            {
+                location += moveDir * speed * dt;
+            }
+            
         }
         public void Draw(Vector2 Location)
         {

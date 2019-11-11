@@ -170,7 +170,7 @@ namespace Game2
             TiledMapObject[] blocks = myMap.GetLayer<TiledMapObjectLayer>("block").Objects;
             foreach (var blo in blocks)
             {
-                Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+                Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 840)));
             }
             TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
             foreach (var wblo in waterblocks)
