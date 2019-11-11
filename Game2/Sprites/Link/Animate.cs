@@ -24,7 +24,7 @@ namespace Game2.Sprites.Link
             Rows = rows;
             Columns = columns;
             currentFrame = 0;
-            totalFrame = 2;
+            totalFrame = rows*columns;
         }
 
         public void Update(GameTime gameTime)
