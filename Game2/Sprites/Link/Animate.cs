@@ -45,7 +45,7 @@ namespace Game2.Sprites.Link
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location,Color color)
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
@@ -56,7 +56,7 @@ namespace Game2.Sprites.Link
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, width, height);
 
            // spriteBatch.Begin();
-            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, Color.White);
+            spriteBatch.Draw(Texture, destinationRectangle, sourceRectangle, color);
            // spriteBatch.End();
         }
         public void setFrame(int newFrame)

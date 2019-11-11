@@ -23,7 +23,7 @@ namespace Game2.Sprites.Link
         public Animate anim;
         private PlayerStateMachine stateMachine;
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();
-        public int radius=20;
+        private int radius=20;
         public int width = 10;
         public int length = 20;
         public Animate[] ani = new Animate[7];
@@ -40,14 +40,47 @@ namespace Game2.Sprites.Link
         private CamMoveLeft camMoveLeft;
         private CamMoveRight camMoveRight;
         private int speed = 200;
+        private Color pcolor = Color.White;
+        private int damagedspeed = 600;
+        private int health = 3;
+        private float healthTimer = 0f;
+        private float colorTimer = 0f;
+        public float HealthTimer
+        {
+            get { return healthTimer; }
+            set { healthTimer = value; }
+        }
+        public float ColorTimer
+        {
+            get { return colorTimer; }
+            set { colorTimer = value; }
+        }
+        public Color Pcolor
+        {
+            get { return pcolor; }
+            set { pcolor = value; }
+        }
 
-       
+        public int Radius
+        {
+            get { return radius; }
+        }
+
+        public int Damagedspeed
+        {
+            get { return damagedspeed; }
+        }
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
+
+
         public Vector2 Position
         {
-            get
-            {
-                return position;
-            }
+            get { return position; }
+            set { position = value; }
         }
         public void setX(float newX)
         {
@@ -102,6 +135,15 @@ namespace Game2.Sprites.Link
                 anim.setFrame(1);
             }
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (healthTimer > 0)
+            {
+                healthTimer -= dt;
+                ColorTimer -= dt;
+            }
+            if (ColorTimer > 0)
+            {
+                ColorTimer -= dt;
+            }
             if (stateMachine.ifIsMoving())
             {
                 Vector2 tempPos = position;

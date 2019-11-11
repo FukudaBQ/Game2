@@ -225,7 +225,11 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameTime);
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (player.Health > 0)
+            {
+                player.Update(gameTime);
+            }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
@@ -239,6 +243,23 @@ namespace Game2
             foreach (Bat bat in Bat.bats)
             {
                 bat.Update(gameTime, player.position);
+                int sum = player.Radius + bat.Radius;
+                if (Vector2.Distance(player.Position, bat.location) < sum&&player.HealthTimer<=0)
+                {
+                    
+                    player.Health--;
+                    Vector2 moveDir =player.Position - bat.location;
+                    moveDir.Normalize();
+                    
+                        player.Pcolor = Color.Red;
+                        player.Position += moveDir * player.Damagedspeed * dt*15;
+                    
+                    player.HealthTimer = 1.0f;
+                }
+                if(player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
             }
 
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
@@ -312,6 +333,7 @@ namespace Game2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
+            
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
             //foreach (Enemies en in Enemies.enemies)
@@ -349,8 +371,10 @@ namespace Game2
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
 
-
-            player.anim.Draw(spriteBatch, player.Position);
+            if (player.Health > 0)
+            {
+                player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);

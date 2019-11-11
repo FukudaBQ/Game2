@@ -21,7 +21,7 @@ namespace Game2.Collision
             foreach(Item it in Item.items)
             {
                 Type itemType = it.GetType();
-                int sum = player.radius + it.Radius;
+                int sum = player.Radius + it.Radius;
                 if (true)
                 {
                     if (Vector2.Distance(player.Position, it.Position) < sum)
@@ -47,7 +47,7 @@ namespace Game2.Collision
             foreach (Enemies en in Enemies.enemies)
             {
                 Type itemType = en.GetType();
-                int sum = player.radius + en.Radius;
+                int sum = player.Radius + en.Radius;
                 if (true)
                 {
                     if (Vector2.Distance(player.Position, en.Position) < sum)
@@ -58,7 +58,7 @@ namespace Game2.Collision
             }
             foreach (Blocks upblo in Blocks.upblocks)
             {
-                int sum = player.radius + upblo.Radius;
+                int sum = player.Radius + upblo.Radius;
                 
                     if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
@@ -72,7 +72,7 @@ namespace Game2.Collision
             }
             foreach (Blocks dnblo in Blocks.downblocks)
             {
-                int sum = player.radius + dnblo.Radius;
+                int sum = player.Radius + dnblo.Radius;
 
                 if (Vector2.Distance(player.Position, dnblo.Position) < sum)
                 {
@@ -86,7 +86,7 @@ namespace Game2.Collision
             }
             foreach (Blocks leblo in Blocks.leftblocks)
             {
-                int sum = player.radius + leblo.Radius;
+                int sum = player.Radius + leblo.Radius;
 
                 if (Vector2.Distance(player.Position, leblo.Position) < sum)
                 {
@@ -100,7 +100,7 @@ namespace Game2.Collision
             }
             foreach (Blocks riblo in Blocks.rightblocks)
             {
-                int sum = player.radius + riblo.Radius;
+                int sum = player.Radius + riblo.Radius;
 
                 if (Vector2.Distance(player.Position, riblo.Position) < sum)
                 {
