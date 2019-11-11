@@ -47,6 +47,7 @@ namespace Game2
         private Texture2D handSprite;
         private Texture2D knightSprite;
         private Texture2D batSprite;
+        private Texture2D explosionSprite;
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
@@ -210,6 +211,7 @@ namespace Game2
             boomerang = Content.Load<Texture2D>("boomerang");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             batSprite = Content.Load<Texture2D>("bat");
+            explosionSprite= Content.Load<Texture2D>("explosion1");
             dragonSprite = Content.Load<Texture2D>("Dragon");
             monsterSprite=Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
@@ -239,6 +241,10 @@ namespace Game2
             foreach (Item it in Item.items)
             {
                 it.Update(gameTime);
+            }
+            foreach (explosion ex in explosion.exp)
+            {
+                ex.Update(gameTime);
             }
             foreach (Bat bat in Bat.bats)
             {
@@ -271,6 +277,10 @@ namespace Game2
                     {
                         arrow.Collided = true;
                         bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
                     }
                 }
             }
@@ -283,6 +293,10 @@ namespace Game2
                     {
                         arrow.Collided = true;
                         bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
                     }
                 }
             }
@@ -295,6 +309,10 @@ namespace Game2
                     {
                         arrow.Collided = true;
                         bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
                     }
                 }
             }
@@ -307,6 +325,10 @@ namespace Game2
                     {
                         arrow.Collided = true;
                         bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
                     }
                 }
             }
@@ -317,6 +339,7 @@ namespace Game2
             ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
             Bat.bats.RemoveAll(e => e.Health<=0);
+            explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player);
@@ -336,6 +359,10 @@ namespace Game2
             
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
+            foreach (explosion ex in explosion.exp)
+            {
+                spriteBatch.Draw(explosionSprite, ex.Position, Color.White);
+            }
             //foreach (Enemies en in Enemies.enemies)
             //{
             //Texture2D spritetoDraw;
