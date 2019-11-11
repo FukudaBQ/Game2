@@ -38,6 +38,7 @@ namespace Game2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
+        private PlayerDying playerDying;
         private Texture2D bomb;
         private Texture2D arrowDown;
         private Texture2D arrowUp;
@@ -232,6 +233,10 @@ namespace Game2
             {
                 player.Update(gameTime);
             }
+            else
+            {
+                playerDying.Update(gameTime);
+            }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
@@ -401,6 +406,10 @@ namespace Game2
             if (player.Health > 0)
             {
                 player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
+            }
+            else
+            {
+                
             }
             spriteBatch.End();
 
