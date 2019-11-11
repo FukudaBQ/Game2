@@ -68,6 +68,11 @@ namespace Game2.Sprites.Link
             this.player = player;
 
         }
+        public void ChangeDead()
+        {
+            direction = Dir.Dead;
+            isMoving = false;
+        }
         public void ChangeDirectionRight()
         {
             direction = Dir.Right;
@@ -83,6 +88,7 @@ namespace Game2.Sprites.Link
             direction = Dir.Down;
             isMoving = true;
         }
+
 
         private void UseSword()
         {
@@ -123,6 +129,10 @@ namespace Game2.Sprites.Link
             {
                 UseSword();
                 
+            }
+            if (player.Health <= 0)
+            {
+                ChangeDead();
             }
 
         }
