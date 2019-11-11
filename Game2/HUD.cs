@@ -26,7 +26,7 @@ namespace Game2
             this.mapTexture = mapTexture;
             this.batch = batch;
             this.green = veryGreen;
-            heart = new HUDHeart();
+            heart = new HUDHeart(6200, 3920);
             map = new HUDMap();
         }
 
@@ -88,12 +88,16 @@ namespace Game2
             private int sourceY = 117;
             private int sourceWidth = 7;
             private int sourceHeight = 7;
-            private int destX = 6200;
-            private int destY = 3920;
+            private int destX;
+            private int destY;
             private int destWidth = 50;
             private int destHeight = 50;
 
-            public HUDHeart() { }
+            public HUDHeart(int destX, int destY)
+            {
+                this.destX = destX;
+                this.destY = destY;
+            }
 
             public int getX()
             {
