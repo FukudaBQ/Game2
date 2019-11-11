@@ -90,7 +90,6 @@
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Projectile\ArrowProj.cs" />
-    <Compile Include="Sprites\Link\Projectile\BombEffect.cs" />
     <Compile Include="Sprites\Link\Projectile\BombHandler.cs" />
     <Compile Include="Sprites\Link\Projectile\BombProj.cs" />
     <Compile Include="Sprites\Link\Projectile\ArrowHandler.cs" />

@@ -84,10 +84,6 @@ namespace Game2.Factory
             return new Animate(rightSword, rows, columns);
 
         }
-        public PlayerDying CreateDying(Vector2 position, SpriteBatch batch)
-        {
-            return new PlayerDying(dying, position, batch);
-        }
 
     }
 }

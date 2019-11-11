@@ -53,6 +53,7 @@ namespace Game2
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
         private Texture2D HUD;
+        private Texture2D bombEffect;
 
         private Bat bat;
         private Dragon dragon;
@@ -221,6 +222,7 @@ namespace Game2
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
+            bombEffect = Content.Load<Texture2D>("BombWithEffect");
         }
         protected override void UnloadContent()
         {
@@ -272,7 +274,22 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
-
+            foreach (BombProj b in BombProj.bomb)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = b.Radius + bat.Radius;
+                    if (Vector2.Distance(b.Position, bat.location) < sum)
+                    {
+                        b.Collided = true;
+                        bat.Health=0;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+            }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
                 foreach (Bat bat in Bat.bats)
@@ -391,7 +408,7 @@ namespace Game2
                 it.Draw();
             }
 
-            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb);
+            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb,explosionSprite);
             arrowHandler.Draw(spriteBatch, arrowDown,ArrowProj.arrowDown);
             arrowHandler.Draw(spriteBatch, arrowUp, ArrowProj.arrowUp);
             arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
