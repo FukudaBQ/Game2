@@ -100,6 +100,7 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
+            //aa
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
