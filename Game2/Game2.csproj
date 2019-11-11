@@ -213,6 +213,7 @@
     <None Include="Content\map\mapD.xnb" />
     <None Include="Content\map\test.xnb" />
     <None Include="Content\map\test1.xnb" />
+    <None Include="Content\numOfKeys.spritefont" />
     <None Include="packages.config" />
     <None Include="reflection" />
     <None Include="reflectionFor3" />

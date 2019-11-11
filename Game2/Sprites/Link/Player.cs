@@ -46,6 +46,12 @@ namespace Game2.Sprites.Link
         private int health = 3;
         private float healthTimer = 0f;
         private float colorTimer = 0f;
+        private int numOfKeys = 0;
+        public int NumOfKeys
+        {
+            get { return numOfKeys; }
+            set { numOfKeys = value; }
+        }
         public float HealthTimer
         {
             get { return healthTimer; }
