@@ -47,6 +47,7 @@ namespace Game2
         private Texture2D handSprite;
         private Texture2D knightSprite;
         private Texture2D batSprite;
+        private Texture2D explosionSprite;
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
@@ -174,6 +175,7 @@ namespace Game2
             TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
             foreach (var wblo in waterblocks)
             {
+                
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
@@ -209,6 +211,7 @@ namespace Game2
             boomerang = Content.Load<Texture2D>("boomerang");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             batSprite = Content.Load<Texture2D>("bat");
+            explosionSprite= Content.Load<Texture2D>("explosion1");
             dragonSprite = Content.Load<Texture2D>("Dragon");
             monsterSprite=Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
@@ -224,7 +227,11 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameTime);
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (player.Health > 0)
+            {
+                player.Update(gameTime);
+            }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
@@ -235,11 +242,104 @@ namespace Game2
             {
                 it.Update(gameTime);
             }
+            foreach (explosion ex in explosion.exp)
+            {
+                ex.Update(gameTime);
+            }
             foreach (Bat bat in Bat.bats)
             {
                 bat.Update(gameTime, player.position);
+                int sum = player.Radius + bat.Radius;
+                if (Vector2.Distance(player.Position, bat.location) < sum&&player.HealthTimer<=0)
+                {
+                    
+                    player.Health--;
+                    Vector2 moveDir =player.Position - bat.location;
+                    moveDir.Normalize();
+                    
+                        player.Pcolor = Color.Red;
+                        player.Position += moveDir * player.Damagedspeed * dt*15;
+                    
+                    player.HealthTimer = 1.0f;
+                }
+                if(player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
             }
 
+            foreach (ArrowProj arrow in ArrowProj.arrowLeft)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowRight)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowUp)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+            }
+            foreach (ArrowProj arrow in ArrowProj.arrowDown)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = arrow.Radius + bat.Radius;
+                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+            }
+
+
+            ArrowProj.arrowLeft.RemoveAll(p=>p.Collided==true);
+            ArrowProj.arrowRight.RemoveAll(p => p.Collided == true);
+            ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
+            ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
+            Bat.bats.RemoveAll(e => e.Health<=0);
+            explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player);
@@ -256,8 +356,13 @@ namespace Game2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
+            
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
+            foreach (explosion ex in explosion.exp)
+            {
+                spriteBatch.Draw(explosionSprite, ex.Position, Color.White);
+            }
             //foreach (Enemies en in Enemies.enemies)
             //{
             //Texture2D spritetoDraw;
@@ -293,8 +398,10 @@ namespace Game2
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
 
-
-            player.anim.Draw(spriteBatch, player.Position);
+            if (player.Health > 0)
+            {
+                player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);

@@ -21,9 +21,9 @@ namespace Game2.Sprites.Enemies
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
-        protected int health;
+        protected int health=1;
         protected int speed=80;
-        protected int radius=10;
+        protected int radius = 20;
         public static List<Bat> bats = new List<Bat>();
         public int Health
         {
