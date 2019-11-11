@@ -41,7 +41,7 @@ namespace Game2.Factory
             upSword = content.Load<Texture2D>("LinkSwingSwordBackStand");
             leftSword = content.Load<Texture2D>("LinkSwingSwordLeftStand");
             rightSword = content.Load<Texture2D>("LinkSwingSwordRightStand");
-            dying = content.Load<Texture2D>("LinkStand4Directions");
+            //dying = content.Load<Texture2D>("LinkStand4Directions");
         }
 
         public Animate CreateMoveDown(int rows, int columns)

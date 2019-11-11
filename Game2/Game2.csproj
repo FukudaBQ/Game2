@@ -139,6 +139,7 @@
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon.png" />
     <Content Include="Content\Enemy1.png" />
+    <Content Include="Content\fireball.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\hand.png" />
     <Content Include="Content\HUD.png" />
