@@ -22,7 +22,7 @@ namespace Game2
 {
     enum Dir
     {
-        Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
+        Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword,Dead
     }
 
     public static class MySounds
@@ -32,13 +32,13 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private Texture2D deadLinkSprite;
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
-        private PlayerDying playerDying;
         private Texture2D bomb;
         private Texture2D arrowDown;
         private Texture2D arrowUp;
@@ -51,9 +51,9 @@ namespace Game2
         private Texture2D explosionSprite;
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
-        private Texture2D fireballSprite;
         private Texture2D dragonSprite;
         private Texture2D HUD;
+        private Animate deadLinkSpin;
 
         private Bat bat;
         private Dragon dragon;
@@ -64,8 +64,6 @@ namespace Game2
         private TiledMap myMap;
         private Camera2D cam;
         private Vector2 camLocation;
-
-        private HUD myHUD;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -86,6 +84,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -100,19 +99,14 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
-
+            deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
+            deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
             {
-                Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 840), spriteBatch));
+                //Enemies.enemies.Add(new Bats(new Vector2(bat.Position.X, bat.Position.Y + 800)));
+                Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 800), spriteBatch));
                 
-            }
-
-            TiledMapObject[] dragons = myMap.GetLayer<TiledMapObjectLayer>("dragon").Objects;
-            foreach (var dra in dragons)
-            {
-                Dragon.dragons.Add(new Dragon(dragonSprite, new Vector2(dra.Position.X, dra.Position.Y + 840), spriteBatch));
-
             }
 
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
@@ -226,8 +220,7 @@ namespace Game2
             batSprite = Content.Load<Texture2D>("bat");
             explosionSprite= Content.Load<Texture2D>("explosion1");
             dragonSprite = Content.Load<Texture2D>("Dragon");
-            fireballSprite = Content.Load<Texture2D>("fireball");
-            monsterSprite =Content.Load<Texture2D>("monster");
+            monsterSprite=Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
             knightSprite = Content.Load<Texture2D>("knight");
             MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
@@ -241,14 +234,11 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (player.Health > 0)
             {
                 player.Update(gameTime);
-            }
-            else
-            {
-                playerDying.Update(gameTime);
             }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
@@ -264,38 +254,6 @@ namespace Game2
             {
                 ex.Update(gameTime);
             }
-            foreach (Dragon dra in Dragon.dragons)
-            {
-                dra.Update(gameTime);
-                if (dragon.Timer <= 0)
-                {
-                    fireball.fireDown.Add(new fireball(dra.Location, Dir.Down));
-                    fireball.fireUp.Add(new fireball(dra.Location, Dir.Up));
-                    fireball.fireLeft.Add(new fireball(dra.Location, Dir.Left));
-                    dragon.Timer = 2;
-                }
-                int sum = player.Radius + dra.Radius;
-                if (Vector2.Distance(player.Position, dra.Location) < sum && player.HealthTimer <= 0)
-                {
-
-                    player.Health--;
-                    Vector2 moveDir = player.Position - dra.Location;
-                    moveDir.Normalize();
-
-                    player.Pcolor = Color.Red;
-                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
-                    if (!Blocks.didCollide(temp, player.length, player.width))
-                    {
-                        player.Position += moveDir * player.Damagedspeed * dt * 15;
-                    }
-
-                    player.HealthTimer = 1.0f;
-                }
-                if (player.HealthTimer <= 0)
-                {
-                    player.Pcolor = Color.White;
-                }
-            }
             foreach (Bat bat in Bat.bats)
             {
                 bat.Update(gameTime, player.position);
@@ -308,12 +266,8 @@ namespace Game2
                     moveDir.Normalize();
                     
                         player.Pcolor = Color.Red;
-                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
-                    if (!Blocks.didCollide(temp, player.length, player.width))
-                    {
-                        player.Position += moveDir * player.Damagedspeed * dt * 15;
-                    }
-
+                        player.Position += moveDir * player.Damagedspeed * dt*15;
+                    
                     player.HealthTimer = 1.0f;
                 }
                 if(player.HealthTimer <= 0)
@@ -337,19 +291,6 @@ namespace Game2
                         }
                     }
                 }
-                foreach (Dragon dra in Dragon.dragons)
-                {
-                    int sum = arrow.Radius + dra.Radius;
-                    if (Vector2.Distance(arrow.Position, dra.Location) < sum)
-                    {
-                        arrow.Collided = true;
-                        dra.Health--;
-                        if (dra.Health <= 0)
-                        {
-                            explosion.exp.Add(new explosion(dra.Location));
-                        }
-                    }
-                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
@@ -364,25 +305,6 @@ namespace Game2
                         {
                             explosion.exp.Add(new explosion(bat.location));
                         }
-                    }
-                }
-                foreach (Dragon dra in Dragon.dragons)
-                {
-                    int sum = arrow.Radius + dra.Radius;
-                    if (Vector2.Distance(arrow.Position, dra.Location) < sum && dra.HealthTimer <= 0)
-                    {
-                        arrow.Collided = true;
-                        dra.Health--;
-                        dra.Dcolor = Color.Red;
-                        if (dra.Health <= 0)
-                        {
-                            explosion.exp.Add(new explosion(dra.Location));
-                        }
-                        dra.HealthTimer = 1.0f;
-                    }
-                    if (dra.HealthTimer <= 0)
-                    {
-                        dra.Dcolor = Color.White;
                     }
                 }
             }
@@ -418,93 +340,14 @@ namespace Game2
                     }
                 }
             }
-            foreach (fireball fir in fireball.fireDown)
-            {
-                fir.Update(gameTime);
-                int sum = player.Radius + fir.Radius;
-                if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
-                {
-                    fir.Collided = true;
-                    player.Health--;
-                    Vector2 moveDir = player.Position - fir.Position;
-                    moveDir.Normalize();
 
-                    player.Pcolor = Color.Red;
-                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
-                    if (!Blocks.didCollide(temp, player.length, player.width))
-                    {
-                        player.Position += moveDir * player.Damagedspeed * dt * 15;
-                    }
-
-                    player.HealthTimer = 1.0f;
-                }
-                if (player.HealthTimer <= 0)
-                {
-                    player.Pcolor = Color.White;
-                }
-
-            }
-            foreach (fireball fir in fireball.fireUp)
-            {
-                fir.Update(gameTime);
-                int sum = player.Radius + fir.Radius;
-                if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
-                {
-                    fir.Collided = true;
-                    player.Health--;
-                    Vector2 moveDir = player.Position - fir.Position;
-                    moveDir.Normalize();
-
-                    player.Pcolor = Color.Red;
-                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
-                    if (!Blocks.didCollide(temp, player.length, player.width))
-                    {
-                        player.Position += moveDir * player.Damagedspeed * dt * 15;
-                    }
-
-                    player.HealthTimer = 1.0f;
-                }
-                if (player.HealthTimer <= 0)
-                {
-                    player.Pcolor = Color.White;
-                }
-            }
-            foreach (fireball fir in fireball.fireLeft)
-            {
-                fir.Update(gameTime);
-                int sum = player.Radius + fir.Radius;
-                if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
-                {
-                    fir.Collided = true;
-                    player.Health--;
-                    Vector2 moveDir = player.Position - fir.Position;
-                    moveDir.Normalize();
-
-                    player.Pcolor = Color.Red;
-                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
-                    if (!Blocks.didCollide(temp, player.length, player.width))
-                    {
-                        player.Position += moveDir * player.Damagedspeed * dt * 15;
-                    }
-
-                    player.HealthTimer = 1.0f;
-                }
-                if (player.HealthTimer <= 0)
-                {
-                    player.Pcolor = Color.White;
-                }
-            }
 
             ArrowProj.arrowLeft.RemoveAll(p=>p.Collided==true);
             ArrowProj.arrowRight.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
             Bat.bats.RemoveAll(e => e.Health<=0);
-            Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
-            fireball.fireDown.RemoveAll(f => f.Collided == true);
-            fireball.fireUp.RemoveAll(f => f.Collided == true);
-            fireball.fireLeft.RemoveAll(f => f.Collided == true);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD);
@@ -512,8 +355,8 @@ namespace Game2
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
             boomerangHandler.Update(gameTime);
-            cam.LookAt(player.camPosition);
-            //cam.LookAt(player.position);
+            //cam.LookAt(player.camPosition);
+            cam.LookAt(player.position);
 
             base.Update(gameTime);
 
@@ -549,27 +392,10 @@ namespace Game2
             {
                 bat.Draw(bat.location);
             }
-            foreach (Dragon dra in Dragon.dragons)
-            {
-                dra.Draw(dra.Location);
-            }
 
-            foreach (Item it in Item.items)
+                foreach (Item it in Item.items)
             {
                 it.Draw();
-            }
-
-            foreach (fireball fir in fireball.fireDown)
-            {
-                spriteBatch.Draw(fireballSprite, fir.Position, Color.White);
-            }
-            foreach (fireball fir in fireball.fireUp)
-            {
-                spriteBatch.Draw(fireballSprite, fir.Position, Color.White);
-            }
-            foreach (fireball fir in fireball.fireLeft)
-            {
-                spriteBatch.Draw(fireballSprite, fir.Position, Color.White);
             }
 
             bombHandler.Draw(spriteBatch, bomb, BombProj.bomb);
@@ -590,7 +416,7 @@ namespace Game2
             }
             else
             {
-                
+                deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
             spriteBatch.End();
 
