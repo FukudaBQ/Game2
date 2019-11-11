@@ -68,7 +68,7 @@ namespace Game2
             Content.RootDirectory = "Content";
 
             graphics.PreferredBackBufferWidth = 1280;
-            graphics.PreferredBackBufferHeight = 880;
+            graphics.PreferredBackBufferHeight = 1160;
             this.IsMouseVisible = true;
 
             
@@ -238,7 +238,8 @@ namespace Game2
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
             boomerangHandler.Update(gameTime);
-            cam.LookAt(player.camPosition);
+            //cam.LookAt(player.camPosition);
+            cam.LookAt(player.position);
 
             base.Update(gameTime);
 

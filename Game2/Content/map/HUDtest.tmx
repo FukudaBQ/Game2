@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="40" tileheight="40" infinite="0" nextlayerid="6" nextobjectid="1">
+ <tileset firstgid="1" name="HUD2" tilewidth="256" tileheight="56" tilecount="1" columns="1">
+  <image source="../../../../../../Desktop/map/HUD2.png" width="256" height="56"/>
+ </tileset>
+ <tileset firstgid="2" name="HUD2.0" tilewidth="1280" tileheight="280" tilecount="1" columns="1">
+  <image source="../../../../../../Desktop/map/HUD2.0.png" width="1280" height="280"/>
+ </tileset>
+ <tileset firstgid="3" name="HUD1.0" tilewidth="1280" tileheight="440" tilecount="1" columns="1">
+  <image source="../../../../../../Desktop/map/HUD1.0.png" width="1280" height="440"/>
+ </tileset>
+ <tileset firstgid="4" name="HUD3.0" tilewidth="1280" tileheight="440" tilecount="1" columns="1">
+  <image source="../../../../../../Desktop/map/HUD3.0.png" width="1280" height="440"/>
+ </tileset>
+ <layer id="5" name="块层 1" width="16" height="14">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

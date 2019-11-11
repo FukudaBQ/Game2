@@ -200,6 +200,9 @@
     <None Include="Content\map\d7.xnb" />
     <None Include="Content\map\d8.xnb" />
     <None Include="Content\map\d9.xnb" />
+    <None Include="Content\map\HUD1.0.xnb" />
+    <None Include="Content\map\HUD2.0.xnb" />
+    <None Include="Content\map\HUD3.0.xnb" />
     <None Include="Content\map\mapD.xnb" />
     <None Include="Content\map\test.xnb" />
     <None Include="Content\map\test1.xnb" />
