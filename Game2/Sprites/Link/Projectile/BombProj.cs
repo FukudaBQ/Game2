@@ -12,6 +12,9 @@ namespace Game2.Sprites.Link.Projectile
         private Vector2 position;
         private int speed = 0;
         private Dir direction;
+        private int currentFrame;
+        private int totalFrame;
+        private float timeLastUpdate = 0f;
 
         public static List<BombProj> bomb = new List<BombProj>();
 
@@ -32,7 +35,17 @@ namespace Game2.Sprites.Link.Projectile
 
         public void Update(GameTime gameTime)
         {
+            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            if (timeLastUpdate > 0.2f)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrame)
+                {
+                    currentFrame = 0;
+                }
+                timeLastUpdate = 0f;
+            }
         }
     }
 }
