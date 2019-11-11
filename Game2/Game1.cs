@@ -249,7 +249,7 @@ namespace Game2
             }
             else
             {
-                playerDying.Update(gameTime);
+                //playerDying.Update(gameTime);
             }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
@@ -322,7 +322,35 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
-
+            foreach (BombProj b in BombProj.bomb)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = b.Radius + bat.Radius;
+                    if (Vector2.Distance(b.Position, bat.location) < sum)
+                    {
+                        b.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+                foreach (Dragon dra in Dragon.dragons)
+                {
+                    int sum = b.Radius + dra.Radius;
+                    if (Vector2.Distance(b.Position, dra.Location) < sum)
+                    {
+                        b.Collided = true;
+                        dra.Health--;
+                        if (dra.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(dra.Location));
+                        }
+                    }
+                }
+            }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
                 foreach (Bat bat in Bat.bats)
