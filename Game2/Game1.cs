@@ -54,6 +54,8 @@ namespace Game2
         private Texture2D fireballSprite;
         private Texture2D dragonSprite;
         private Texture2D HUD;
+        private Texture2D HUDMap;
+        private Texture2D veryGreen;
 
         private Bat bat;
         private Dragon dragon;
@@ -93,7 +95,7 @@ namespace Game2
             player = new Player(this);
             Register();
 
-            myHUD = new HUD(player, HUD, spriteBatch);
+            myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -235,6 +237,8 @@ namespace Game2
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
+            HUDMap = Content.Load<Texture2D>("small_map");
+            veryGreen = Content.Load<Texture2D>("Green");
         }
         protected override void UnloadContent()
         {

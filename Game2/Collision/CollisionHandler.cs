@@ -67,8 +67,9 @@ namespace Game2.Collision
                     player.camPosition.Y = player.camPosition.Y - 2040;
 
 
-                    myHUD.updateHeartLoc(myHUD.getDestX(), myHUD.getDestY() - 2040);
-
+                    myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() - 2040);
+                    myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() - 2040);
+                    myHUD.indexUp();
                     }
                 
             }
@@ -82,8 +83,9 @@ namespace Game2.Collision
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
 
-                    myHUD.updateHeartLoc(myHUD.getDestX(), myHUD.getDestY() + 2040);
-
+                    myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() + 2040);
+                    myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
+                    myHUD.indexDown();
                 }
 
             }
@@ -96,8 +98,9 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X - 410;
                     player.camPosition.X = player.camPosition.X - 1280;
-                    myHUD.updateHeartLoc(myHUD.getDestX() - 1280, myHUD.getDestY());
-
+                    myHUD.updateHeartLoc(myHUD.getHeartDestX() - 1280, myHUD.getHeartDestY());
+                    myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
+                    myHUD.indexLeft();
                 }
 
             }
@@ -110,8 +113,9 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X + 330;
                     player.camPosition.X = player.camPosition.X + 1280;
-                    myHUD.updateHeartLoc(myHUD.getDestX() + 1280, myHUD.getDestY());
-
+                    myHUD.updateHeartLoc(myHUD.getHeartDestX() + 1280, myHUD.getHeartDestY());
+                    myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
+                    myHUD.indexRight();
                 }
 
             }
