@@ -199,7 +199,7 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
             {
-                BombProj.bomb.Add(new BombProj(position, direction));
+                BombProj.bomb.Add(new BombProj(position));
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {

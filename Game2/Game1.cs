@@ -32,6 +32,8 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private Texture2D deadLinkSprite;
+        private Animate deadLinkSpin;
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
@@ -93,7 +95,7 @@ namespace Game2
             player = new Player(this);
             Register();
 
-            //myHUD = new HUD(HUD, new Vector2(0, 0), spriteBatch);
+            myHUD = new HUD(player, HUD, spriteBatch);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -101,6 +103,8 @@ namespace Game2
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
             //aa
+            deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
+            deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
@@ -242,6 +246,7 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (player.Health > 0)
             {
@@ -249,7 +254,7 @@ namespace Game2
             }
             else
             {
-                playerDying.Update(gameTime);
+                //playerDying.Update(gameTime);
             }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
@@ -322,7 +327,35 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
-
+            foreach (BombProj b in BombProj.bomb)
+            {
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = b.Radius + bat.Radius;
+                    if (Vector2.Distance(b.Position, bat.location) < sum)
+                    {
+                        b.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+                }
+                foreach (Dragon dra in Dragon.dragons)
+                {
+                    int sum = b.Radius + dra.Radius;
+                    if (Vector2.Distance(b.Position, dra.Location) < sum)
+                    {
+                        b.Collided = true;
+                        dra.Health--;
+                        if (dra.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(dra.Location));
+                        }
+                    }
+                }
+            }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
                 foreach (Bat bat in Bat.bats)
@@ -508,7 +541,7 @@ namespace Game2
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
             CollisionHandler collisionHandler = new CollisionHandler();
 
-            collisionHandler.CollisionHandle(player);
+            collisionHandler.CollisionHandle(player, myHUD);
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -543,7 +576,7 @@ namespace Game2
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
 
-            //myHUD.Draw();
+            myHUD.Draw();
 
 
             foreach (Bat bat in Bat.bats)
@@ -573,7 +606,7 @@ namespace Game2
                 spriteBatch.Draw(fireballSprite, fir.Position, Color.White);
             }
 
-            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb);
+            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb,explosionSprite);
             arrowHandler.Draw(spriteBatch, arrowDown,ArrowProj.arrowDown);
             arrowHandler.Draw(spriteBatch, arrowUp, ArrowProj.arrowUp);
             arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
@@ -591,7 +624,7 @@ namespace Game2
             }
             else
             {
-                
+                deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
             spriteBatch.End();
 
