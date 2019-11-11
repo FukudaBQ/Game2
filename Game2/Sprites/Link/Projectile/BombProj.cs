@@ -1,4 +1,4 @@
-﻿using Game2.Sprites.Projectile;
+﻿using Game2.Sprites.Enemies;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -10,19 +10,36 @@ namespace Game2.Sprites.Link.Projectile
 {
     class BombProj
     {
+        private float timer;
         private Vector2 position;
         private Dir direction;
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;
+        protected int radius = 10;
+        private bool collided = false;
 
         public static List<BombProj> bomb = new List<BombProj>();
 
-        public BombProj(Vector2 location, Dir newDir)
+        public BombProj(Vector2 location)
         {
             position = location;
-            direction = newDir;
+            Timer = 1;
 
+        }
+        public int Radius
+        {
+            get { return radius; }
+        }
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
+        }
+        public float Timer
+        {
+            get { return timer; }
+            set { timer = value; }
         }
 
         public Vector2 Position
@@ -35,7 +52,11 @@ namespace Game2.Sprites.Link.Projectile
 
         public void Update(GameTime gameTime)
         {
-
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (timer > 0)
+            {
+                timer -= dt;
+            }
         }
     }
 }

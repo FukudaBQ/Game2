@@ -573,7 +573,7 @@ namespace Game2
                 spriteBatch.Draw(fireballSprite, fir.Position, Color.White);
             }
 
-            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb);
+            bombHandler.Draw(spriteBatch, bomb, BombProj.bomb,explosionSprite);
             arrowHandler.Draw(spriteBatch, arrowDown,ArrowProj.arrowDown);
             arrowHandler.Draw(spriteBatch, arrowUp, ArrowProj.arrowUp);
             arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
