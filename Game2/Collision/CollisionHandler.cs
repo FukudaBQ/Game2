@@ -16,7 +16,7 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
-        public void CollisionHandle(Player player)
+        public void CollisionHandle(Player player, HUD myHUD)
         {
             foreach(Item it in Item.items)
             {
@@ -67,6 +67,8 @@ namespace Game2.Collision
                     player.camPosition.Y = player.camPosition.Y - 2040;
 
 
+                    myHUD.updateHeartLoc(myHUD.getDestX(), myHUD.getDestY() - 2040);
+
                     }
                 
             }
@@ -80,6 +82,7 @@ namespace Game2.Collision
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
 
+                    myHUD.updateHeartLoc(myHUD.getDestX(), myHUD.getDestY() + 2040);
 
                 }
 
@@ -93,7 +96,7 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X - 410;
                     player.camPosition.X = player.camPosition.X - 1280;
-
+                    myHUD.updateHeartLoc(myHUD.getDestX() - 1280, myHUD.getDestY());
 
                 }
 
@@ -107,7 +110,7 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X + 330;
                     player.camPosition.X = player.camPosition.X + 1280;
-
+                    myHUD.updateHeartLoc(myHUD.getDestX() + 1280, myHUD.getDestY());
 
                 }
 

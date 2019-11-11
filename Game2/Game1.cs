@@ -93,7 +93,7 @@ namespace Game2
             player = new Player(this);
             Register();
 
-            //myHUD = new HUD(HUD, new Vector2(0, 0), spriteBatch);
+            myHUD = new HUD(player, HUD, spriteBatch);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -508,7 +508,7 @@ namespace Game2
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
             CollisionHandler collisionHandler = new CollisionHandler();
 
-            collisionHandler.CollisionHandle(player);
+            collisionHandler.CollisionHandle(player, myHUD);
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -543,7 +543,7 @@ namespace Game2
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
 
-            //myHUD.Draw();
+            myHUD.Draw();
 
 
             foreach (Bat bat in Bat.bats)
