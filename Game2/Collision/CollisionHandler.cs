@@ -63,8 +63,8 @@ namespace Game2.Collision
                     if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
                     
-                    player.position.Y = player.position.Y - 410;
-                    player.camPosition.Y = player.camPosition.Y - 880;
+                    player.position.Y = player.position.Y - 1500;
+                    player.camPosition.Y = player.camPosition.Y - 2040;
 
 
                     }
@@ -77,8 +77,8 @@ namespace Game2.Collision
                 if (Vector2.Distance(player.Position, dnblo.Position) < sum)
                 {
 
-                    player.position.Y = player.position.Y + 310;
-                    player.camPosition.Y = player.camPosition.Y + 880;
+                    player.position.Y = player.position.Y + 1500;
+                    player.camPosition.Y = player.camPosition.Y + 2040;
 
 
                 }

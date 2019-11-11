@@ -61,9 +61,9 @@
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
-    <Compile Include="Sprites\Enemies\DragonStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Enemies.cs" />
     <Compile Include="Sprites\Enemies\explosion.cs" />
+    <Compile Include="Sprites\Enemies\fireball.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
@@ -138,6 +138,7 @@
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon.png" />
     <Content Include="Content\Enemy1.png" />
+    <Content Include="Content\fireball.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\hand.png" />
     <Content Include="Content\HUD.png" />
