@@ -24,27 +24,44 @@ namespace Game2
             heart = new HUDHeart();
         }
 
-        public void updateHeartLoc()
+        public void updateHeartLoc(int X, int Y)
         {
-            Vector2 pos = player.getCamPosition();
-            heart.UpdateLoc((int)pos.X, (int)pos.Y);
+            heart.UpdateLoc(X, Y);
         }
 
         public void Draw()
         {
             heart.Draw(texture, batch);
         }
+
+        public int getDestX()
+        {
+            return heart.getDestX();
+        }
+
+        public int getDestY()
+        {
+            return heart.getDestY();
+        }
         private class HUDHeart
         {
             private int sourceX = 645;
             private int sourceY = 117;
-            private int sourceWidth = 7;
-            private int sourceHeight = 7;
-            private int destX;
-            private int destY;
-            private int destWidth = 7;
-            private int destHeight = 7;
+            private int sourceWidth = 8;
+            private int sourceHeight = 8;
+            private int destX = 6200;
+            private int destY = 3900;
+            private int destWidth = 70;
+            private int destHeight = 70;
 
+            public int getDestX() {
+                return destX;
+            }
+
+            public int getDestY()
+            {
+                return destY;
+            }
             public HUDHeart() { }
 
 
