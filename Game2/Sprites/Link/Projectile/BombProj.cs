@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game2.Sprites.Projectile;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace Game2.Sprites.Link.Projectile
     class BombProj
     {
         private Vector2 position;
-        private int speed = 0;
         private Dir direction;
         private int currentFrame;
         private int totalFrame;
@@ -35,17 +35,7 @@ namespace Game2.Sprites.Link.Projectile
 
         public void Update(GameTime gameTime)
         {
-            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (timeLastUpdate > 0.2f)
-            {
-                currentFrame++;
-                if (currentFrame == totalFrame)
-                {
-                    currentFrame = 0;
-                }
-                timeLastUpdate = 0f;
-            }
         }
     }
 }
