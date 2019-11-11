@@ -22,7 +22,7 @@ namespace Game2
 {
     enum Dir
     {
-        Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
+        Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword,Dead
     }
 
     public static class MySounds
@@ -32,6 +32,7 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private Texture2D deadLinkSprite;
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
@@ -52,6 +53,7 @@ namespace Game2
         private Texture2D GeneralBlockSprite;
         private Texture2D dragonSprite;
         private Texture2D HUD;
+        private Animate deadLinkSpin;
 
         private Bat bat;
         private Dragon dragon;
@@ -82,6 +84,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -93,7 +96,8 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
-
+            deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
+            deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
             {
@@ -227,6 +231,7 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (player.Health > 0)
             {
@@ -401,6 +406,10 @@ namespace Game2
             if (player.Health > 0)
             {
                 player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
+            }
+            else
+            {
+                deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
             spriteBatch.End();
 

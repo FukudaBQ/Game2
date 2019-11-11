@@ -107,6 +107,7 @@ namespace Game2.Sprites.Link
             facing.Add(Dir.UpSword, LinkSpriteFactory.Instance.CreateUpSword(1, 2));
             facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
             facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
+            facing.Add(Dir.Dead, LinkSpriteFactory.Instance.CreateDeadLink(1, 4));
             anim = facing[direction];
 
         }
@@ -114,7 +115,11 @@ namespace Game2.Sprites.Link
 
         public void Update(GameTime gameTime)
         {
-            
+            if (health <= 0)
+            {
+                direction = Dir.Dead;
+            }
+
             if (Blocks.Blocks.inwater(position, length,width))
             {
                 speed = 50;
@@ -254,6 +259,7 @@ namespace Game2.Sprites.Link
             {
                 MediaPlayer.Resume();
             }
+
 
 
 

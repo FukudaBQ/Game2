@@ -86,6 +86,7 @@
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\arrowProj.cs" />
     <Compile Include="Sprites\Link\boomerangProj.cs" />
+    <Compile Include="Sprites\Link\DeadLink.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Projectile\ArrowProj.cs" />
