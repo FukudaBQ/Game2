@@ -63,6 +63,8 @@ namespace Game2
         private TiledMap myMap;
         private Camera2D cam;
         private Vector2 camLocation;
+
+        private HUD myHUD;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -89,6 +91,9 @@ namespace Game2
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
+
+            //myHUD = new HUD(HUD, new Vector2(0, 0), spriteBatch);
+
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
@@ -381,6 +386,10 @@ namespace Game2
             //}
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
+
+            //myHUD.Draw();
+
+
             foreach (Bat bat in Bat.bats)
             {
                 bat.Draw(bat.location);

@@ -90,6 +90,10 @@ namespace Game2.Sprites.Link
         {
             position.Y = newY;
         }
+        public Vector2 getCamPosition()
+        {
+            return camPosition;
+        }
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);

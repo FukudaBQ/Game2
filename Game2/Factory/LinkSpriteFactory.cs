@@ -86,7 +86,8 @@ namespace Game2.Factory
         }
         public PlayerDying CreateDying(Vector2 position, SpriteBatch batch)
         {
-            return new PlayerDying(dying, position, batch);
+            //return new PlayerDying(dying, position, batch);
+            return new PlayerDying(dying, 2,3);
         }
 
     }
