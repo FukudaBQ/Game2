@@ -358,6 +358,10 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
+                if (Blocks.didCollide(arrow.Position, 10, 10))
+                {
+                    arrow.Collided = true;
+                }
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -370,6 +374,7 @@ namespace Game2
                             explosion.exp.Add(new explosion(bat.location));
                         }
                     }
+                    
                 }
                 foreach (Dragon dra in Dragon.dragons)
                 {
@@ -383,10 +388,15 @@ namespace Game2
                             explosion.exp.Add(new explosion(dra.Location));
                         }
                     }
+
                 }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
+                if (Blocks.didCollide(arrow.Position, 10, 10))
+                {
+                    arrow.Collided = true;
+                }
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -422,6 +432,10 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowUp)
             {
+                if (Blocks.didCollide(arrow.Position, 10, 10))
+                {
+                    arrow.Collided = true;
+                }
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -433,11 +447,34 @@ namespace Game2
                         {
                             explosion.exp.Add(new explosion(bat.location));
                         }
+                    }
+                }
+                foreach (Dragon dra in Dragon.dragons)
+                {
+                    int sum = arrow.Radius + dra.Radius;
+                    if (Vector2.Distance(arrow.Position, dra.Location) < sum && dra.HealthTimer <= 0)
+                    {
+                        arrow.Collided = true;
+                        dra.Health--;
+                        dra.Dcolor = Color.Red;
+                        if (dra.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(dra.Location));
+                        }
+                        dra.HealthTimer = 1.0f;
+                    }
+                    if (dra.HealthTimer <= 0)
+                    {
+                        dra.Dcolor = Color.White;
                     }
                 }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowDown)
             {
+                if (Blocks.didCollide(arrow.Position, 10, 10))
+                {
+                    arrow.Collided = true;
+                }
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -451,9 +488,32 @@ namespace Game2
                         }
                     }
                 }
+                foreach (Dragon dra in Dragon.dragons)
+                {
+                    int sum = arrow.Radius + dra.Radius;
+                    if (Vector2.Distance(arrow.Position, dra.Location) < sum && dra.HealthTimer <= 0)
+                    {
+                        arrow.Collided = true;
+                        dra.Health--;
+                        dra.Dcolor = Color.Red;
+                        if (dra.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(dra.Location));
+                        }
+                        dra.HealthTimer = 1.0f;
+                    }
+                    if (dra.HealthTimer <= 0)
+                    {
+                        dra.Dcolor = Color.White;
+                    }
+                }
             }
             foreach (fireball fir in fireball.fireDown)
             {
+                if (Blocks.didCollide(fir.Position, 5, 5))
+                {
+                    fir.Collided = true;
+                }
                 fir.Update(gameTime);
                 int sum = player.Radius + fir.Radius;
                 if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
@@ -480,6 +540,10 @@ namespace Game2
             }
             foreach (fireball fir in fireball.fireUp)
             {
+                if (Blocks.didCollide(fir.Position, 5, 5))
+                {
+                    fir.Collided = true;
+                }
                 fir.Update(gameTime);
                 int sum = player.Radius + fir.Radius;
                 if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
@@ -505,6 +569,10 @@ namespace Game2
             }
             foreach (fireball fir in fireball.fireLeft)
             {
+                if (Blocks.didCollide(fir.Position, 5, 5))
+                {
+                    fir.Collided = true;
+                }
                 fir.Update(gameTime);
                 int sum = player.Radius + fir.Radius;
                 if (Vector2.Distance(player.Position, fir.Position) < sum && player.HealthTimer <= 0)
