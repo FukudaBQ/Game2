@@ -32,6 +32,8 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private Texture2D deadLinkSprite;
+        private Animate deadLinkSpin;
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
@@ -101,6 +103,8 @@ namespace Game2
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
             //aa
+            deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
+            deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
@@ -242,6 +246,7 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (player.Health > 0)
             {
@@ -249,7 +254,7 @@ namespace Game2
             }
             else
             {
-                playerDying.Update(gameTime);
+                //playerDying.Update(gameTime);
             }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
@@ -591,7 +596,7 @@ namespace Game2
             }
             else
             {
-                
+                deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
             spriteBatch.End();
 
