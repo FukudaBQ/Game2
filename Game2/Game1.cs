@@ -32,6 +32,8 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private Texture2D deadLinkSprite;
+        private Animate deadLinkSpin;
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
@@ -93,7 +95,7 @@ namespace Game2
             player = new Player(this);
             Register();
 
-            //myHUD = new HUD(HUD, new Vector2(0, 0), spriteBatch);
+            myHUD = new HUD(player, HUD, spriteBatch);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -101,6 +103,8 @@ namespace Game2
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
             //aa
+            deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
+            deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
@@ -242,6 +246,7 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (player.Health > 0)
             {
@@ -536,7 +541,7 @@ namespace Game2
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
             CollisionHandler collisionHandler = new CollisionHandler();
 
-            collisionHandler.CollisionHandle(player);
+            collisionHandler.CollisionHandle(player, myHUD);
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -571,7 +576,7 @@ namespace Game2
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
 
-            //myHUD.Draw();
+            myHUD.Draw();
 
 
             foreach (Bat bat in Bat.bats)
@@ -619,7 +624,7 @@ namespace Game2
             }
             else
             {
-                
+                deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
             spriteBatch.End();
 
