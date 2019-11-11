@@ -12,15 +12,24 @@ namespace Game2.Sprites.Link
     {
         private Vector2 position;
         private Dir direction;
+        private float timeLastUpdate=0f;
 
 
         public void Update(GameTime gameTime)
         {
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (BoomerangProj proj in BoomerangProj.boomerang)
             {
                 proj.Update(gameTime);
+                if (timeLastUpdate >2.0f)
+                {
+                    proj.IsBack = true;
+                    timeLastUpdate = 0;
+                }
             }
+            BoomerangProj.boomerang.RemoveAll(proj => proj.IsBack);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw,List<BoomerangProj> boomerangToDraw)
