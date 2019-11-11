@@ -86,9 +86,11 @@
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\arrowProj.cs" />
     <Compile Include="Sprites\Link\boomerangProj.cs" />
+    <Compile Include="Sprites\Link\PlayerDying.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
     <Compile Include="Sprites\Link\ProjectileHandler.cs" />
     <Compile Include="Sprites\Link\Projectile\ArrowProj.cs" />
+    <Compile Include="Sprites\Link\Projectile\BombEffect.cs" />
     <Compile Include="Sprites\Link\Projectile\BombHandler.cs" />
     <Compile Include="Sprites\Link\Projectile\BombProj.cs" />
     <Compile Include="Sprites\Link\Projectile\ArrowHandler.cs" />
@@ -132,6 +134,7 @@
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\bat.png" />
+    <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon.png" />
@@ -147,6 +150,7 @@
     <Content Include="Content\LinkFront.png" />
     <Content Include="Content\LinkLeftWalking.png" />
     <Content Include="Content\LinkRightWalking.png" />
+    <Content Include="Content\LinkStand4Directions.png" />
     <Content Include="Content\LinkSwingSwordBack.png" />
     <Content Include="Content\LinkSwingSwordBackStand.png" />
     <Content Include="Content\LinkSwingSwordFront.png" />

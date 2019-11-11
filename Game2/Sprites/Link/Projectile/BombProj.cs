@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game2.Sprites.Projectile;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,10 @@ namespace Game2.Sprites.Link.Projectile
     class BombProj
     {
         private Vector2 position;
-        private int speed = 0;
         private Dir direction;
+        private int currentFrame;
+        private int totalFrame;
+        private float timeLastUpdate = 0f;
 
         public static List<BombProj> bomb = new List<BombProj>();
 

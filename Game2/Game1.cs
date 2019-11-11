@@ -38,6 +38,7 @@ namespace Game2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
+        private PlayerDying playerDying;
         private Texture2D bomb;
         private Texture2D arrowDown;
         private Texture2D arrowUp;
@@ -63,6 +64,8 @@ namespace Game2
         private TiledMap myMap;
         private Camera2D cam;
         private Vector2 camLocation;
+
+        private HUD myHUD;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -89,6 +92,9 @@ namespace Game2
             ItemFactory.Instance.LoadAllTextures(Content);
             player = new Player(this);
             Register();
+
+            //myHUD = new HUD(HUD, new Vector2(0, 0), spriteBatch);
+
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
@@ -239,6 +245,10 @@ namespace Game2
             if (player.Health > 0)
             {
                 player.Update(gameTime);
+            }
+            else
+            {
+                playerDying.Update(gameTime);
             }
             //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
@@ -531,6 +541,10 @@ namespace Game2
             //}
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
+
+            //myHUD.Draw();
+
+
             foreach (Bat bat in Bat.bats)
             {
                 bat.Draw(bat.location);
@@ -573,6 +587,10 @@ namespace Game2
             if (player.Health > 0)
             {
                 player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
+            }
+            else
+            {
+                
             }
             spriteBatch.End();
 
