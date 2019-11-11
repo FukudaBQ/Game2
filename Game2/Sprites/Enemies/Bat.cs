@@ -17,7 +17,6 @@ namespace Game2.Sprites.Enemies
         private SpriteBatch spriteBatch { get; set; }
         private bool hitted=true;
         public Color color = Color.White;
-        private KeyboardState previous = Keyboard.GetState();
         private int currentFrame;
         private int totalFrame;
         private float timeLastUpdate = 0f;

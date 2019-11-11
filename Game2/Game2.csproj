@@ -61,9 +61,9 @@
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
-    <Compile Include="Sprites\Enemies\DragonStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Enemies.cs" />
     <Compile Include="Sprites\Enemies\explosion.cs" />
+    <Compile Include="Sprites\Enemies\fireball.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
