@@ -33,9 +33,10 @@ namespace Game2.Collision
                 {
                     rupyNum++;
                 }
-                if (itemType == typeof(Key2))
+                if (itemType == typeof(Key2)&&it.Collided)
                 {
                     keyNum++;
+                    player.NumOfKeys = keyNum;
                 }
                 if (itemType == typeof(Bomb))
                 {

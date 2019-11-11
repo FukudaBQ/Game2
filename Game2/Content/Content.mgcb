@@ -785,6 +785,13 @@
 /processorParam:TextureFormat=Color
 /build:NPC.png
 
+#begin numOfKeys.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:numOfKeys.spritefont
+
 #begin StandSwordDown.png
 /importer:TextureImporter
 /processor:TextureProcessor

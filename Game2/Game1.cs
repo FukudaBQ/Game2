@@ -32,6 +32,8 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private SpriteFont numOfKeysFont;
+        
         private Texture2D deadLinkSprite;
         private Animate deadLinkSpin;
         BombHandler bombHandler = new BombHandler();
@@ -59,6 +61,7 @@ namespace Game2
 
         private Bat bat;
         private Dragon dragon;
+        private Key2 key;
         private Monster monster;
         private Hand hand;
         private Knight knight;
@@ -88,6 +91,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -99,6 +103,7 @@ namespace Game2
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
+            key = new Key2( new Vector2(400, 2700), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
@@ -598,6 +603,7 @@ namespace Game2
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
+            spriteBatch.DrawString(numOfKeysFont,player.NumOfKeys.ToString(), player.Position, Color.Black);
             spriteBatch.End();
 
             base.Draw(gameTime);
