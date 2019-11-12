@@ -36,6 +36,7 @@ namespace Game2.Collision
                 if (itemType == typeof(Key2)&&it.Collided)
                 {
                     keyNum++;
+                    myHUD.KeyNumUpdate(keyNum);
                     player.NumOfKeys = keyNum;
                 }
                 if (itemType == typeof(Bomb))
@@ -75,6 +76,7 @@ namespace Game2.Collision
                     myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() - 2040);
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() - 2040);
                     myHUD.indexUp();
+                    myHUD.KeyNumUp();
                     }
                 
             }
@@ -93,6 +95,7 @@ namespace Game2.Collision
                     myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() + 2040);
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
                     myHUD.indexDown();
+                    myHUD.KeyNumDown();
                 }
 
             }
@@ -105,11 +108,12 @@ namespace Game2.Collision
                     game.ClearContent();
                     game.ReloadContent();
 
-                    player.position.X = player.position.X - 410;
+                    player.position.X = player.position.X - 300;
                     player.camPosition.X = player.camPosition.X - 1280;
                     myHUD.updateHeartLoc(myHUD.getHeartDestX() - 1280, myHUD.getHeartDestY());
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
                     myHUD.indexLeft();
+                    myHUD.KeyNumLeft();
                 }
 
             }
@@ -127,6 +131,7 @@ namespace Game2.Collision
                     myHUD.updateHeartLoc(myHUD.getHeartDestX() + 1280, myHUD.getHeartDestY());
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
                     myHUD.indexRight();
+                    myHUD.KeyNumRight();
                 }
 
             }
