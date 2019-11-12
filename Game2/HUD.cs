@@ -82,6 +82,10 @@ namespace Game2
             {
                 i.moveUp();
             }
+            foreach (HUDWord i in wordBomb)
+            {
+                i.moveUp();
+            }
         }
 
         public void KeyNumDown()
@@ -91,6 +95,10 @@ namespace Game2
                 i.moveDown();
             }
             foreach (HUDWord i in wordCoins)
+            {
+                i.moveDown();
+            }
+            foreach (HUDWord i in wordBomb)
             {
                 i.moveDown();
             }
@@ -105,6 +113,10 @@ namespace Game2
             {
                 i.moveLeft();
             }
+            foreach (HUDWord i in wordBomb)
+            {
+                i.moveLeft();
+            }
         }
         public void KeyNumRight()
         {
@@ -113,6 +125,10 @@ namespace Game2
                 i.moveRight();
             }
             foreach (HUDWord i in wordCoins)
+            {
+                i.moveRight();
+            }
+            foreach (HUDWord i in wordBomb)
             {
                 i.moveRight();
             }
@@ -277,7 +293,7 @@ namespace Game2
                 Rectangle indexSourceRectangle = new Rectangle(indexSourceX, indexSourceY, indexSourceWidth, indexSourceHeight);
                 Rectangle indexDestinationRectangle = new Rectangle(destX + indexDestX + distX * currentX, destY + indexDestY + distY * currentY,
                     indexDestWidth, indexDestHeight);
-                batch.Draw(green, indexDestinationRectangle, indexSourceRectangle, Color.Green);
+                batch.Draw(green, indexDestinationRectangle, indexSourceRectangle, Color.Yellow);
             }
 
             internal void UpdateLoc(int destX, int destY)

@@ -22,7 +22,7 @@ namespace Game2.Sprites.Link
         public Vector2 tempCam = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
-        public PlayerStateMachine stateMachine;
+        private PlayerStateMachine stateMachine;
         private Dictionary<Dir, Animate> facing = new Dictionary<Dir, Animate>();
         private int radius=20;
         public int width = 10;
