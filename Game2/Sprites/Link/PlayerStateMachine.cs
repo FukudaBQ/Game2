@@ -36,6 +36,8 @@ namespace Game2.Sprites.Link
             return isMoving;
         }
 
+        
+
         public bool ifIsSwording()
         {
             return isSwording;
@@ -89,7 +91,9 @@ namespace Game2.Sprites.Link
             if (direction == Dir.Down || direction == Dir.Up
                 || direction == Dir.Left || direction == Dir.Right)
             {
+                
                 direction = changeToSword[direction];
+                
                 MySounds.attack.Play();
 
             }

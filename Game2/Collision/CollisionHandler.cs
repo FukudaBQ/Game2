@@ -105,7 +105,7 @@ namespace Game2.Collision
                     game.ClearContent();
                     game.ReloadContent();
 
-                    player.position.X = player.position.X - 410;
+                    player.position.X = player.position.X - 300;
                     player.camPosition.X = player.camPosition.X - 1280;
                     myHUD.updateHeartLoc(myHUD.getHeartDestX() - 1280, myHUD.getHeartDestY());
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
