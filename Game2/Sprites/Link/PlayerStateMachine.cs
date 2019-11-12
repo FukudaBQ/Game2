@@ -18,6 +18,8 @@ namespace Game2.Sprites.Link
         private bool isSwording = false;
         private int speed = 200;
         private int radius = 20;
+        private int DMGradius = 10;
+        private Vector2 DMGposition;
         Player player;
         private static Dictionary<Dir, Dir> changeToSword = new Dictionary<Dir, Dir>()
         {
@@ -68,6 +70,7 @@ namespace Game2.Sprites.Link
         public PlayerStateMachine(Player player)
         {
             this.player = player;
+            
 
         }
         public void ChangeDirectionRight()
@@ -91,7 +94,21 @@ namespace Game2.Sprites.Link
             if (direction == Dir.Down || direction == Dir.Up
                 || direction == Dir.Left || direction == Dir.Right)
             {
-                
+                if(direction == Dir.Down)
+                {
+                    DMGposition.X += 20;
+                }else if (direction == Dir.Up)
+                {
+                    DMGposition.X -= 20;
+                }else if (direction == Dir.Left)
+                {
+                    DMGposition.Y -= 20;
+                }
+                else if (direction == Dir.Right)
+                {
+                    DMGposition.Y += 20;
+                }
+
                 direction = changeToSword[direction];
                 
                 MySounds.attack.Play();
@@ -105,6 +122,7 @@ namespace Game2.Sprites.Link
 
         public void Update(GameTime gameTime)
         {
+            
             isMoving = isSwording = false;
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.A) || kState.IsKeyDown(Keys.Left))
@@ -125,6 +143,7 @@ namespace Game2.Sprites.Link
             }
             if (kState.IsKeyDown(Keys.Z) || kState.IsKeyDown(Keys.N))
             {
+                DMGposition = player.Position;
                 UseSword();
                 
             }
