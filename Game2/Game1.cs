@@ -425,6 +425,19 @@ namespace Game2
                         }
                     }
                 }
+                foreach (Rock r in Rock.rocks)
+                {
+                    int sum = b.Radius + r.Radius;
+                    if (Vector2.Distance(b.Position, r.Position) < sum)
+                    {
+                        b.Collided = true;
+                        r.Health=0;
+                        if (r.Health== 0)
+                        {
+                            explosion.exp.Add(new explosion(r.Position));
+                        }
+                    }
+                }
                 foreach (Dragon dra in Dragon.dragons)
                 {
                     int sum = b.Radius + dra.Radius;
@@ -747,6 +760,7 @@ namespace Game2
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
             Knight.knights.RemoveAll(k => k.Health <= 0);
+            Rock.rocks.RemoveAll(r => r.Health <= 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD,this);

@@ -12,16 +12,22 @@ namespace Game2.Sprites.Blocks
     class Rock
     {
         protected Vector2 position;
-        protected int radius;
+        protected int radius=65;
         protected int Length;
         protected int Width;
         protected Vector2 hitPos;
+        protected int health = 1;
 
         public static List<Rock> rocks = new List<Rock>();
 
         public Vector2 HitsPos
         {
             get { return hitPos; }
+        }
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
         }
 
 
