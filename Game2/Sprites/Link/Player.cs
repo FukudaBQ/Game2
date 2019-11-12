@@ -16,9 +16,9 @@ namespace Game2.Sprites.Link
     public class Player
     {
 
-        //public Vector2 position = new Vector2(3140, 12800);
-        public Vector2 position = new Vector2(5540, 4600);
-        public Vector2 camPosition = new Vector2(5760 ,4360);
+        public Vector2 position = new Vector2(3140, 12800);
+        //public Vector2 position = new Vector2(5540, 4600);
+        public Vector2 camPosition = new Vector2(3200 ,12520);
         public Vector2 tempCam = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
@@ -101,6 +101,7 @@ namespace Game2.Sprites.Link
         {
             return camPosition;
         }
+        
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);

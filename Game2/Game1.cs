@@ -452,6 +452,55 @@ namespace Game2
                     }
                 }
             }
+            foreach (BoomerangProj boo in BoomerangProj.boomerang)
+            {
+                if (Blocks.didCollide(boo.Position, 10, 10))
+                {
+                    boo.Collided = true;
+                }
+                foreach (Bat bat in Bat.bats)
+                {
+                    int sum = boo.Radius + bat.Radius;
+                    if (Vector2.Distance(boo.Position, bat.location) < sum)
+                    {
+                        boo.Collided = true;
+                        bat.Health--;
+                        if (bat.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bat.location));
+                        }
+                    }
+
+                }
+                foreach (Dragon dra in Dragon.dragons)
+                {
+                    int sum = boo.Radius + dra.Radius;
+                    if (Vector2.Distance(boo.Position, dra.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        dra.Health--;
+                        if (dra.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(dra.Location));
+                        }
+                    }
+
+                }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = boo.Radius + kn.Radius;
+                    if (Vector2.Distance(boo.Position, kn.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
+            }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
                 if (Blocks.didCollide(arrow.Position, 10, 10))
@@ -767,7 +816,7 @@ namespace Game2
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
-            boomerangHandler.Update(gameTime);
+            boomerangHandler.Update(gameTime,player);
             cam.LookAt(player.camPosition);
             //cam.LookAt(player.position);
 

@@ -10,17 +10,37 @@ namespace Game2.Sprites.Link
     class BoomerangProj
     {
         private Vector2 position;
-        private int speed = 10;
+        private int speed = 500;
         private Dir direction;
         private bool movingRight=true;
         private float timeLastUpdate = 0f;
-        private float timer;
+        private float timer = 0f;
+        private bool isBack = false;
+        private bool collided = false;
+        private int radius = 15;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
-
+        public int Radius
+        {
+            get { return radius; }
+        }
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
+        }
+        public int Speed
+        {
+            get { return speed; }
+        }
         public float Timer
         {
             get { return Timer; }
             set { Timer = value; }
+        }
+        public bool IsBack
+        {
+            get { return isBack; }
+            set { isBack = value; }
         }
         public BoomerangProj(Vector2 location, Dir newDir)
         {
@@ -37,44 +57,17 @@ namespace Game2.Sprites.Link
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime,Player player)
         {
-            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer > 0)
-            {
-                timer -= dt;
-            }
             
-            //timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //if (timeLastUpdate > 1.0f)
-            //{
-            //    movingRight = true;
-            //}
-            //else
-            //{
-               // movingRight = false;
-
-            //}
-
-
+            float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
             switch (direction)
             {
                 case Dir.Right:
-                    position.X += speed*timer;
-                    if (timer <= 0)
-                    {
-                        timer += dt;
-                        position.X -= speed * timer * 30;
-                    }
-                    //position.X += speed * dt;
-                    //if (movingRight)
-                    //{
-                    //    position.X -= speed * dt;
-                    //}
-                    //else
-                    //{
-                     //   position.X += speed * dt;
-                    //}
+
+                    position.X += speed * dt;
+
                     break;
                 case Dir.Left:
                     position.X -= speed * dt;
@@ -88,6 +81,19 @@ namespace Game2.Sprites.Link
                 default:
                     break;
             }
+
+            if (timeLastUpdate > 1.0f)
+            {
+                Vector2 moveDir = player.Position - position;
+                moveDir.Normalize();
+                position += moveDir * 1000 * dt;
+                if (position.X <= player.Position.X + 10 && position.X >= player.Position.X - 10
+                && position.Y <= player.Position.Y + 10 && position.Y >= player.Position.Y - 10)
+                {
+                    isBack = true;
+                }
+            }
+            
         }
     }
 }
