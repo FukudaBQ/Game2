@@ -12,10 +12,6 @@ namespace Game2.Sprites.Link.Projectile
     {
         private float timer;
         private Vector2 position;
-        private Dir direction;
-        private int currentFrame;
-        private int totalFrame;
-        private float timeLastUpdate = 0f;
         protected int radius = 10;
         private bool collided = false;
 

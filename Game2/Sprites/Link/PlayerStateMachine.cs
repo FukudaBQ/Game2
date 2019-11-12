@@ -16,9 +16,6 @@ namespace Game2.Sprites.Link
         private Dir direction = Dir.Down;
         private bool isMoving = false;
         private bool isSwording = false;
-        private int speed = 200;
-        private int radius = 20;
-        private int DMGradius = 10;
         private Vector2 DMGposition;
         Player player;
         private static Dictionary<Dir, Dir> changeToSword = new Dictionary<Dir, Dir>()

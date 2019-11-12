@@ -35,7 +35,10 @@ namespace Game2
     }
     public class Game1 : Game
     {
-        private SpriteFont numOfKeysFont;
+        private String debug ="triforece location: ";
+        private SpriteFont youWIN;
+        private Texture2D LinkCheeringSprite;
+        private Animate LinkCheering;
         
         private Texture2D deadLinkSprite;
         private Animate deadLinkSpin;
@@ -45,7 +48,6 @@ namespace Game2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
-        private PlayerDying playerDying;
         private Texture2D bomb;
         private Texture2D arrowDown;
         private Texture2D arrowUp;
@@ -133,7 +135,7 @@ namespace Game2
         protected override void LoadContent()
         {
             reset = new ResetCommand(player,this,myHUD);
-            numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
+            youWIN = Content.Load<SpriteFont>("youWIN");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -153,7 +155,8 @@ namespace Game2
             //aa
             deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
             deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
-
+            LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
+            LinkCheering = new Animate(LinkCheeringSprite, 1, 2);
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
             {
@@ -175,6 +178,11 @@ namespace Game2
 
             }
 
+            TiledMapObject[] triforces = myMap.GetLayer<TiledMapObjectLayer>("triforce").Objects;
+            foreach (var tri in triforces)
+            {
+                Item.items.Add(new Triforce2(new Vector2(tri.Position.X, tri.Position.Y + 800), spriteBatch));
+            }
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -254,7 +262,7 @@ namespace Game2
             foreach (var wblo in waterblocks)
             {
                 
-                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
+                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -289,7 +297,7 @@ namespace Game2
             boomerang = Content.Load<Texture2D>("boomerang");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             batSprite = Content.Load<Texture2D>("bat");
-            explosionSprite= Content.Load<Texture2D>("explosion1");
+            explosionSprite= Content.Load<Texture2D>("biggerExplosion1");
             dragonSprite = Content.Load<Texture2D>("Dragon");
             fireballSprite = Content.Load<Texture2D>("fireball");
             monsterSprite =Content.Load<Texture2D>("monster");
@@ -310,9 +318,10 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            LinkCheering.Update(gameTime);
             deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (player.Health > 0)
+            if (player.Health > 0&&!player.Victory)
             {
                 player.Update(gameTime);
             }
@@ -420,6 +429,9 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
+
+               
+            
             foreach (BombProj b in BombProj.bomb)
             {
                 foreach (Bat bat in Bat.bats)
@@ -441,8 +453,8 @@ namespace Game2
                     if (Vector2.Distance(b.Position, r.Position) < sum)
                     {
                         b.Collided = true;
-                        r.Health=0;
-                        if (r.Health== 0)
+                        r.Health = 0;
+                        if (r.Health == 0)
                         {
                             explosion.exp.Add(new explosion(r.Position));
                         }
@@ -920,17 +932,26 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
+            foreach (Blocks b in Blocks.waterblocks)
+            {
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            }
 
-            if (player.Health > 0)
+            if (player.Health > 0&& !player.Victory)
             {
                 player.anim.Draw(spriteBatch, player.Position,player.Pcolor);
             }
-            else
+            else if(player.Health<=0&&!player.Victory)
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(font, "Press R to Reset and Replay", new Vector2(player.camPosition.X - 500, player.camPosition.Y), Color.Red);
             }
-            spriteBatch.DrawString(numOfKeysFont,player.NumOfKeys.ToString(), player.Position, Color.Black);
+            if (player.Victory)
+            {
+                LinkCheering.Draw(spriteBatch, player.Position, Color.White);
+                spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Black);
+            }
+            
             spriteBatch.End();
 
             base.Draw(gameTime);

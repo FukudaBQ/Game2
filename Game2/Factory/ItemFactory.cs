@@ -14,9 +14,9 @@ namespace Game2.Factory
     {
         private Texture2D item;
         private Texture2D NPC;
+        private Vector2 hitPos;
+        private int radius;
         public static ItemFactory instance = new ItemFactory();
-        protected int radius;
-        protected Vector2 hitPos;
         public static List<ItemFactory> items = new List<ItemFactory>();
 
         public int Radius

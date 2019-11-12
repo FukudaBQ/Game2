@@ -15,7 +15,7 @@ namespace Game2.Sprites.Enemies
         private Texture2D texture { get; set; }
         public Vector2 location { get; set; }
         private SpriteBatch spriteBatch { get; set; }
-        private bool hitted=true;
+        //private bool hitted=true;
         public Color color = Color.White;
         private int currentFrame;
         private int totalFrame;
