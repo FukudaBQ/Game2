@@ -949,7 +949,7 @@ namespace Game2
             if (player.Victory)
             {
                 LinkCheering.Draw(spriteBatch, player.Position, Color.White);
-                spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Black);
+                spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
             
             spriteBatch.End();
