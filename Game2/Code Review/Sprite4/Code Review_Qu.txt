@@ -1,0 +1,21 @@
+Readability:Easy to understand, use of data structure reflects what happens in the real world
+Author of the code review: Beau QU
+Date of the code review: 11/11/2019
+Sprint number: 4
+Name of the .cs file being reviewed: BombHandler.cs
+Author of the .cs file being reviewed: Zijie Wei
+Number of minutes taken to complete the review: 10 mins
+Specific comments on what is readable and what is not: 
+	It is easy to understand what each method does. When time runs out, bomb disappears, and explosion apprears.
+	Methods from different places may confuse readers. 
+
+Maintainability: High cohension and low coupling. Single point over control
+Author of the code review: Beau QU
+Date of the code review: 11/11/2019
+Sprint number: 4
+Name of the .cs file being reviewed: ArrowProj.cs
+Author of the .cs file being reviewed: Zijie Wei
+Number of minutes taken to complete the review: 10 mins
+Specific comments on code quality: 
+	It can be easy for users to change speed, moving directions, and the radius of arrow which is used to detect collision. 
+	The cohesion is high, which means the class can only be used to do one thing.

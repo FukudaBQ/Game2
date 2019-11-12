@@ -809,6 +809,13 @@
 /processorParam:Quality=Best
 /build:music/UseSword.wav
 
+#begin NMNAT.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:NMNAT.spritefont
+
 #begin NPC.png
 /importer:TextureImporter
 /processor:TextureProcessor
