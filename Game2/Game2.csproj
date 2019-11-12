@@ -149,6 +149,7 @@
     <Content Include="Content\knight.png" />
     <Content Include="Content\Link.png" />
     <Content Include="Content\LinkBackWalking.png" />
+    <Content Include="Content\LinkCheering.png" />
     <Content Include="Content\LinkFaceFront.png" />
     <Content Include="Content\LinkFront.png" />
     <Content Include="Content\LinkLeftWalking.png" />
@@ -216,6 +217,7 @@
     <None Include="Content\map\test.xnb" />
     <None Include="Content\map\test1.xnb" />
     <None Include="Content\numOfKeys.spritefont" />
+    <None Include="Content\youWIN.spritefont" />
     <None Include="packages.config" />
     <None Include="reflection" />
     <None Include="reflectionFor3" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="31" nextobjectid="3396">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="32" nextobjectid="3382">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6480,24 +6480,6 @@
   <object id="3405" x="2400.81" y="12032.2">
    <point/>
   </object>
-  <object id="3379" x="2638.75" y="1518.99">
-   <point/>
-  </object>
-  <object id="3380" x="2639.97" y="1559.15">
-   <point/>
-  </object>
-  <object id="3381" x="2638.75" y="1598.1">
-   <point/>
-  </object>
-  <object id="3382" x="1360.73" y="5597.07">
-   <point/>
-  </object>
-  <object id="3383" x="1360.73" y="5637.55">
-   <point/>
-  </object>
-  <object id="3384" x="1362.29" y="5681.15">
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup id="28" name="dragon">
   <object id="1050" x="5880.92" y="3476.47">
@@ -6729,23 +6711,26 @@
  <objectgroup id="13" name="map"/>
  <objectgroup id="14" name="ring"/>
  <objectgroup id="30" name="rock">
-  <object id="3332" x="4436.36" y="7409.09">
+  <object id="3332" x="4425.36" y="7385.09">
    <point/>
   </object>
-  <object id="3333" x="4433.33" y="5918.18">
+  <object id="3333" x="4421.33" y="5922.18">
    <point/>
   </object>
- </objectgroup>
- <objectgroup id="21" name="bow">
-  <object id="3386" x="3156.56" y="11796.5">
+  <object id="3377" x="3136" y="5916">
    <point/>
   </object>
- </objectgroup>
- <objectgroup id="22" name="boomerang">
-  <object id="3387" x="3159.1" y="1398.12">
+  <object id="3379" x="3150" y="7366">
    <point/>
   </object>
  </objectgroup>
+ <objectgroup id="31" name="triforce">
+  <object id="3381" x="7015.15" y="3636.36">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="bow"/>
+ <objectgroup id="22" name="boomerang"/>
  <objectgroup id="15" name="magickey"/>
  <objectgroup id="16" name="ladder"/>
  <objectgroup id="17" name="raft"/>
@@ -7024,30 +7009,6 @@
    <point/>
   </object>
   <object id="3422" x="3290.41" y="9386.47">
-   <point/>
-  </object>
-  <object id="3388" x="3120.87" y="5306.97">
-   <point/>
-  </object>
-  <object id="3389" x="3157.11" y="5305.9">
-   <point/>
-  </object>
-  <object id="3390" x="3200.81" y="5306.97">
-   <point/>
-  </object>
-  <object id="3391" x="3238.12" y="5306.97">
-   <point/>
-  </object>
-  <object id="3392" x="3279.68" y="5306.97">
-   <point/>
-  </object>
-  <object id="3393" x="3319.12" y="5306.97">
-   <point/>
-  </object>
-  <object id="3394" x="3079.3" y="5305.9">
-   <point/>
-  </object>
-  <object id="3395" x="3038.8" y="5310.17">
    <point/>
   </object>
  </objectgroup>

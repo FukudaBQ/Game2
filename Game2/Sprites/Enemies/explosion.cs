@@ -11,6 +11,8 @@ namespace Game2.Sprites.Enemies
     {
         private float timer;
         private Vector2 position;
+        protected int radius = 80;
+        private bool collided = false;
         public static List<explosion> exp = new List<explosion>();
         public float Timer
         {
@@ -21,6 +23,15 @@ namespace Game2.Sprites.Enemies
         {
             get { return position; }
             set { position = value; }
+        }
+        public int Radius
+        {
+            get { return radius; }
+        }
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
         }
         public explosion(Vector2 position)
         {

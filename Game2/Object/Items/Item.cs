@@ -191,6 +191,15 @@ namespace Game2.Object.Items
             sprite = ItemFactory.Instance.CreateBowSprite();
         }
     }
+    class Triforce2 : Item
+    {
+        public Triforce2(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 18;
+            sprite = ItemFactory.Instance.CreateTriforceSprite();
+        }
+    }
 
 
 }
