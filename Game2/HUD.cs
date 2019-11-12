@@ -15,7 +15,7 @@ namespace Game2
         private Texture2D texture;
         private Texture2D mapTexture;
         private SpriteBatch batch;
-        private HUDHeart[] heart;
+        private List<HUDHeart> heart;
         private HUDMap map;
         private Texture2D green;
         private HUDWord[] wordKey;
@@ -33,7 +33,7 @@ namespace Game2
             this.mapTexture = mapTexture;
             this.batch = batch;
             this.green = veryGreen;
-            heart = new HUDHeart[3];
+            heart = new List<HUDHeart>();
             RegisterHeart();
             map = new HUDMap();
             wordKey = new HUDWord[3];
@@ -45,9 +45,9 @@ namespace Game2
         }
         private void RegisterHeart()
         {
-            heart[0] = new HUDHeart(3480,12080);
-            heart[1] = new HUDHeart(3560, 12080);
-            heart[2] = new HUDHeart(3640, 12080);
+            heart.Add(new HUDHeart(3480, 12080));
+            heart.Add(new HUDHeart(3560, 12080));
+            heart.Add(new HUDHeart(3640, 12080));
         }
 
         private void RegisterBomb()
@@ -55,6 +55,10 @@ namespace Game2
             wordBomb[0] = new HUDWord(keyNumX[0], bombNumY, 10);
             wordBomb[1] = new HUDWord(keyNumX[1], bombNumY, 0);
             wordBomb[2] = new HUDWord(keyNumX[2], bombNumY, 5);
+        }
+        public void LostHeart()
+        {
+            heart.RemoveAt(heart.Count - 1);
         }
 
         private void RegisterCoins()

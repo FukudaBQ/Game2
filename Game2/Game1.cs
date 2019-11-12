@@ -336,6 +336,7 @@ namespace Game2
                 {
 
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - kn.Location;
                     moveDir.Normalize();
 
@@ -369,6 +370,7 @@ namespace Game2
                 {
 
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - dra.Location;
                     moveDir.Normalize();
 
@@ -394,6 +396,7 @@ namespace Game2
                 {
                     
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir =player.Position - bat.location;
                     moveDir.Normalize();
                     
@@ -722,6 +725,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
@@ -752,6 +756,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
@@ -781,6 +786,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
