@@ -49,6 +49,13 @@ namespace Game2.Sprites.Link
         private int numOfKeys = 0;
         public int bombNum = 5;
         private HUD myHUD;
+
+
+        public bool Victory
+        {
+            get { return victory; }
+            set { victory = value; }
+        }
         public int NumOfKeys
         {
             get { return numOfKeys; }

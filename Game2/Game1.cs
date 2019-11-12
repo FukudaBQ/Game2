@@ -135,7 +135,7 @@ namespace Game2
         protected override void LoadContent()
         {
             reset = new ResetCommand(player,this,myHUD);
-            numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
+            youWIN = Content.Load<SpriteFont>("youWIN");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
