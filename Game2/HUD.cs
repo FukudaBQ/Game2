@@ -22,7 +22,9 @@ namespace Game2
         private int[] keyNumX = {3060, 3085, 3110 };
         private int keyNumY = 12080;
         private int coinNumY = 12000;
+        private int bombNumY = 12160;
         private HUDWord[] wordCoins;
+        private HUDWord[] wordBomb;
 
         public HUD(Player player, Texture2D texture, SpriteBatch batch, Texture2D mapTexture, Texture2D veryGreen)
         {
@@ -37,6 +39,15 @@ namespace Game2
             RegisterKey();
             wordCoins = new HUDWord[3];
             RegisterCoins();
+            wordBomb = new HUDWord[3];
+            RegisterBomb();
+        }
+
+        private void RegisterBomb()
+        {
+            wordBomb[0] = new HUDWord(keyNumX[0], bombNumY, 10);
+            wordBomb[1] = new HUDWord(keyNumX[1], bombNumY, 0);
+            wordBomb[2] = new HUDWord(keyNumX[2], bombNumY, 5);
         }
 
         private void RegisterCoins()
@@ -151,6 +162,10 @@ namespace Game2
                 i.Draw(texture, batch);
             }
             foreach (HUDWord i in wordCoins)
+            {
+                i.Draw(texture, batch);
+            }
+            foreach (HUDWord i in wordBomb)
             {
                 i.Draw(texture, batch);
             }
