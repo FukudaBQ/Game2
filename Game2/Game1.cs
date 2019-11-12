@@ -32,6 +32,8 @@ namespace Game2
     }
     public class Game1 : Game
     {
+        private SpriteFont numOfKeysFont;
+        
         private Texture2D deadLinkSprite;
         private Animate deadLinkSpin;
         BombHandler bombHandler = new BombHandler();
@@ -56,9 +58,12 @@ namespace Game2
         private Texture2D fireballSprite;
         private Texture2D dragonSprite;
         private Texture2D HUD;
+        private Texture2D HUDMap;
+        private Texture2D veryGreen;
 
         private Bat bat;
         private Dragon dragon;
+        private Key2 key;
         private Monster monster;
         private Hand hand;
         private Knight knight;
@@ -88,6 +93,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -95,10 +101,11 @@ namespace Game2
             player = new Player(this);
             Register();
 
-            myHUD = new HUD(player, HUD, spriteBatch);
+            myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
+            key = new Key2( new Vector2(400, 2700), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
@@ -246,6 +253,8 @@ namespace Game2
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
+            HUDMap = Content.Load<Texture2D>("small_map");
+            veryGreen = Content.Load<Texture2D>("Green");
         }
         protected override void UnloadContent()
         {
@@ -732,6 +741,7 @@ namespace Game2
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
             }
+            spriteBatch.DrawString(numOfKeysFont,player.NumOfKeys.ToString(), player.Position, Color.Black);
             spriteBatch.End();
 
             base.Draw(gameTime);

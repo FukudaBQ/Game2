@@ -140,6 +140,7 @@
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\fireball.png" />
     <Content Include="Content\GeneralBlock.png" />
+    <Content Include="Content\Green.PNG" />
     <Content Include="Content\hand.png" />
     <Content Include="Content\HUD.png" />
     <Content Include="Content\Item.png" />
@@ -172,6 +173,7 @@
     <Content Include="Content\music\Triforce.mp3" />
     <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
+    <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\World.png" />
     <Content Include="Content\WorldOfElements.xml" />
@@ -210,6 +212,7 @@
     <None Include="Content\map\mapD.xnb" />
     <None Include="Content\map\test.xnb" />
     <None Include="Content\map\test1.xnb" />
+    <None Include="Content\numOfKeys.spritefont" />
     <None Include="packages.config" />
     <None Include="reflection" />
     <None Include="reflectionFor3" />
