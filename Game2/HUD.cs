@@ -21,6 +21,8 @@ namespace Game2
         private HUDWord[] wordKey;
         private int[] keyNumX = {3060, 3085, 3110 };
         private int keyNumY = 12080;
+        private int coinNumY = 12000;
+        private HUDWord[] wordCoins;
 
         public HUD(Player player, Texture2D texture, SpriteBatch batch, Texture2D mapTexture, Texture2D veryGreen)
         {
@@ -33,7 +35,15 @@ namespace Game2
             map = new HUDMap();
             wordKey = new HUDWord[3];
             RegisterKey();
+            wordCoins = new HUDWord[3];
+            RegisterCoins();
+        }
 
+        private void RegisterCoins()
+        {
+            wordCoins[0] = new HUDWord(keyNumX[0], coinNumY, 10);
+            wordCoins[1] = new HUDWord(keyNumX[1], coinNumY, 0);
+            wordCoins[2] = new HUDWord(keyNumX[2], coinNumY, 0);
         }
 
         private void RegisterKey()
@@ -57,11 +67,19 @@ namespace Game2
             {
                 i.moveUp();
             }
+            foreach (HUDWord i in wordCoins)
+            {
+                i.moveUp();
+            }
         }
 
         public void KeyNumDown()
         {
             foreach (HUDWord i in wordKey)
+            {
+                i.moveDown();
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.moveDown();
             }
@@ -72,10 +90,18 @@ namespace Game2
             {
                 i.moveLeft();
             }
+            foreach (HUDWord i in wordCoins)
+            {
+                i.moveLeft();
+            }
         }
         public void KeyNumRight()
         {
             foreach (HUDWord i in wordKey)
+            {
+                i.moveRight();
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.moveRight();
             }
@@ -121,6 +147,10 @@ namespace Game2
             heart.Draw(texture, batch);
             map.Draw(mapTexture, batch, green);
             foreach (HUDWord i in wordKey)
+            {
+                i.Draw(texture, batch);
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.Draw(texture, batch);
             }
