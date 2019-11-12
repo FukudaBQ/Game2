@@ -47,6 +47,8 @@ namespace Game2.Sprites.Link
         private float healthTimer = 0f;
         private float colorTimer = 0f;
         private int numOfKeys = 0;
+        private int bombNum = 5;
+        private HUD myHUD;
         public int NumOfKeys
         {
             get { return numOfKeys; }
@@ -120,9 +122,12 @@ namespace Game2.Sprites.Link
             facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
             facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
             anim = facing[direction];
-
         }
 
+        public void setHUD(HUD myHUD)
+        {
+            this.myHUD = myHUD;
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -206,7 +211,12 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
             {
-                BombProj.bomb.Add(new BombProj(position));
+                if(bombNum > 0)
+                {
+                    bombNum--;
+                    BombProj.bomb.Add(new BombProj(position));
+                    myHUD.BombNumUpdate(bombNum);
+                }
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
