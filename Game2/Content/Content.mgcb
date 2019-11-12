@@ -98,18 +98,6 @@
 /processorParam:TextureFormat=Color
 /build:biggerExplosion1.png
 
-#begin biggerExplosion1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:biggerExplosion1.png
-
 #begin boomerang.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -289,6 +277,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:LinkBackWalking.png
+
+#begin LinkCheering.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:LinkCheering.png
 
 #begin LinkFaceFront.png
 /importer:TextureImporter
@@ -875,6 +875,13 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:World.png
+
+#begin youWIN.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:youWIN.spritefont
 
 #begin ZeldaSpriteBomb.png
 /importer:TextureImporter

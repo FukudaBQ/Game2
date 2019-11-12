@@ -15,7 +15,7 @@ namespace Game2.Sprites.Link
 {
     public class Player
     {
-
+        private bool victory = false;
         public Vector2 position = new Vector2(3140, 12800);
         //public Vector2 position = new Vector2(5540, 4600);
         public Vector2 camPosition = new Vector2(3200 ,12520);
@@ -47,6 +47,11 @@ namespace Game2.Sprites.Link
         private float healthTimer = 0f;
         private float colorTimer = 0f;
         private int numOfKeys = 0;
+        public bool Victory
+        {
+            get { return victory; }
+            set { victory = value; }
+        }
         public int NumOfKeys
         {
             get { return numOfKeys; }

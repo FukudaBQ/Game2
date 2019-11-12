@@ -43,6 +43,10 @@ namespace Game2.Collision
                 {
                     bombNum+=4;
                 }
+                if (itemType == typeof(Triforce2)&&it.Collided)
+                {
+                    player.Victory = true;
+                }
             }
             Item.items.RemoveAll(p => p.Collided);
 
