@@ -17,6 +17,8 @@ using MonoGame.Extended;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Game2.Sprites.Link.Projectile;
+using Game2.Commands;
+using Microsoft.Xna.Framework.Input;
 //using Game2.Object.Enemies;
 
 namespace Game2
@@ -76,8 +78,9 @@ namespace Game2
         private TiledMap myMap;
         private Camera2D cam;
         private Vector2 camLocation;
+        private ResetCommand reset;
 
-        private HUD myHUD;
+        public HUD myHUD;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -131,7 +134,8 @@ namespace Game2
         }
         protected override void LoadContent()
         {
-            youWIN = Content.Load<SpriteFont>("youWIN");
+            reset = new ResetCommand(player,this,myHUD);
+            numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
@@ -140,6 +144,7 @@ namespace Game2
             Register();
 
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
+            player.setHUD(myHUD);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -257,7 +262,7 @@ namespace Game2
             foreach (var wblo in waterblocks)
             {
                 
-                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
+                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -345,6 +350,7 @@ namespace Game2
                 {
 
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - kn.Location;
                     moveDir.Normalize();
 
@@ -378,6 +384,7 @@ namespace Game2
                 {
 
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - dra.Location;
                     moveDir.Normalize();
 
@@ -403,6 +410,7 @@ namespace Game2
                 {
                     
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir =player.Position - bat.location;
                     moveDir.Normalize();
                     
@@ -734,6 +742,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
@@ -764,6 +773,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
@@ -793,6 +803,7 @@ namespace Game2
                 {
                     fir.Collided = true;
                     player.Health--;
+                    myHUD.LostHeart();
                     Vector2 moveDir = player.Position - fir.Position;
                     moveDir.Normalize();
 
@@ -826,6 +837,16 @@ namespace Game2
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD,this);
+            KeyboardState kState = Keyboard.GetState();
+            if (kState.IsKeyDown(Keys.R))
+            {
+                player.Position = new Vector2(3140, 12800);
+                player.camPosition = new Vector2(3200, 12520);
+                player.Health = 3;
+                player.bombNum = 5;
+                myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
+            }
+
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -910,6 +931,10 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
+            foreach (Blocks b in Blocks.waterblocks)
+            {
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            }
 
             if (player.Health > 0&& !player.Victory)
             {
@@ -933,3 +958,4 @@ namespace Game2
    
     
 }
+    

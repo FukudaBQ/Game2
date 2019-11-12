@@ -47,11 +47,8 @@ namespace Game2.Sprites.Link
         private float healthTimer = 0f;
         private float colorTimer = 0f;
         private int numOfKeys = 0;
-        public bool Victory
-        {
-            get { return victory; }
-            set { victory = value; }
-        }
+        public int bombNum = 5;
+        private HUD myHUD;
         public int NumOfKeys
         {
             get { return numOfKeys; }
@@ -110,7 +107,7 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
-            reset = new ResetCommand(this);
+            reset = new ResetCommand(this, game,myHUD);
             camMoveUp = new CamMoveUp(this);
             camMoveDown = new CamMoveDown(this);
             camMoveLeft = new CamMoveLeft(this);
@@ -125,9 +122,12 @@ namespace Game2.Sprites.Link
             facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
             facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
             anim = facing[direction];
-
         }
 
+        public void setHUD(HUD myHUD)
+        {
+            this.myHUD = myHUD;
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -211,7 +211,12 @@ namespace Game2.Sprites.Link
             KeyboardState kState = Keyboard.GetState();
             if (kState.IsKeyDown(Keys.D1) && previous.IsKeyUp(Keys.D1))
             {
-                BombProj.bomb.Add(new BombProj(position));
+                if(bombNum > 0)
+                {
+                    bombNum--;
+                    BombProj.bomb.Add(new BombProj(position));
+                    myHUD.BombNumUpdate(bombNum);
+                }
             }
             if (kState.IsKeyDown(Keys.D2) && previous.IsKeyUp(Keys.D2))
             {
@@ -259,10 +264,6 @@ namespace Game2.Sprites.Link
             {
                 exit.Execute();
             }
-            if (kState.IsKeyDown(Keys.R))
-            {
-                reset.Execute();
-            }
             if (kState.IsKeyDown(Keys.P))
             {
                 MediaPlayer.Pause();
@@ -270,6 +271,10 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.O))
             {
                 MediaPlayer.Resume();
+            }
+            if (kState.IsKeyDown(Keys.R))
+            {
+                reset.Execute();
             }
 
 

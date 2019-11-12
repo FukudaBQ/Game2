@@ -1,5 +1,6 @@
 ﻿using Game2.Interfaces;
 using Game2.Sprites.Link;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,21 @@ namespace Game2.Commands
     class ResetCommand : ICommands
     {
         private Player player;
-        public ResetCommand(Player player)
+        private Game1 game;
+        private HUD hud;
+        public ResetCommand(Player player, Game1 game, HUD hud)
         {
             this.player = player;
+            this.game = game;
+            this.hud = hud;
         }
 
         public void Execute()
         {
-          player.setX(3200);
-          player.setY(3880);
-            player.camPosition.X = 3200;
-            player.camPosition.Y = 3880;
-            player.tempCam = player.camPosition;
+          player.Position= new Vector2(3140, 12800);
+            player.camPosition= new Vector2(3200, 12520);
+            player.Health = 3;
+
         }
     }
 }

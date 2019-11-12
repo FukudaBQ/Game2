@@ -9,22 +9,24 @@ using System.Threading.Tasks;
 
 namespace Game2
 {
-    class HUD
+    public class HUD
     {
         private Player player;
         private Texture2D texture;
         private Texture2D mapTexture;
         private SpriteBatch batch;
-        private HUDHeart heart;
+        private List<HUDHeart> heart;
         private HUDMap map;
         private Texture2D green;
         private HUDWord[] wordKey;
-        private int[] keyNumX = {3060, 3085, 3110 };
+        private int[] keyNumX = { 3060, 3085, 3110 };
         private int keyNumY = 12080;
         private int coinNumY = 12000;
         private int bombNumY = 12160;
         private HUDWord[] wordCoins;
         private HUDWord[] wordBomb;
+        private HUDSword sword;
+        private HUDArrow arrow;
 
         public HUD(Player player, Texture2D texture, SpriteBatch batch, Texture2D mapTexture, Texture2D veryGreen)
         {
@@ -33,7 +35,8 @@ namespace Game2
             this.mapTexture = mapTexture;
             this.batch = batch;
             this.green = veryGreen;
-            heart = new HUDHeart(3640, 12080);
+            heart = new List<HUDHeart>();
+            RegisterHeart();
             map = new HUDMap();
             wordKey = new HUDWord[3];
             RegisterKey();
@@ -41,6 +44,14 @@ namespace Game2
             RegisterCoins();
             wordBomb = new HUDWord[3];
             RegisterBomb();
+            sword = new HUDSword();
+            arrow = new HUDArrow();
+        }
+        private void RegisterHeart()
+        {
+            heart.Add(new HUDHeart(3480, 12080));
+            heart.Add(new HUDHeart(3560, 12080));
+            heart.Add(new HUDHeart(3640, 12080));
         }
 
         private void RegisterBomb()
@@ -48,6 +59,10 @@ namespace Game2
             wordBomb[0] = new HUDWord(keyNumX[0], bombNumY, 10);
             wordBomb[1] = new HUDWord(keyNumX[1], bombNumY, 0);
             wordBomb[2] = new HUDWord(keyNumX[2], bombNumY, 5);
+        }
+        public void LostHeart()
+        {
+            heart.RemoveAt(heart.Count - 1);
         }
 
         private void RegisterCoins()
@@ -64,12 +79,53 @@ namespace Game2
             wordKey[2] = new HUDWord(keyNumX[2], keyNumY, 0);
         }
 
+        public void BombNumUpdate(int numOfBombs)
+        {
+            int tenth = numOfBombs / 10;
+            int num = numOfBombs % 10;
+            wordBomb[1] = new HUDWord(keyNumX[1] + wordBomb[1].getX() * 1280, bombNumY + wordBomb[1].getY() * 2040, tenth);
+            wordBomb[2] = new HUDWord(keyNumX[2] + wordBomb[2].getX() * 1280, bombNumY + wordBomb[2].getY() * 2040, num);
+        }
+
         public void KeyNumUpdate(int numOfKeys)
         {
             int tenth = numOfKeys / 10;
             int num = numOfKeys % 10;
             wordKey[1] = new HUDWord(keyNumX[1] + wordKey[1].getX() * 1280, keyNumY +wordKey[1].getY() * 2040, tenth);
             wordKey[2] = new HUDWord(keyNumX[2] + wordKey[2].getX() * 1280, keyNumY + wordKey[2].getY() * 2040, num);
+        }
+
+        public void HeartUP()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveUp();
+            }
+        }
+
+        public void HeartDown()
+        {
+
+            foreach (HUDHeart i in heart)
+            {
+                i.moveDown();
+            }
+        }
+
+        public void HeartLeft()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveLeft();
+            }
+        }
+
+        public void HeartRight()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveRight();
+            }
         }
 
         public void KeyNumUp()
@@ -136,7 +192,10 @@ namespace Game2
 
         public void updateHeartLoc(int X, int Y)
         {
-            heart.UpdateLoc(X, Y);
+            foreach (HUDHeart i in heart)
+            {
+                i.UpdateLoc(X, Y);
+            }
         }
         public void updateMapLoc(int X, int Y)
         {
@@ -169,9 +228,49 @@ namespace Game2
             map.moveRight();
         }
 
+        public void SwordUp()
+        {
+            sword.moveUp();
+        }
+
+        public void SwordDown()
+        {
+            sword.moveDown();
+        }
+        public void SwordLeft()
+        {
+            sword.moveLeft();
+        }
+        public void SwordRight()
+        {
+            sword.moveRight();
+        }
+
+
+        public void ArrowUp()
+        {
+            arrow.moveUp();
+        }
+
+        public void ArrowDown()
+        {
+            arrow.moveDown();
+        }
+        public void ArrowLeft()
+        {
+            arrow.moveLeft();
+        }
+        public void ArrowRight()
+        {
+            arrow.moveRight();
+        }
+
         public void Draw()
         {
-            heart.Draw(texture, batch);
+            foreach (HUDHeart i in heart)
+            {
+                i.Draw(texture, batch);
+            }
             map.Draw(mapTexture, batch, green);
             foreach (HUDWord i in wordKey)
             {
@@ -185,14 +284,16 @@ namespace Game2
             {
                 i.Draw(texture, batch);
             }
+            sword.Draw(texture, batch);
+            arrow.Draw(texture, batch);
         }
         public int getHeartDestX()
         {
-            return heart.getX();
+            return 0;
         }
         public int getHeartDestY()
         {
-            return heart.getY();
+            return 0;
         }
 
         /*
@@ -208,6 +309,8 @@ namespace Game2
             private int destY;
             private int destWidth = 50;
             private int destHeight = 50;
+            private int currentX;
+            private int currentY;
 
             public HUDHeart(int destX, int destY)
             {
@@ -228,7 +331,7 @@ namespace Game2
             internal void Draw(Texture2D texture, SpriteBatch batch)
             {
                 Rectangle sourceRectangle = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
-                Rectangle destinationRectangle = new Rectangle(destX, destY, destWidth, destHeight);
+                Rectangle destinationRectangle = new Rectangle(destX + currentX * 1280, destY + currentY * 2040, destWidth, destHeight);
                 batch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
             }
 
@@ -237,12 +340,81 @@ namespace Game2
                 this.destX = destX;
                 this.destY = destY;
             }
+            internal void moveRight()
+            {
+                currentX++;
+            }
+            internal void moveLeft()
+            {
+                currentX--;
+            }
+            internal void moveUp()
+            {
+                currentY--;
+            }
+            internal void moveDown()
+            {
+                currentY++;
+            }
         }
+
 
 
         private class HUDSword
         {
+            private int sourceX = 555;
+            private int sourceY = 137;
+            private int sourceWidth = 8;
+            private int sourceHeight = 16;
+            private int destX = 3330;
+            private int destY = 12030;
+            private int destWidth = 50;
+            private int destHeight = 100;
+            private int currentX;
+            private int currentY;
 
+            public HUDSword()
+            {
+            }
+
+            public int getX()
+            {
+                return destX;
+            }
+
+            public int getY()
+            {
+                return destY;
+            }
+
+            internal void Draw(Texture2D texture, SpriteBatch batch)
+            {
+                Rectangle sourceRectangle = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
+                Rectangle destinationRectangle = new Rectangle(destX + currentX * 1280, destY + currentY * 2040, destWidth, destHeight);
+                batch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            internal void UpdateLoc(int destX, int destY)
+            {
+                this.destX = destX;
+                this.destY = destY;
+            }
+            internal void moveRight()
+            {
+                currentX++;
+            }
+            internal void moveLeft()
+            {
+                currentX--;
+            }
+            internal void moveUp()
+            {
+                currentY--;
+            }
+            internal void moveDown()
+            {
+                currentY++;
+            }
         }
 
         /*
@@ -382,6 +554,62 @@ namespace Game2
                 currentY++;
             }
 
+        }
+        private class HUDArrow
+        {
+            private int sourceX = 615;
+            private int sourceY = 137;
+            private int sourceWidth = 8;
+            private int sourceHeight = 16;
+            private int destX = 3200;
+            private int destY = 12030;
+            private int destWidth = 50;
+            private int destHeight = 100;
+            private int currentX;
+            private int currentY;
+
+            public HUDArrow()
+            {
+            }
+
+            public int getX()
+            {
+                return destX;
+            }
+
+            public int getY()
+            {
+                return destY;
+            }
+
+            internal void Draw(Texture2D texture, SpriteBatch batch)
+            {
+                Rectangle sourceRectangle = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
+                Rectangle destinationRectangle = new Rectangle(destX + currentX * 1280, destY + currentY * 2040, destWidth, destHeight);
+                batch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
+            }
+
+            internal void UpdateLoc(int destX, int destY)
+            {
+                this.destX = destX;
+                this.destY = destY;
+            }
+            internal void moveRight()
+            {
+                currentX++;
+            }
+            internal void moveLeft()
+            {
+                currentX--;
+            }
+            internal void moveUp()
+            {
+                currentY--;
+            }
+            internal void moveDown()
+            {
+                currentY++;
+            }
         }
     }
 }
