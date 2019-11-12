@@ -10,8 +10,6 @@ namespace Game2.Sprites.Link
 {
     class BoomerangHandler
     {
-        private Vector2 position;
-        private Dir direction;
         private float timeLastUpdate=0f;
 
 

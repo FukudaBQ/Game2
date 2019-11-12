@@ -249,23 +249,6 @@ namespace Game2.Sprites.Link
                 BoomerangProj.boomerang.Add(new BoomerangProj(position, direction));
             }
 
-            if (kState.IsKeyDown(Keys.F) && previous.IsKeyUp(Keys.F))
-            {
-                
-                camMoveUp.Execute();
-            }
-            if (kState.IsKeyDown(Keys.V) && previous.IsKeyUp(Keys.V))
-            {
-                camMoveDown.Execute();
-            }
-            if (kState.IsKeyDown(Keys.C) && previous.IsKeyUp(Keys.C))
-            {
-                camMoveLeft.Execute();
-            }
-            if (kState.IsKeyDown(Keys.B) && previous.IsKeyUp(Keys.B))
-            {
-                camMoveRight.Execute();
-            }
             previous = kState;
             if (kState.IsKeyDown(Keys.Q))
             {

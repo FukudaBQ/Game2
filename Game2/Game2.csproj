@@ -216,6 +216,7 @@
     <None Include="Content\map\mapD.xnb" />
     <None Include="Content\map\test.xnb" />
     <None Include="Content\map\test1.xnb" />
+    <None Include="Content\NMNAT.spritefont" />
     <None Include="Content\numOfKeys.spritefont" />
     <None Include="Content\youWIN.spritefont" />
     <None Include="packages.config" />

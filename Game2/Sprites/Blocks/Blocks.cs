@@ -13,10 +13,10 @@ namespace Game2.Sprites.Blocks
     class Blocks
     {
         protected Vector2 position;
-        protected int radius;
         protected int Length;
         protected int Width;
         protected Vector2 hitPos;
+        private int radius;
 
         public static List<Blocks> blocks = new List<Blocks>();
         public static List<Blocks> waterblocks = new List<Blocks>();

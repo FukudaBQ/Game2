@@ -17,7 +17,6 @@ namespace Game2.Sprites.Enemies
         private bool movingUp = false;
         private SpriteBatch spriteBatch { get; set; }
         private int currentFrame;
-        private bool hitted = true;
         protected int health = 3;
         public Color color = Color.White;
         protected int radius = 50;
