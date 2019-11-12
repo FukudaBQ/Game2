@@ -17,6 +17,7 @@ using MonoGame.Extended;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Game2.Sprites.Link.Projectile;
+//using Game2.Object.Enemies;
 
 namespace Game2
 {
@@ -60,6 +61,7 @@ namespace Game2
         private Texture2D HUD;
         private Texture2D HUDMap;
         private Texture2D veryGreen;
+        private Texture2D rockSprite;
 
         private Bat bat;
         private Dragon dragon;
@@ -90,6 +92,39 @@ namespace Game2
             mapRenderer = new TiledMapRenderer(GraphicsDevice);
             cam = new Camera2D(GraphicsDevice);
             base.Initialize();
+        }
+        public void ReloadContent()
+        {
+            TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
+            foreach (var bat in bats)
+            {
+                Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 840), spriteBatch));
+
+            }
+
+            TiledMapObject[] dragons = myMap.GetLayer<TiledMapObjectLayer>("dragon").Objects;
+            foreach (var dra in dragons)
+            {
+                Dragon.dragons.Add(new Dragon(dragonSprite, new Vector2(dra.Position.X, dra.Position.Y + 840), spriteBatch));
+
+            }
+
+            TiledMapObject[] knights = myMap.GetLayer<TiledMapObjectLayer>("knight").Objects;
+            foreach (var kn in knights)
+            {
+                Knight.knights.Add(new Knight(knightSprite, new Vector2(kn.Position.X, kn.Position.Y + 840), spriteBatch));
+
+            }
+
+        }
+
+        public void ClearContent()
+        {
+            Bat.bats.RemoveAll(e => e.Health >0);
+            Dragon.dragons.RemoveAll(d => d.Health > 0);
+            Knight.knights.RemoveAll(k => k.Health > 0);
+
+
         }
         protected override void LoadContent()
         {
@@ -204,6 +239,11 @@ namespace Game2
             {
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 840)));
             }
+            TiledMapObject[] rocks = myMap.GetLayer<TiledMapObjectLayer>("rock").Objects;
+            foreach (var r in rocks)
+            {
+                Rock.rocks.Add(new RockBlock(new Vector2(r.Position.X, r.Position.Y + 840)));
+            }
             TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
             foreach (var wblo in waterblocks)
             {
@@ -255,6 +295,7 @@ namespace Game2
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
+            rockSprite = Content.Load<Texture2D>("rock");
         }
         protected override void UnloadContent()
         {
@@ -432,6 +473,20 @@ namespace Game2
                     }
 
                 }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = arrow.Radius + kn.Radius;
+                    if (Vector2.Distance(arrow.Position, kn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
@@ -470,6 +525,20 @@ namespace Game2
                     {
                         dra.Dcolor = Color.White;
                     }
+                }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = arrow.Radius + kn.Radius;
+                    if (Vector2.Distance(arrow.Position, kn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
                 }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowUp)
@@ -510,6 +579,20 @@ namespace Game2
                         dra.Dcolor = Color.White;
                     }
                 }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = arrow.Radius + kn.Radius;
+                    if (Vector2.Distance(arrow.Position, kn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowDown)
             {
@@ -548,6 +631,20 @@ namespace Game2
                     {
                         dra.Dcolor = Color.White;
                     }
+                }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = arrow.Radius + kn.Radius;
+                    if (Vector2.Distance(arrow.Position, kn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
                 }
             }
             foreach (fireball fir in fireball.fireDown)
@@ -649,9 +746,10 @@ namespace Game2
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
+            Knight.knights.RemoveAll(k => k.Health <= 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
-            collisionHandler.CollisionHandle(player, myHUD);
+            collisionHandler.CollisionHandle(player, myHUD,this);
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -701,6 +799,10 @@ namespace Game2
             foreach (Knight kn in Knight.knights)
             {
                 kn.Draw();
+            }
+            foreach(Rock r in Rock.rocks)
+            {
+                spriteBatch.Draw(rockSprite, r.Position, Color.White);
             }
 
             foreach (Item it in Item.items)

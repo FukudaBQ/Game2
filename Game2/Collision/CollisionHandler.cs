@@ -16,7 +16,7 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
-        public void CollisionHandle(Player player, HUD myHUD)
+        public void CollisionHandle(Player player, HUD myHUD, Game1 game)
         {
             foreach(Item it in Item.items)
             {
@@ -63,7 +63,11 @@ namespace Game2.Collision
                 
                     if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
-                    
+
+                    game.ClearContent();
+                    game.ReloadContent();
+
+
                     player.position.Y = player.position.Y - 1500;
                     player.camPosition.Y = player.camPosition.Y - 2040;
 
@@ -80,6 +84,8 @@ namespace Game2.Collision
 
                 if (Vector2.Distance(player.Position, dnblo.Position) < sum)
                 {
+                    game.ClearContent();
+                    game.ReloadContent();
 
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
@@ -96,6 +102,8 @@ namespace Game2.Collision
 
                 if (Vector2.Distance(player.Position, leblo.Position) < sum)
                 {
+                    game.ClearContent();
+                    game.ReloadContent();
 
                     player.position.X = player.position.X - 410;
                     player.camPosition.X = player.camPosition.X - 1280;
@@ -111,8 +119,10 @@ namespace Game2.Collision
 
                 if (Vector2.Distance(player.Position, riblo.Position) < sum)
                 {
+                    game.ClearContent();
+                    game.ReloadContent();
 
-                    player.position.X = player.position.X + 330;
+                    player.position.X = player.position.X + 320;
                     player.camPosition.X = player.camPosition.X + 1280;
                     myHUD.updateHeartLoc(myHUD.getHeartDestX() + 1280, myHUD.getHeartDestY());
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
