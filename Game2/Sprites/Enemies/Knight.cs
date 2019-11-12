@@ -10,18 +10,32 @@ using System.Threading.Tasks;
 
 namespace Game2.Sprites.Enemies
 {
-    class Knight : ISprite
+    class Knight
     {
         private Texture2D texture { get; set; }
-        private Vector2 location { get; set; }
+        private Vector2 location;
+        Random rnd = new Random();
         private SpriteBatch spriteBatch { get; set; }
         private int currentFrame;
         private int totalFrame;
+        public int rand=1;
+        private Vector2 temp;
         private float timeLastUpdate = 0f;
-        private bool hitted = true;
+        private float timer = 0;
+        protected int speed = 100;
         public Color color = Color.White;
-        private KeyboardState previous = Keyboard.GetState();
-        private KnightStateMachine stateMachine;
+        public static List<Knight> knights = new List<Knight>();
+        //aa
+        public float Timer
+        {
+            get { return timer; }
+            set { timer = value; }
+        }
+        public Vector2 Location
+        {
+            get { return location; }
+            set { location = value; }
+        }
         public Knight(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;
@@ -29,10 +43,75 @@ namespace Game2.Sprites.Enemies
             spriteBatch = batch;
             currentFrame = 0;
             totalFrame = 2;
-            stateMachine = new KnightStateMachine(this);
         }
         public void Update(GameTime gametime)
         {
+            float dt = (float)gametime.ElapsedGameTime.TotalSeconds;
+            if (timer > 0)
+            {
+                timer -= dt;
+            }
+            if (timer <= 0)
+            {
+                rand = rnd.Next(1, 5);
+                timer = 1.5f;
+            }
+            switch (rand)
+            {
+                case 1:
+                    temp = location;
+                     temp.X= location.X + speed * dt;
+                    if (!Blocks.Blocks.didCollide(temp, 20, 10))
+                    {
+                        location.X += speed * dt;
+                    }
+                    else
+                    {
+                        rand = rnd.Next(1, 5);
+                    }
+                    break;
+                case 2:
+                    temp = location;
+                    temp.X = location.X - speed * dt;
+                    if (!Blocks.Blocks.didCollide(temp, 20, 10))
+                    {
+                        location.X -= speed * dt;
+                    }
+                    else
+                    {
+                        rand = rnd.Next(1, 5);
+                    }
+                    break;
+                case 3:
+                    temp = location;
+                    temp.Y = location.Y + speed * dt;
+                    if (!Blocks.Blocks.didCollide(temp, 20, 10))
+                    {
+                        location.Y += speed * dt;
+                    }
+                    else
+                    {
+                        rand = rnd.Next(1, 5);
+                    }
+                    break;
+                case 4:
+                    temp = location;
+                    temp.Y = location.Y - speed * dt;
+                    if (!Blocks.Blocks.didCollide(temp, 20, 10))
+                    {
+                        location.Y -= speed * dt;
+                    }
+                    else
+                    {
+                        rand = rnd.Next(1, 5);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+
+
             timeLastUpdate += (float)gametime.ElapsedGameTime.TotalSeconds;
 
             if (timeLastUpdate > 0.2f)
@@ -44,23 +123,11 @@ namespace Game2.Sprites.Enemies
                 }
                 timeLastUpdate = 0f;
             }
+
         }
         public void Draw()
         {
-            KeyboardState kState = Keyboard.GetState();
-
-
-            if (kState.IsKeyDown(Keys.O) && previous.IsKeyUp(Keys.O) && hitted)
-            {
-                stateMachine.ChangeColorRed();
-                hitted = !hitted;
-            }
-            else if (kState.IsKeyDown(Keys.O) && previous.IsKeyUp(Keys.O) && !hitted)
-            {
-                stateMachine.ChangeColorWhite();
-                hitted = !hitted;
-            }
-            previous = kState;
+            
             Rectangle sourceRectangle = new Rectangle(0, 0 + currentFrame * 30, 18, 18);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, 16 * 4, 16 * 4);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, color);
