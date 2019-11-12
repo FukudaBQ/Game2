@@ -45,7 +45,6 @@ namespace Game2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
-        private PlayerDying playerDying;
         private Texture2D bomb;
         private Texture2D arrowDown;
         private Texture2D arrowUp;

@@ -12,11 +12,10 @@ namespace Game2.Sprites.Link
         private Vector2 position;
         private int speed = 500;
         private Dir direction;
-        private bool movingRight=true;
         private float timeLastUpdate = 0f;
-        private float timer = 0f;
         private bool isBack = false;
         private bool collided = false;
+        private float timer;
         private int radius = 15;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
         public int Radius

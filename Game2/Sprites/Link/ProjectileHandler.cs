@@ -10,8 +10,6 @@ namespace Game2.Sprites.Link
 {
     class ProjectileHandler
     {
-        private Vector2 position;
-        private Dir direction;
 
 
         public void Update(GameTime gameTime)
