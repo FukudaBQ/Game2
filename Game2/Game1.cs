@@ -17,6 +17,8 @@ using MonoGame.Extended;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Game2.Sprites.Link.Projectile;
+using Game2.Commands;
+using Microsoft.Xna.Framework.Input;
 //using Game2.Object.Enemies;
 
 namespace Game2
@@ -73,6 +75,7 @@ namespace Game2
         private TiledMap myMap;
         private Camera2D cam;
         private Vector2 camLocation;
+        private ResetCommand reset;
 
         private HUD myHUD;
         public Game1()
@@ -128,6 +131,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
+            reset = new ResetCommand(player,this);
             numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -820,6 +824,8 @@ namespace Game2
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD,this);
+            KeyboardState kState = Keyboard.GetState();
+            
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
@@ -922,3 +928,4 @@ namespace Game2
    
     
 }
+    
