@@ -13,15 +13,20 @@ namespace Game2.Commands
     {
         private Player player;
         private Game1 game;
-        public ResetCommand(Player player, Game1 game)
+        private HUD hud;
+        public ResetCommand(Player player, Game1 game, HUD hud)
         {
             this.player = player;
             this.game = game;
+            this.hud = hud;
         }
 
         public void Execute()
         {
           player.Position= new Vector2(3140, 12800);
+            player.camPosition= new Vector2(3200, 12520);
+            player.Health = 3;
+
         }
     }
 }

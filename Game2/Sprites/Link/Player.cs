@@ -47,7 +47,7 @@ namespace Game2.Sprites.Link
         private float healthTimer = 0f;
         private float colorTimer = 0f;
         private int numOfKeys = 0;
-        private int bombNum = 5;
+        public int bombNum = 5;
         private HUD myHUD;
         public int NumOfKeys
         {
@@ -107,7 +107,7 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
-            reset = new ResetCommand(this, game);
+            reset = new ResetCommand(this, game,myHUD);
             camMoveUp = new CamMoveUp(this);
             camMoveDown = new CamMoveDown(this);
             camMoveLeft = new CamMoveLeft(this);
