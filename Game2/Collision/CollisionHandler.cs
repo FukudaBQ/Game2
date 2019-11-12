@@ -73,7 +73,7 @@ namespace Game2.Collision
                     player.camPosition.Y = player.camPosition.Y - 2040;
 
 
-                    myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() - 2040);
+                    myHUD.HeartUP();
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() - 2040);
                     myHUD.indexUp();
                     myHUD.KeyNumUp();
@@ -92,7 +92,7 @@ namespace Game2.Collision
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
 
-                    myHUD.updateHeartLoc(myHUD.getHeartDestX(), myHUD.getHeartDestY() + 2040);
+                    myHUD.HeartDown();
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
                     myHUD.indexDown();
                     myHUD.KeyNumDown();
@@ -110,7 +110,7 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X - 300;
                     player.camPosition.X = player.camPosition.X - 1280;
-                    myHUD.updateHeartLoc(myHUD.getHeartDestX() - 1280, myHUD.getHeartDestY());
+                    myHUD.HeartLeft();
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
                     myHUD.indexLeft();
                     myHUD.KeyNumLeft();
@@ -128,7 +128,7 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X + 320;
                     player.camPosition.X = player.camPosition.X + 1280;
-                    myHUD.updateHeartLoc(myHUD.getHeartDestX() + 1280, myHUD.getHeartDestY());
+                    myHUD.HeartRight();
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
                     myHUD.indexRight();
                     myHUD.KeyNumRight();

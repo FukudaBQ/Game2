@@ -15,11 +15,11 @@ namespace Game2
         private Texture2D texture;
         private Texture2D mapTexture;
         private SpriteBatch batch;
-        private HUDHeart heart;
+        private HUDHeart[] heart;
         private HUDMap map;
         private Texture2D green;
         private HUDWord[] wordKey;
-        private int[] keyNumX = {3060, 3085, 3110 };
+        private int[] keyNumX = { 3060, 3085, 3110 };
         private int keyNumY = 12080;
         private int coinNumY = 12000;
         private int bombNumY = 12160;
@@ -33,7 +33,8 @@ namespace Game2
             this.mapTexture = mapTexture;
             this.batch = batch;
             this.green = veryGreen;
-            heart = new HUDHeart(3640, 12080);
+            heart = new HUDHeart[3];
+            RegisterHeart();
             map = new HUDMap();
             wordKey = new HUDWord[3];
             RegisterKey();
@@ -41,6 +42,12 @@ namespace Game2
             RegisterCoins();
             wordBomb = new HUDWord[3];
             RegisterBomb();
+        }
+        private void RegisterHeart()
+        {
+            heart[0] = new HUDHeart(3480,12080);
+            heart[1] = new HUDHeart(3560, 12080);
+            heart[2] = new HUDHeart(3640, 12080);
         }
 
         private void RegisterBomb()
@@ -78,6 +85,39 @@ namespace Game2
             int num = numOfKeys % 10;
             wordKey[1] = new HUDWord(keyNumX[1] + wordKey[1].getX() * 1280, keyNumY +wordKey[1].getY() * 2040, tenth);
             wordKey[2] = new HUDWord(keyNumX[2] + wordKey[2].getX() * 1280, keyNumY + wordKey[2].getY() * 2040, num);
+        }
+
+        public void HeartUP()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveUp();
+            }
+        }
+
+        public void HeartDown()
+        {
+
+            foreach (HUDHeart i in heart)
+            {
+                i.moveDown();
+            }
+        }
+
+        public void HeartLeft()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveLeft();
+            }
+        }
+
+        public void HeartRight()
+        {
+            foreach (HUDHeart i in heart)
+            {
+                i.moveRight();
+            }
         }
 
         public void KeyNumUp()
@@ -144,7 +184,10 @@ namespace Game2
 
         public void updateHeartLoc(int X, int Y)
         {
-            heart.UpdateLoc(X, Y);
+            foreach (HUDHeart i in heart)
+            {
+                i.UpdateLoc(X, Y);
+            }
         }
         public void updateMapLoc(int X, int Y)
         {
@@ -179,7 +222,10 @@ namespace Game2
 
         public void Draw()
         {
-            heart.Draw(texture, batch);
+            foreach (HUDHeart i in heart)
+            {
+                i.Draw(texture, batch);
+            }
             map.Draw(mapTexture, batch, green);
             foreach (HUDWord i in wordKey)
             {
@@ -196,11 +242,11 @@ namespace Game2
         }
         public int getHeartDestX()
         {
-            return heart.getX();
+            return 0;
         }
         public int getHeartDestY()
         {
-            return heart.getY();
+            return 0;
         }
 
         /*
@@ -216,6 +262,8 @@ namespace Game2
             private int destY;
             private int destWidth = 50;
             private int destHeight = 50;
+            private int currentX;
+            private int currentY;
 
             public HUDHeart(int destX, int destY)
             {
@@ -236,7 +284,7 @@ namespace Game2
             internal void Draw(Texture2D texture, SpriteBatch batch)
             {
                 Rectangle sourceRectangle = new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight);
-                Rectangle destinationRectangle = new Rectangle(destX, destY, destWidth, destHeight);
+                Rectangle destinationRectangle = new Rectangle(destX + currentX * 1280, destY + currentY * 2040, destWidth, destHeight);
                 batch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
             }
 
@@ -244,6 +292,22 @@ namespace Game2
             {
                 this.destX = destX;
                 this.destY = destY;
+            }
+            internal void moveRight()
+            {
+                currentX++;
+            }
+            internal void moveLeft()
+            {
+                currentX--;
+            }
+            internal void moveUp()
+            {
+                currentY--;
+            }
+            internal void moveDown()
+            {
+                currentY++;
             }
         }
 
