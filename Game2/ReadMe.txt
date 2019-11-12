@@ -1,5 +1,6 @@
 ﻿In this program, you can use WASD or arrow to control the sprite which is link. Then you can use 1, 2, 3 to use projectiles. In order to use sword, you can press Z or N. 
-Lastly, use q to quit, use R to reset the game.
+Lastly, use q to quit, use R to reset the game. We run code analysis this time, and removed as many warnings as we could, but we were not able to remove those saying class too long.  
+ 
 For HUD:
 1. Picking up item will increase the number of the item.
 2. Using Bomb will decrease the bumber of the item.
