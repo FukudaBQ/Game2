@@ -67,7 +67,6 @@
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
-    <Compile Include="Sprites\Enemies\KnightStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Monster.cs" />
     <Compile Include="Sprites\Enemies\MonsterStateMachine.cs" />
     <Compile Include="Sprites\Enemies\Stalfos.cs" />

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="29" nextobjectid="3307">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="30" nextobjectid="3330">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6737,6 +6737,71 @@
    <point/>
   </object>
   <object id="3306" x="2003.37" y="7342.25">
+   <point/>
+  </object>
+  <object id="3307" x="3118.84" y="7348.35">
+   <point/>
+  </object>
+  <object id="3308" x="3156.5" y="7346.74">
+   <point/>
+  </object>
+  <object id="3309" x="3198.97" y="7346.74">
+   <point/>
+  </object>
+  <object id="3310" x="3239.04" y="7346.74">
+   <point/>
+  </object>
+  <object id="3311" x="3271.9" y="7346.74">
+   <point/>
+  </object>
+  <object id="3314" x="5638.78" y="5297.96">
+   <point/>
+  </object>
+  <object id="3315" x="5678.91" y="5302.04">
+   <point/>
+  </object>
+  <object id="3316" x="5722.45" y="5302.72">
+   <point/>
+  </object>
+  <object id="3317" x="5763.27" y="5300">
+   <point/>
+  </object>
+  <object id="3318" x="5800.68" y="5296.6">
+   <point/>
+  </object>
+  <object id="3319" x="5841.5" y="5298.64">
+   <point/>
+  </object>
+  <object id="3320" x="5638.78" y="5304.76">
+   <point/>
+  </object>
+  <object id="3321" x="5678.91" y="5305.44">
+   <point/>
+  </object>
+  <object id="3322" x="5721.77" y="5306.8">
+   <point/>
+  </object>
+  <object id="3323" x="5759.86" y="5303.4">
+   <point/>
+  </object>
+  <object id="3324" x="5800" y="5306.12">
+   <point/>
+  </object>
+  <object id="3325" x="5841.5" y="5305.44">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="29" name="knight">
+  <object id="3326" x="5281.78" y="5398.88">
+   <point/>
+  </object>
+  <object id="3327" x="6160.04" y="5400.1">
+   <point/>
+  </object>
+  <object id="3328" x="6161.26" y="5878.26">
+   <point/>
+  </object>
+  <object id="3329" x="5279.34" y="5881.92">
    <point/>
   </object>
  </objectgroup>

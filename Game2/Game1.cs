@@ -120,6 +120,13 @@ namespace Game2
 
             }
 
+            TiledMapObject[] knights = myMap.GetLayer<TiledMapObjectLayer>("knight").Objects;
+            foreach (var kn in knights)
+            {
+                Knight.knights.Add(new Knight(knightSprite, new Vector2(kn.Position.X, kn.Position.Y + 840), spriteBatch));
+
+            }
+
             TiledMapObject[] fairies = myMap.GetLayer<TiledMapObjectLayer>("fairy").Objects;
             foreach (var fa in fairies)
             {
@@ -269,6 +276,11 @@ namespace Game2
             foreach (explosion ex in explosion.exp)
             {
                 ex.Update(gameTime);
+            }
+            foreach (Knight kn in Knight.knights)
+            {
+                kn.Update(gameTime);
+
             }
             foreach (Dragon dra in Dragon.dragons)
             {
@@ -654,6 +666,11 @@ namespace Game2
             foreach (Dragon dra in Dragon.dragons)
             {
                 dra.Draw(dra.Location);
+            }
+
+            foreach (Knight kn in Knight.knights)
+            {
+                kn.Draw();
             }
 
             foreach (Item it in Item.items)
