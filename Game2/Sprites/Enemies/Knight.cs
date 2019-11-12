@@ -20,6 +20,7 @@ namespace Game2.Sprites.Enemies
         private int totalFrame;
         public int rand=1;
         private Vector2 temp;
+        protected int health = 1;
         private float timeLastUpdate = 0f;
         private float timer = 0;
         protected int speed = 100;
@@ -27,6 +28,11 @@ namespace Game2.Sprites.Enemies
         protected int radius = 20;
         public static List<Knight> knights = new List<Knight>();
         //aa
+        public int Health
+        {
+            get { return health; }
+            set { health = value; }
+        }
         public float Timer
         {
             get { return timer; }
