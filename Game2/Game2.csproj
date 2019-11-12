@@ -134,6 +134,7 @@
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\bat.png" />
+    <Content Include="Content\biggerExplosion1.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\Dragon.png" />
