@@ -79,6 +79,7 @@ namespace Game2.Collision
                     myHUD.indexUp();
                     myHUD.KeyNumUp();
                     myHUD.SwordUp();
+                    myHUD.ArrowUp();
                     }
                 
             }
@@ -99,6 +100,7 @@ namespace Game2.Collision
                     myHUD.indexDown();
                     myHUD.KeyNumDown();
                     myHUD.SwordDown();
+                    myHUD.ArrowDown();
                 }
 
             }
@@ -118,6 +120,7 @@ namespace Game2.Collision
                     myHUD.indexLeft();
                     myHUD.KeyNumLeft();
                     myHUD.SwordLeft();
+                    myHUD.ArrowLeft();
                 }
 
             }
@@ -137,6 +140,7 @@ namespace Game2.Collision
                     myHUD.indexRight();
                     myHUD.KeyNumRight();
                     myHUD.SwordRight();
+                    myHUD.ArrowRight();
                 }
 
             }
