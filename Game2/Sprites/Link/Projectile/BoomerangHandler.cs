@@ -22,13 +22,9 @@ namespace Game2.Sprites.Link
             foreach (BoomerangProj proj in BoomerangProj.boomerang)
             {
                 proj.Update(gameTime,player);
-                if (timeLastUpdate >2.0f)
-                {
-                    proj.IsBack = true;
-                    timeLastUpdate = 0;
-                }
+               
             }
-            BoomerangProj.boomerang.RemoveAll(proj => proj.Position==(player.Position));
+            BoomerangProj.boomerang.RemoveAll(p => p.IsBack==true);
             
         }
 

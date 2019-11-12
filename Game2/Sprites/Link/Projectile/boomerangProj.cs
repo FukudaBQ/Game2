@@ -16,6 +16,7 @@ namespace Game2.Sprites.Link
         private float timeLastUpdate = 0f;
         private float timer = 0f;
         private bool isBack = false;
+        private int radius = 15;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
         public int Speed
         {
@@ -76,7 +77,13 @@ namespace Game2.Sprites.Link
                 Vector2 moveDir = player.Position - position;
                 moveDir.Normalize();
                 position += moveDir * 800 * dt;
+                if (position.X <= player.Position.X + 10 && position.X >= player.Position.X - 10
+                && position.Y <= player.Position.Y + 10 && position.Y >= player.Position.Y - 10)
+                {
+                    isBack = true;
+                }
             }
+            
         }
     }
 }
