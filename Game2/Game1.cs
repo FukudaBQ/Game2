@@ -830,6 +830,7 @@ namespace Game2
                 player.Position = new Vector2(3140, 12800);
                 player.camPosition = new Vector2(3200, 12520);
                 player.Health = 3;
+                player.bombNum = 5;
                 myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             }
 

@@ -47,7 +47,7 @@ namespace Game2.Sprites.Link
         private float healthTimer = 0f;
         private float colorTimer = 0f;
         private int numOfKeys = 0;
-        private int bombNum = 5;
+        public int bombNum = 5;
         private HUD myHUD;
         public int NumOfKeys
         {
