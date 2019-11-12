@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="31" nextobjectid="3333">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="31" nextobjectid="3334">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6675,7 +6675,10 @@
  <objectgroup id="13" name="map"/>
  <objectgroup id="14" name="ring"/>
  <objectgroup id="30" name="rock">
-  <object id="3332" x="4433.33" y="7454.55">
+  <object id="3332" x="4436.36" y="7409.09">
+   <point/>
+  </object>
+  <object id="3333" x="4433.33" y="5918.18">
    <point/>
   </object>
  </objectgroup>
