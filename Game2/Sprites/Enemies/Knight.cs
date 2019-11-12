@@ -24,12 +24,17 @@ namespace Game2.Sprites.Enemies
         private float timer = 0;
         protected int speed = 100;
         public Color color = Color.White;
+        protected int radius = 20;
         public static List<Knight> knights = new List<Knight>();
         //aa
         public float Timer
         {
             get { return timer; }
             set { timer = value; }
+        }
+        public int Radius
+        {
+            get { return radius; }
         }
         public Vector2 Location
         {
@@ -108,7 +113,10 @@ namespace Game2.Sprites.Enemies
                     break;
                 default:
                     break;
+
             }
+
+
 
 
 

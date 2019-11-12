@@ -280,6 +280,27 @@ namespace Game2
             foreach (Knight kn in Knight.knights)
             {
                 kn.Update(gameTime);
+                int sum = player.Radius + kn.Radius;
+                if (Vector2.Distance(player.Position, kn.Location) < sum && player.HealthTimer <= 0)
+                {
+
+                    player.Health--;
+                    Vector2 moveDir = player.Position - kn.Location;
+                    moveDir.Normalize();
+
+                    player.Pcolor = Color.Red;
+                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
+                    if (!Blocks.didCollide(temp, player.length, player.width))
+                    {
+                        player.Position += moveDir * player.Damagedspeed * dt * 15;
+                    }
+
+                    player.HealthTimer = 1.0f;
+                }
+                if (player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
 
             }
             foreach (Dragon dra in Dragon.dragons)
