@@ -76,7 +76,7 @@ namespace Game2.Sprites.Link
             {
                 Vector2 moveDir = player.Position - position;
                 moveDir.Normalize();
-                position += moveDir * 800 * dt;
+                position += moveDir * 1000 * dt;
                 if (position.X <= player.Position.X + 10 && position.X >= player.Position.X - 10
                 && position.Y <= player.Position.Y + 10 && position.Y >= player.Position.Y - 10)
                 {
