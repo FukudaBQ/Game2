@@ -16,8 +16,18 @@ namespace Game2.Sprites.Link
         private float timeLastUpdate = 0f;
         private float timer = 0f;
         private bool isBack = false;
+        private bool collided = false;
         private int radius = 15;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
+        public int Radius
+        {
+            get { return radius; }
+        }
+        public bool Collided
+        {
+            get { return collided; }
+            set { collided = value; }
+        }
         public int Speed
         {
             get { return speed; }
