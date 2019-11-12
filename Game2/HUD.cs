@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Game2
 {
-    class HUD
+    public class HUD
     {
         private Player player;
         private Texture2D texture;
@@ -62,6 +62,14 @@ namespace Game2
             wordKey[0] = new HUDWord(keyNumX[0], keyNumY, 10);
             wordKey[1] = new HUDWord(keyNumX[1], keyNumY, 0);
             wordKey[2] = new HUDWord(keyNumX[2], keyNumY, 0);
+        }
+
+        public void BombNumUpdate(int numOfBombs)
+        {
+            int tenth = numOfBombs / 10;
+            int num = numOfBombs % 10;
+            wordBomb[1] = new HUDWord(keyNumX[1] + wordBomb[1].getX() * 1280, bombNumY + wordBomb[1].getY() * 2040, tenth);
+            wordBomb[2] = new HUDWord(keyNumX[2] + wordBomb[2].getX() * 1280, bombNumY + wordBomb[2].getY() * 2040, num);
         }
 
         public void KeyNumUpdate(int numOfKeys)

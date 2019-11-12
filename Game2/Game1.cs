@@ -137,6 +137,7 @@ namespace Game2
             Register();
 
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
+            player.setHUD(myHUD);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
