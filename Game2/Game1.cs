@@ -846,6 +846,7 @@ namespace Game2
                 player.Health = 3;
                 player.bombNum = 5;
                 myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
+                player.setHUD(myHUD);
             }
 
 
