@@ -78,6 +78,7 @@ namespace Game2
         private ResetCommand reset;
 
         public HUD myHUD;
+        private SpriteFont font;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -301,6 +302,7 @@ namespace Game2
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
             rockSprite = Content.Load<Texture2D>("rock");
+            font = Content.Load<SpriteFont>("NMNAT");
         }
         protected override void UnloadContent()
         {
@@ -926,6 +928,7 @@ namespace Game2
             else
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
+                spriteBatch.DrawString(font, "Press R to Reset and Replay", new Vector2(player.camPosition.X - 500, player.camPosition.Y), Color.Red);
             }
             spriteBatch.DrawString(numOfKeysFont,player.NumOfKeys.ToString(), player.Position, Color.Black);
             spriteBatch.End();
