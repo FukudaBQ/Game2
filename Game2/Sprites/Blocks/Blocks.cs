@@ -66,7 +66,7 @@ namespace Game2.Sprites.Blocks
             {
                 int Lsum = b.Length + otherL;
                 int Wsum = b.Width + otherW;
-                if (b.hitPos.X + otherPos.X <= Lsum && b.hitPos.Y + otherPos.Y <= Wsum)
+                if (Math.Abs(b.hitPos.X - otherPos.X) <= Lsum && Math.Abs(b.hitPos.Y - otherPos.Y) <= Wsum)
                 {
                     return true;
                 }

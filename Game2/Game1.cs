@@ -253,7 +253,7 @@ namespace Game2
             foreach (var wblo in waterblocks)
             {
                 
-                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 800)));
+                Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -915,6 +915,10 @@ namespace Game2
             boomerangHandler.Draw(spriteBatch, boomerang, BoomerangProj.boomerang);
 
             foreach (Blocks b in Blocks.blocks)
+            {
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            }
+            foreach (Blocks b in Blocks.waterblocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
