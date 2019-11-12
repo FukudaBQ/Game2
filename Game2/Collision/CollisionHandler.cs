@@ -42,6 +42,7 @@ namespace Game2.Collision
                 if (itemType == typeof(Bomb))
                 {
                     bombNum+=4;
+                    myHUD.BombNumUpdate(bombNum);
                 }
             }
             Item.items.RemoveAll(p => p.Collided);
@@ -77,6 +78,7 @@ namespace Game2.Collision
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() - 2040);
                     myHUD.indexUp();
                     myHUD.KeyNumUp();
+                    myHUD.SwordUp();
                     }
                 
             }
@@ -96,6 +98,7 @@ namespace Game2.Collision
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
                     myHUD.indexDown();
                     myHUD.KeyNumDown();
+                    myHUD.SwordDown();
                 }
 
             }
@@ -114,6 +117,7 @@ namespace Game2.Collision
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
                     myHUD.indexLeft();
                     myHUD.KeyNumLeft();
+                    myHUD.SwordLeft();
                 }
 
             }
@@ -132,6 +136,7 @@ namespace Game2.Collision
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
                     myHUD.indexRight();
                     myHUD.KeyNumRight();
+                    myHUD.SwordRight();
                 }
 
             }
