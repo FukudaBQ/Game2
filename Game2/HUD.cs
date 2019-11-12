@@ -19,8 +19,10 @@ namespace Game2
         private HUDMap map;
         private Texture2D green;
         private HUDWord[] wordKey;
-        private int[] keyNumX = {5620, 5645, 5670 };
-        private int keyNumY = 3920;
+        private int[] keyNumX = {3060, 3085, 3110 };
+        private int keyNumY = 12080;
+        private int coinNumY = 12000;
+        private HUDWord[] wordCoins;
 
         public HUD(Player player, Texture2D texture, SpriteBatch batch, Texture2D mapTexture, Texture2D veryGreen)
         {
@@ -29,11 +31,19 @@ namespace Game2
             this.mapTexture = mapTexture;
             this.batch = batch;
             this.green = veryGreen;
-            heart = new HUDHeart(6200, 3920);
+            heart = new HUDHeart(3640, 12080);
             map = new HUDMap();
             wordKey = new HUDWord[3];
             RegisterKey();
+            wordCoins = new HUDWord[3];
+            RegisterCoins();
+        }
 
+        private void RegisterCoins()
+        {
+            wordCoins[0] = new HUDWord(keyNumX[0], coinNumY, 10);
+            wordCoins[1] = new HUDWord(keyNumX[1], coinNumY, 0);
+            wordCoins[2] = new HUDWord(keyNumX[2], coinNumY, 0);
         }
 
         private void RegisterKey()
@@ -47,13 +57,17 @@ namespace Game2
         {
             int tenth = numOfKeys / 10;
             int num = numOfKeys % 10;
-            wordKey[1] = new HUDWord(wordKey[1].getX(), wordKey[1].getY(), tenth);
-            wordKey[2] = new HUDWord(wordKey[2].getX(), wordKey[2].getY(), num);
+            wordKey[1] = new HUDWord(keyNumX[1] + wordKey[1].getX() * 1280, keyNumY +wordKey[1].getY() * 2040, tenth);
+            wordKey[2] = new HUDWord(keyNumX[2] + wordKey[2].getX() * 1280, keyNumY + wordKey[2].getY() * 2040, num);
         }
 
         public void KeyNumUp()
         {
             foreach (HUDWord i in wordKey)
+            {
+                i.moveUp();
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.moveUp();
             }
@@ -65,6 +79,10 @@ namespace Game2
             {
                 i.moveDown();
             }
+            foreach (HUDWord i in wordCoins)
+            {
+                i.moveDown();
+            }
         }
         public void KeyNumLeft()
         {
@@ -72,10 +90,18 @@ namespace Game2
             {
                 i.moveLeft();
             }
+            foreach (HUDWord i in wordCoins)
+            {
+                i.moveLeft();
+            }
         }
         public void KeyNumRight()
         {
             foreach (HUDWord i in wordKey)
+            {
+                i.moveRight();
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.moveRight();
             }
@@ -121,6 +147,10 @@ namespace Game2
             heart.Draw(texture, batch);
             map.Draw(mapTexture, batch, green);
             foreach (HUDWord i in wordKey)
+            {
+                i.Draw(texture, batch);
+            }
+            foreach (HUDWord i in wordCoins)
             {
                 i.Draw(texture, batch);
             }
@@ -193,8 +223,8 @@ namespace Game2
             private int sourceY = 0;
             private int sourceWidth = 275;
             private int sourceHeight = 138;
-            private int destX = 5200;
-            private int destY = 3820;
+            private int destX = 2640;
+            private int destY = 11980;
             private int destWidth = 200;
             private int destHeight = 200;
             // variables for index box
@@ -202,8 +232,8 @@ namespace Game2
             private int indexSourceY = 0;
             private int indexSourceWidth = 10;
             private int indexSourceHeight = 20;
-            private int indexDestX = 150;
-            private int indexDestY = 40;
+            private int indexDestX = 80;
+            private int indexDestY = 170;
             private int indexDestWidth = 10;
             private int indexDestHeight = 20;
             private int distX = 33;
@@ -284,12 +314,12 @@ namespace Game2
 
             public int getX()
             {
-                return destX;
+                return currentX;
             }
 
             public int getY()
             {
-                return destY;
+                return currentY;
             }
             internal void Draw(Texture2D texture, SpriteBatch batch)
             {
