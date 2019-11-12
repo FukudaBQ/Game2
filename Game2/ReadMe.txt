@@ -15,3 +15,4 @@ For enemies:
 For blocks:
 1. Wall will stop all enemies and projectile
 2. Water will slow you down.
+3. Rock is the same with the wall.
