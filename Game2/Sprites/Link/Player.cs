@@ -107,7 +107,7 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
-            reset = new ResetCommand(this, game);
+            reset = new ResetCommand(this, game,myHUD);
             camMoveUp = new CamMoveUp(this);
             camMoveDown = new CamMoveDown(this);
             camMoveLeft = new CamMoveLeft(this);

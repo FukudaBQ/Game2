@@ -77,7 +77,7 @@ namespace Game2
         private Vector2 camLocation;
         private ResetCommand reset;
 
-        private HUD myHUD;
+        public HUD myHUD;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -131,7 +131,7 @@ namespace Game2
         }
         protected override void LoadContent()
         {
-            reset = new ResetCommand(player,this);
+            reset = new ResetCommand(player,this,myHUD);
             numOfKeysFont = Content.Load<SpriteFont>("numOfKeys");
             myMap = Content.Load<TiledMap>("map/mapD");
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -825,7 +825,14 @@ namespace Game2
 
             collisionHandler.CollisionHandle(player, myHUD,this);
             KeyboardState kState = Keyboard.GetState();
-            
+            if (kState.IsKeyDown(Keys.R))
+            {
+                player.Position = new Vector2(3140, 12800);
+                player.camPosition = new Vector2(3200, 12520);
+                player.Health = 3;
+                myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
+            }
+
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
