@@ -105,7 +105,7 @@ namespace Game2.Sprites.Link
         public Player(Game1 game)
         {
             exit = new ExitCommand(game);
-            reset = new ResetCommand(this);
+            reset = new ResetCommand(this, game);
             camMoveUp = new CamMoveUp(this);
             camMoveDown = new CamMoveDown(this);
             camMoveLeft = new CamMoveLeft(this);
@@ -254,10 +254,6 @@ namespace Game2.Sprites.Link
             {
                 exit.Execute();
             }
-            if (kState.IsKeyDown(Keys.R))
-            {
-                reset.Execute();
-            }
             if (kState.IsKeyDown(Keys.P))
             {
                 MediaPlayer.Pause();
@@ -265,6 +261,10 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.O))
             {
                 MediaPlayer.Resume();
+            }
+            if (kState.IsKeyDown(Keys.R))
+            {
+                reset.Execute();
             }
 
 
