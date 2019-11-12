@@ -10,23 +10,17 @@ namespace Game2.Sprites.Link
     class BoomerangProj
     {
         private Vector2 position;
-        private int speed = 300;
+        private int speed = 10;
         private Dir direction;
         private bool movingRight=true;
         private float timeLastUpdate = 0f;
-        private float timer = 0f;
-        private bool isBack = false;
+        private float timer;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
 
         public float Timer
         {
             get { return Timer; }
             set { Timer = value; }
-        }
-        public bool IsBack
-        {
-            get { return isBack; }
-            set { isBack = value; }
         }
         public BoomerangProj(Vector2 location, Dir newDir)
         {
@@ -46,30 +40,41 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeLastUpdate > 1.0f)
+            if (timer > 0)
             {
-                movingRight = true;
+                timer -= dt;
             }
-            else
-            {
-                movingRight = false;
+            
+            //timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //if (timeLastUpdate > 1.0f)
+            //{
+            //    movingRight = true;
+            //}
+            //else
+            //{
+               // movingRight = false;
 
-            }
+            //}
 
 
             switch (direction)
             {
                 case Dir.Right:
+                    position.X += speed*timer;
+                    if (timer <= 0)
+                    {
+                        timer += dt;
+                        position.X -= speed * timer * 30;
+                    }
                     //position.X += speed * dt;
-                    if (movingRight)
-                    {
-                        position.X -= speed * dt;
-                    }
-                    else
-                    {
-                        position.X += speed * dt;
-                    }
+                    //if (movingRight)
+                    //{
+                    //    position.X -= speed * dt;
+                    //}
+                    //else
+                    //{
+                     //   position.X += speed * dt;
+                    //}
                     break;
                 case Dir.Left:
                     position.X -= speed * dt;

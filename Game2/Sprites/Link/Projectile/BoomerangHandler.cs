@@ -18,17 +18,13 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             //float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
             foreach (BoomerangProj proj in BoomerangProj.boomerang)
             {
                 proj.Update(gameTime);
-                if (timeLastUpdate >2.0f)
-                {
-                    proj.IsBack = true;
-                    timeLastUpdate = 0;
-                }
+               
             }
-            BoomerangProj.boomerang.RemoveAll(proj => proj.IsBack);
+            //BoomerangProj.boomerang.RemoveAll(proj => proj.);
             
         }
 

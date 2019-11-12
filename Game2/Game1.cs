@@ -17,6 +17,7 @@ using MonoGame.Extended;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Game2.Sprites.Link.Projectile;
+//using Game2.Object.Enemies;
 
 namespace Game2
 {
@@ -60,6 +61,7 @@ namespace Game2
         private Texture2D HUD;
         private Texture2D HUDMap;
         private Texture2D veryGreen;
+        private Texture2D rockSprite;
 
         private Bat bat;
         private Dragon dragon;
@@ -237,6 +239,11 @@ namespace Game2
             {
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 840)));
             }
+            TiledMapObject[] rocks = myMap.GetLayer<TiledMapObjectLayer>("rock").Objects;
+            foreach (var r in rocks)
+            {
+                Rock.rocks.Add(new RockBlock(new Vector2(r.Position.X, r.Position.Y + 840)));
+            }
             TiledMapObject[] waterblocks = myMap.GetLayer<TiledMapObjectLayer>("waterblock").Objects;
             foreach (var wblo in waterblocks)
             {
@@ -288,6 +295,7 @@ namespace Game2
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
+            rockSprite = Content.Load<Texture2D>("rock");
         }
         protected override void UnloadContent()
         {
@@ -791,6 +799,10 @@ namespace Game2
             foreach (Knight kn in Knight.knights)
             {
                 kn.Draw();
+            }
+            foreach(Rock r in Rock.rocks)
+            {
+                spriteBatch.Draw(rockSprite, r.Position, Color.White);
             }
 
             foreach (Item it in Item.items)
