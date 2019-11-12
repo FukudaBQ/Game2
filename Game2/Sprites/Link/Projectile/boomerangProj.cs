@@ -10,14 +10,17 @@ namespace Game2.Sprites.Link
     class BoomerangProj
     {
         private Vector2 position;
-        private int speed = 300;
+        private int speed = 500;
         private Dir direction;
         private bool movingRight=true;
         private float timeLastUpdate = 0f;
         private float timer = 0f;
         private bool isBack = false;
         public static List<BoomerangProj> boomerang = new List<BoomerangProj>();
-
+        public int Speed
+        {
+            get { return speed; }
+        }
         public float Timer
         {
             get { return Timer; }
@@ -43,33 +46,17 @@ namespace Game2.Sprites.Link
             }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime,Player player)
         {
+            
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timeLastUpdate += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timeLastUpdate > 1.0f)
-            {
-                movingRight = true;
-            }
-            else
-            {
-                movingRight = false;
-
-            }
-
-
             switch (direction)
             {
                 case Dir.Right:
-                    //position.X += speed * dt;
-                    if (movingRight)
-                    {
-                        position.X -= speed * dt;
-                    }
-                    else
-                    {
-                        position.X += speed * dt;
-                    }
+
+                    position.X += speed * dt;
+
                     break;
                 case Dir.Left:
                     position.X -= speed * dt;
@@ -82,6 +69,13 @@ namespace Game2.Sprites.Link
                     break;
                 default:
                     break;
+            }
+
+            if (timeLastUpdate > 1.0f)
+            {
+                Vector2 moveDir = player.Position - position;
+                moveDir.Normalize();
+                position += moveDir * 800 * dt;
             }
         }
     }

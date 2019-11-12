@@ -655,7 +655,7 @@ namespace Game2
 
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
-            boomerangHandler.Update(gameTime);
+            boomerangHandler.Update(gameTime,player);
             cam.LookAt(player.camPosition);
             //cam.LookAt(player.position);
 
