@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="32" nextobjectid="3382">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="32" nextobjectid="3388">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -7548,6 +7548,24 @@
    <point/>
   </object>
   <object id="3408" x="2418.4" y="11679.4">
+   <point/>
+  </object>
+  <object id="3382" x="6251.11" y="3558.46">
+   <point/>
+  </object>
+  <object id="3383" x="6250.22" y="3595.84">
+   <point/>
+  </object>
+  <object id="3384" x="6251.11" y="3639.44">
+   <point/>
+  </object>
+  <object id="3385" x="6249.33" y="3677.7">
+   <point/>
+  </object>
+  <object id="3386" x="6250.22" y="3717.74">
+   <point/>
+  </object>
+  <object id="3387" x="6251.11" y="3756.9">
    <point/>
   </object>
  </objectgroup>
