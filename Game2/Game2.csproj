@@ -52,7 +52,12 @@
     <Compile Include="Factory\ItemFactory.cs" />
     <Compile Include="Factory\LinkSpriteFactory.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="HUD.cs" />
+    <Compile Include="HUDManager\HUDArrow.cs" />
+    <Compile Include="HUDManager\HUDMap.cs" />
+    <Compile Include="HUDManager\HUDSword.cs" />
+    <Compile Include="HUDManager\HUDHeart.cs" />
+    <Compile Include="HUDManager\HUD.cs" />
+    <Compile Include="HUDManager\HUDWord.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
     <Compile Include="Object\Items\Item.cs" />
