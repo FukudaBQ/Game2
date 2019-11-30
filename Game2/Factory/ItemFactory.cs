@@ -14,6 +14,7 @@ namespace Game2.Factory
     {
         private Texture2D item;
         private Texture2D NPC;
+        private Texture2D button;
         private Vector2 hitPos;
         private int radius;
         public static ItemFactory instance = new ItemFactory();
@@ -61,6 +62,7 @@ namespace Game2.Factory
         {
             item = content.Load<Texture2D>("Item");
             NPC = content.Load<Texture2D>("NPC");
+            button = content.Load<Texture2D>("button");
         }
         public Shining CreateRupySprite()
         {
@@ -133,6 +135,10 @@ namespace Game2.Factory
         public Shining CreateBoomerangSprite()
         {
             return new Shining(item, 283, 0, 13, 30, 0);
+        }
+        public Shining CreateButtonSprite()
+        {
+            return new Shining(button, 36, 32, 152, 160, 0);
         }
     }
 }

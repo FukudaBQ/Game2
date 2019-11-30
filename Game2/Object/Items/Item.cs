@@ -200,6 +200,15 @@ namespace Game2.Object.Items
             sprite = ItemFactory.Instance.CreateTriforceSprite();
         }
     }
+    class Button : Item
+    {
+        public Button(Vector2 newPos, SpriteBatch spriteBatch) : base(newPos, spriteBatch)
+        {
+            speed = 0;
+            radius = 15;
+            sprite = ItemFactory.Instance.CreateButtonSprite();
+        }
+    }
 
 
 }
