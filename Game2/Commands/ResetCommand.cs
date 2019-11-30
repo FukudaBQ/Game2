@@ -1,5 +1,6 @@
 ﻿using Game2.Interfaces;
 using Game2.Sprites.Link;
+using HUDManager;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Game2.Commands;
 using Game2.Factory;
 using Game2.Sprites.Link.Projectile;
+using HUDManager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;

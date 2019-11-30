@@ -19,6 +19,7 @@ using Microsoft.Xna.Framework.Media;
 using Game2.Sprites.Link.Projectile;
 using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
+using HUDManager;
 //using Game2.Object.Enemies;
 
 namespace Game2
