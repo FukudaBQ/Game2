@@ -7,7 +7,6 @@ using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using System.Collections.Generic;
-using System.Xml;
 using System;
 using Game2.Collision;
 
@@ -152,7 +151,6 @@ namespace Game2
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
-            //aa
             deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
             deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
             LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
