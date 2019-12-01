@@ -147,6 +147,7 @@ namespace Game2
 
             }
 
+
         }
 
         public void ClearContent()
@@ -227,6 +228,13 @@ namespace Game2
             foreach (var kn in knights)
             {
                 Knight.knights.Add(new Knight(knightSprite, new Vector2(kn.Position.X, kn.Position.Y + 840), spriteBatch));
+
+            }
+
+            TiledMapObject[] hintKnights = myMap.GetLayer<TiledMapObjectLayer>("hintKnight").Objects;
+            foreach (var hkn in hintKnights)
+            {
+                HintKnight.hintKnights.Add(new HintKnight(knightSprite, new Vector2(hkn.Position.X, hkn.Position.Y + 840), spriteBatch));
 
             }
 
@@ -326,6 +334,12 @@ namespace Game2
             {
                 
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
+            }
+            TiledMapObject[] hintblocks = myMap.GetLayer<TiledMapObjectLayer>("hintBlock").Objects;
+            foreach (var hblo in hintblocks)
+            {
+
+                Blocks.hintblocks.Add(new GeneralBlock(new Vector2(hblo.Position.X, hblo.Position.Y + 840)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -431,6 +445,11 @@ namespace Game2
                 {
                     player.Pcolor = Color.White;
                 }
+
+            }
+            foreach (HintKnight hkn in HintKnight.hintKnights)
+            {
+                hkn.Update(gameTime,player);
 
             }
             foreach (Dragon dra in Dragon.dragons)
@@ -1324,7 +1343,7 @@ namespace Game2
 
                 }
             }
-            //aaaaaaaaaaaaaaaaaaaaa
+
             if (condition == 4)
             {
                 foreach (Door d in Door.doors)
@@ -1499,6 +1518,10 @@ namespace Game2
             {
                 yknight.Draw();
             }
+            foreach (HintKnight hknight in HintKnight.hintKnights)
+            {
+                hknight.Draw();
+            }
             foreach (Dragon dra in Dragon.dragons)
             {
                 dra.Draw(dra.Location);
@@ -1540,7 +1563,7 @@ namespace Game2
 
             foreach (Blocks b in Blocks.blocks)
             {
-                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.Red);
             }
             foreach (Blocks b in Blocks.waterblocks)
             {
