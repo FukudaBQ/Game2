@@ -180,7 +180,8 @@ namespace Game2.Sprites.Link
                     case Dir.Right:
                         tempPos.X += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
-                            && !Blocks.Door.didCollide(tempPos, length, width))
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         {
                             position.X += speed * dt;
                         }
@@ -189,7 +190,8 @@ namespace Game2.Sprites.Link
                     case Dir.Left:
                         tempPos.X -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !Blocks.Door.didCollide(tempPos, length, width))
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         {
                             position.X -= speed * dt;
                         }
@@ -198,7 +200,8 @@ namespace Game2.Sprites.Link
                     case Dir.Up:
                         tempPos.Y -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !Blocks.Door.didCollide(tempPos, length, width))
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         {
                             position.Y -= speed * dt;
                         }
@@ -207,7 +210,8 @@ namespace Game2.Sprites.Link
                     case Dir.Down:
                         tempPos.Y += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !Blocks.Door.didCollide(tempPos, length, width))
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         {
                             position.Y += speed * dt;
                         }

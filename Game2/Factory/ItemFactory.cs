@@ -62,7 +62,7 @@ namespace Game2.Factory
         {
             item = content.Load<Texture2D>("Item");
             NPC = content.Load<Texture2D>("NPC");
-            button = content.Load<Texture2D>("button");
+            button = content.Load<Texture2D>("refresh");
         }
         public Shining CreateRupySprite()
         {
@@ -138,7 +138,7 @@ namespace Game2.Factory
         }
         public Shining CreateButtonSprite()
         {
-            return new Shining(button, 36, 32, 152, 160, 0);
+            return new Shining(button, 18, 20, 512, 487, 0);
         }
     }
 }

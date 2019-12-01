@@ -60,6 +60,7 @@
     <Compile Include="HUDManager\HUDWord.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Object\Hint.cs" />
     <Compile Include="Object\Items\BlackHole.cs" />
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Program.cs" />
@@ -195,6 +196,7 @@
     <Content Include="Content\music\Triforce.mp3" />
     <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
+    <Content Include="Content\refresh.png" />
     <Content Include="Content\rock.png" />
     <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />

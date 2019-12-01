@@ -16,7 +16,9 @@ namespace Game2.Sprites.Blocks
         private int radius;
         protected int health = 1;
 
-        public static List<Door> doors = new List<Door>();
+        public static List<Door> leftdoors = new List<Door>();
+        public static List<Door> downdoors = new List<Door>();
+        public static List<Door> rightdoors = new List<Door>();
 
         public Vector2 HitsPos
         {
@@ -44,9 +46,9 @@ namespace Game2.Sprites.Blocks
             set { health = value; }
         }
 
-        public static bool didCollide(Vector2 otherPos, int otherL, int otherW)
+        public static bool didCollideLeft(Vector2 otherPos, int otherL, int otherW)
         {
-            foreach (Door d in Door.doors)
+            foreach (Door d in Door.leftdoors)
             {
                 int Lsum = d.Length + otherL;
                 int Wsum = d.Width + otherW;
@@ -56,6 +58,35 @@ namespace Game2.Sprites.Blocks
                 }
             }
             return false;
+
+        }
+        public static bool didCollideRight(Vector2 otherPos, int otherL, int otherW)
+        {
+            foreach (Door d in Door.rightdoors)
+            {
+                int Lsum = d.Length + otherL;
+                int Wsum = d.Width + otherW;
+                if (Math.Abs(d.hitPos.X - otherPos.X) <= Lsum && Math.Abs(d.hitPos.Y - otherPos.Y) <= Wsum)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+        public static bool didCollideDown(Vector2 otherPos, int otherL, int otherW)
+        {
+            foreach (Door d in Door.downdoors)
+            {
+                int Lsum = d.Length + otherL;
+                int Wsum = d.Width + otherW;
+                if (Math.Abs(d.hitPos.X - otherPos.X) <= Lsum && Math.Abs(d.hitPos.Y - otherPos.Y) <= Wsum)
+                {
+                    return true;
+                }
+            }
+            return false;
+
         }
 
     }

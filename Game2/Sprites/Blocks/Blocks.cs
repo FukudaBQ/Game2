@@ -24,7 +24,6 @@ namespace Game2.Sprites.Blocks
         public static List<Blocks> downblocks = new List<Blocks>();
         public static List<Blocks> leftblocks = new List<Blocks>();
         public static List<Blocks> rightblocks = new List<Blocks>();
-        public static List<Blocks> hintblocks = new List<Blocks>();
 
         public Vector2 HitsPos
         {
@@ -74,21 +73,6 @@ namespace Game2.Sprites.Blocks
             }
             return false;
         }
-        public static bool hintBlock(Vector2 otherPos, int otherL, int otherW)
-        {
-            foreach (Blocks b in Blocks.hintblocks)
-            {
-                int Lsum = b.Length + otherL;
-                int Wsum = b.Width + otherW;
-                if (Math.Abs(b.hitPos.X - otherPos.X) <= Lsum && Math.Abs(b.hitPos.Y - otherPos.Y) <= Wsum)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-
 
 
     }

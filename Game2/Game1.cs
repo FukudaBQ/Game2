@@ -19,6 +19,7 @@ using Game2.Sprites.Link.Projectile;
 using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
 using HUDManager;
+using Game2.Object;
 //using Game2.Object.Enemies;
 
 namespace Game2
@@ -67,6 +68,10 @@ namespace Game2
         private Texture2D veryGreen;
         private Texture2D rockSprite;
         private Texture2D blackHoleSprite;
+        private Texture2D leftDoor;
+        private Texture2D rightDoor;
+        private Texture2D downDoor;
+        private Texture2D hintSprite;
 
         private BlackHole blackHole;
 
@@ -81,6 +86,7 @@ namespace Game2
         private Camera2D cam;
         private Vector2 camLocation;
         private ResetCommand reset;
+        private Hint hint;
 
         public HUD myHUD;
         private SpriteFont font;
@@ -191,6 +197,8 @@ namespace Game2
             deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
             LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
             LinkCheering = new Animate(LinkCheeringSprite, 1, 2);
+            hint = new Hint(hintSprite, new Vector2(2000, 6100), spriteBatch);
+
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
             {
@@ -298,7 +306,7 @@ namespace Game2
             {
                 Item.items.Add(new Raft(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
-            TiledMapObject[] button = myMap.GetLayer<TiledMapObjectLayer>("button").Objects;
+            TiledMapObject[] button = myMap.GetLayer<TiledMapObjectLayer>("restartButton").Objects;
             foreach (var r in button)
             {
                 Item.items.Add(new Button(new Vector2(r.Position.X, r.Position.Y + 840),spriteBatch));
@@ -324,10 +332,21 @@ namespace Game2
             {
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 840)));
             }
-            TiledMapObject[] doors = myMap.GetLayer<TiledMapObjectLayer>("door").Objects;
-            foreach (var door in doors)
+            
+            TiledMapObject[] leftdoors = myMap.GetLayer<TiledMapObjectLayer>("leftdoor").Objects;
+            foreach (var ldoor in leftdoors)
             {
-                Door.doors.Add(new Doors(new Vector2(door.Position.X, door.Position.Y + 840)));
+                Door.leftdoors.Add(new Doors(new Vector2(ldoor.Position.X, ldoor.Position.Y + 840)));
+            }
+            TiledMapObject[] downdoors = myMap.GetLayer<TiledMapObjectLayer>("downdoor").Objects;
+            foreach (var ddoor in downdoors)
+            {
+                Door.downdoors.Add(new Doors(new Vector2(ddoor.Position.X, ddoor.Position.Y + 840)));
+            }
+            TiledMapObject[] rightdoors = myMap.GetLayer<TiledMapObjectLayer>("rightdoor").Objects;
+            foreach (var rdoor in rightdoors)
+            {
+                Door.rightdoors.Add(new Doors(new Vector2(rdoor.Position.X, rdoor.Position.Y + 840)));
             }
             TiledMapObject[] rocks = myMap.GetLayer<TiledMapObjectLayer>("rock").Objects;
             foreach (var r in rocks)
@@ -339,12 +358,6 @@ namespace Game2
             {
                 
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
-            }
-            TiledMapObject[] hintblocks = myMap.GetLayer<TiledMapObjectLayer>("hintBlock").Objects;
-            foreach (var hblo in hintblocks)
-            {
-
-                Blocks.hintblocks.Add(new GeneralBlock(new Vector2(hblo.Position.X, hblo.Position.Y + 840)));
             }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
@@ -393,6 +406,11 @@ namespace Game2
             veryGreen = Content.Load<Texture2D>("Green");
             rockSprite = Content.Load<Texture2D>("rock");
             font = Content.Load<SpriteFont>("NMNAT");
+            rightDoor = Content.Load<Texture2D>("door1");
+            leftDoor = Content.Load<Texture2D>("door2");
+            downDoor = Content.Load<Texture2D>("door3");
+            hintSprite = Content.Load<Texture2D>("hint");
+
         }
         protected override void UnloadContent()
         {
@@ -400,6 +418,7 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            hint.Update(gameTime);
             LinkCheering.Update(gameTime);
             deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -454,7 +473,7 @@ namespace Game2
             }
             foreach (HintKnight hkn in HintKnight.hintKnights)
             {
-                hkn.Update(gameTime,player);
+                hkn.Update(gameTime);
 
             }
             foreach (Dragon dra in Dragon.dragons)
@@ -1351,7 +1370,15 @@ namespace Game2
 
             if (condition == 4)
             {
-                foreach (Door d in Door.doors)
+                foreach (Door d in Door.leftdoors)
+                {
+                    d.Health--;
+                }
+                foreach (Door d in Door.downdoors)
+                {
+                    d.Health--;
+                }
+                foreach (Door d in Door.rightdoors)
                 {
                     d.Health--;
                 }
@@ -1465,7 +1492,9 @@ namespace Game2
             YellowKnight.yknights.RemoveAll(k => k.Health <= 0);
             BlueKnight.bknights.RemoveAll(k => k.Health <= 0);
             Rock.rocks.RemoveAll(r => r.Health <= 0);
-            Door.doors.RemoveAll(d => d.Health <= 0);
+            Door.leftdoors.RemoveAll(d => d.Health <= 0);
+            Door.downdoors.RemoveAll(d => d.Health <= 0);
+            Door.rightdoors.RemoveAll(d => d.Health <= 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD,this);
@@ -1501,7 +1530,7 @@ namespace Game2
             }
 
             myHUD.Draw();
-
+            hint.Draw();
 
             foreach (Bat bat in Bat.bats)
             {
@@ -1574,9 +1603,17 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
-            foreach (Door d in Door.doors)
+            foreach (Door d in Door.leftdoors)
             {
-                spriteBatch.Draw(GeneralBlockSprite, d.Position, Color.White);
+                spriteBatch.Draw(leftDoor, d.Position, Color.White);
+            }
+            foreach (Door d in Door.rightdoors)
+            {
+                spriteBatch.Draw(rightDoor, d.Position, Color.White);
+            }
+            foreach (Door d in Door.downdoors)
+            {
+                spriteBatch.Draw(downDoor, d.Position, Color.White);
             }
 
             if (player.Health > 0&& !player.Victory)
@@ -1594,7 +1631,8 @@ namespace Game2
                 spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
             spriteBatch.Draw(blackHoleSprite, blackHole.Position, Color.White);
-            
+            hint.Draw();
+
             spriteBatch.End();
 
             base.Draw(gameTime);
