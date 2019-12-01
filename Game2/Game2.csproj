@@ -162,6 +162,7 @@
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Green.PNG" />
     <Content Include="Content\hand.png" />
+    <Content Include="Content\hint.png" />
     <Content Include="Content\HUD.png" />
     <Content Include="Content\Item.png" />
     <Content Include="Content\knight.png" />
