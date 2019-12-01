@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="39" nextobjectid="3402">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="41" nextobjectid="3405">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6449,7 +6449,7 @@
   </object>
  </objectgroup>
  <objectgroup id="38" name="door">
-  <object id="3399" x="2392" y="5645">
+  <object id="3399" x="2414" y="5654">
    <point/>
   </object>
   <object id="3400" x="1876" y="5881">
@@ -7537,12 +7537,22 @@
  </objectgroup>
  <objectgroup id="20" name="bomb"/>
  <objectgroup id="33" name="button">
-  <object id="3391" x="1839.39" y="5627.27">
+  <object id="3391" x="2158.06" y="5533.94">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="40" name="hintBlock">
+  <object id="3404" x="1844" y="5628">
    <point/>
   </object>
  </objectgroup>
  <objectgroup id="34" name="redKnight">
   <object id="3392" x="1593.94" y="5487.88">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="39" name="hintKnight">
+  <object id="3403" x="1616" y="5268">
    <point/>
   </object>
  </objectgroup>

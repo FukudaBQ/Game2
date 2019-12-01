@@ -51,7 +51,11 @@ namespace Game2.Collision
                 }
                 if(itemType == typeof(Button) && it.Collided)
                 {
-
+                    RedKnight.rknights.RemoveAll(k => k.Health > 0);
+                    GreenKnight.gknights.RemoveAll(k => k.Health > 0);
+                    YellowKnight.yknights.RemoveAll(k => k.Health > 0);
+                    BlueKnight.bknights.RemoveAll(k => k.Health > 0);
+                    game.ReloadContent();
                 }
             }
             Item.items.RemoveAll(p => p.Collided);

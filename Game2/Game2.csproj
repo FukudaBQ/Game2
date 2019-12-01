@@ -75,6 +75,7 @@
     <Compile Include="Sprites\Enemies\fireball.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
+    <Compile Include="Sprites\Enemies\HintKnight.cs" />
     <Compile Include="Sprites\Enemies\RedKnight.cs" />
     <Compile Include="Sprites\Enemies\BlueKnight.cs" />
     <Compile Include="Sprites\Enemies\YellowKnight.cs" />
@@ -151,6 +152,7 @@
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\button.jpg" />
     <Content Include="Content\Dragon.png" />
+    <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\fireball.png" />
