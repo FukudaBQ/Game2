@@ -6449,7 +6449,7 @@
   </object>
  </objectgroup>
  <objectgroup id="38" name="door">
-  <object id="3399" x="2319" y="5641">
+  <object id="3399" x="2392" y="5645">
    <point/>
   </object>
   <object id="3400" x="1876" y="5881">

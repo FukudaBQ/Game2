@@ -49,6 +49,10 @@ namespace Game2.Collision
                 {
                     player.Victory = true;
                 }
+                if(itemType == typeof(Button) && it.Collided)
+                {
+
+                }
             }
             Item.items.RemoveAll(p => p.Collided);
 
