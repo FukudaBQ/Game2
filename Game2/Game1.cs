@@ -66,6 +66,9 @@ namespace Game2
         private Texture2D HUDMap;
         private Texture2D veryGreen;
         private Texture2D rockSprite;
+        private Texture2D blackHoleSprite;
+
+        private BlackHole blackHole;
 
         private Bat bat;
         private Dragon dragon;
@@ -166,6 +169,7 @@ namespace Game2
             reset = new ResetCommand(player,this,myHUD);
             youWIN = Content.Load<SpriteFont>("youWIN");
             myMap = Content.Load<TiledMap>("map/mapD");
+            blackHoleSprite = Content.Load<Texture2D>("blackHole");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
@@ -175,6 +179,7 @@ namespace Game2
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             player.setHUD(myHUD);
 
+            blackHole = new BlackHole(new Vector2(2700, 6600));
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             key = new Key2( new Vector2(400, 2700), spriteBatch);
@@ -1565,6 +1570,7 @@ namespace Game2
                 LinkCheering.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
+            spriteBatch.Draw(blackHoleSprite, blackHole.Position, Color.White);
             
             spriteBatch.End();
 

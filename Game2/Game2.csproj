@@ -60,6 +60,7 @@
     <Compile Include="HUDManager\HUDWord.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Object\Items\BlackHole.cs" />
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
