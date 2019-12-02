@@ -73,7 +73,8 @@ namespace Game2
         private Texture2D downDoor;
         private Texture2D hintSprite;
 
-        private BlackHole blackHole;
+        private BlackHole blackHole1;
+        private BlackHole blackHole2;
 
         private Bat bat;
         private Dragon dragon;
@@ -186,7 +187,8 @@ namespace Game2
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             player.setHUD(myHUD);
 
-            blackHole = new BlackHole(new Vector2(2700, 6600));
+            blackHole1 = new BlackHole(new Vector2(2800, 6500));
+            blackHole2 = new BlackHole(new Vector2(3300, 6200));
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             key = new Key2( new Vector2(400, 2700), spriteBatch);
@@ -418,6 +420,8 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            blackHole1.Update(gameTime,player,blackHole2);
+            blackHole2.Update(gameTime,player,blackHole1);
             hint.Update(gameTime);
             LinkCheering.Update(gameTime);
             deadLinkSpin.Update(gameTime);
@@ -1630,7 +1634,9 @@ namespace Game2
                 LinkCheering.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
-            spriteBatch.Draw(blackHoleSprite, blackHole.Position, Color.White);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole1.Position.X-30, blackHole1.Position.Y - 30), Color.White);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole2.Position.X - 30, blackHole2.Position.Y - 30), Color.White);
+
             hint.Draw();
 
             spriteBatch.End();
