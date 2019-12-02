@@ -17,8 +17,8 @@ namespace Game2.Puzzle
         private SpriteBatch spriteBatch;
         private int[] baggageX = {5920, 6000, 6080};
         private int[] baggageY = { 12600, 12600, 12600 };
-        private int[] destX = { 5920, 6000, 6080 };
-        private int[] destY = {12680, 12680, 12680 };
+        private int[] destX = { 5950, 6030, 6110 };
+        private int[] destY = {12710, 12710, 12710 };
         private List<Baggage> baggage = new List<Baggage>();
         private List<DestPoint> dest = new List<DestPoint>();
         public Sokoban(Texture2D texture, SpriteBatch spriteBatch)
@@ -63,7 +63,7 @@ namespace Game2.Puzzle
                     break;
                 case Dir.LeftSword:
                 case Dir.Left:
-                    PushRight(direction, position);
+                    PushLeft(direction, position);
                     break;
                 case Dir.RightSword:
                 case Dir.Right:
@@ -74,6 +74,11 @@ namespace Game2.Puzzle
             }
         }
 
+        private void PushLeft(Dir direction, Vector2 position)
+        {
+            throw new NotImplementedException();
+        }
+
         private void PushRight(Dir direction, Vector2 position)
         {
             throw new NotImplementedException();
@@ -81,12 +86,16 @@ namespace Game2.Puzzle
 
         private void PushDown(Dir direction, Vector2 position)
         {
-            throw new NotImplementedException();
+            Baggage i = Detect(direction, position);
+            if (i != null)
+            {
+                i.PushDown();
+            }
+            Check(i);
         }
 
         public void PushUP(Dir direction, Vector2 position)
         {
-            Console.Write(position.X + " " + position.Y);
             Baggage i = Detect(direction, position);
             if (i != null)
             {
@@ -97,14 +106,20 @@ namespace Game2.Puzzle
 
         private Baggage Detect(Dir direction, Vector2 position)
         {
-            Baggage ans = null;
+            Baggage ans;
             switch (direction)
             {
                 case Dir.Up:
                     ans = DetectUp(direction, position);
                     break;
                 case Dir.Down:
-                    //ans = DetectUp(direction, position);
+                    ans = DetectDown(direction, position);
+                    break;
+                case Dir.Left:
+                    ans = DetectLeft(direction, position);
+                    break;
+                case Dir.Right:
+                    ans = DetectRight(direction, position);
                     break;
                 default:
                     ans = null;
@@ -113,7 +128,29 @@ namespace Game2.Puzzle
             return ans;
         }
 
+        private Baggage DetectRight(Dir direction, Vector2 position)
+        {
+            throw new NotImplementedException();
+        }
 
+        private Baggage DetectLeft(Dir direction, Vector2 position)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Baggage DetectDown(Dir direction, Vector2 position)
+        {
+            for (int i = 0; i < baggage.Count; i++)
+            {
+                int Dist = baggage.ElementAt(i).GetDistY(direction, position);
+                if ((Dist <= 80) &&
+                (Dist >= 0))
+                {
+                    return baggage.ElementAt(i);
+                }
+            }
+            return null;
+        }
 
         private Baggage DetectUp(Dir direction, Vector2 position)
         {
@@ -187,8 +224,8 @@ namespace Game2.Puzzle
         public int GetDistY(Dir direction, Vector2 position)
         {
             int CurrentLoc = locationY + offsetY * blockHeight;
-            if ((position.X >= (locationX + offsetX * blockWidth) - 10) &&
-                (position.X <= (locationX + offsetX * blockWidth + blockWidth) + 10))
+            if ((position.X >= (locationX + offsetX * blockWidth) - 5) &&
+                (position.X <= (locationX + offsetX * blockWidth + blockWidth) + 5))
             {
                 if (CurrentLoc > position.Y)
                 {
@@ -208,14 +245,14 @@ namespace Game2.Puzzle
     {
         private Texture2D texture;
         private SpriteBatch spriteBatch;
-        private int width = 39;
-        private int height = 51;
+        private int width = 13;
+        private int height = 18;
         private int locationX;
         private int locationY;
-        private int sourceX = 0;
-        private int sourceY = 0;
-        private int blockWidth = 80;
-        private int blockHeight = 80;
+        private int sourceX = 14;
+        private int sourceY = 18;
+        private int blockWidth = 20;
+        private int blockHeight = 20;
         public DestPoint(Texture2D texture, SpriteBatch spriteBatch, int X, int Y)
         {
             this.texture = texture;
