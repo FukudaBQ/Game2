@@ -15,6 +15,15 @@ namespace Game2.Object.Items
         private bool collided;
         private int radius=15;
         private Shining sprite;
+        private bool able;
+
+        public bool Able
+        {
+            get { return able; }
+            set { able = value; }
+        }
+        
+        
 
         public BlackHole(Vector2 pos,Texture2D texture)
         {
