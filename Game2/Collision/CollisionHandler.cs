@@ -1,4 +1,5 @@
 ﻿using Game2.Object.Items;
+using Game2.RandomEvent;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Sprites.Link;
@@ -17,9 +18,16 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
+        public int rm = 1;
+        Random rnd = new Random();
+        public int RM
+        {
+            get { return rm; }
+            set { rm = value; }
+        }
         public void CollisionHandle(Player player, HUD myHUD, Game1 game)
         {
-            foreach(Item it in Item.items)
+            foreach (Item it in Item.items)
             {
                 Type itemType = it.GetType();
                 int sum = player.Radius + it.Radius;
@@ -49,6 +57,14 @@ namespace Game2.Collision
                 {
                     player.Victory = true;
                 }
+                if(itemType == typeof(Button) && it.Collided)
+                {
+                    RedKnight.rknights.RemoveAll(k => k.Health > 0);
+                    GreenKnight.gknights.RemoveAll(k => k.Health > 0);
+                    YellowKnight.yknights.RemoveAll(k => k.Health > 0);
+                    BlueKnight.bknights.RemoveAll(k => k.Health > 0);
+                    game.ReloadContent();
+                }
             }
             Item.items.RemoveAll(p => p.Collided);
 
@@ -67,8 +83,8 @@ namespace Game2.Collision
             foreach (Blocks upblo in Blocks.upblocks)
             {
                 int sum = player.Radius + upblo.Radius;
-                
-                    if (Vector2.Distance(player.Position, upblo.Position) < sum)
+                rm = rnd.Next(1, 5);
+                if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
 
                     game.ClearContent();
@@ -77,6 +93,40 @@ namespace Game2.Collision
 
                     player.position.Y = player.position.Y - 1500;
                     player.camPosition.Y = player.camPosition.Y - 2040;
+
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(player.Position));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm ==1)
+                            {
+                                rm=rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
 
 
                     myHUD.HeartUP();
@@ -108,6 +158,38 @@ namespace Game2.Collision
 
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
 
                     myHUD.HeartDown();
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
@@ -136,8 +218,40 @@ namespace Game2.Collision
                     game.ClearContent();
                     game.ReloadContent();
 
-                    player.position.X = player.position.X - 300;
+                    player.position.X = player.position.X - 320;
                     player.camPosition.X = player.camPosition.X - 1280;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
                     myHUD.HeartLeft();
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
                     myHUD.indexLeft();
@@ -167,6 +281,38 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X + 320;
                     player.camPosition.X = player.camPosition.X + 1280;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
                     myHUD.HeartRight();
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
                     myHUD.indexRight();

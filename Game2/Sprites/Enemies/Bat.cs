@@ -50,6 +50,11 @@ namespace Game2.Sprites.Enemies
             get { return timer; }
             set { timer = value; }
         }
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
         public Bat(Texture2D texture, Vector2 location, SpriteBatch batch)
         {
             this.texture = texture;

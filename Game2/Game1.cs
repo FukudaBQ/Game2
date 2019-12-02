@@ -7,7 +7,6 @@ using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Object.Items;
 using System.Collections.Generic;
-using System.Xml;
 using System;
 using Game2.Collision;
 
@@ -20,6 +19,8 @@ using Game2.Sprites.Link.Projectile;
 using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
 using HUDManager;
+using Game2.Object;
+using Game2.RandomEvent;
 //using Game2.Object.Enemies;
 
 namespace Game2
@@ -33,6 +34,8 @@ namespace Game2
     {
         public static SoundEffect attack;
         public static Song overworld;
+        public static SoundEffect dead;
+        public static SoundEffect random;
     }
     public class Game1 : Game
     {
@@ -70,8 +73,18 @@ namespace Game2
         private Texture2D HUDMap;
         private Texture2D veryGreen;
         private Texture2D rockSprite;
+        private Texture2D blackHoleSprite;
+        private Texture2D leftDoor;
+        private Texture2D rightDoor;
+        private Texture2D downDoor;
+        private Texture2D hintSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
+
+        private BlackHole blackHole1;
+        private BlackHole blackHole2;
+        private BlackHole blackHole3;
+        private BlackHole blackHole4;
 
         private Bat bat;
         private Dragon dragon;
@@ -85,9 +98,11 @@ namespace Game2
         private Vector2 camLocation;
         private ResetCommand reset;
         private int monsterType;
+        private Hint hint;
 
         public HUD myHUD;
         private SpriteFont font;
+        int condition = 0;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -128,6 +143,31 @@ namespace Game2
                 Knight.knights.Add(new Knight(knightSprite, new Vector2(kn.Position.X, kn.Position.Y + 840), spriteBatch));
 
             }
+            TiledMapObject[] rknights = myMap.GetLayer<TiledMapObjectLayer>("redKnight").Objects;
+            foreach (var rknight in rknights)
+            {
+                RedKnight.rknights.Add(new RedKnight(knightSprite, new Vector2(rknight.Position.X, rknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] gknights = myMap.GetLayer<TiledMapObjectLayer>("greenKnight").Objects;
+            foreach (var gknight in gknights)
+            {
+                GreenKnight.gknights.Add(new GreenKnight(knightSprite, new Vector2(gknight.Position.X, gknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] yknights = myMap.GetLayer<TiledMapObjectLayer>("yellowKnight").Objects;
+            foreach (var yknight in yknights)
+            {
+                YellowKnight.yknights.Add(new YellowKnight(knightSprite, new Vector2(yknight.Position.X, yknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] bknights = myMap.GetLayer<TiledMapObjectLayer>("blueKnight").Objects;
+            foreach (var bknight in bknights)
+            {
+                BlueKnight.bknights.Add(new BlueKnight(knightSprite, new Vector2(bknight.Position.X, bknight.Position.Y + 840), spriteBatch));
+
+            }
+
 
         }
 
@@ -136,6 +176,10 @@ namespace Game2
             Bat.bats.RemoveAll(e => e.Health >0);
             Dragon.dragons.RemoveAll(d => d.Health > 0);
             Knight.knights.RemoveAll(k => k.Health > 0);
+            RedKnight.rknights.RemoveAll(rk => rk.Health > 0);
+            GreenKnight.gknights.RemoveAll(gk => gk.Health > 0);
+            YellowKnight.yknights.RemoveAll(yk => yk.Health > 0);
+            BlueKnight.bknights.RemoveAll(bk => bk.Health > 0);
 
 
         }
@@ -144,6 +188,7 @@ namespace Game2
             reset = new ResetCommand(player,this,myHUD);
             youWIN = Content.Load<SpriteFont>("youWIN");
             myMap = Content.Load<TiledMap>("map/mapD");
+            blackHoleSprite = Content.Load<Texture2D>("blackHole");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkSpriteFactory.Instance.LoadAllTextures(Content);
             ItemFactory.Instance.LoadAllTextures(Content);
@@ -153,22 +198,54 @@ namespace Game2
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             player.setHUD(myHUD);
 
+            blackHole1 = new BlackHole(new Vector2(2800, 6500));
+            blackHole2 = new BlackHole(new Vector2(3300, 6200));
+
+            blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            blackHole4 = new BlackHole(new Vector2(3300, 6500));
+
+
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             key = new Key2( new Vector2(400, 2700), spriteBatch);
             monster = new Monster(monsterSprite, new Vector2(1500, 1000), spriteBatch);
             hand = new Hand(handSprite, new Vector2(1500, 3000), spriteBatch);
             knight = new Knight(knightSprite, new Vector2(5500, 1900), spriteBatch);
-            //aa
             deadLinkSprite = Content.Load<Texture2D>("LinkStand4Directions");
             deadLinkSpin = new Animate(deadLinkSprite, 1, 4);
             LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
             LinkCheering = new Animate(LinkCheeringSprite, 1, 2);
+            hint = new Hint(hintSprite, new Vector2(2000, 6100), spriteBatch);
+
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
             {
                 Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 840), spriteBatch));
                 
+            }
+            TiledMapObject[] rknights = myMap.GetLayer<TiledMapObjectLayer>("redKnight").Objects;
+            foreach (var rknight in rknights)
+            {
+                RedKnight.rknights.Add(new RedKnight(knightSprite, new Vector2(rknight.Position.X, rknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] gknights = myMap.GetLayer<TiledMapObjectLayer>("greenKnight").Objects;
+            foreach (var gknight in gknights)
+            {
+                GreenKnight.gknights.Add(new GreenKnight(knightSprite, new Vector2(gknight.Position.X, gknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] yknights = myMap.GetLayer<TiledMapObjectLayer>("yellowKnight").Objects;
+            foreach (var yknight in yknights)
+            {
+                YellowKnight.yknights.Add(new YellowKnight(knightSprite, new Vector2(yknight.Position.X, yknight.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] bknights = myMap.GetLayer<TiledMapObjectLayer>("blueKnight").Objects;
+            foreach (var bknight in bknights)
+            {
+                BlueKnight.bknights.Add(new BlueKnight(knightSprite, new Vector2(bknight.Position.X, bknight.Position.Y + 840), spriteBatch));
+
             }
 
             TiledMapObject[] dragons = myMap.GetLayer<TiledMapObjectLayer>("dragon").Objects;
@@ -182,6 +259,13 @@ namespace Game2
             foreach (var kn in knights)
             {
                 Knight.knights.Add(new Knight(knightSprite, new Vector2(kn.Position.X, kn.Position.Y + 840), spriteBatch));
+
+            }
+
+            TiledMapObject[] hintKnights = myMap.GetLayer<TiledMapObjectLayer>("hintKnight").Objects;
+            foreach (var hkn in hintKnights)
+            {
+                HintKnight.hintKnights.Add(new HintKnight(knightSprite, new Vector2(hkn.Position.X, hkn.Position.Y + 840), spriteBatch));
 
             }
 
@@ -240,6 +324,12 @@ namespace Game2
             {
                 Item.items.Add(new Raft(new Vector2(it.Position.X, it.Position.Y + 800), spriteBatch));
             }
+            TiledMapObject[] button = myMap.GetLayer<TiledMapObjectLayer>("restartButton").Objects;
+            foreach (var r in button)
+            {
+                Item.items.Add(new Button(new Vector2(r.Position.X, r.Position.Y + 840),spriteBatch));
+            }
+
             TiledMapObject[] bomb = myMap.GetLayer<TiledMapObjectLayer>("bomb").Objects;
             foreach (var it in bomb)
             {
@@ -259,6 +349,22 @@ namespace Game2
             foreach (var blo in blocks)
             {
                 Blocks.blocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 840)));
+            }
+            
+            TiledMapObject[] leftdoors = myMap.GetLayer<TiledMapObjectLayer>("leftdoor").Objects;
+            foreach (var ldoor in leftdoors)
+            {
+                Door.leftdoors.Add(new Doors(new Vector2(ldoor.Position.X, ldoor.Position.Y + 840)));
+            }
+            TiledMapObject[] downdoors = myMap.GetLayer<TiledMapObjectLayer>("downdoor").Objects;
+            foreach (var ddoor in downdoors)
+            {
+                Door.downdoors.Add(new Doors(new Vector2(ddoor.Position.X, ddoor.Position.Y + 840)));
+            }
+            TiledMapObject[] rightdoors = myMap.GetLayer<TiledMapObjectLayer>("rightdoor").Objects;
+            foreach (var rdoor in rightdoors)
+            {
+                Door.rightdoors.Add(new Doors(new Vector2(rdoor.Position.X, rdoor.Position.Y + 840)));
             }
             TiledMapObject[] rocks = myMap.GetLayer<TiledMapObjectLayer>("rock").Objects;
             foreach (var r in rocks)
@@ -323,12 +429,19 @@ namespace Game2
             knightSprite = Content.Load<Texture2D>("knight");
             MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
+            MySounds.dead = Content.Load<SoundEffect>("music/GameOver");
+            MySounds.random = Content.Load<SoundEffect>("music/randomEvents");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
             rockSprite = Content.Load<Texture2D>("rock");
             font = Content.Load<SpriteFont>("NMNAT");
+            rightDoor = Content.Load<Texture2D>("door1");
+            leftDoor = Content.Load<Texture2D>("door2");
+            downDoor = Content.Load<Texture2D>("door3");
+            hintSprite = Content.Load<Texture2D>("hint");
+
         }
         protected override void UnloadContent()
         {
@@ -336,6 +449,12 @@ namespace Game2
         }
         protected override void Update(GameTime gameTime)
         {
+            blackHole1.Update(gameTime,player,blackHole2);
+            blackHole2.Update(gameTime,player,blackHole1);
+            blackHole3.Update(gameTime, player, blackHole4);
+            blackHole4.Update(gameTime, player, blackHole3);
+
+            hint.Update(gameTime);
             LinkCheering.Update(gameTime);
             deadLinkSpin.Update(gameTime);
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -365,6 +484,10 @@ namespace Game2
             {
                 ex.Update(gameTime);
             }
+            foreach (SpeedUp su in SpeedUp.spd)
+            {
+                su.Update(gameTime);
+            }
             foreach (Knight kn in Knight.knights)
             {
                 kn.Update(gameTime);
@@ -390,6 +513,11 @@ namespace Game2
                 {
                     player.Pcolor = Color.White;
                 }
+
+            }
+            foreach (HintKnight hkn in HintKnight.hintKnights)
+            {
+                hkn.Update(gameTime);
 
             }
             foreach (Dragon dra in Dragon.dragons)
@@ -459,6 +587,90 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
+            foreach (RedKnight rknight in RedKnight.rknights)
+            {
+                rknight.Update(gameTime);
+                int sum = player.Radius + rknight.Radius;
+                if (Vector2.Distance(player.Position, rknight.Location) < sum && player.HealthTimer <= 0)
+                {
+
+                    player.Health--;
+                    myHUD.LostHeart();
+                    Vector2 moveDir = player.Position - rknight.Location;
+                    moveDir.Normalize();
+
+                    player.Pcolor = Color.Red;
+                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
+                    if (!Blocks.didCollide(temp, player.length, player.width))
+                    {
+                        player.Position += moveDir * player.Damagedspeed * dt * 15;
+                    }
+
+                    player.HealthTimer = 1.0f;
+                }
+                if (player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
+            }
+            foreach (GreenKnight gknight in GreenKnight.gknights)
+            {
+                gknight.Update(gameTime);
+                int sum = player.Radius + gknight.Radius;
+                if (Vector2.Distance(player.Position, gknight.Location) < sum && player.HealthTimer <= 0)
+                {
+
+                    player.Health--;
+                    myHUD.LostHeart();
+                    Vector2 moveDir = player.Position - gknight.Location;
+                    moveDir.Normalize();
+
+                    player.Pcolor = Color.Red;
+                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
+                    if (!Blocks.didCollide(temp, player.length, player.width))
+                    {
+                        player.Position += moveDir * player.Damagedspeed * dt * 15;
+                    }
+
+                    player.HealthTimer = 1.0f;
+                }
+                if (player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
+            }
+            foreach (BlueKnight bknight in BlueKnight.bknights)
+            {
+                bknight.Update(gameTime);
+                int sum = player.Radius + bknight.Radius;
+                if (Vector2.Distance(player.Position, bknight.Location) < sum && player.HealthTimer <= 0)
+                {
+
+                    player.Health--;
+                    myHUD.LostHeart();
+                    Vector2 moveDir = player.Position - bknight.Location;
+                    moveDir.Normalize();
+
+                    player.Pcolor = Color.Red;
+                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
+                    if (!Blocks.didCollide(temp, player.length, player.width))
+                    {
+                        player.Position += moveDir * player.Damagedspeed * dt * 15;
+                    }
+
+                    player.HealthTimer = 1.0f;
+                }
+                if (player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
+            }
+            foreach (YellowKnight yknight in YellowKnight.yknights)
+            {
+                yknight.Update(gameTime);
+                int sum = player.Radius + yknight.Radius;
+                if (Vector2.Distance(player.Position, yknight.Location) < sum && player.HealthTimer <= 0)
+                {
 
             //foreach (Pokeball b in Pokeball.pokeballProj)
             //{
@@ -503,6 +715,26 @@ namespace Game2
 
 
 
+                    player.Health--;
+                    myHUD.LostHeart();
+                    Vector2 moveDir = player.Position - yknight.Location;
+                    moveDir.Normalize();
+
+                    player.Pcolor = Color.Red;
+                    Vector2 temp = player.Position + moveDir * player.Damagedspeed * dt * 15;
+                    if (!Blocks.didCollide(temp, player.length, player.width))
+                    {
+                        player.Position += moveDir * player.Damagedspeed * dt * 15;
+                    }
+
+                    player.HealthTimer = 1.0f;
+                }
+                if (player.HealthTimer <= 0)
+                {
+                    player.Pcolor = Color.White;
+                }
+            }
+
             foreach (BombProj b in BombProj.bomb)
             {
                 foreach (Bat bat in Bat.bats)
@@ -543,6 +775,89 @@ namespace Game2
                             explosion.exp.Add(new explosion(dra.Location));
                         }
                     }
+                }
+                foreach (Knight kn in Knight.knights)
+                {
+                    int sum = b.Radius + kn.Radius;
+                    if (Vector2.Distance(b.Position, kn.Location) < sum)
+                    {
+                        b.Collided = true;
+                        kn.Health--;
+                        if (kn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = b.Radius + rkn.Radius;
+                    if (Vector2.Distance(b.Position, rkn.Location) < sum)
+                    {
+                        b.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = b.Radius + bkn.Radius;
+                    if (Vector2.Distance(b.Position, bkn.Location) < sum)
+                    {
+                        b.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = b.Radius + gkn.Radius;
+                    if (Vector2.Distance(b.Position, gkn.Location) < sum)
+                    {
+                        b.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = b.Radius + ykn.Radius;
+                    if (Vector2.Distance(b.Position, ykn.Location) < sum)
+                    {
+                        b.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
                 }
             }
             foreach (BoomerangProj boo in BoomerangProj.boomerang)
@@ -593,9 +908,102 @@ namespace Game2
                     }
 
                 }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = boo.Radius + rkn.Radius;
+                    if (Vector2.Distance(boo.Position, rkn.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = boo.Radius + bkn.Radius;
+                    if (Vector2.Distance(boo.Position, bkn.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = boo.Radius + gkn.Radius;
+                    if (Vector2.Distance(boo.Position, gkn.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = boo.Radius + ykn.Radius;
+                    if (Vector2.Distance(boo.Position, ykn.Location) < sum)
+                    {
+                        boo.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3= arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able&&blackHole2.Able&&Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -642,9 +1050,102 @@ namespace Game2
                     }
 
                 }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = arrow.Radius + rkn.Radius;
+                    if (Vector2.Distance(arrow.Position, rkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = arrow.Radius + bkn.Radius;
+                    if (Vector2.Distance(arrow.Position, bkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = arrow.Radius + gkn.Radius;
+                    if (Vector2.Distance(arrow.Position, gkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = arrow.Radius + ykn.Radius;
+                    if (Vector2.Distance(arrow.Position, ykn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }   
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -691,6 +1192,75 @@ namespace Game2
                         if (kn.Health <= 0)
                         {
                             explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = arrow.Radius + rkn.Radius;
+                    if (Vector2.Distance(arrow.Position, rkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = arrow.Radius + bkn.Radius;
+                    if (Vector2.Distance(arrow.Position, bkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = arrow.Radius + gkn.Radius;
+                    if (Vector2.Distance(arrow.Position, gkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = arrow.Radius + ykn.Radius;
+                    if (Vector2.Distance(arrow.Position, ykn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
                         }
                     }
 
@@ -698,6 +1268,36 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowUp)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -744,6 +1344,75 @@ namespace Game2
                         if (kn.Health <= 0)
                         {
                             explosion.exp.Add(new explosion(kn.Location));
+                        }
+                    }
+
+                }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = arrow.Radius + rkn.Radius;
+                    if (Vector2.Distance(arrow.Position, rkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = arrow.Radius + bkn.Radius;
+                    if (Vector2.Distance(arrow.Position, bkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = arrow.Radius + gkn.Radius;
+                    if (Vector2.Distance(arrow.Position, gkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = arrow.Radius + ykn.Radius;
+                    if (Vector2.Distance(arrow.Position, ykn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
                         }
                     }
 
@@ -751,10 +1420,36 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowDown)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
                 }
+                
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -801,7 +1496,93 @@ namespace Game2
                     }
 
                 }
+                foreach (RedKnight rkn in RedKnight.rknights)
+                {
+                    int sum = arrow.Radius + rkn.Radius;
+                    if (Vector2.Distance(arrow.Position, rkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        rkn.Health--;
+                        if (rkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(rkn.Location));
+                            condition++;
+                        }
+                    }
+
+                }
+                foreach (BlueKnight bkn in BlueKnight.bknights)
+                {
+                    int sum = arrow.Radius + bkn.Radius;
+                    if (Vector2.Distance(arrow.Position, bkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        bkn.Health--;
+                        if (bkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(bkn.Location));
+                            if (condition == 1)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (GreenKnight gkn in GreenKnight.gknights)
+                {
+                    int sum = arrow.Radius + gkn.Radius;
+                    if (Vector2.Distance(arrow.Position, gkn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        gkn.Health--;
+                        if (gkn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(gkn.Location));
+                            if (condition == 2)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
+                foreach (YellowKnight ykn in YellowKnight.yknights)
+                {
+                    int sum = arrow.Radius + ykn.Radius;
+                    if (Vector2.Distance(arrow.Position, ykn.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        ykn.Health--;
+                        if (ykn.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(ykn.Location));
+                            if (condition == 3)
+                            {
+                                condition++;
+                            }
+                        }
+                    }
+
+                }
             }
+
+            if (condition == 4)
+            {
+                foreach (Door d in Door.leftdoors)
+                {
+                    d.Health--;
+                }
+                foreach (Door d in Door.downdoors)
+                {
+                    d.Health--;
+                }
+                foreach (Door d in Door.rightdoors)
+                {
+                    d.Health--;
+                }
+            }
+
             foreach (fireball fir in fireball.fireDown)
             {
                 if (Blocks.didCollide(fir.Position, 5, 5))
@@ -902,11 +1683,19 @@ namespace Game2
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             light.lig.RemoveAll(ex => ex.Timer <= 0);
+            SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
             Knight.knights.RemoveAll(k => k.Health <= 0);
+            RedKnight.rknights.RemoveAll(k => k.Health <= 0);
+            GreenKnight.gknights.RemoveAll(k => k.Health <= 0);
+            YellowKnight.yknights.RemoveAll(k => k.Health <= 0);
+            BlueKnight.bknights.RemoveAll(k => k.Health <= 0);
             Rock.rocks.RemoveAll(r => r.Health <= 0);
+            Door.leftdoors.RemoveAll(d => d.Health <= 0);
+            Door.downdoors.RemoveAll(d => d.Health <= 0);
+            Door.rightdoors.RemoveAll(d => d.Health <= 0);
             Knight.knightF.RemoveAll(p => p.Health == 0);
             Bat.batF.RemoveAll(p => p.Health == 0);
             CollisionHandler collisionHandler = new CollisionHandler();
@@ -930,7 +1719,6 @@ namespace Game2
             pokeballHandler.Update(gameTime, player);
 
             cam.LookAt(player.camPosition);
-            //cam.LookAt(player.position);
 
             base.Update(gameTime);
 
@@ -962,9 +1750,13 @@ namespace Game2
             //}
             //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
             //}
+            foreach (SpeedUp su in SpeedUp.spd)
+            {
+                spriteBatch.Draw(explosionSprite, su.Position, Color.White);
+            }
 
             myHUD.Draw();
-
+            hint.Draw();
 
             foreach (Bat bat in Bat.bats)
             {
@@ -973,6 +1765,26 @@ namespace Game2
             foreach (Bat bat in Bat.batF)
             {
                 bat.Draw2(bat.Location);
+            }
+            foreach (RedKnight rknight in RedKnight.rknights)
+            {
+                rknight.Draw();
+            }
+            foreach (GreenKnight gknight in GreenKnight.gknights)
+            {
+                gknight.Draw();
+            }
+            foreach (BlueKnight bknight in BlueKnight.bknights)
+            {
+                bknight.Draw();
+            }
+            foreach (YellowKnight yknight in YellowKnight.yknights)
+            {
+                yknight.Draw();
+            }
+            foreach (HintKnight hknight in HintKnight.hintKnights)
+            {
+                hknight.Draw();
             }
             foreach (Dragon dra in Dragon.dragons)
             {
@@ -1023,11 +1835,23 @@ namespace Game2
 
             foreach (Blocks b in Blocks.blocks)
             {
-                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+                spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.Red);
             }
             foreach (Blocks b in Blocks.waterblocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
+            }
+            foreach (Door d in Door.leftdoors)
+            {
+                spriteBatch.Draw(leftDoor, d.Position, Color.White);
+            }
+            foreach (Door d in Door.rightdoors)
+            {
+                spriteBatch.Draw(rightDoor, d.Position, Color.White);
+            }
+            foreach (Door d in Door.downdoors)
+            {
+                spriteBatch.Draw(downDoor, d.Position, Color.White);
             }
 
             if (player.Health > 0&& !player.Victory)
@@ -1038,13 +1862,20 @@ namespace Game2
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(font, "Press R to Reset and Replay", new Vector2(player.camPosition.X - 500, player.camPosition.Y), Color.Red);
+                MySounds.dead.Play();
             }
             if (player.Victory)
             {
                 LinkCheering.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
-            
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole1.Position.X-30, blackHole1.Position.Y - 30), Color.White);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole2.Position.X - 30, blackHole2.Position.Y - 30), Color.White);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
+
+            hint.Draw();
+
             spriteBatch.End();
 
             base.Draw(gameTime);

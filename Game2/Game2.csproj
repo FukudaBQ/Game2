@@ -60,12 +60,16 @@
     <Compile Include="HUDManager\HUDWord.cs" />
     <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Object\Hint.cs" />
+    <Compile Include="Object\Items\BlackHole.cs" />
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Object\Items\Pokeball.cs" />
     <Compile Include="Object\Items\PokeballHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomEvent\SpeedUp.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
+    <Compile Include="Sprites\Blocks\Door.cs" />
     <Compile Include="Sprites\Blocks\Rock.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
     <Compile Include="Sprites\Enemies\Dragon.cs" />
@@ -74,6 +78,11 @@
     <Compile Include="Sprites\Enemies\fireball.cs" />
     <Compile Include="Sprites\Enemies\Hand.cs" />
     <Compile Include="Sprites\Enemies\HandStateMachine.cs" />
+    <Compile Include="Sprites\Enemies\HintKnight.cs" />
+    <Compile Include="Sprites\Enemies\RedKnight.cs" />
+    <Compile Include="Sprites\Enemies\BlueKnight.cs" />
+    <Compile Include="Sprites\Enemies\YellowKnight.cs" />
+    <Compile Include="Sprites\Enemies\GreenKnight.cs" />
     <Compile Include="Sprites\Enemies\Knight.cs" />
     <Compile Include="Sprites\Enemies\light.cs" />
     <Compile Include="Sprites\Enemies\Monster.cs" />
@@ -93,6 +102,7 @@
     <Compile Include="Object\Items\Triforce.cs" />
     <Compile Include="Sprites\Link\Animate.cs" />
     <Compile Include="Sprites\Link\arrowProj.cs" />
+    <Compile Include="Sprites\Link\bombProj.cs" />
     <Compile Include="Sprites\Link\boomerangProj.cs" />
     <Compile Include="Sprites\Link\PlayerDying.cs" />
     <Compile Include="Sprites\Link\PlayerStateMachine.cs" />
@@ -106,7 +116,6 @@
     <Compile Include="Sprites\Link\Projectile\BoomerangHandler.cs" />
     <Compile Include="Sprites\Link\Shining.cs" />
     <Compile Include="Sprites\Link\Player.cs" />
-    <Compile Include="Sprites\Link\bombProj.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
@@ -142,16 +151,23 @@
     <Content Include="Content\ArrowRight.png" />
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\bat.png" />
+    <Content Include="Content\batSpeedUp.png" />
     <Content Include="Content\biggerExplosion1.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
+    <Content Include="Content\button.jpg" />
+    <Content Include="Content\door1.png" />
+    <Content Include="Content\door2.png" />
+    <Content Include="Content\door3.png" />
     <Content Include="Content\Dragon.png" />
+    <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />
     <Content Include="Content\Enemy1.png" />
     <Content Include="Content\fireball.png" />
     <Content Include="Content\GeneralBlock.png" />
     <Content Include="Content\Green.PNG" />
     <Content Include="Content\hand.png" />
+    <Content Include="Content\hint.png" />
     <Content Include="Content\HUD.png" />
     <Content Include="Content\Item.png" />
     <Content Include="Content\knight.png" />
@@ -178,14 +194,17 @@
     <Content Include="Content\monster.png" />
     <Content Include="Content\music\Dungeon.mp3" />
     <Content Include="Content\music\Game Over.mp3" />
+    <Content Include="Content\music\GameOver.wav" />
     <Content Include="Content\music\GetFairy.wav" />
     <Content Include="Content\music\GetHeart.wav" />
     <Content Include="Content\music\GetRupy.wav" />
     <Content Include="Content\music\Put Bomb.wav" />
+    <Content Include="Content\music\randomEvents.wav" />
     <Content Include="Content\music\Triforce.mp3" />
     <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\pokeball.png" />
+    <Content Include="Content\refresh.png" />
     <Content Include="Content\rock.png" />
     <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />

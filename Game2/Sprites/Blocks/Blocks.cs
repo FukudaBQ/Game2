@@ -75,8 +75,6 @@ namespace Game2.Sprites.Blocks
         }
 
 
-
-
     }
 
     class GeneralBlock:Blocks
