@@ -20,11 +20,12 @@ using Game2.Sprites.Link.Projectile;
 using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
 using HUDManager;
+using Game2.Puzzle;
 //using Game2.Object.Enemies;
 
 namespace Game2
 {
-    enum Dir
+    public enum Dir
     {
         Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
     }
@@ -67,6 +68,7 @@ namespace Game2
         private Texture2D HUDMap;
         private Texture2D veryGreen;
         private Texture2D rockSprite;
+        private Texture2D sokobanSprite;
 
         private Bat bat;
         private Dragon dragon;
@@ -79,6 +81,8 @@ namespace Game2
         private Camera2D cam;
         private Vector2 camLocation;
         private ResetCommand reset;
+        // TODO
+        private Sokoban sokoban;
 
         public HUD myHUD;
         private SpriteFont font;
@@ -146,6 +150,10 @@ namespace Game2
 
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             player.setHUD(myHUD);
+
+            // TODO
+            sokoban = new Sokoban(sokobanSprite, spriteBatch);
+            player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -312,6 +320,7 @@ namespace Game2
             veryGreen = Content.Load<Texture2D>("Green");
             rockSprite = Content.Load<Texture2D>("rock");
             font = Content.Load<SpriteFont>("NMNAT");
+            sokobanSprite = Content.Load<Texture2D>("box");
         }
         protected override void UnloadContent()
         {
@@ -953,6 +962,8 @@ namespace Game2
                 LinkCheering.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(youWIN, "YOU WIN!", player.Position-new Vector2(200,200), Color.Yellow);
             }
+
+            sokoban.Draw();
             
             spriteBatch.End();
 

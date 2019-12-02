@@ -63,6 +63,7 @@
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Puzzle\Sokoban.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Blocks\Rock.cs" />
     <Compile Include="Sprites\Enemies\Bat.cs" />
@@ -140,8 +141,10 @@
     <Content Include="Content\ArrowUp.png" />
     <Content Include="Content\bat.png" />
     <Content Include="Content\biggerExplosion1.png" />
+    <Content Include="Content\blackHole.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
+    <Content Include="Content\box.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon.png" />
     <Content Include="Content\Enemy1.png" />

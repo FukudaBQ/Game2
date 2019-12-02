@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game2.Commands;
 using Game2.Factory;
+using Game2.Puzzle;
 using Game2.Sprites.Link.Projectile;
 using HUDManager;
 using Microsoft.Xna.Framework;
@@ -17,9 +18,12 @@ namespace Game2.Sprites.Link
     public class Player
     {
         private bool victory = false;
-        public Vector2 position = new Vector2(3140, 12800);
-        //public Vector2 position = new Vector2(5540, 4600);
-        public Vector2 camPosition = new Vector2(3200 ,12520);
+        //public Vector2 position = new Vector2(3140, 12800);
+        // TODO
+        public Vector2 position = new Vector2(5700, 12800);
+        //public Vector2 camPosition = new Vector2(3200 ,12520);
+        //TODO
+        public Vector2 camPosition = new Vector2(5760, 12520);
         public Vector2 tempCam = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
@@ -50,6 +54,7 @@ namespace Game2.Sprites.Link
         private int numOfKeys = 0;
         public int bombNum = 5;
         private HUD myHUD;
+        private Sokoban mySokoban;
 
 
         public bool Victory
@@ -130,6 +135,11 @@ namespace Game2.Sprites.Link
             facing.Add(Dir.LeftSword, LinkSpriteFactory.Instance.CreateLeftSword(1, 2));
             facing.Add(Dir.RightSword, LinkSpriteFactory.Instance.CreateRightSword(1, 2));
             anim = facing[direction];
+        }
+
+        public void setSokoban(Sokoban sokoban)
+        {
+            mySokoban = sokoban;
         }
 
         public void setHUD(HUD myHUD)
@@ -267,8 +277,12 @@ namespace Game2.Sprites.Link
             {
                 reset.Execute();
             }
-
-
+            
+            //TODO
+            if (kState.IsKeyDown(Keys.Space))
+            {
+                mySokoban.Push(direction, position);
+            }
 
         }
     }
