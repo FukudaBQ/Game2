@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace Game2.RandomEvent
 {
-    class SpeedUp
+    class SlowDown
     {
         private float timer;
         private Vector2 position;
-        private bool collided = false;
-        public static List<SpeedUp> spd = new List<SpeedUp>();
+        public static List<SlowDown> sld = new List<SlowDown>();
         public float Timer
         {
             get { return timer; }
@@ -23,7 +22,7 @@ namespace Game2.RandomEvent
             get { return position; }
             set { position = value; }
         }
-        public SpeedUp(Vector2 position)
+        public SlowDown(Vector2 position)
         {
             this.position = position;
             timer = 1;

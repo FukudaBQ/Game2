@@ -76,6 +76,7 @@ namespace Game2
         private Texture2D downDoor;
         private Texture2D hintSprite;
         private Texture2D batHintSprite;
+        private Texture2D slowDownHintSprite;
 
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -426,6 +427,7 @@ namespace Game2
             downDoor = Content.Load<Texture2D>("door3");
             hintSprite = Content.Load<Texture2D>("hint");
             batHintSprite = Content.Load<Texture2D>("batSpeedUp");
+            slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
 
         }
         protected override void UnloadContent()
@@ -468,6 +470,10 @@ namespace Game2
             foreach (SpeedUp su in SpeedUp.spd)
             {
                 su.Update(gameTime);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                sd.Update(gameTime);
             }
             foreach (Knight kn in Knight.knights)
             {
@@ -1609,6 +1615,7 @@ namespace Game2
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
+            SlowDown.sld.RemoveAll(sd => sd.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1657,6 +1664,10 @@ namespace Game2
             foreach (SpeedUp su in SpeedUp.spd)
             {
                 spriteBatch.Draw(batHintSprite, su.Position, Color.White);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                spriteBatch.Draw(slowDownHintSprite, sd.Position, Color.White);
             }
 
             myHUD.Draw();

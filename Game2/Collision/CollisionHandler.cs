@@ -98,6 +98,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
+                            player.TempSpeed = 200;
                             SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X-300,player.position.Y-600)));
                             foreach (Bat bat in Bat.bats)
                             {
@@ -109,18 +110,22 @@ namespace Game2.Collision
                             }
                             break;
                         case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 300, player.position.Y-600)));
+                            player.TempSpeed = 100;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
                             break;
                         case 3:
+                            player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
                             break;
                         case 4:
+                            player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -153,6 +158,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
+                            player.TempSpeed = 200;
                             SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 300, player.position.Y + 400)));
                             foreach (Bat bat in Bat.bats)
                             {
@@ -164,18 +170,22 @@ namespace Game2.Collision
                             }
                             break;
                         case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 300, player.position.Y+400)));
+                            player.TempSpeed = 100;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
                             break;
                         case 3:
+                            player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
                             break;
                         case 4:
+                            player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -207,7 +217,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
-                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 600, player.position.Y - 100)));
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 800, player.position.Y - 100)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 150;
@@ -219,11 +229,12 @@ namespace Game2.Collision
                             player.TempSpeed = 200;
                             break;
                         case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 600, player.position.Y)));
+                            player.TempSpeed = 100;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 200;
                             break;
                         case 3:
                             foreach (Bat bat in Bat.bats)
@@ -264,7 +275,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
-                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X + 300, player.position.Y - 100)));
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X + 100, player.position.Y - 100)));
                             player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
@@ -276,12 +287,12 @@ namespace Game2.Collision
                             }
                             break;
                         case 2:
-                            explosion.exp.Add(new explosion(new Vector2(player.Position.X + 300, player.position.Y)));
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X + 300, player.position.Y)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 50;
+                            player.TempSpeed = 100;
                             while (rm == 2)
                             {
                                 rm = rnd.Next(1, 5);
