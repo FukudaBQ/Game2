@@ -851,11 +851,11 @@
 /processorParam:Quality=Best
 /build:music/Dungeon.mp3
 
-#begin music/Game Over.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin music/GameOver.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:music/Game Over.mp3
+/build:music/GameOver.wav
 
 #begin music/GetFairy.wav
 /importer:WavImporter
@@ -880,6 +880,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:music/Put Bomb.wav
+
+#begin music/randomEvents.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/randomEvents.wav
 
 #begin music/Triforce.mp3
 /importer:Mp3Importer
@@ -918,18 +924,6 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:numOfKeys.spritefont
-
-#begin refresh.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:refresh.png
 
 #begin refresh.png
 /importer:TextureImporter

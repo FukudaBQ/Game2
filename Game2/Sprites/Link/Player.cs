@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Collision;
 using Game2.Commands;
 using Game2.Factory;
 using Game2.Sprites.Link.Projectile;
@@ -94,6 +95,11 @@ namespace Game2.Sprites.Link
         {
             get { return health; }
             set { health = value; }
+        }
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
         }
 
 

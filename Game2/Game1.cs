@@ -20,6 +20,7 @@ using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
 using HUDManager;
 using Game2.Object;
+using Game2.RandomEvent;
 //using Game2.Object.Enemies;
 
 namespace Game2
@@ -33,6 +34,8 @@ namespace Game2
     {
         public static SoundEffect attack;
         public static Song overworld;
+        public static SoundEffect dead;
+        public static SoundEffect random;
     }
     public class Game1 : Game
     {
@@ -402,6 +405,8 @@ namespace Game2
             knightSprite = Content.Load<Texture2D>("knight");
             MySounds.attack = Content.Load<SoundEffect>("music/UseSword");
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
+            MySounds.dead = Content.Load<SoundEffect>("music/GameOver");
+            MySounds.random = Content.Load<SoundEffect>("music/randomEvents");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
@@ -447,6 +452,10 @@ namespace Game2
             foreach (explosion ex in explosion.exp)
             {
                 ex.Update(gameTime);
+            }
+            foreach (SpeedUp su in SpeedUp.spd)
+            {
+                su.Update(gameTime);
             }
             foreach (Knight kn in Knight.knights)
             {
@@ -1487,6 +1496,7 @@ namespace Game2
             Bat.bats.RemoveAll(e => e.Health<=0);
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
+            SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1531,6 +1541,10 @@ namespace Game2
             foreach (explosion ex in explosion.exp)
             {
                 spriteBatch.Draw(explosionSprite, ex.Position, Color.White);
+            }
+            foreach (SpeedUp su in SpeedUp.spd)
+            {
+                spriteBatch.Draw(explosionSprite, su.Position, Color.White);
             }
 
             myHUD.Draw();
@@ -1628,6 +1642,7 @@ namespace Game2
             {
                 deadLinkSpin.Draw(spriteBatch, player.Position, Color.White);
                 spriteBatch.DrawString(font, "Press R to Reset and Replay", new Vector2(player.camPosition.X - 500, player.camPosition.Y), Color.Red);
+                MySounds.dead.Play();
             }
             if (player.Victory)
             {
