@@ -75,6 +75,7 @@ namespace Game2
         private Texture2D rightDoor;
         private Texture2D downDoor;
         private Texture2D hintSprite;
+        private Texture2D batHintSprite;
 
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -424,6 +425,7 @@ namespace Game2
             leftDoor = Content.Load<Texture2D>("door2");
             downDoor = Content.Load<Texture2D>("door3");
             hintSprite = Content.Load<Texture2D>("hint");
+            batHintSprite = Content.Load<Texture2D>("batSpeedUp");
 
         }
         protected override void UnloadContent()
@@ -1658,7 +1660,7 @@ namespace Game2
             }
             foreach (SpeedUp su in SpeedUp.spd)
             {
-                spriteBatch.Draw(explosionSprite, su.Position, Color.White);
+                spriteBatch.Draw(batHintSprite, su.Position, Color.White);
             }
 
             myHUD.Draw();

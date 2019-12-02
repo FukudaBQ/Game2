@@ -98,7 +98,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
-                            SpeedUp.spd.Add(new SpeedUp(player.Position));
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X-300,player.position.Y-600)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 150;
@@ -153,6 +153,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 300, player.position.Y + 400)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 150;
@@ -206,6 +207,7 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 600, player.position.Y - 100)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 150;
@@ -214,24 +216,28 @@ namespace Game2.Collision
                             {
                                 rm = rnd.Next(1, 5);
                             }
+                            player.TempSpeed = 200;
                             break;
                         case 2:
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
+                            player.TempSpeed = 200;
                             break;
                         case 3:
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
+                            player.TempSpeed = 200;
                             break;
                         case 4:
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
+                            player.TempSpeed = 200;
                             break;
                     }
                     myHUD.HeartLeft();
@@ -258,6 +264,8 @@ namespace Game2.Collision
                     {
                         case 1:
                             MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X + 300, player.position.Y - 100)));
+                            player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 150;
@@ -268,22 +276,32 @@ namespace Game2.Collision
                             }
                             break;
                         case 2:
+                            explosion.exp.Add(new explosion(new Vector2(player.Position.X + 300, player.position.Y)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
+                            }
+                            player.TempSpeed = 50;
+                            while (rm == 2)
+                            {
+                                rm = rnd.Next(1, 5);
                             }
                             break;
                         case 3:
+                            
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
+                            player.TempSpeed = 200;
                             break;
                         case 4:
+                            
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
+                            player.TempSpeed = 200;
                             break;
                     }
                     myHUD.HeartRight();
