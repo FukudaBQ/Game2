@@ -49,6 +49,7 @@ namespace Game2
         BombHandler bombHandler = new BombHandler();
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
+        PokeballHandler pokeballHandler = new PokeballHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
@@ -58,10 +59,12 @@ namespace Game2
         private Texture2D arrowLeft;
         private Texture2D arrowRight;
         private Texture2D boomerang;
+        private Texture2D pokeball;
         private Texture2D handSprite;
         private Texture2D knightSprite;
         private Texture2D batSprite;
         private Texture2D explosionSprite;
+        private Texture2D lightSprite;
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
         private Texture2D fireballSprite;
@@ -75,6 +78,10 @@ namespace Game2
         private Texture2D rightDoor;
         private Texture2D downDoor;
         private Texture2D hintSprite;
+        private Texture2D batHintSprite;
+        private Texture2D slowDownHintSprite;
+        private Dir direction =Dir.Down;
+        private Vector2 tempPosition;
 
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -92,6 +99,7 @@ namespace Game2
         private Camera2D cam;
         private Vector2 camLocation;
         private ResetCommand reset;
+        private int monsterType;
         private Hint hint;
 
         public HUD myHUD;
@@ -371,6 +379,11 @@ namespace Game2
                 
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
             }
+            TiledMapObject[] pokeballs = myMap.GetLayer<TiledMapObjectLayer>("pokeball").Objects;
+            foreach (var poke in pokeballs)
+            {
+                Pokeball.pokeballs.Add(new Pokeball(new Vector2(poke.Position.X, poke.Position.Y + 840),direction));
+            }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
             TiledMapObject[] leftblocks = myMap.GetLayer<TiledMapObjectLayer>("leftblock").Objects;
@@ -391,6 +404,10 @@ namespace Game2
             {
                 Blocks.rightblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
             }
+            foreach (var blo in rightblocks)
+            {
+                Blocks.rightblocks.Add(new GeneralBlock(new Vector2(blo.Position.X, blo.Position.Y + 800)));
+            }
             camLocation = new Vector2(3200, 3880);
         }
 
@@ -402,9 +419,11 @@ namespace Game2
             arrowLeft = Content.Load<Texture2D>("ArrowLeft");
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang = Content.Load<Texture2D>("boomerang");
+            pokeball = Content.Load<Texture2D>("pokeball");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             batSprite = Content.Load<Texture2D>("bat");
             explosionSprite= Content.Load<Texture2D>("biggerExplosion1");
+            lightSprite = Content.Load<Texture2D>("light");
             dragonSprite = Content.Load<Texture2D>("Dragon");
             fireballSprite = Content.Load<Texture2D>("fireball");
             monsterSprite =Content.Load<Texture2D>("monster");
@@ -424,6 +443,8 @@ namespace Game2
             leftDoor = Content.Load<Texture2D>("door2");
             downDoor = Content.Load<Texture2D>("door3");
             hintSprite = Content.Load<Texture2D>("hint");
+            batHintSprite = Content.Load<Texture2D>("batSpeedUp");
+            slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
 
         }
         protected override void UnloadContent()
@@ -463,9 +484,17 @@ namespace Game2
             {
                 ex.Update(gameTime);
             }
+            foreach (light ex in light.lig)
+            {
+                ex.Update(gameTime);
+            }
             foreach (SpeedUp su in SpeedUp.spd)
             {
                 su.Update(gameTime);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                sd.Update(gameTime);
             }
             foreach (Knight kn in Knight.knights)
             {
@@ -532,16 +561,24 @@ namespace Game2
                     player.Pcolor = Color.White;
                 }
             }
+            foreach (Bat bat in Bat.batF)
+            {
+                bat.Update2(gameTime, player.position);
+            }
+            foreach (Knight knight in Knight.knightF)
+            {
+                knight.Update2(gameTime);
+            }
             foreach (Bat bat in Bat.bats)
             {
                 bat.Update(gameTime, player.position);
                 int sum = player.Radius + bat.Radius;
-                if (Vector2.Distance(player.Position, bat.location) < sum&&player.HealthTimer<=0)
+                if (Vector2.Distance(player.Position, bat.Location) < sum&&player.HealthTimer<=0)
                 {
                     
                     player.Health--;
                     myHUD.LostHeart();
-                    Vector2 moveDir =player.Position - bat.location;
+                    Vector2 moveDir =player.Position - bat.Location;
                     moveDir.Normalize();
                     
                         player.Pcolor = Color.Red;
@@ -643,6 +680,31 @@ namespace Game2
                 if (Vector2.Distance(player.Position, yknight.Location) < sum && player.HealthTimer <= 0)
                 {
 
+            //foreach (Pokeball b in Pokeball.pokeballProj)
+            //{
+            // foreach (Bat bat in Bat.bats)
+            // {
+            // int sum = b.Radius + bat.Radius;
+            // if (Vector2.Distance(b.Position, bat.location) < sum)
+            // {
+            // b.Collided = true;
+            // bat.Health--;
+            // if (bat.Health <= 0)
+            //{
+            //  explosion.exp.Add(new explosion(bat.location));
+
+            // }
+            // }
+            // }
+
+
+            //}
+            //Pokeball.pokeballProj.RemoveAll(p => p.Collided == true);
+            
+
+
+
+
                     player.Health--;
                     myHUD.LostHeart();
                     Vector2 moveDir = player.Position - yknight.Location;
@@ -663,18 +725,38 @@ namespace Game2
                 }
             }
 
+            foreach (Pokeball b in Pokeball.pokeballwithMonsterProj)
+            {
+                if (b.Speed == 0)
+                {
+                    tempPosition = b.Position;
+                }
+                monsterType = b.Monster;
+            }
+            if (Pokeball.pokeballwithMonsterProj.RemoveAll(p => p.Speed == 0) == 1)
+            {
+                if (monsterType == 1)
+                {
+                    Bat.batF.Add(new Bat(batSprite, tempPosition, spriteBatch));
+                }
+                else if (monsterType == 2)
+                {
+                    Knight.knightF.Add(new Knight(knightSprite, tempPosition, spriteBatch));
+                }
+            }
+
             foreach (BombProj b in BombProj.bomb)
             {
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = b.Radius + bat.Radius;
-                    if (Vector2.Distance(b.Position, bat.location) < sum)
+                    if (Vector2.Distance(b.Position, bat.Location) < sum)
                     {
                         b.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
                 }
@@ -797,13 +879,13 @@ namespace Game2
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = boo.Radius + bat.Radius;
-                    if (Vector2.Distance(boo.Position, bat.location) < sum)
+                    if (Vector2.Distance(boo.Position, bat.Location) < sum)
                     {
                         boo.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
 
@@ -939,13 +1021,13 @@ namespace Game2
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
-                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    if (Vector2.Distance(arrow.Position, bat.Location) < sum)
                     {
                         arrow.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
                     
@@ -1081,13 +1163,13 @@ namespace Game2
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
-                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    if (Vector2.Distance(arrow.Position, bat.Location) < sum)
                     {
                         arrow.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
                 }
@@ -1229,13 +1311,13 @@ namespace Game2
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
-                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    if (Vector2.Distance(arrow.Position, bat.Location) < sum)
                     {
                         arrow.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
                 }
@@ -1377,13 +1459,13 @@ namespace Game2
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
-                    if (Vector2.Distance(arrow.Position, bat.location) < sum)
+                    if (Vector2.Distance(arrow.Position, bat.Location) < sum)
                     {
                         arrow.Collided = true;
                         bat.Health--;
                         if (bat.Health <= 0)
                         {
-                            explosion.exp.Add(new explosion(bat.location));
+                            explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
                 }
@@ -1606,7 +1688,9 @@ namespace Game2
             Bat.bats.RemoveAll(e => e.Health<=0);
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
+            light.lig.RemoveAll(ex => ex.Timer <= 0);
             SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
+            SlowDown.sld.RemoveAll(sd => sd.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1619,6 +1703,8 @@ namespace Game2
             Door.leftdoors.RemoveAll(d => d.Health <= 0);
             Door.downdoors.RemoveAll(d => d.Health <= 0);
             Door.rightdoors.RemoveAll(d => d.Health <= 0);
+            Knight.knightF.RemoveAll(p => p.Health == 0);
+            Bat.batF.RemoveAll(p => p.Health == 0);
             CollisionHandler collisionHandler = new CollisionHandler();
 
             collisionHandler.CollisionHandle(player, myHUD,this);
@@ -1637,6 +1723,8 @@ namespace Game2
             bombHandler.Update(gameTime);
             arrowHandler.Update(gameTime);
             boomerangHandler.Update(gameTime,player);
+            pokeballHandler.Update(gameTime, player);
+
             cam.LookAt(player.camPosition);
 
             base.Update(gameTime);
@@ -1652,9 +1740,30 @@ namespace Game2
             {
                 spriteBatch.Draw(explosionSprite, ex.Position, Color.White);
             }
+            foreach (light ex in light.lig)
+            {
+                spriteBatch.Draw(lightSprite, ex.Position, Color.White);
+            }
+            //foreach (Enemies en in Enemies.enemies)
+            //{
+            //Texture2D spritetoDraw;
+            //if (en.GetType() == typeof(Bats))
+            //{
+            //spritetoDraw = batSprite;
+            //}
+            //else
+            //{
+            //spritetoDraw = knightSprite;
+            //}
+            //spriteBatch.Draw(spritetoDraw, en.Position, Color.White);
+            //}
             foreach (SpeedUp su in SpeedUp.spd)
             {
-                spriteBatch.Draw(explosionSprite, su.Position, Color.White);
+                spriteBatch.Draw(batHintSprite, su.Position, Color.White);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                spriteBatch.Draw(slowDownHintSprite, sd.Position, Color.White);
             }
 
             myHUD.Draw();
@@ -1662,7 +1771,11 @@ namespace Game2
 
             foreach (Bat bat in Bat.bats)
             {
-                bat.Draw(bat.location);
+                bat.Draw(bat.Location);
+            }
+            foreach (Bat bat in Bat.batF)
+            {
+                bat.Draw2(bat.Location);
             }
             foreach (RedKnight rknight in RedKnight.rknights)
             {
@@ -1693,7 +1806,11 @@ namespace Game2
             {
                 kn.Draw();
             }
-            foreach(Rock r in Rock.rocks)
+            foreach (Knight kn in Knight.knightF)
+            {
+                kn.Draw2();
+            }
+            foreach (Rock r in Rock.rocks)
             {
                 spriteBatch.Draw(rockSprite, r.Position, Color.White);
             }
@@ -1722,6 +1839,10 @@ namespace Game2
             arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
             arrowHandler.Draw(spriteBatch, arrowRight, ArrowProj.arrowRight);
             boomerangHandler.Draw(spriteBatch, boomerang, BoomerangProj.boomerang);
+            pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballProj);
+            pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballs);
+            pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballwithMonster);
+            pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballwithMonsterProj);
 
             foreach (Blocks b in Blocks.blocks)
             {
