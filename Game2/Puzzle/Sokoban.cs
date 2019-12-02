@@ -76,12 +76,22 @@ namespace Game2.Puzzle
 
         private void PushLeft(Dir direction, Vector2 position)
         {
-            throw new NotImplementedException();
+            Baggage i = Detect(direction, position);
+            if (i != null)
+            {
+                i.PushLeft();
+            }
+            Check(i);
         }
 
         private void PushRight(Dir direction, Vector2 position)
         {
-            throw new NotImplementedException();
+            Baggage i = Detect(direction, position);
+            if (i != null)
+            {
+                i.PushRight();
+            }
+            Check(i);
         }
 
         private void PushDown(Dir direction, Vector2 position)
@@ -130,12 +140,30 @@ namespace Game2.Puzzle
 
         private Baggage DetectRight(Dir direction, Vector2 position)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < baggage.Count; i++)
+            {
+                int Dist = baggage.ElementAt(i).GetDistX(direction, position);
+                if ((Dist <= 80) &&
+                (Dist >= 0))
+                {
+                    return baggage.ElementAt(i);
+                }
+            }
+            return null;
         }
 
         private Baggage DetectLeft(Dir direction, Vector2 position)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < baggage.Count; i++)
+            {
+                int Dist = baggage.ElementAt(i).GetDistX(direction, position);
+                if ((Dist >= -80) &&
+                (Dist <= 0))
+                {
+                    return baggage.ElementAt(i);
+                }
+            }
+            return null;
         }
 
         private Baggage DetectDown(Dir direction, Vector2 position)
@@ -235,6 +263,24 @@ namespace Game2.Puzzle
                 {
                     Console.Write(CurrentLoc + blockHeight - (int)position.Y);
                     return  CurrentLoc + blockHeight - (int)position.Y;
+                }
+            }
+            return 1024;
+        }
+        public int GetDistX(Dir direction, Vector2 position)
+        {
+            int CurrentLoc = locationX + offsetX * blockHeight;
+            if ((position.Y >= (locationY + offsetY * blockWidth) - 5) &&
+                (position.Y <= (locationY + offsetY * blockWidth + blockWidth) + 5))
+            {
+                if (CurrentLoc > position.X)
+                {
+                    return CurrentLoc - (int)position.X;
+                }
+                else
+                {
+                    Console.Write(CurrentLoc + blockHeight - (int)position.X);
+                    return CurrentLoc + blockHeight - (int)position.X;
                 }
             }
             return 1024;
