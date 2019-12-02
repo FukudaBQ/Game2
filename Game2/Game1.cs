@@ -692,25 +692,7 @@ namespace Game2
 
             //}
             //Pokeball.pokeballProj.RemoveAll(p => p.Collided == true);
-            foreach (Pokeball b in Pokeball.pokeballwithMonsterProj)
-            {
-                if (b.Speed == 0)
-                {
-                    tempPosition = b.Position;
-                }
-                monsterType = b.Monster;
-            }
-                if (Pokeball.pokeballwithMonsterProj.RemoveAll(p => p.Speed == 0) == 1)
-            {
-                if (monsterType == 1)
-                {
-                    Bat.batF.Add(new Bat(batSprite, tempPosition, spriteBatch));
-                }
-                else if (monsterType == 2)
-                {
-                    Knight.knightF.Add(new Knight(knightSprite, tempPosition, spriteBatch));
-                }
-            }
+            
 
 
 
@@ -732,6 +714,26 @@ namespace Game2
                 if (player.HealthTimer <= 0)
                 {
                     player.Pcolor = Color.White;
+                }
+            }
+
+            foreach (Pokeball b in Pokeball.pokeballwithMonsterProj)
+            {
+                if (b.Speed == 0)
+                {
+                    tempPosition = b.Position;
+                }
+                monsterType = b.Monster;
+            }
+            if (Pokeball.pokeballwithMonsterProj.RemoveAll(p => p.Speed == 0) == 1)
+            {
+                if (monsterType == 1)
+                {
+                    Bat.batF.Add(new Bat(batSprite, tempPosition, spriteBatch));
+                }
+                else if (monsterType == 2)
+                {
+                    Knight.knightF.Add(new Knight(knightSprite, tempPosition, spriteBatch));
                 }
             }
 
