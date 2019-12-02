@@ -87,6 +87,11 @@ namespace Game2.Sprites.Link
         {
             get { return radius; }
         }
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
 
         public int Damagedspeed
         {
