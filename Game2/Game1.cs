@@ -929,7 +929,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
@@ -1071,7 +1071,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
@@ -1217,16 +1217,12 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
-                {
-                    arrow.Position = blackHole1.Position;
-                    arrow.BlackHoleTimer = 1.5f;
-                }
+
 
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
@@ -1369,7 +1365,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
