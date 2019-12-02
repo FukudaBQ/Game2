@@ -16,6 +16,7 @@ namespace Game2.Sprites.Link
 {
     public class Player
     {
+        private float blackHoleTimer = 0f;
         private bool victory = false;
         //public Vector2 position = new Vector2(3140, 12800);
         public Vector2 position = new Vector2(2700, 6600);
@@ -51,6 +52,7 @@ namespace Game2.Sprites.Link
         private int numOfKeys = 0;
         public int bombNum = 5;
         private HUD myHUD;
+
 
 
         public bool Victory
