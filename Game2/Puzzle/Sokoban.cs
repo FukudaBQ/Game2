@@ -96,6 +96,18 @@ namespace Game2.Puzzle
             }
         }
 
+        public bool DidCollide(Vector2 otherPos, int otherL, int otherW)
+        {
+            foreach (Baggage b in baggage)
+            {
+                if (b.Collide(otherPos,otherL,otherW))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void PushRight(Dir direction, Vector2 position)
         {
             Baggage i = Detect(direction, position);
@@ -363,7 +375,6 @@ namespace Game2.Puzzle
                 }
                 else
                 {
-                    Console.Write(CurrentLoc + blockHeight - (int)position.X);
                     return CurrentLoc + blockHeight - (int)position.X;
                 }
             }
@@ -380,14 +391,26 @@ namespace Game2.Puzzle
             return locationX + offsetX * blockWidth;
         }
 
-        internal int GetLocY()
+        public int GetLocY()
         {
             return locationY + offsetY * blockHeight;
         }
 
-        internal void InformNotArrived()
+        public void InformNotArrived()
         {
             sourceX = 45;
+        }
+
+        public bool Collide(Vector2 otherPos, int otherL, int otherW)
+        {
+            int CurrentX = locationX + offsetX * blockHeight;
+            int CurrentY = locationY + offsetY * blockHeight;
+            //TODO
+            if (Math.Abs(CurrentX - otherPos.X) <= blockHeight && Math.Abs(CurrentY - otherPos.Y) <= blockWidth)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
