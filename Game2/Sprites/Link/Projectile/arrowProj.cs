@@ -14,11 +14,18 @@ namespace Game2.Sprites.Link
         protected int radius = 10;
         private Dir direction;
         private bool collided = false;
+        private float blackHoleTimer = 0f;
 
         public static List<ArrowProj> arrowDown = new List<ArrowProj>();
         public static List<ArrowProj> arrowUp = new List<ArrowProj>();
         public static List<ArrowProj> arrowLeft = new List<ArrowProj>();
         public static List<ArrowProj> arrowRight = new List<ArrowProj>();
+
+        public float BlackHoleTimer
+        {
+            get { return blackHoleTimer; }
+            set { blackHoleTimer = value; }
+        }
         public int Radius
         {
             get { return radius; }
@@ -42,12 +49,13 @@ namespace Game2.Sprites.Link
             {
                 return position;
             }
+            set { position = value; }
         }
 
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            blackHoleTimer -= dt;
             switch (direction)
             {
                 case Dir.Right:

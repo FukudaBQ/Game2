@@ -138,7 +138,7 @@ namespace Game2.Factory
         }
         public Shining CreateButtonSprite()
         {
-            return new Shining(button, 18, 20, 512, 487, 0);
+            return new Shining(button, 0, 0, 86, 86, 0);
         }
     }
 }

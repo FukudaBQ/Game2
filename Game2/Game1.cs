@@ -75,6 +75,8 @@ namespace Game2
 
         private BlackHole blackHole1;
         private BlackHole blackHole2;
+        private BlackHole blackHole3;
+        private BlackHole blackHole4;
 
         private Bat bat;
         private Dragon dragon;
@@ -189,6 +191,11 @@ namespace Game2
 
             blackHole1 = new BlackHole(new Vector2(2800, 6500));
             blackHole2 = new BlackHole(new Vector2(3300, 6200));
+
+            blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            blackHole4 = new BlackHole(new Vector2(3300, 6500));
+
+
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
             key = new Key2( new Vector2(400, 2700), spriteBatch);
@@ -422,6 +429,9 @@ namespace Game2
         {
             blackHole1.Update(gameTime,player,blackHole2);
             blackHole2.Update(gameTime,player,blackHole1);
+            blackHole3.Update(gameTime, player, blackHole4);
+            blackHole4.Update(gameTime, player, blackHole3);
+
             hint.Update(gameTime);
             LinkCheering.Update(gameTime);
             deadLinkSpin.Update(gameTime);
@@ -889,6 +899,30 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowLeft)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3= arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able&&blackHole2.Able&&Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -1007,6 +1041,30 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }   
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -1129,6 +1187,36 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowUp)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
@@ -1251,10 +1339,36 @@ namespace Game2
             }
             foreach (ArrowProj arrow in ArrowProj.arrowDown)
             {
+                int sum1 = arrow.Radius + blackHole1.Radius;
+                int sum2 = arrow.Radius + blackHole2.Radius;
+                int sum3 = arrow.Radius + blackHole3.Radius;
+                int sum4 = arrow.Radius + blackHole4.Radius;
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole1.Position) < sum1 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole2.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole1.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole3.Position) < sum3 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole4.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                {
+                    arrow.Position = blackHole3.Position;
+                    arrow.BlackHoleTimer = 1.5f;
+                }
+
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
                 }
+                
                 foreach (Bat bat in Bat.bats)
                 {
                     int sum = arrow.Radius + bat.Radius;
@@ -1636,6 +1750,8 @@ namespace Game2
             }
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole1.Position.X-30, blackHole1.Position.Y - 30), Color.White);
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole2.Position.X - 30, blackHole2.Position.Y - 30), Color.White);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
 
             hint.Draw();
 
