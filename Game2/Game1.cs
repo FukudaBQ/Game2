@@ -78,6 +78,8 @@ namespace Game2
         private Texture2D rightDoor;
         private Texture2D downDoor;
         private Texture2D hintSprite;
+        private Texture2D batHintSprite;
+        private Texture2D slowDownHintSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
 
@@ -441,6 +443,8 @@ namespace Game2
             leftDoor = Content.Load<Texture2D>("door2");
             downDoor = Content.Load<Texture2D>("door3");
             hintSprite = Content.Load<Texture2D>("hint");
+            batHintSprite = Content.Load<Texture2D>("batSpeedUp");
+            slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
 
         }
         protected override void UnloadContent()
@@ -487,6 +491,10 @@ namespace Game2
             foreach (SpeedUp su in SpeedUp.spd)
             {
                 su.Update(gameTime);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                sd.Update(gameTime);
             }
             foreach (Knight kn in Knight.knights)
             {
@@ -1001,7 +1009,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
@@ -1143,7 +1151,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
@@ -1289,16 +1297,12 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole1.Able && blackHole2.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum2 && arrow.BlackHoleTimer <= 0)
-                {
-                    arrow.Position = blackHole1.Position;
-                    arrow.BlackHoleTimer = 1.5f;
-                }
+
 
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
@@ -1441,7 +1445,7 @@ namespace Game2
                     arrow.Position = blackHole4.Position;
                     arrow.BlackHoleTimer = 1.5f;
                 }
-                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole2.Position) < sum4 && arrow.BlackHoleTimer <= 0)
+                if (blackHole3.Able && blackHole4.Able && Vector2.Distance(arrow.Position, blackHole4.Position) < sum4 && arrow.BlackHoleTimer <= 0)
                 {
                     arrow.Position = blackHole3.Position;
                     arrow.BlackHoleTimer = 1.5f;
@@ -1686,6 +1690,7 @@ namespace Game2
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             light.lig.RemoveAll(ex => ex.Timer <= 0);
             SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
+            SlowDown.sld.RemoveAll(sd => sd.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1754,7 +1759,11 @@ namespace Game2
             //}
             foreach (SpeedUp su in SpeedUp.spd)
             {
-                spriteBatch.Draw(explosionSprite, su.Position, Color.White);
+                spriteBatch.Draw(batHintSprite, su.Position, Color.White);
+            }
+            foreach (SlowDown sd in SlowDown.sld)
+            {
+                spriteBatch.Draw(slowDownHintSprite, sd.Position, Color.White);
             }
 
             myHUD.Draw();

@@ -54,6 +54,7 @@ namespace Game2.Sprites.Link
         private int numOfKeys = 0;
         public int bombNum = 5;
         private HUD myHUD;
+        private int tempSpeed = 200;
 
 
 
@@ -97,10 +98,10 @@ namespace Game2.Sprites.Link
             get { return health; }
             set { health = value; }
         }
-        public int Speed
+        public int TempSpeed
         {
-            get { return speed; }
-            set { speed = value; }
+            get { return tempSpeed; }
+            set { tempSpeed = value; }
         }
 
 
@@ -156,7 +157,7 @@ namespace Game2.Sprites.Link
             }
             else
             {
-                speed = 200;
+                speed = TempSpeed;
             }
             stateMachine.Update(gameTime);
             direction = stateMachine.getDirection();

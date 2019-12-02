@@ -98,18 +98,6 @@
 /processorParam:TextureFormat=Color
 /build:batSpeedUp.png
 
-#begin batSpeedUp.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:batSpeedUp.png
-
 #begin biggerExplosion1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -457,6 +445,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:LinkRightWalking.png
+
+#begin LinkSpeedDown.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:LinkSpeedDown.png
 
 #begin LinkStand4Directions.png
 /importer:TextureImporter
