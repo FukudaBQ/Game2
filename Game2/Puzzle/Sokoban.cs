@@ -21,6 +21,9 @@ namespace Game2.Puzzle
         private int[] destY = {12710, 12710, 12710 };
         private List<Baggage> baggage = new List<Baggage>();
         private List<DestPoint> dest = new List<DestPoint>();
+        private List<bool> arrived = new List<bool>();
+        private int blockWidth = 80;
+        private int blockHeight = 80;
         public Sokoban(Texture2D texture, SpriteBatch spriteBatch)
         {
             this.texture = texture;
@@ -34,6 +37,7 @@ namespace Game2.Puzzle
             {
                 baggage.Add(new Baggage(texture, spriteBatch, baggageX[i], baggageY[i]));
                 dest.Add(new DestPoint(texture, spriteBatch, destX[i], destY[i]));
+                arrived.Add(false);
             }
         }
 
@@ -80,8 +84,8 @@ namespace Game2.Puzzle
             if (i != null)
             {
                 i.PushLeft();
+                Check(i);
             }
-            Check(i);
         }
 
         private void PushRight(Dir direction, Vector2 position)
@@ -90,8 +94,8 @@ namespace Game2.Puzzle
             if (i != null)
             {
                 i.PushRight();
+                Check(i);
             }
-            Check(i);
         }
 
         private void PushDown(Dir direction, Vector2 position)
@@ -100,8 +104,8 @@ namespace Game2.Puzzle
             if (i != null)
             {
                 i.PushDown();
+                Check(i);
             }
-            Check(i);
         }
 
         public void PushUP(Dir direction, Vector2 position)
@@ -110,8 +114,8 @@ namespace Game2.Puzzle
             if (i != null)
             {
                 i.PushUp();
+                Check(i);
             }
-            Check(i);
         }
 
         private Baggage Detect(Dir direction, Vector2 position)
@@ -194,8 +198,35 @@ namespace Game2.Puzzle
             return null;
         }
 
+        //TODO On going
         private void Check(Baggage i)
         {
+            bool IfNotArrived = true;
+            for (int j = 0; j < dest.Count; j++)
+            {
+                if (CheckArrive(i, dest.ElementAt(j)))
+                {
+                    i.InformArrived();
+                    IfNotArrived = false;
+                }
+            }
+            if (IfNotArrived)
+            {
+                i.InformNotArrived();
+            }
+        }
+
+        private bool CheckArrive(Baggage baggage, DestPoint destPoint)
+        {
+            int BaggageX = baggage.GetLocX();
+            int BaggageY = baggage.GetLocY();
+            int DestPointX = destPoint.getLocX();
+            int DestPointY = destPoint.getLocY();
+            if ((DestPointX >= BaggageX) && (DestPointX <= (BaggageX + blockWidth)) && (DestPointY >= BaggageY) && (DestPointY <= (BaggageY + blockHeight)))
+            {
+                return true;
+            }
+            return false;
         }
     }
 
@@ -285,6 +316,26 @@ namespace Game2.Puzzle
             }
             return 1024;
         }
+
+        public void InformArrived()
+        {
+            sourceX = 89;
+        }
+
+        public int GetLocX()
+        {
+            return locationX + offsetX * blockWidth;
+        }
+
+        internal int GetLocY()
+        {
+            return locationY + offsetY * blockHeight;
+        }
+
+        internal void InformNotArrived()
+        {
+            sourceX = 45;
+        }
     }
 
     public class DestPoint
@@ -311,6 +362,16 @@ namespace Game2.Puzzle
             Rectangle sourceRectangle = new Rectangle(sourceX, sourceY, width, height);
             Rectangle destinationRectangle = new Rectangle(locationX, locationY, blockWidth, blockHeight);
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.LightPink);
+        }
+
+        internal int getLocX()
+        {
+            return locationX;
+        }
+
+        internal int getLocY()
+        {
+            return locationY;
         }
     }
 }

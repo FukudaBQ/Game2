@@ -67,7 +67,7 @@ namespace Game2.Collision
             foreach (Blocks upblo in Blocks.upblocks)
             {
                 int sum = player.Radius + upblo.Radius;
-                rm = rnd.Next(1, 5);
+                //rm = rnd.Next(1, 5);
                 if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
 
