@@ -15,21 +15,25 @@ namespace Game2.Sprites.Link
         public void Update(GameTime gameTime)
         {
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
             foreach (ArrowProj proj in ArrowProj.arrowDown)
             {
                 proj.Update(gameTime);
             }
             foreach (ArrowProj proj in ArrowProj.arrowUp)
             {
+
                 proj.Update(gameTime);
             }
             foreach (ArrowProj proj in ArrowProj.arrowLeft)
             {
+
                 proj.Update(gameTime);
                 
             }
             foreach (ArrowProj proj in ArrowProj.arrowRight)
             {
+
                 proj.Update(gameTime);
             }
         }
