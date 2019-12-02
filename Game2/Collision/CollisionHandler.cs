@@ -85,8 +85,17 @@ namespace Game2.Collision
                     myHUD.KeyNumUp();
                     myHUD.SwordUp();
                     myHUD.ArrowUp();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
                     }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                }
                 
+
             }
             foreach (Blocks dnblo in Blocks.downblocks)
             {
@@ -106,7 +115,16 @@ namespace Game2.Collision
                     myHUD.KeyNumDown();
                     myHUD.SwordDown();
                     myHUD.ArrowDown();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
+                
 
             }
             foreach (Blocks leblo in Blocks.leftblocks)
@@ -126,7 +144,16 @@ namespace Game2.Collision
                     myHUD.KeyNumLeft();
                     myHUD.SwordLeft();
                     myHUD.ArrowLeft();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
+                
 
             }
             foreach (Blocks riblo in Blocks.rightblocks)
@@ -146,8 +173,16 @@ namespace Game2.Collision
                     myHUD.KeyNumRight();
                     myHUD.SwordRight();
                     myHUD.ArrowRight();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
-
+                
             }
         }
 

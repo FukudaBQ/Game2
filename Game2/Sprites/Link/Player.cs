@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Game2.Commands;
 using Game2.Factory;
+using Game2.Object.Items;
 using Game2.Sprites.Link.Projectile;
 using HUDManager;
 using Microsoft.Xna.Framework;
@@ -248,6 +249,22 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
             {
                 BoomerangProj.boomerang.Add(new BoomerangProj(position, direction));
+            }
+            if (kState.IsKeyDown(Keys.D4) && previous.IsKeyUp(Keys.D4))
+            {
+                if (Pokeball.pokeballSto.Count>0)
+                {
+                    Pokeball.pokeballProj.Add(new Pokeball(new Vector2(position.X+40f,position.Y+40f), direction));
+                    Pokeball.pokeballSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
+            if (kState.IsKeyDown(Keys.D4) && previous.IsKeyUp(Keys.D4))
+            {
+                if (Pokeball.pokeballwithMonsterSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
             }
 
             previous = kState;
