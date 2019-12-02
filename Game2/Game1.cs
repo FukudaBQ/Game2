@@ -152,7 +152,7 @@ namespace Game2
             player.setHUD(myHUD);
 
             // TODO
-            sokoban = new Sokoban(sokobanSprite, spriteBatch);
+            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220);
             player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);

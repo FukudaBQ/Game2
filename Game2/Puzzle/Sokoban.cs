@@ -24,10 +24,18 @@ namespace Game2.Puzzle
         private List<bool> arrived = new List<bool>();
         private int blockWidth = 80;
         private int blockHeight = 80;
-        public Sokoban(Texture2D texture, SpriteBatch spriteBatch)
+        private int upLimit;
+        private int downLimit;
+        private int leftLimit;
+        private int rightLimit;
+        public Sokoban(Texture2D texture, SpriteBatch spriteBatch, int upLimit, int downLimit, int leftLimit, int rightLimit)
         {
             this.texture = texture;
             this.spriteBatch = spriteBatch;
+            this.upLimit = upLimit;
+            this.downLimit = downLimit;
+            this.leftLimit = leftLimit;
+            this.rightLimit = rightLimit;
             populate();
         }
 
@@ -35,7 +43,7 @@ namespace Game2.Puzzle
         {
             for(int i = 0; i < baggageX.Length; i ++)
             {
-                baggage.Add(new Baggage(texture, spriteBatch, baggageX[i], baggageY[i], 12360, 12920, 5340, 6220));
+                baggage.Add(new Baggage(texture, spriteBatch, baggageX[i], baggageY[i], upLimit, downLimit, leftLimit, rightLimit));
                 dest.Add(new DestPoint(texture, spriteBatch, destX[i], destY[i]));
                 arrived.Add(false);
             }
