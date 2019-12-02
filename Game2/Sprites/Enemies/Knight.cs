@@ -27,7 +27,6 @@ namespace Game2.Sprites.Enemies
         public Color color = Color.White;
         protected int radius = 20;
         public static List<Knight> knights = new List<Knight>();
-        //aa
         public int Health
         {
             get { return health; }

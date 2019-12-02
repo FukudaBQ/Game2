@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Collision;
 using Game2.Commands;
 using Game2.Factory;
 using Game2.Sprites.Link.Projectile;
@@ -18,10 +19,10 @@ namespace Game2.Sprites.Link
     {
       
         private bool victory = false;
-        //public Vector2 position = new Vector2(3140, 12800);
-        public Vector2 position = new Vector2(2700, 6600);
-        //public Vector2 camPosition = new Vector2(3200 ,12520);
-        public Vector2 camPosition = new Vector2(3200, 6600);
+        public Vector2 position = new Vector2(3140, 12800);
+        //public Vector2 position = new Vector2(2700, 6600);
+        public Vector2 camPosition = new Vector2(3200 ,12520);
+        //public Vector2 camPosition = new Vector2(3200, 6600);
         public Vector2 tempCam = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
@@ -94,6 +95,11 @@ namespace Game2.Sprites.Link
         {
             get { return health; }
             set { health = value; }
+        }
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
         }
 
 

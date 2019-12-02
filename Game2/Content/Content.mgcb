@@ -875,11 +875,11 @@
 /processorParam:Quality=Best
 /build:music/Dungeon.mp3
 
-#begin music/Game Over.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin music/GameOver.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:music/Game Over.mp3
+/build:music/GameOver.wav
 
 #begin music/GetFairy.wav
 /importer:WavImporter
@@ -904,6 +904,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:music/Put Bomb.wav
+
+#begin music/randomEvents.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/randomEvents.wav
 
 #begin music/Triforce.mp3
 /importer:Mp3Importer
