@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="32" nextobjectid="3391">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="32" nextobjectid="3482">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6478,6 +6478,252 @@
    <point/>
   </object>
   <object id="3405" x="2400.81" y="12032.2">
+   <point/>
+  </object>
+  <object id="3393" x="6018.33" y="12114.3">
+   <point/>
+  </object>
+  <object id="3394" x="5976" y="12114">
+   <point/>
+  </object>
+  <object id="3396" x="5939.33" y="12111">
+   <point/>
+  </object>
+  <object id="3397" x="5900.67" y="12108">
+   <point/>
+  </object>
+  <object id="3398" x="5859" y="12111.5">
+   <point/>
+  </object>
+  <object id="3399" x="5819.5" y="12111.5">
+   <point/>
+  </object>
+  <object id="3400" x="5776.5" y="12112">
+   <point/>
+  </object>
+  <object id="3401" x="5742" y="12109.5">
+   <point/>
+  </object>
+  <object id="3402" x="5702.5" y="12109">
+   <point/>
+  </object>
+  <object id="3403" x="5668.5" y="12108.5">
+   <point/>
+  </object>
+  <object id="3404" x="5626" y="12110.5">
+   <point/>
+  </object>
+  <object id="3405" x="5576.5" y="12113.5">
+   <point/>
+  </object>
+  <object id="3406" x="5540" y="12111.5">
+   <point/>
+  </object>
+  <object id="3407" x="5496" y="12111">
+   <point/>
+  </object>
+  <object id="3408" x="5454.5" y="12110.5">
+   <point/>
+  </object>
+  <object id="3415" x="5420" y="12113.5">
+   <point/>
+  </object>
+  <object id="3416" x="5376.5" y="12112.5">
+   <point/>
+  </object>
+  <object id="3417" x="5343.5" y="12113.5">
+   <point/>
+  </object>
+  <object id="3418" x="5305.5" y="12113">
+   <point/>
+  </object>
+  <object id="3419" x="5265.5" y="12110.5">
+   <point/>
+  </object>
+  <object id="3420" x="5263" y="12074">
+   <point/>
+  </object>
+  <object id="3421" x="5266" y="12033">
+   <point/>
+  </object>
+  <object id="3422" x="5261.33" y="11992.3">
+   <point/>
+  </object>
+  <object id="3423" x="5264.33" y="11950.3">
+   <point/>
+  </object>
+  <object id="3424" x="5264" y="11914.7">
+   <point/>
+  </object>
+  <object id="3425" x="5263.67" y="11875.3">
+   <point/>
+  </object>
+  <object id="3426" x="5263.33" y="11837">
+   <point/>
+  </object>
+  <object id="3427" x="5263.67" y="11793.7">
+   <point/>
+  </object>
+  <object id="3428" x="5263.67" y="11754.7">
+   <point/>
+  </object>
+  <object id="3429" x="5261.67" y="11711.3">
+   <point/>
+  </object>
+  <object id="3430" x="5263" y="11671">
+   <point/>
+  </object>
+  <object id="3431" x="5266.33" y="11627">
+   <point/>
+  </object>
+  <object id="3432" x="5263.33" y="11590.7">
+   <point/>
+  </object>
+  <object id="3433" x="5265.67" y="11550">
+   <point/>
+  </object>
+  <object id="3434" x="5264.33" y="11513.7">
+   <point/>
+  </object>
+  <object id="3435" x="5264.33" y="11475">
+   <point/>
+  </object>
+  <object id="3436" x="5297.67" y="11473.3">
+   <point/>
+  </object>
+  <object id="3437" x="5349" y="11473">
+   <point/>
+  </object>
+  <object id="3438" x="6057.5" y="12110">
+   <point/>
+  </object>
+  <object id="3439" x="6102" y="12110.5">
+   <point/>
+  </object>
+  <object id="3440" x="6151.5" y="12111.5">
+   <point/>
+  </object>
+  <object id="3441" x="6190" y="12109.5">
+   <point/>
+  </object>
+  <object id="3442" x="6230.5" y="12110.5">
+   <point/>
+  </object>
+  <object id="3443" x="6275" y="12108">
+   <point/>
+  </object>
+  <object id="3444" x="6269" y="12072.5">
+   <point/>
+  </object>
+  <object id="3445" x="6268.5" y="12031.5">
+   <point/>
+  </object>
+  <object id="3446" x="6268.5" y="11987">
+   <point/>
+  </object>
+  <object id="3447" x="6261" y="11945.5">
+   <point/>
+  </object>
+  <object id="3448" x="6258" y="11917.5">
+   <point/>
+  </object>
+  <object id="3449" x="6258.5" y="11878">
+   <point/>
+  </object>
+  <object id="3450" x="6259.5" y="11827">
+   <point/>
+  </object>
+  <object id="3451" x="6258.5" y="11788">
+   <point/>
+  </object>
+  <object id="3452" x="6258.5" y="11757.5">
+   <point/>
+  </object>
+  <object id="3453" x="6261" y="11707">
+   <point/>
+  </object>
+  <object id="3454" x="6259.5" y="11674.5">
+   <point/>
+  </object>
+  <object id="3455" x="6258" y="11638.5">
+   <point/>
+  </object>
+  <object id="3456" x="6263.5" y="11581">
+   <point/>
+  </object>
+  <object id="3457" x="6259" y="11549.5">
+   <point/>
+  </object>
+  <object id="3458" x="6257.5" y="11519.5">
+   <point/>
+  </object>
+  <object id="3459" x="6255" y="11473">
+   <point/>
+  </object>
+  <object id="3460" x="6220.5" y="11473.5">
+   <point/>
+  </object>
+  <object id="3461" x="6170" y="11473.5">
+   <point/>
+  </object>
+  <object id="3462" x="6135.5" y="11472">
+   <point/>
+  </object>
+  <object id="3463" x="6103" y="11475">
+   <point/>
+  </object>
+  <object id="3464" x="6046.5" y="11475">
+   <point/>
+  </object>
+  <object id="3465" x="6013.5" y="11469.5">
+   <point/>
+  </object>
+  <object id="3466" x="5987" y="11469.5">
+   <point/>
+  </object>
+  <object id="3467" x="5942.5" y="11471">
+   <point/>
+  </object>
+  <object id="3468" x="5894.5" y="11475.5">
+   <point/>
+  </object>
+  <object id="3469" x="5852" y="11472.5">
+   <point/>
+  </object>
+  <object id="3470" x="5817" y="11477">
+   <point/>
+  </object>
+  <object id="3471" x="5783.5" y="11476">
+   <point/>
+  </object>
+  <object id="3472" x="5749" y="11474">
+   <point/>
+  </object>
+  <object id="3473" x="5699.5" y="11468">
+   <point/>
+  </object>
+  <object id="3474" x="5661" y="11469.5">
+   <point/>
+  </object>
+  <object id="3475" x="5622.5" y="11474">
+   <point/>
+  </object>
+  <object id="3476" x="5577.5" y="11474.5">
+   <point/>
+  </object>
+  <object id="3477" x="5528.5" y="11473">
+   <point/>
+  </object>
+  <object id="3478" x="5495.5" y="11471">
+   <point/>
+  </object>
+  <object id="3479" x="5462.5" y="11472">
+   <point/>
+  </object>
+  <object id="3480" x="5426.5" y="11469.5">
+   <point/>
+  </object>
+  <object id="3481" x="5373.5" y="11472">
    <point/>
   </object>
  </objectgroup>

@@ -35,7 +35,7 @@ namespace Game2.Puzzle
         {
             for(int i = 0; i < baggageX.Length; i ++)
             {
-                baggage.Add(new Baggage(texture, spriteBatch, baggageX[i], baggageY[i]));
+                baggage.Add(new Baggage(texture, spriteBatch, baggageX[i], baggageY[i], 12360, 12920, 5340, 6220));
                 dest.Add(new DestPoint(texture, spriteBatch, destX[i], destY[i]));
                 arrived.Add(false);
             }
@@ -222,7 +222,8 @@ namespace Game2.Puzzle
             int BaggageY = baggage.GetLocY();
             int DestPointX = destPoint.getLocX();
             int DestPointY = destPoint.getLocY();
-            if ((DestPointX >= BaggageX) && (DestPointX <= (BaggageX + blockWidth)) && (DestPointY >= BaggageY) && (DestPointY <= (BaggageY + blockHeight)))
+            if ((DestPointX >= BaggageX) && (DestPointX <= (BaggageX + blockWidth)) 
+                && (DestPointY >= BaggageY) && (DestPointY <= (BaggageY + blockHeight)))
             {
                 return true;
             }
@@ -245,12 +246,20 @@ namespace Game2.Puzzle
         private int blockHeight = 80;
         private int offsetX = 0;
         private int offsetY = 0;
-        public Baggage(Texture2D texture, SpriteBatch spriteBatch, int X, int Y)
+        private int upLimit;
+        private int downLimit;
+        private int leftLimit;
+        private int rightLimit;
+        public Baggage(Texture2D texture, SpriteBatch spriteBatch, int X, int Y, int upLimit, int downLimit, int leftLimit, int rightLimit)
         {
             this.texture = texture;
             this.spriteBatch = spriteBatch;
             this.locationX = X;
             this.locationY = Y;
+            this.upLimit = upLimit;
+            this.downLimit = downLimit;
+            this.leftLimit = leftLimit;
+            this.rightLimit = rightLimit;
         }
         public void Draw()
         {
@@ -262,21 +271,57 @@ namespace Game2.Puzzle
 
         public void PushUp()
         {
-            offsetY--;
+            int Command = 0;
+            if (Precheck(Command))
+            {
+                offsetY--;
+            } 
         }
 
         public void PushDown()
         {
-            offsetY++;
+            int Command = 1;
+            if (Precheck(Command))
+            { 
+                offsetY++;
+            }
         }
 
         public void PushLeft()
         {
-            offsetX--;
+            int Command = 2;
+            if (Precheck(Command))
+            {
+                offsetX--;
+            }
         }
         public void PushRight()
         {
-            offsetX++;
+            int Command = 3;
+            if (Precheck(Command))
+            {
+                offsetX++;
+            }
+        }
+
+        private bool Precheck(int command)
+        {
+            int CurrentX = locationX + offsetX * blockWidth;
+            int CurrentY = locationY + offsetY * blockHeight;
+            if ((command < 2)&&(CurrentY > upLimit) && ((CurrentY + blockHeight) < downLimit))
+            {
+                return true;
+            }
+            if ((command >= 2) && (CurrentX > leftLimit) && ((CurrentX + blockWidth) < rightLimit))
+            {
+                return true;
+            }/*
+            if ((CurrentX > leftLimit) && ((CurrentX + blockWidth) < rightLimit) && 
+                (CurrentY > upLimit) && ((CurrentY + blockHeight) < downLimit))
+            {
+                return true;
+            }*/
+            return false;
         }
 
         //baggage - player, baggage downer as positive
