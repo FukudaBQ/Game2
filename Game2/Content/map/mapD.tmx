@@ -455,16 +455,8 @@
    <point/>
   </object>
  </objectgroup>
- <objectgroup id="43" name="updoor">
-  <object id="3605" x="4410" y="7305">
-   <point/>
-  </object>
- </objectgroup>
- <objectgroup id="44" name="leftdoor2">
-  <object id="3470" x="3875.21" y="7649.48">
-   <point/>
-  </object>
- </objectgroup>
+ <objectgroup id="43" name="updoor"/>
+ <objectgroup id="44" name="leftdoor2"/>
  <objectgroup id="2" name="block">
   <object id="1023" x="2720.29" y="3279.39">
    <point/>
@@ -8003,9 +7995,6 @@
   </object>
  </objectgroup>
  <objectgroup id="32" name="pokeball">
-  <object id="3391" x="3159.82" y="11676.2">
-   <point/>
-  </object>
   <object id="3404" x="628" y="5514">
    <point/>
   </object>
