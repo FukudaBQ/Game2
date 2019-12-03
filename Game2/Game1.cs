@@ -1243,6 +1243,14 @@ namespace Game2
                     {
                         arrow.Collided = true;
                         b.Health--;
+                        foreach (Door d in Door.leftdoors2)
+                        {
+                            d.Health--;
+                        }
+                        foreach (Door d in Door.updoors)
+                        {
+                            d.Health--;
+                        }
                         if (b.Health <= 0)
                         {
                             explosion.exp.Add(new explosion(b.Location));
@@ -1807,21 +1815,8 @@ namespace Game2
             ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
             Bat.bats.RemoveAll(e => e.Health<=0);
-            //Bat.specialbats.RemoveAll(e => e.Health <= 0);
-            //Door.leftdoors2.RemoveAll(d => d.Health <= 0);
-            //Door.updoors.RemoveAll(d => d.Health <= 0);
-            if(Bat.specialbats.RemoveAll(e => e.Health <= 0) == 1)
-            {
-                foreach (Door d in Door.leftdoors2)
-                {
-                       d.Health--;
-                }
-                foreach (Door d in Door.updoors)
-                {
-                       d.Health--;
-                }
-                    
-            }
+            Bat.specialbats.RemoveAll(e => e.Health <= 0);
+            
             Door.leftdoors2.RemoveAll(d => d.Health <= 0);
             Door.updoors.RemoveAll(d => d.Health <= 0);
             //foreach (Door d in Door.leftdoors2)
