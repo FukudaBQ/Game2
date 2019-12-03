@@ -85,6 +85,7 @@ namespace Game2
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
         public static Vector2 tempBlackHole2Position;
+        public Texture2D blackHoleAppearSprite;
 
         public static BlackHole blackHole1;
         public static BlackHole blackHole2;
@@ -454,6 +455,7 @@ namespace Game2
             hintSprite = Content.Load<Texture2D>("hint");
             batHintSprite = Content.Load<Texture2D>("batSpeedUp");
             slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
+            blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
 
         }
         protected override void UnloadContent()
@@ -487,6 +489,10 @@ namespace Game2
             foreach (explosion ex in explosion.exp)
             {
                 ex.Update(gameTime);
+            }
+            foreach (BlackHoleAppear bh in BlackHoleAppear.bha)
+            {
+                bh.Update(gameTime);
             }
             foreach (light ex in light.lig)
             {
@@ -1695,6 +1701,7 @@ namespace Game2
             light.lig.RemoveAll(ex => ex.Timer <= 0);
             SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
             SlowDown.sld.RemoveAll(sd => sd.Timer <= 0);
+            BlackHoleAppear.bha.RemoveAll(bh => bh.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1768,6 +1775,10 @@ namespace Game2
             foreach (SlowDown sd in SlowDown.sld)
             {
                 spriteBatch.Draw(slowDownHintSprite, sd.Position, Color.White);
+            }
+            foreach (BlackHoleAppear bh in BlackHoleAppear.bha)
+            {
+                spriteBatch.Draw(blackHoleAppearSprite, bh.Position, Color.White);
             }
 
             myHUD.Draw();
