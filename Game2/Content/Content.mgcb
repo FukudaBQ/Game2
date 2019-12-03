@@ -182,6 +182,18 @@
 /processorParam:TextureFormat=Color
 /build:Boss.png
 
+#begin box.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:box.png
+
 #begin door1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -905,6 +917,24 @@
 /processorParam:TextureFormat=Color
 /build:monster.png
 
+#begin music/catch.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/catch.mp3
+
+#begin music/catch.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/catch.mp3
+
+#begin music/Ccatch.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/Ccatch.wav
+
 #begin music/Dungeon.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -940,6 +970,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:music/GetRupy.wav
+
+#begin music/laser.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/laser.wav
+
+#begin music/Ppop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/Ppop.wav
 
 #begin music/Put Bomb.wav
 /importer:WavImporter

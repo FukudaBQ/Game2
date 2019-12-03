@@ -18,15 +18,7 @@ namespace Game2.Commands
 
         public void Execute()
         {
-            player.tempCam.Y = player.tempCam.Y + 880;
-            if (player.MapBoundary.Contains(player.tempCam))
-            {
-                player.camPosition = player.tempCam;
-            }
-            else
-            {
-                player.tempCam = player.camPosition;
-            }
+
             
         }
     }

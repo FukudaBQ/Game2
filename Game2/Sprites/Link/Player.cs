@@ -7,6 +7,7 @@ using Game2.Collision;
 using Game2.Commands;
 using Game2.Factory;
 using Game2.Object.Items;
+using Game2.Puzzle;
 using Game2.Sprites.Link.Projectile;
 using HUDManager;
 using Microsoft.Xna.Framework;
@@ -23,8 +24,16 @@ namespace Game2.Sprites.Link
         public Vector2 position = new Vector2(3140, 12800);
         //public Vector2 position = new Vector2(4000, 6600);
         public Vector2 camPosition = new Vector2(3200 ,12520);
-        //public Vector2 camPosition = new Vector2(4500, 6600);
-        public Vector2 tempCam = new Vector2(4000, 3880);
+        //public Vector2 camPosition = new Vector2(3200, 6600);
+        /*
+        //public Vector2 position = new Vector2(3140, 12800);
+        // TODO
+        public Vector2 position = new Vector2(5700, 12800);
+        //public Vector2 camPosition = new Vector2(3200 ,12520);
+        //TODO
+        public Vector2 camPosition = new Vector2(5760, 12520);
+        public Vector2 tempCam = new Vector2(3200, 3880);
+        */
         private Dir direction = Dir.Down;
         public Animate anim;
         private PlayerStateMachine stateMachine;
@@ -55,6 +64,7 @@ namespace Game2.Sprites.Link
         public int bombNum = 5;
         private HUD myHUD;
         private int tempSpeed = 200;
+        private Sokoban mySokoban;
 
 
 
@@ -87,6 +97,11 @@ namespace Game2.Sprites.Link
         public int Radius
         {
             get { return radius; }
+        }
+        public int Speed
+        {
+            get { return speed; }
+            set { speed = value; }
         }
 
         public int Damagedspeed
@@ -143,6 +158,11 @@ namespace Game2.Sprites.Link
             anim = facing[direction];
         }
 
+        public void setSokoban(Sokoban sokoban)
+        {
+            mySokoban = sokoban;
+        }
+
         public void setHUD(HUD myHUD)
         {
             this.myHUD = myHUD;
@@ -195,7 +215,7 @@ namespace Game2.Sprites.Link
                         tempPos.X += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.X += speed * dt;
                         }
@@ -204,8 +224,8 @@ namespace Game2.Sprites.Link
                     case Dir.Left:
                         tempPos.X -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !Blocks.Door.didCollideLeft2(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.X -= speed * dt;
                         }
@@ -215,7 +235,7 @@ namespace Game2.Sprites.Link
                         tempPos.Y -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.Y -= speed * dt;
                         }
@@ -225,7 +245,7 @@ namespace Game2.Sprites.Link
                         tempPos.Y += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.Y += speed * dt;
                         }
@@ -294,6 +314,7 @@ namespace Game2.Sprites.Link
                 {
                     PortalGun.blueBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
                     PortalGun.portalGunStoB.RemoveAll(p => p.Radius == 10);
+                    MySounds.laser.Play();
                 }
             }
             if (kState.IsKeyDown(Keys.D6) && previous.IsKeyUp(Keys.D6))
@@ -302,6 +323,7 @@ namespace Game2.Sprites.Link
                 {
                     PortalGun.yellowBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
                     PortalGun.portalGunStoY.RemoveAll(p => p.Radius == 10);
+                    MySounds.laser.Play();
                 }
             }
 
@@ -322,8 +344,12 @@ namespace Game2.Sprites.Link
             {
                 reset.Execute();
             }
-
-
+            
+            //TODO
+            if (kState.IsKeyDown(Keys.Space))
+            {
+                mySokoban.Push(direction, position);
+            }
 
         }
     }

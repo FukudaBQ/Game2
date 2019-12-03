@@ -72,6 +72,7 @@
     <Compile Include="RandomEvent\BlackHoleAppear.cs" />
     <Compile Include="RandomEvent\SlowDown.cs" />
     <Compile Include="RandomEvent\SpeedUp.cs" />
+    <Compile Include="Puzzle\Sokoban.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Blocks\Door.cs" />
     <Compile Include="Sprites\Blocks\Rock.cs" />
@@ -161,6 +162,7 @@
     <Content Include="Content\blackHole.png" />
     <Content Include="Content\blackHolesAppear.png" />
     <Content Include="Content\BlueB.png" />
+    <Content Include="Content\blackHole.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\button.jpg" />
@@ -168,6 +170,7 @@
     <Content Include="Content\door2.png" />
     <Content Include="Content\door3.png" />
     <Content Include="Content\door4.png" />
+    <Content Include="Content\box.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />
@@ -202,12 +205,17 @@
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
     <Content Include="Content\monster.png" />
+    <Content Include="Content\music\catch.mp3" />
+    <Content Include="Content\music\Ccatch.wav" />
     <Content Include="Content\music\Dungeon.mp3" />
     <Content Include="Content\music\Game Over.mp3" />
     <Content Include="Content\music\GameOver.wav" />
     <Content Include="Content\music\GetFairy.wav" />
     <Content Include="Content\music\GetHeart.wav" />
     <Content Include="Content\music\GetRupy.wav" />
+    <Content Include="Content\music\laser.wav" />
+    <Content Include="Content\music\pop.mp3" />
+    <Content Include="Content\music\Ppop.wav" />
     <Content Include="Content\music\Put Bomb.wav" />
     <Content Include="Content\music\randomEvents.wav" />
     <Content Include="Content\music\Triforce.mp3" />
