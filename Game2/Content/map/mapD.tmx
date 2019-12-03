@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="44" nextobjectid="3606">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="44" nextobjectid="3622">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6654,15 +6654,6 @@
   <object id="3414" x="4291.51" y="7438.22">
    <point/>
   </object>
-  <object id="3415" x="4333.01" y="7438.22">
-   <point/>
-  </object>
-  <object id="3416" x="4358.11" y="7438.22">
-   <point/>
-  </object>
-  <object id="3417" x="4519.31" y="7436.29">
-   <point/>
-  </object>
   <object id="3418" x="4560.81" y="7436.29">
    <point/>
   </object>
@@ -6879,27 +6870,6 @@
   <object id="3489" x="4747.1" y="7919.88">
    <point/>
   </object>
-  <object id="3490" x="4520.27" y="7477.8">
-   <point/>
-  </object>
-  <object id="3491" x="4520.27" y="7520.27">
-   <point/>
-  </object>
-  <object id="3492" x="4520.27" y="7562.74">
-   <point/>
-  </object>
-  <object id="3493" x="4520.27" y="7605.21">
-   <point/>
-  </object>
-  <object id="3494" x="4520.27" y="7647.68">
-   <point/>
-  </object>
-  <object id="3495" x="4520.27" y="7690.15">
-   <point/>
-  </object>
-  <object id="3496" x="4520.27" y="7732.63">
-   <point/>
-  </object>
   <object id="3497" x="4557.92" y="7678.57">
    <point/>
   </object>
@@ -7014,15 +6984,6 @@
   <object id="3535" x="4851.35" y="7597.49">
    <point/>
   </object>
-  <object id="3536" x="4359.07" y="7480.69">
-   <point/>
-  </object>
-  <object id="3537" x="4359.07" y="7523.17">
-   <point/>
-  </object>
-  <object id="3538" x="4359.07" y="7565.64">
-   <point/>
-  </object>
   <object id="3543" x="4000.97" y="7479.73">
    <point/>
   </object>
@@ -7075,12 +7036,6 @@
    <point/>
   </object>
   <object id="3560" x="4288.61" y="7518.34">
-   <point/>
-  </object>
-  <object id="3561" x="4330.12" y="7518.34">
-   <point/>
-  </object>
-  <object id="3562" x="4359.07" y="7598.46">
    <point/>
   </object>
   <object id="3563" x="4321.43" y="7598.46">
@@ -7146,9 +7101,6 @@
   <object id="3583" x="4789.58" y="7878.38">
    <point/>
   </object>
-  <object id="3584" x="4831.08" y="7878.38">
-   <point/>
-  </object>
   <object id="3586" x="4561.78" y="7719.11">
    <point/>
   </object>
@@ -7198,6 +7150,48 @@
    <point/>
   </object>
   <object id="3602" x="4849.42" y="7639.96">
+   <point/>
+  </object>
+  <object id="3606" x="4733.59" y="7759.65">
+   <point/>
+  </object>
+  <object id="3607" x="4733.59" y="7783.78">
+   <point/>
+  </object>
+  <object id="3608" x="4717.18" y="7797.3">
+   <point/>
+  </object>
+  <object id="3609" x="4693.05" y="7758.69">
+   <point/>
+  </object>
+  <object id="3610" x="4694.98" y="7804.05">
+   <point/>
+  </object>
+  <object id="3611" x="4694.98" y="7823.36">
+   <point/>
+  </object>
+  <object id="3612" x="4769.31" y="7819.5">
+   <point/>
+  </object>
+  <object id="3613" x="4759.65" y="7754.83">
+   <point/>
+  </object>
+  <object id="3614" x="4762.55" y="7723.94">
+   <point/>
+  </object>
+  <object id="3615" x="4786.68" y="7774.13">
+   <point/>
+  </object>
+  <object id="3616" x="4319.5" y="7439.19">
+   <point/>
+  </object>
+  <object id="3617" x="4319.5" y="7478.76">
+   <point/>
+  </object>
+  <object id="3618" x="4319.5" y="7518.34">
+   <point/>
+  </object>
+  <object id="3619" x="4559.85" y="7543.44">
    <point/>
   </object>
  </objectgroup>
@@ -7852,7 +7846,7 @@
   </object>
  </objectgroup>
  <objectgroup id="45" name="specialBat">
-  <object id="3603" x="4866" y="7907">
+  <object id="3620" x="4886.1" y="7925.68">
    <point/>
   </object>
  </objectgroup>
@@ -8009,15 +8003,12 @@
   </object>
  </objectgroup>
  <objectgroup id="32" name="pokeball">
-  <object id="3391" x="3159.82" y="11676.2">
-   <point/>
-  </object>
   <object id="3404" x="630" y="5656">
    <point/>
   </object>
  </objectgroup>
  <objectgroup id="33" name="gun">
-  <object id="3392" x="2886.02" y="11677.8">
+  <object id="3621" x="4398.51" y="7594.04">
    <point/>
   </object>
  </objectgroup>
