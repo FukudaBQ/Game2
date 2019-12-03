@@ -92,6 +92,7 @@ namespace Game2
         private Texture2D batHintSprite;
         private Texture2D slowDownHintSprite;
         private Texture2D sokobanSprite;
+        private Texture2D pokemonSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
@@ -105,6 +106,7 @@ namespace Game2
         public static BlackHole blackHole3;
         public static BlackHole blackHole4;
         public static BlackHole blackHole5;
+        
         //public static BlackHole blackHole6;
 
         private Bat bat;
@@ -116,6 +118,7 @@ namespace Game2
         private TiledMapRenderer mapRenderer;
         private TiledMap myMap;
         private Camera2D cam;
+        private Pokemon pokemon;
         private Vector2 camLocation;
         private ResetCommand reset;
         // TODO
@@ -261,7 +264,8 @@ namespace Game2
             LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
             LinkCheering = new Animate(LinkCheeringSprite, 1, 2);
             hint = new Hint(hintSprite, new Vector2(2000, 6100), spriteBatch);
-            arrow = new Arrow(arrowDownSprite, new Vector2(575, 6550), spriteBatch);
+            arrow = new Arrow(arrowDownSprite, new Vector2(575, 6400), spriteBatch);
+            pokemon = new Pokemon(pokemonSprite, new Vector2(200, 6250), spriteBatch);
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
@@ -521,6 +525,7 @@ namespace Game2
             blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
 
             sokobanSprite = Content.Load<Texture2D>("box");
+            pokemonSprite = Content.Load<Texture2D>("pokemon");
         }
         protected override void UnloadContent()
         {
@@ -1995,6 +2000,7 @@ namespace Game2
 
             myHUD.Draw();
             hint.Draw();
+            pokemon.Draw();
             arrow.Draw();
 
             foreach (Bat bat in Bat.bats)
