@@ -50,6 +50,7 @@ namespace Game2
         ArrowHandler arrowHandler = new ArrowHandler();
         BoomerangHandler boomerangHandler = new BoomerangHandler();
         PokeballHandler pokeballHandler = new PokeballHandler();
+        PortalGunHandler portalGunHandler = new PortalGunHandler();
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private Player player;
@@ -70,6 +71,8 @@ namespace Game2
         private Texture2D GeneralBlockSprite;
         private Texture2D fireballSprite;
         private Texture2D dragonSprite;
+        private Texture2D yellowB;
+        private Texture2D blueB;
         private Texture2D HUD;
         private Texture2D HUDMap;
         private Texture2D veryGreen;
@@ -85,6 +88,8 @@ namespace Game2
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
         public static Vector2 tempBlackHole2Position;
+        public static Vector2 tempBlackHole3Position;
+        public static Vector2 tempBlackHole4Position;
         public Texture2D blackHoleAppearSprite;
 
         public static BlackHole blackHole1;
@@ -134,6 +139,12 @@ namespace Game2
             foreach (var bat in bats)
             {
                 Bat.bats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 840), spriteBatch));
+
+            }
+            TiledMapObject[] specialbat = myMap.GetLayer<TiledMapObjectLayer>("specialBat").Objects;
+            foreach (var bat in specialbat)
+            {
+                Bat.specialbats.Add(new Bat(batSprite, new Vector2(bat.Position.X, bat.Position.Y + 840), spriteBatch));
 
             }
 
@@ -208,12 +219,16 @@ namespace Game2
             
             tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
             tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
-
-            blackHole1 = new BlackHole(new Vector2(2800, 6500));
-            blackHole2 = new BlackHole(new Vector2(3300, 6200));
-
+            blackHole1 = new BlackHole(tempBlackHole1Position);
+            blackHole2 = new BlackHole(tempBlackHole2Position);
+            tempBlackHole3Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole4Position = new Vector2(player.Position.X, player.Position.Y + 200000);
             blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            //blackHole3.Able = true;
             blackHole4 = new BlackHole(new Vector2(3300, 6500));
+            //blackHole4.Able = true;
+            //blackHole3 = new BlackHole(tempBlackHole3Position);
+            //blackHole4 = new BlackHole(tempBlackHole4Position);
 
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
@@ -393,6 +408,11 @@ namespace Game2
             {
                 Pokeball.pokeballs.Add(new Pokeball(new Vector2(poke.Position.X, poke.Position.Y + 840),direction));
             }
+            TiledMapObject[] portalGuns = myMap.GetLayer<TiledMapObjectLayer>("gun").Objects;
+            foreach (var poke in portalGuns)
+            {
+                PortalGun.portalGuns.Add(new PortalGun(new Vector2(poke.Position.X, poke.Position.Y + 840), direction));
+            }
             TiledMapObject[] upblocks = myMap.GetLayer<TiledMapObjectLayer>("upblock").Objects;
             TiledMapObject[] downblocks = myMap.GetLayer<TiledMapObjectLayer>("downblock").Objects;
             TiledMapObject[] leftblocks = myMap.GetLayer<TiledMapObjectLayer>("leftblock").Objects;
@@ -435,6 +455,8 @@ namespace Game2
             explosionSprite= Content.Load<Texture2D>("biggerExplosion1");
             lightSprite = Content.Load<Texture2D>("light");
             dragonSprite = Content.Load<Texture2D>("Dragon");
+            yellowB = Content.Load<Texture2D>("YellowB");
+            blueB = Content.Load<Texture2D>("BlueB");
             fireballSprite = Content.Load<Texture2D>("fireball");
             monsterSprite =Content.Load<Texture2D>("monster");
             handSprite = Content.Load<Texture2D>("hand");
@@ -466,8 +488,11 @@ namespace Game2
         {
             blackHole1.Update(gameTime,player,blackHole2);
             blackHole2.Update(gameTime,player,blackHole1);
-            blackHole3.Update(gameTime, player, blackHole4);
-            blackHole4.Update(gameTime, player, blackHole3);
+            if (blackHole3 != null && blackHole4 != null)
+            {
+                blackHole3.Update(gameTime, player, blackHole4);
+                blackHole4.Update(gameTime, player, blackHole3);
+            }
 
             hint.Update(gameTime);
             LinkCheering.Update(gameTime);
@@ -579,7 +604,11 @@ namespace Game2
             {
                 knight.Update2(gameTime);
             }
-            foreach (Bat bat in Bat.bats)
+            foreach (Bat bat in Bat.specialbats)
+            {
+                bat.UpdateS(gameTime, player.position);
+            }
+                foreach (Bat bat in Bat.bats)
             {
                 bat.Update(gameTime, player.position);
                 int sum = player.Radius + bat.Radius;
@@ -1139,6 +1168,21 @@ namespace Game2
                     }
 
                 }
+                foreach (Bat b in Bat.specialbats)
+                {
+                    int sum = arrow.Radius + b.Radius;
+                    if (Vector2.Distance(arrow.Position, b.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        b.Health--;
+                        if (b.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(b.Location));
+                            
+                        }
+                    }
+
+                }
             }
             foreach (ArrowProj arrow in ArrowProj.arrowRight)
             {
@@ -1169,6 +1213,21 @@ namespace Game2
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
+                }
+                foreach (Bat b in Bat.specialbats)
+                {
+                    int sum = arrow.Radius + b.Radius;
+                    if (Vector2.Distance(arrow.Position, b.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        b.Health--;
+                        if (b.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(b.Location));
+
+                        }
+                    }
+
                 }
                 foreach (Bat bat in Bat.bats)
                 {
@@ -1317,6 +1376,21 @@ namespace Game2
                 if (Blocks.didCollide(arrow.Position, 10, 10))
                 {
                     arrow.Collided = true;
+                }
+                foreach (Bat b in Bat.specialbats)
+                {
+                    int sum = arrow.Radius + b.Radius;
+                    if (Vector2.Distance(arrow.Position, b.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        b.Health--;
+                        if (b.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(b.Location));
+
+                        }
+                    }
+
                 }
                 foreach (Bat bat in Bat.bats)
                 {
@@ -1478,6 +1552,21 @@ namespace Game2
                             explosion.exp.Add(new explosion(bat.Location));
                         }
                     }
+                }
+                foreach (Bat b in Bat.specialbats)
+                {
+                    int sum = arrow.Radius + b.Radius;
+                    if (Vector2.Distance(arrow.Position, b.Location) < sum)
+                    {
+                        arrow.Collided = true;
+                        b.Health--;
+                        if (b.Health <= 0)
+                        {
+                            explosion.exp.Add(new explosion(b.Location));
+
+                        }
+                    }
+
                 }
                 foreach (Dragon dra in Dragon.dragons)
                 {
@@ -1696,6 +1785,7 @@ namespace Game2
             ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
             Bat.bats.RemoveAll(e => e.Health<=0);
+            Bat.specialbats.RemoveAll(e => e.Health <= 0);
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             light.lig.RemoveAll(ex => ex.Timer <= 0);
@@ -1717,6 +1807,7 @@ namespace Game2
             Knight.knightF.RemoveAll(p => p.Health == 0);
             Bat.batF.RemoveAll(p => p.Health == 0);
             CollisionHandler collisionHandler = new CollisionHandler();
+            
 
             collisionHandler.CollisionHandle(player, myHUD,this);
             KeyboardState kState = Keyboard.GetState();
@@ -1735,6 +1826,41 @@ namespace Game2
             arrowHandler.Update(gameTime);
             boomerangHandler.Update(gameTime,player);
             pokeballHandler.Update(gameTime, player);
+            portalGunHandler.Update(gameTime, player);
+            foreach(PortalGun p in PortalGun.blueBs)
+            {
+                if (p.Speed == 0)
+                {
+
+                    tempPosition = p.Position;
+                }
+            }
+            foreach (PortalGun p in PortalGun.yellowBs)
+            {
+                if (p.Speed == 0)
+                {
+
+                    tempPosition = p.Position;
+                }
+            }
+
+            if (PortalGun.blueBs.RemoveAll(p => p.Speed == 0) == 1)
+            {
+
+                PortalGun.portalGunStoB.Add(new PortalGun(tempBlackHole1Position, direction));
+                blackHole3 = new BlackHole(tempPosition);
+                blackHole3.Able = true;
+                //tempBlackHole3Position = tempPosition;
+
+            }
+
+            if (PortalGun.yellowBs.RemoveAll(p => p.Speed == 0) == 1)
+            {
+                PortalGun.portalGunStoY.Add(new PortalGun(tempBlackHole1Position, direction));
+                blackHole4 = new BlackHole(tempPosition);
+                blackHole4.Able = true;
+            }
+
 
             cam.LookAt(player.camPosition);
 
@@ -1785,6 +1911,10 @@ namespace Game2
             hint.Draw();
 
             foreach (Bat bat in Bat.bats)
+            {
+                bat.Draw(bat.Location);
+            }
+            foreach (Bat bat in Bat.specialbats)
             {
                 bat.Draw(bat.Location);
             }
@@ -1859,6 +1989,10 @@ namespace Game2
             pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballwithMonster);
             pokeballHandler.Draw(spriteBatch, pokeball, Pokeball.pokeballwithMonsterProj);
 
+            portalGunHandler.Draw(spriteBatch, portalGun, PortalGun.portalGuns);
+            portalGunHandler.Draw(spriteBatch, yellowB, PortalGun.yellowBs);
+            portalGunHandler.Draw(spriteBatch, blueB, PortalGun.blueBs);
+
             foreach (Blocks b in Blocks.blocks)
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.Red);
@@ -1897,8 +2031,12 @@ namespace Game2
             }
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole1.Position.X-30, blackHole1.Position.Y - 30), Color.White);
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole2.Position.X - 30, blackHole2.Position.Y - 30), Color.White);
-            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
-            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
+            if (blackHole3 != null && blackHole4 != null)
+            {
+                spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
+                spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
+
+            }
 
             hint.Draw();
 
