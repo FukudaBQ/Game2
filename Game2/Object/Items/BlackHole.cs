@@ -16,7 +16,7 @@ namespace Game2.Object.Items
         private bool collided;
         private int radius=15;
         private Shining sprite;
-        private bool able=true;
+        private bool able=false;
 
         public bool Able
         {
