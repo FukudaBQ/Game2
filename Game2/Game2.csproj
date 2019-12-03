@@ -69,6 +69,8 @@
     <Compile Include="Object\Items\portalGunHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Puzzle\Baggage.cs" />
+    <Compile Include="Puzzle\DestPoint.cs" />
     <Compile Include="RandomEvent\BlackHoleAppear.cs" />
     <Compile Include="RandomEvent\SlowDown.cs" />
     <Compile Include="RandomEvent\SpeedUp.cs" />
@@ -227,6 +229,7 @@
     <Content Include="Content\rock.png" />
     <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />
+    <Content Include="Content\TextForSokoban.png" />
     <Content Include="Content\World.png" />
     <Content Include="Content\WorldOfElements.xml" />
     <Content Include="Content\YellowB.png" />

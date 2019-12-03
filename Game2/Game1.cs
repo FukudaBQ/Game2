@@ -92,6 +92,7 @@ namespace Game2
         private Texture2D batHintSprite;
         private Texture2D slowDownHintSprite;
         private Texture2D sokobanSprite;
+        private Texture2D textForExtraContent;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
@@ -260,7 +261,7 @@ namespace Game2
             //blackHole6 = new BlackHole(new Vector2(5540, 12800));
 
             // TODO
-            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite);
+            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite, textForExtraContent);
             player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
@@ -534,7 +535,7 @@ namespace Game2
             batHintSprite = Content.Load<Texture2D>("batSpeedUp");
             slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
             blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
-
+            textForExtraContent = Content.Load<Texture2D>("TextForSokoban");
             sokobanSprite = Content.Load<Texture2D>("box");
         }
         protected override void UnloadContent()
