@@ -56,11 +56,6 @@ namespace Game2.Object.Items
              player.setY(dest.Position.Y+30);
              player.HealthTimer = 1.5f;
             }
-            if (CollisionHandler.rm == 3)
-            {
-                Game1.tempBlackHole1Position = new Vector2(player.Position.X - 100, player.Position.Y - 100);
-                Game1.tempBlackHole2Position = new Vector2(player.Position.X + 100, player.Position.Y - 200);
-            }
         
         }
         public int Radius

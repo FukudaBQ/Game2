@@ -108,16 +108,6 @@ namespace Game2
         public HUD myHUD;
         private SpriteFont font;
         int condition = 0;
-        public Vector2 TempBlackHole1Position
-        {
-            get { return tempBlackHole1Position; }
-            set { tempBlackHole1Position = value; }
-        }
-        public Vector2 TempBlackHole2Position
-        {
-            get { return tempBlackHole2Position; }
-            set { tempBlackHole2Position = value; }
-        }
 
         public Game1()
         {
