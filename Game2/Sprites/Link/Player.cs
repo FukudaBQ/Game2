@@ -174,6 +174,9 @@ namespace Game2.Sprites.Link
             if (Blocks.Blocks.inwater(position, length,width))
             {
                 speed = 50;
+            }else if(Blocks.Blocks.inbalck(position, length, width))
+            {
+                speed = 5;
             }
             else
             {
@@ -307,18 +310,18 @@ namespace Game2.Sprites.Link
             }
             if (kState.IsKeyDown(Keys.D5) && previous.IsKeyUp(Keys.D5))
             {
-                if (PortalGun.portalGunSto.Count > 0)
+                if (PortalGun.portalGunStoB.Count > 0)
                 {
-                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
-                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                    PortalGun.blueBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    PortalGun.portalGunStoB.RemoveAll(p => p.Radius == 10);
                 }
             }
             if (kState.IsKeyDown(Keys.D6) && previous.IsKeyUp(Keys.D6))
             {
-                if (Pokeball.pokeballwithMonsterSto.Count > 0)
+                if (PortalGun.portalGunStoY.Count > 0)
                 {
-                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
-                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                    PortalGun.yellowBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    PortalGun.portalGunStoY.RemoveAll(p => p.Radius == 10);
                 }
             }
 

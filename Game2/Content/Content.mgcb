@@ -110,6 +110,18 @@
 /processorParam:TextureFormat=Color
 /build:biggerExplosion1.png
 
+#begin black.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:black.png
+
 #begin blackHole.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -121,6 +133,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:blackHole.png
+
+#begin blackHolesAppear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:blackHolesAppear.png
 
 #begin BlueB.png
 /importer:TextureImporter
@@ -205,6 +229,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:door3.png
+
+#begin door4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:door4.png
 
 #begin Dragon.png
 /importer:TextureImporter

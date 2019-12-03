@@ -20,6 +20,7 @@ namespace Game2.Sprites.Blocks
 
         public static List<Blocks> blocks = new List<Blocks>();
         public static List<Blocks> waterblocks = new List<Blocks>();
+        public static List<Blocks> blackblocks = new List<Blocks>();
         public static List<Blocks> upblocks = new List<Blocks>();
         public static List<Blocks> downblocks = new List<Blocks>();
         public static List<Blocks> leftblocks = new List<Blocks>();
@@ -63,6 +64,20 @@ namespace Game2.Sprites.Blocks
         public static bool inwater(Vector2 otherPos, int otherL, int otherW)
         {
             foreach (Blocks b in Blocks.waterblocks)
+            {
+                int Lsum = b.Length + otherL;
+                int Wsum = b.Width + otherW;
+                if (Math.Abs(b.hitPos.X - otherPos.X) <= Lsum && Math.Abs(b.hitPos.Y - otherPos.Y) <= Wsum)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool inbalck(Vector2 otherPos, int otherL, int otherW)
+        {
+            foreach (Blocks b in Blocks.blackblocks)
             {
                 int Lsum = b.Length + otherL;
                 int Wsum = b.Width + otherW;
