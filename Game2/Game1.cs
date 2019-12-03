@@ -1807,17 +1807,42 @@ namespace Game2
             ArrowProj.arrowUp.RemoveAll(p => p.Collided == true);
             ArrowProj.arrowDown.RemoveAll(p => p.Collided == true);
             Bat.bats.RemoveAll(e => e.Health<=0);
+            //Bat.specialbats.RemoveAll(e => e.Health <= 0);
+            //Door.leftdoors2.RemoveAll(d => d.Health <= 0);
+            //Door.updoors.RemoveAll(d => d.Health <= 0);
             if(Bat.specialbats.RemoveAll(e => e.Health <= 0) == 1)
             {
                 foreach (Door d in Door.leftdoors2)
                 {
-                    d.Health--;
+                       d.Health--;
                 }
                 foreach (Door d in Door.updoors)
                 {
-                    d.Health--;
+                       d.Health--;
                 }
+                    
             }
+            Door.leftdoors2.RemoveAll(d => d.Health <= 0);
+            Door.updoors.RemoveAll(d => d.Health <= 0);
+            //foreach (Door d in Door.leftdoors2)
+            //{
+            //   d.Health--;
+            //}
+            //foreach (Door d in Door.updoors)
+            //{
+            //   d.Health--;
+            //}
+            //if (Bat.specialbats.Count==1)
+            //{
+            //  foreach (Door d in Door.leftdoors2)
+            //{
+            //  d.Health--;
+            //}
+            //foreach (Door d in Door.updoors)
+            //{
+            //   d.Health--;
+            // }
+            //}
             Dragon.dragons.RemoveAll(d => d.Health <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);
             light.lig.RemoveAll(ex => ex.Timer <= 0);
@@ -1835,9 +1860,9 @@ namespace Game2
             Rock.rocks.RemoveAll(r => r.Health <= 0);
             Door.leftdoors.RemoveAll(d => d.Health <= 0);
             Door.downdoors.RemoveAll(d => d.Health <= 0);
-            Door.rightdoors.RemoveAll(d => d.Health <= 0);
-            Door.leftdoors2.RemoveAll(d => d.Health <= 0);
-            Door.updoors.RemoveAll(d => d.Health <= 0);
+            Door.rightdoors.RemoveAll(d => d.Health >= 0);
+            //Door.leftdoors2.RemoveAll(d => d.Health <= 0);
+            //Door.updoors.RemoveAll(d => d.Health <= 0);
             Knight.knightF.RemoveAll(p => p.Health == 0);
             Bat.batF.RemoveAll(p => p.Health == 0);
             CollisionHandler collisionHandler = new CollisionHandler();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="44" nextobjectid="3603">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="44" nextobjectid="3606">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -456,7 +456,7 @@
   </object>
  </objectgroup>
  <objectgroup id="43" name="updoor">
-  <object id="3471" x="4423.09" y="7305.33">
+  <object id="3605" x="4410" y="7305">
    <point/>
   </object>
  </objectgroup>
@@ -5038,15 +5038,6 @@
   <object id="2798" x="2879.07" y="7756.98">
    <point/>
   </object>
-  <object id="2799" x="4155.81" y="7517.44">
-   <point/>
-  </object>
-  <object id="2801" x="4718.6" y="7834.88">
-   <point/>
-  </object>
-  <object id="2802" x="4158.14" y="7838.37">
-   <point/>
-  </object>
   <object id="2803" x="3118.27" y="9638.29">
    <point/>
   </object>
@@ -6637,9 +6628,6 @@
   <object id="3467" x="1108" y="5342.67">
    <point/>
   </object>
-  <object id="3468" x="4727.27" y="7506.06">
-   <point/>
-  </object>
  </objectgroup>
  <objectgroup id="43" name="blackblock">
   <object id="3407" x="4000.97" y="7438.22">
@@ -7864,7 +7852,7 @@
   </object>
  </objectgroup>
  <objectgroup id="45" name="specialBat">
-  <object id="3469" x="4872.73" y="7900">
+  <object id="3603" x="4866" y="7907">
    <point/>
   </object>
  </objectgroup>
