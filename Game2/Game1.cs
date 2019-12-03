@@ -210,6 +210,19 @@ namespace Game2
             YellowKnight.yknights.RemoveAll(yk => yk.Health > 0);
             BlueKnight.bknights.RemoveAll(bk => bk.Health > 0);
 
+            tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            blackHole1 = new BlackHole(tempBlackHole1Position);
+            blackHole2 = new BlackHole(tempBlackHole2Position);
+            tempBlackHole3Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole4Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            //blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            //blackHole3.Able = true;
+            //blackHole4 = new BlackHole(new Vector2(3300, 6500));
+            //blackHole4.Able = true;
+            blackHole3 = new BlackHole(tempBlackHole3Position);
+            blackHole4 = new BlackHole(tempBlackHole4Position);
+
 
         }
         protected override void LoadContent()
@@ -234,12 +247,12 @@ namespace Game2
             blackHole2 = new BlackHole(tempBlackHole2Position);
             tempBlackHole3Position = new Vector2(player.Position.X, player.Position.Y + 100000);
             tempBlackHole4Position = new Vector2(player.Position.X, player.Position.Y + 200000);
-            blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            //blackHole3 = new BlackHole(new Vector2(3450, 6400));
             //blackHole3.Able = true;
-            blackHole4 = new BlackHole(new Vector2(3300, 6500));
+            //blackHole4 = new BlackHole(new Vector2(3300, 6500));
             //blackHole4.Able = true;
-            //blackHole3 = new BlackHole(tempBlackHole3Position);
-            //blackHole4 = new BlackHole(tempBlackHole4Position);
+            blackHole3 = new BlackHole(tempBlackHole3Position);
+            blackHole4 = new BlackHole(tempBlackHole4Position);
 
             blackHole5 = new BlackHole(new Vector2(2980, 12800));
             //blackHole6 = new BlackHole(new Vector2(5540, 12800));
