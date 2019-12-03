@@ -154,6 +154,9 @@ namespace Game2.Sprites.Link
             if (Blocks.Blocks.inwater(position, length,width))
             {
                 speed = 50;
+            }else if(Blocks.Blocks.inbalck(position, length, width))
+            {
+                speed = 5;
             }
             else
             {
