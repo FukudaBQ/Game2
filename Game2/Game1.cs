@@ -69,6 +69,7 @@ namespace Game2
         private Texture2D lightSprite;
         private Texture2D monsterSprite;
         private Texture2D GeneralBlockSprite;
+        private Texture2D BlackBlockSprite;
         private Texture2D fireballSprite;
         private Texture2D dragonSprite;
         private Texture2D yellowB;
@@ -403,6 +404,12 @@ namespace Game2
                 
                 Blocks.waterblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
             }
+            TiledMapObject[] blackblocks = myMap.GetLayer<TiledMapObjectLayer>("blackblock").Objects;
+            foreach (var wblo in blackblocks)
+            {
+
+                Blocks.blackblocks.Add(new GeneralBlock(new Vector2(wblo.Position.X, wblo.Position.Y + 840)));
+            }
             TiledMapObject[] pokeballs = myMap.GetLayer<TiledMapObjectLayer>("pokeball").Objects;
             foreach (var poke in pokeballs)
             {
@@ -451,6 +458,7 @@ namespace Game2
             pokeball = Content.Load<Texture2D>("pokeball");
             portalGun = Content.Load<Texture2D>("portalGun");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
+            BlackBlockSprite = Content.Load<Texture2D>("black");
             batSprite = Content.Load<Texture2D>("bat");
             explosionSprite= Content.Load<Texture2D>("biggerExplosion1");
             lightSprite = Content.Load<Texture2D>("light");
@@ -1870,9 +1878,14 @@ namespace Game2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Gray);
+
             
             mapRenderer.Draw(myMap, cam.GetViewMatrix());
             spriteBatch.Begin(transformMatrix:cam.GetViewMatrix());
+            foreach (Blocks b in Blocks.blackblocks)
+            {
+                spriteBatch.Draw(BlackBlockSprite, b.Position, Color.White);
+            }
             foreach (explosion ex in explosion.exp)
             {
                 spriteBatch.Draw(explosionSprite, ex.Position, Color.White);
@@ -2001,6 +2014,7 @@ namespace Game2
             {
                 spriteBatch.Draw(GeneralBlockSprite, b.Position, Color.White);
             }
+            
             foreach (Door d in Door.leftdoors)
             {
                 spriteBatch.Draw(leftDoor, d.Position, Color.White);
