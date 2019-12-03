@@ -90,9 +90,10 @@ namespace Game2
         public static Vector2 tempBlackHole2Position;
         public static Vector2 tempBlackHole3Position;
         public static Vector2 tempBlackHole4Position;
+        public Texture2D blackHoleAppearSprite;
 
-        private BlackHole blackHole1;
-        private BlackHole blackHole2;
+        public static BlackHole blackHole1;
+        public static BlackHole blackHole2;
         public static BlackHole blackHole3;
         public static BlackHole blackHole4;
 
@@ -113,7 +114,7 @@ namespace Game2
         public HUD myHUD;
         private SpriteFont font;
         int condition = 0;
-        
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -476,6 +477,7 @@ namespace Game2
             hintSprite = Content.Load<Texture2D>("hint");
             batHintSprite = Content.Load<Texture2D>("batSpeedUp");
             slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
+            blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
 
         }
         protected override void UnloadContent()
@@ -500,11 +502,6 @@ namespace Game2
             {
                 player.Update(gameTime);
             }
-            else
-            {
-                //playerDying.Update(gameTime);
-            }
-            //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
             hand.Update(gameTime);
@@ -517,6 +514,10 @@ namespace Game2
             foreach (explosion ex in explosion.exp)
             {
                 ex.Update(gameTime);
+            }
+            foreach (BlackHoleAppear bh in BlackHoleAppear.bha)
+            {
+                bh.Update(gameTime);
             }
             foreach (light ex in light.lig)
             {
@@ -1790,6 +1791,7 @@ namespace Game2
             light.lig.RemoveAll(ex => ex.Timer <= 0);
             SpeedUp.spd.RemoveAll(su => su.Timer <= 0);
             SlowDown.sld.RemoveAll(sd => sd.Timer <= 0);
+            BlackHoleAppear.bha.RemoveAll(bh => bh.Timer <= 0);
             fireball.fireDown.RemoveAll(f => f.Collided == true);
             fireball.fireUp.RemoveAll(f => f.Collided == true);
             fireball.fireLeft.RemoveAll(f => f.Collided == true);
@@ -1899,6 +1901,10 @@ namespace Game2
             foreach (SlowDown sd in SlowDown.sld)
             {
                 spriteBatch.Draw(slowDownHintSprite, sd.Position, Color.White);
+            }
+            foreach (BlackHoleAppear bh in BlackHoleAppear.bha)
+            {
+                spriteBatch.Draw(blackHoleAppearSprite, bh.Position, Color.White);
             }
 
             myHUD.Draw();

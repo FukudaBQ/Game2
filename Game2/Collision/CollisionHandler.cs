@@ -18,7 +18,7 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
-        public int rm = 1;
+        public static int rm = 1;
         Random rnd = new Random();
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -121,8 +121,11 @@ namespace Game2.Collision
                             break;
                         case 3:
                             player.TempSpeed = 200;
-                            //tempBlackHole1Position = new Vector2(player.Position.X-300,player.Position.Y);
-                            //Game1.TempBlackHole2Position = new Vector2(player.Position.X+300, player.Position.Y-500);
+                            BlackHoleAppear.bha.Add(new BlackHoleAppear(new Vector2(player.Position.X - 300, player.position.Y-600)));
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X-300,player.Position.Y));
+                            Game1.blackHole1.Able = true;
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X+300, player.Position.Y-400));
+                            Game1.blackHole2.Able = true;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -192,6 +195,11 @@ namespace Game2.Collision
                             break;
                         case 3:
                             player.TempSpeed = 200;
+                            BlackHoleAppear.bha.Add(new BlackHoleAppear(new Vector2(player.Position.X - 300, player.position.Y+400)));
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 250, player.Position.Y+400));
+                            Game1.blackHole1.Able = true;
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y));
+                            Game1.blackHole2.Able = true;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -259,11 +267,16 @@ namespace Game2.Collision
                             }
                             break;
                         case 3:
+                            player.TempSpeed = 200;
+                            BlackHoleAppear.bha.Add(new BlackHoleAppear(new Vector2(player.Position.X - 600, player.position.Y)));
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 100, player.Position.Y - 200));
+                            Game1.blackHole1.Able = true;
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X - 800, player.Position.Y + 200));
+                            Game1.blackHole2.Able = true;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 200;
                             break;
                         case 4:
                             foreach (Bat bat in Bat.bats)
@@ -330,12 +343,17 @@ namespace Game2.Collision
                             }
                             break;
                         case 3:
-                            
+
+                            player.TempSpeed = 200;
+                            BlackHoleAppear.bha.Add(new BlackHoleAppear(new Vector2(player.Position.X + 300, player.position.Y)));
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X + 100, player.Position.Y - 250));
+                            Game1.blackHole1.Able = true;
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 800, player.Position.Y + 250));
+                            Game1.blackHole2.Able = true;
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 200;
                             break;
                         case 4:
                             

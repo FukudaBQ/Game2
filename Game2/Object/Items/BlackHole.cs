@@ -1,4 +1,5 @@
 ﻿using Game2.Sprites.Blocks;
+using Game2.Collision;
 using Game2.Sprites.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -24,8 +25,6 @@ namespace Game2.Object.Items
             get { return able; }
             set { able = value; }
         }
-        
-        
 
         public BlackHole(Vector2 pos,Texture2D texture)
         {
