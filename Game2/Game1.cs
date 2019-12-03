@@ -44,7 +44,6 @@ namespace Game2
     }
     public class Game1 : Game
     {
-        private String debug ="triforece location: ";
         private SpriteFont youWIN;
         private Texture2D LinkCheeringSprite;
         private Animate LinkCheering;

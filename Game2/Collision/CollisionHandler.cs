@@ -20,13 +20,6 @@ namespace Game2.Collision
         int bombNum = 0;
         public static int rm = 1;
         Random rnd = new Random();
-        private BlackHole blackHole1;
-        private BlackHole blackHole2;
-        public int RM
-        {
-            get { return rm; }
-            set { rm = value; }
-        }
         public void CollisionHandle(Player player, HUD myHUD, Game1 game)
         {
             foreach (Item it in Item.items)
