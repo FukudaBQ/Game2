@@ -83,6 +83,8 @@ namespace Game2
         private Texture2D slowDownHintSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
+        public static Vector2 tempBlackHole1Position;
+        public static Vector2 tempBlackHole2Position;
 
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -106,6 +108,7 @@ namespace Game2
         public HUD myHUD;
         private SpriteFont font;
         int condition = 0;
+        
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -201,8 +204,11 @@ namespace Game2
             myHUD = new HUD(player, HUD, spriteBatch, HUDMap, veryGreen);
             player.setHUD(myHUD);
 
-            blackHole1 = new BlackHole(new Vector2(2800, 6500));
-            blackHole2 = new BlackHole(new Vector2(3300, 6200));
+            
+            tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            blackHole1 = new BlackHole(tempBlackHole1Position);
+            blackHole2 = new BlackHole(tempBlackHole2Position);
 
             blackHole3 = new BlackHole(new Vector2(3450, 6400));
             blackHole4 = new BlackHole(new Vector2(3300, 6500));

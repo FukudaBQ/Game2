@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="34" nextobjectid="3393">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="43" nextobjectid="3403">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -418,27 +418,6 @@
   <object id="3354" x="1446.97" y="7913.84">
    <point/>
   </object>
-  <object id="3359" x="1444.63" y="5392.18">
-   <point/>
-  </object>
-  <object id="3360" x="1449.31" y="5469.45">
-   <point/>
-  </object>
-  <object id="3361" x="1439.94" y="5551.39">
-   <point/>
-  </object>
-  <object id="3362" x="1439.94" y="5626.32">
-   <point/>
-  </object>
-  <object id="3363" x="1444.63" y="5717.63">
-   <point/>
-  </object>
-  <object id="3364" x="1451.65" y="5799.58">
-   <point/>
-  </object>
-  <object id="3365" x="1444.63" y="5883.87">
-   <point/>
-  </object>
   <object id="3375" x="3041.44" y="1318.19">
    <point/>
   </object>
@@ -458,18 +437,6 @@
    <point/>
   </object>
   <object id="3381" x="4645.28" y="5406.23">
-   <point/>
-  </object>
-  <object id="3348" x="1677.24" y="5412.33">
-   <point/>
-  </object>
-  <object id="3349" x="2012.18" y="5419.94">
-   <point/>
-  </object>
-  <object id="3350" x="1826.95" y="5404.72">
-   <point/>
-  </object>
-  <object id="3351" x="2144.13" y="5422.48">
    <point/>
   </object>
   <object id="3358" x="4153.77" y="5470.69">
@@ -6480,6 +6447,54 @@
   <object id="3405" x="2400.81" y="12032.2">
    <point/>
   </object>
+  <object id="3393" x="1842.67" y="5630.67">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="34" name="redKnight">
+  <object id="3397" x="2101.33" y="5753.33">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="38" name="hintKnight">
+  <object id="3398" x="1612" y="5265.33">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="39" name="restartButton">
+  <object id="3399" x="1485.33" y="5436">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="40" name="leftdoor">
+  <object id="3400" x="2404" y="5618.67">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="41" name="downdoor">
+  <object id="3402" x="1857.33" y="5964">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="rightdoor">
+  <object id="3401" x="1316" y="5608">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="35" name="yellowKnight">
+  <object id="3396" x="1617.33" y="5778.67">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="36" name="blueKnight">
+  <object id="3395" x="1606.67" y="5482.67">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="37" name="greenKnight">
+  <object id="3394" x="2141.33" y="5513.33">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="28" name="dragon">
   <object id="1050" x="5880.92" y="3476.47">
@@ -7047,24 +7062,6 @@
    <point/>
   </object>
   <object id="3341" x="2242.05" y="1723.62">
-   <point/>
-  </object>
-  <object id="3342" x="1517.38" y="5473.23">
-   <point/>
-  </object>
-  <object id="3343" x="1687.39" y="5480.84">
-   <point/>
-  </object>
-  <object id="3344" x="2085.77" y="5478.3">
-   <point/>
-  </object>
-  <object id="3345" x="2156.81" y="5556.97">
-   <point/>
-  </object>
-  <object id="3346" x="2159.35" y="5787.87">
-   <point/>
-  </object>
-  <object id="3347" x="1598.58" y="5792.95">
    <point/>
   </object>
   <object id="3352" x="3039.84" y="5478.3">
