@@ -1,4 +1,5 @@
-﻿using Game2.Sprites.Link;
+﻿using Game2.Sprites.Blocks;
+using Game2.Sprites.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,13 +10,14 @@ using System.Threading.Tasks;
 
 namespace Game2.Object.Items
 {
-    class BlackHole
+    public class BlackHole
     {
         private Vector2 position;
         private bool collided;
         private int radius=15;
         private Shining sprite;
-        private bool able=true;
+        private bool able=false;
+        private Vector2 tempPosition;
 
         public bool Able
         {
@@ -53,8 +55,12 @@ namespace Game2.Object.Items
             if (Vector2.Distance(position, player.Position) < sum&& player.HealthTimer <= 0)
             {
              collided = true;
-             player.setX(dest.Position.X+30);
-             player.setY(dest.Position.Y+30);
+                if (!Blocks.didCollide(new Vector2(dest.Position.X + 30, dest.Position.Y + 30), player.length, player.width))
+                {
+                    player.setX(dest.Position.X + 30);
+                    player.setY(dest.Position.Y + 30);
+                }
+             
              player.HealthTimer = 1.5f;
             }
         

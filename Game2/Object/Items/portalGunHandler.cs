@@ -23,21 +23,49 @@ namespace Game2.Object.Items
             foreach (PortalGun p in PortalGun.portalGuns)
             {
                 int sum = player.Radius + p.Radius;
-                if (Vector2.Distance(player.Position, new Vector2(p.Position.X - 15f, p.Position.Y - 15f)) < sum)
+                if (Vector2.Distance(player.Position, new Vector2(p.Position.X , p.Position.Y )) < sum)
                 {
                     p.Collided = true;
-                    PortalGun.portalGunSto.Add(new PortalGun(p.Position, direction));
+                    PortalGun.portalGunStoY.Add(new PortalGun(p.Position, direction));
+                    PortalGun.portalGunStoB.Add(new PortalGun(p.Position, direction));
+
 
 
                 }
 
             }
+            PortalGun.portalGuns.RemoveAll(p => p.Collided == true);
+            foreach (PortalGun proj in PortalGun.yellowBs)
+            {
+                proj.ProjUpdate(gameTime, player);
+                //tempPosition = proj.TempPosition;
+
+
+            }
+            foreach (PortalGun proj in PortalGun.blueBs)
+            {
+                proj.ProjUpdate(gameTime, player);
+                //tempPosition = proj.TempPosition;
+                
+
+            }
+
+            if (PortalGun.blueBs.Count > 0)
+            {
+                //Game1.blackHole3.Able = false;
+            }
+            if (PortalGun.yellowBs.Count > 0)
+            {
+                //Game1.blackHole4.Able = false;
+            }
+
+
 
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw, List<Pokeball> pokeballToDraw)
+        public void Draw(SpriteBatch spriteBatch, Texture2D textureToDraw, List<PortalGun> pokeballToDraw)
         {
-            foreach (Pokeball i in pokeballToDraw)
+            foreach (PortalGun i in pokeballToDraw)
             {
                 spriteBatch.Draw(textureToDraw, i.Position, Color.White);
             }

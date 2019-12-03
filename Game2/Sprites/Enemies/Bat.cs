@@ -30,6 +30,7 @@ namespace Game2.Sprites.Enemies
         public int rand = 1;
         private float timer = 0;
         public static List<Bat> bats = new List<Bat>();
+        public static List<Bat> specialbats = new List<Bat>();
         public static List<Bat> batF = new List<Bat>();
         public Vector2 Location
         {
@@ -89,6 +90,24 @@ namespace Game2.Sprites.Enemies
             }
             
             
+        }
+        public void UpdateS(GameTime gametime, Vector2 playerPos)
+        {
+            float dt = (float)gametime.ElapsedGameTime.TotalSeconds;
+
+            timeLastUpdate += dt;
+
+            if (timeLastUpdate > 0.2f)
+            {
+                currentFrame++;
+                if (currentFrame == totalFrame)
+                {
+                    currentFrame = 0;
+                }
+                timeLastUpdate = 0f;
+            }
+
+
         }
 
         public void Update2(GameTime gametime, Vector2 playerPos)
