@@ -91,9 +91,28 @@ namespace Game2.Puzzle
             Baggage i = Detect(direction, position);
             if (i != null)
             {
-                i.PushLeft();
-                Check(i);
+                if (!BoxCollide(i, 2))
+                {
+                    i.PushLeft();
+                    Check(i);
+                }
             }
+        }
+
+        private bool BoxCollide(Baggage i, int command)
+        {
+            int FutureX = i.getFutureX(command);
+            int FutureY = i.getFutureY(command);
+            for (int x = 0; x < baggage.Count; x++)
+            {
+                int OtherBoxX = baggage.ElementAt(x).GetLocX();
+                int OtherBoxY = baggage.ElementAt(x).GetLocY();
+                if ((OtherBoxX == FutureX) && (OtherBoxY == FutureY))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool DidCollide(Vector2 otherPos, int otherL, int otherW)
@@ -113,8 +132,11 @@ namespace Game2.Puzzle
             Baggage i = Detect(direction, position);
             if (i != null)
             {
-                i.PushRight();
-                Check(i);
+                if (!BoxCollide(i, 3))
+                {
+                    i.PushRight();
+                    Check(i);
+                }
             }
         }
 
@@ -123,8 +145,11 @@ namespace Game2.Puzzle
             Baggage i = Detect(direction, position);
             if (i != null)
             {
-                i.PushDown();
-                Check(i);
+                if (!BoxCollide(i, 1))
+                {
+                    i.PushDown();
+                    Check(i);
+                }
             }
         }
 
@@ -133,8 +158,12 @@ namespace Game2.Puzzle
             Baggage i = Detect(direction, position);
             if (i != null)
             {
-                i.PushUp();
-                Check(i);
+                if (!BoxCollide(i, 0))
+                {
+                    i.PushUp();
+                    Check(i);
+                }
+
             }
         }
 
@@ -335,14 +364,10 @@ namespace Game2.Puzzle
             if ((command >= 2) && (CurrentX > leftLimit) && ((CurrentX + blockWidth) < rightLimit))
             {
                 return true;
-            }/*
-            if ((CurrentX > leftLimit) && ((CurrentX + blockWidth) < rightLimit) && 
-                (CurrentY > upLimit) && ((CurrentY + blockHeight) < downLimit))
-            {
-                return true;
-            }*/
+            }
             return false;
         }
+        
 
         //baggage - player, baggage downer as positive
         public int GetDistY(Dir direction, Vector2 position)
@@ -357,7 +382,6 @@ namespace Game2.Puzzle
                 }
                 else
                 {
-                    Console.Write(CurrentLoc + blockHeight - (int)position.Y);
                     return  CurrentLoc + blockHeight - (int)position.Y;
                 }
             }
@@ -405,12 +429,45 @@ namespace Game2.Puzzle
         {
             int CurrentX = locationX + offsetX * blockHeight;
             int CurrentY = locationY + offsetY * blockHeight;
+            int SmallOffset = 20;
             //TODO
-            if (Math.Abs(CurrentX - otherPos.X) <= blockHeight && Math.Abs(CurrentY - otherPos.Y) <= blockWidth)
+            if (Math.Abs(CurrentX - otherPos.X) <= (blockHeight - SmallOffset) && Math.Abs(CurrentY - otherPos.Y) <= (blockWidth - SmallOffset))
             {
                 return true;
             }
             return false;
+        }
+
+        public int getFutureX(int command)
+        {
+            if (command == 2)
+            {
+                return locationX + offsetX * blockWidth - blockWidth;
+            }
+            else if (command == 3)
+            {
+                return locationX + offsetX * blockWidth + blockWidth;
+            }
+            else
+            {
+                return locationX + offsetX * blockWidth;
+            }
+        }
+
+        public int getFutureY(int command)
+        {
+            if (command == 0)
+            {
+                return locationY + offsetY * blockHeight - blockHeight;
+            }
+            else if (command == 1)
+            {
+                return locationY + offsetY * blockHeight + blockHeight;
+            }
+            else
+            {
+                return locationY + offsetY * blockHeight;
+            }
         }
     }
 
