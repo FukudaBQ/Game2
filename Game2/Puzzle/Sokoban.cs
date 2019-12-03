@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game2.Object.Items;
+using Game2.Sprites.Link;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,10 @@ namespace Game2.Puzzle
     {
         private Texture2D texture;
         private SpriteBatch spriteBatch;
-        private int[] baggageX = {5920, 6000, 6080, 5840};
-        private int[] baggageY = { 12680, 12600, 12680, 12360 };
-        private int[] destX = { 5950, 6030, 6110, 6190 };
-        private int[] destY = {12710, 12710, 12710, 12790 };
+        private int[] baggageX = {5840, 6000, 6160};
+        private int[] baggageY = { 12600, 12600, 12600};
+        private int[] destX = { 5870, 6030, 6190};
+        private int[] destY = {12710, 12710, 12710};
         private List<Baggage> baggage = new List<Baggage>();
         private List<DestPoint> dest = new List<DestPoint>();
         private List<bool> arrived = new List<bool>();
@@ -28,7 +30,11 @@ namespace Game2.Puzzle
         private int downLimit;
         private int leftLimit;
         private int rightLimit;
-        public Sokoban(Texture2D texture, SpriteBatch spriteBatch, int upLimit, int downLimit, int leftLimit, int rightLimit)
+        private BlackHole blackHole;
+        private bool success = false;
+        private Texture2D blackHoleSprite;
+        public Sokoban(Texture2D texture, SpriteBatch spriteBatch, int upLimit, 
+            int downLimit, int leftLimit, int rightLimit, Texture2D blackHoleSprite)
         {
             this.texture = texture;
             this.spriteBatch = spriteBatch;
@@ -36,7 +42,20 @@ namespace Game2.Puzzle
             this.downLimit = downLimit;
             this.leftLimit = leftLimit;
             this.rightLimit = rightLimit;
+            this.blackHoleSprite = blackHoleSprite;
             populate();
+        }
+
+        public Vector2 Update(GameTime gameTime, Player player, int command, Vector2 camPos)
+        {
+            if (success)
+            {
+                blackHole = new BlackHole(new Vector2(5540, 12800));
+                Vector2 camLoc = blackHole.Update(gameTime, player, command, player.camPosition);
+                Console.WriteLine(camLoc);
+                return camLoc;
+            }
+            return player.camPosition;
         }
 
         private void populate()
@@ -68,22 +87,38 @@ namespace Game2.Puzzle
 
                 case Dir.Up:
                     PushUP(direction, position);
+                    CheckSuccess();
                     break;
                 case Dir.DownSword:
                 case Dir.Down:
                     PushDown(direction, position);
+                    CheckSuccess();
                     break;
                 case Dir.LeftSword:
                 case Dir.Left:
                     PushLeft(direction, position);
+                    CheckSuccess();
                     break;
                 case Dir.RightSword:
                 case Dir.Right:
                     PushRight(direction, position);
+                    CheckSuccess();
                     break;
                 default:
                     break;
             }
+        }
+
+        private void CheckSuccess()
+        {
+            for (int i = 0; i < baggage.Count; i++)
+            {
+                if (arrived.ElementAt(i) == false)
+                {
+                    return;
+                }
+            }
+            success = true;
         }
 
         private void PushLeft(Dir direction, Vector2 position)
@@ -257,6 +292,7 @@ namespace Game2.Puzzle
                 {
                     i.InformArrived();
                     IfNotArrived = false;
+                    arrived[j] = true;
                 }
             }
             if (IfNotArrived)
@@ -277,6 +313,14 @@ namespace Game2.Puzzle
                 return true;
             }
             return false;
+        }
+
+        public void BlackDraw()
+        {
+            if (success)
+            {
+                spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole.Position.X - 30, blackHole.Position.Y - 30), Color.White);
+            }
         }
     }
 

@@ -25,6 +25,7 @@ namespace Game2.Sprites.Link
         //public Vector2 position = new Vector2(2700, 6600);
         public Vector2 camPosition = new Vector2(3200 ,12520);
         //public Vector2 camPosition = new Vector2(3200, 6600);
+        /*
         //public Vector2 position = new Vector2(3140, 12800);
         // TODO
         public Vector2 position = new Vector2(5700, 12800);
@@ -32,6 +33,7 @@ namespace Game2.Sprites.Link
         //TODO
         public Vector2 camPosition = new Vector2(5760, 12520);
         public Vector2 tempCam = new Vector2(3200, 3880);
+        */
         private Dir direction = Dir.Down;
         public Animate anim;
         private PlayerStateMachine stateMachine;
@@ -210,9 +212,7 @@ namespace Game2.Sprites.Link
                         tempPos.X += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
-                        if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
-                            &&!mySokoban.DidCollide(tempPos, 0,0))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.X += speed * dt;
                         }
@@ -222,9 +222,7 @@ namespace Game2.Sprites.Link
                         tempPos.X -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
-                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !mySokoban.DidCollide(tempPos, 0, 0))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.X -= speed * dt;
                         }
@@ -234,9 +232,7 @@ namespace Game2.Sprites.Link
                         tempPos.Y -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
-                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !mySokoban.DidCollide(tempPos, 0, 0))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.Y -= speed * dt;
                         }
@@ -246,9 +242,7 @@ namespace Game2.Sprites.Link
                         tempPos.Y += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
-                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
-                            && !mySokoban.DidCollide(tempPos, 0, 0))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.Y += speed * dt;
                         }

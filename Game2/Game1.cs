@@ -82,6 +82,7 @@ namespace Game2
         private Texture2D hintSprite;
         private Texture2D batHintSprite;
         private Texture2D slowDownHintSprite;
+        private Texture2D sokobanSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
@@ -91,6 +92,8 @@ namespace Game2
         public static BlackHole blackHole2;
         public static BlackHole blackHole3;
         public static BlackHole blackHole4;
+        public static BlackHole blackHole5;
+        //public static BlackHole blackHole6;
 
         private Bat bat;
         private Dragon dragon;
@@ -217,9 +220,11 @@ namespace Game2
             blackHole3 = new BlackHole(new Vector2(3450, 6400));
             blackHole4 = new BlackHole(new Vector2(3300, 6500));
 
+            blackHole5 = new BlackHole(new Vector2(2980, 12800));
+            //blackHole6 = new BlackHole(new Vector2(5540, 12800));
 
             // TODO
-            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220);
+            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite);
             player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
@@ -474,6 +479,8 @@ namespace Game2
             blackHole2.Update(gameTime,player,blackHole1);
             blackHole3.Update(gameTime, player, blackHole4);
             blackHole4.Update(gameTime, player, blackHole3);
+            player.camPosition = blackHole5.Update(gameTime, player, 0, player.camPosition);
+            //player.camPosition = blackHole6.Update(gameTime, player, blackHole5, 1, player.camPosition);
 
             hint.Update(gameTime);
             LinkCheering.Update(gameTime);
@@ -1742,6 +1749,7 @@ namespace Game2
             boomerangHandler.Update(gameTime,player);
             pokeballHandler.Update(gameTime, player);
 
+            player.camPosition = sokoban.Update(gameTime, player, 1, player.camPosition);
             cam.LookAt(player.camPosition);
 
             base.Update(gameTime);
@@ -1901,11 +1909,14 @@ namespace Game2
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole2.Position.X - 30, blackHole2.Position.Y - 30), Color.White);
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole5.Position.X - 30, blackHole5.Position.Y - 30), Color.White);
+            sokoban.Draw();
+            //spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole6.Position.X - 30, blackHole6.Position.Y - 30), Color.White);
 
             hint.Draw();
 
 
-            sokoban.Draw();
+            sokoban.BlackDraw();
             
             spriteBatch.End();
 
