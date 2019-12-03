@@ -1,5 +1,24 @@
 ﻿In this program, you can use WASD or arrow to control the sprite which is Link. Then you can use 1, 2, 3 to use projectiles. In order to use sword, you can press Z or N. 
-Lastly, use q to quit, use R to reset the game. We run code analysis this time, and removed as many warnings as we could, but we were not able to remove those saying class too long.  
+Lastly, use q to quit, use R to reset the game. 
+We run code analysis this time, and removed as many warnings as we could, but due to the complicated structures of our design and time limit, we were not able to remove those saying class too long.  
+The specific inperfections are listed below
+1: Field 'Blocks.radius' is never assigned to, and will always have its default value 0
+2: Field 'Door.radius' is never assigned to, and will always have its default value 0
+3: Field 'Enemies.totalFrame' is never assigned to, and will always have its default value 0
+4: Field 'EnemyFactory.hitPos' is never assigned to, and will always have its default value
+5: Field 'EnemyFactory.radius' is never assigned to, and will always have its default value 0
+6: Field 'ItemFactory.hitPos' is never assigned to, and will always have its default value
+7: Field 'ItemFactory.radius' is never assigned to, and will always have its default value 0
+8: Field 'PortalGunHandler.monsterType' is never assigned to, and will always have its default value 0
+9: The field 'BlackHole.tempPosition' is never used
+10: The field 'BoomerangProj.timer' is assigned but its value is never used
+11: The field 'CollisionHandler.blackHole1' is never used
+12: The field 'CollisionHandler.blackHole2' is never used
+
+
+
+
+
  
 For HUD:
 1. Picking up item will increase the number of the item.
