@@ -54,7 +54,7 @@ namespace Game2
         private SpriteBatch spriteBatch;
         private Player player;
         private Texture2D bomb;
-        private Texture2D arrowDown;
+        private Texture2D arrowDownSprite;
         private Texture2D arrowUp;
         private Texture2D arrowLeft;
         private Texture2D arrowRight;
@@ -78,6 +78,7 @@ namespace Game2
         private Texture2D leftDoor;
         private Texture2D rightDoor;
         private Texture2D downDoor;
+        private Texture2D upDoor;
         private Texture2D hintSprite;
         private Texture2D batHintSprite;
         private Texture2D slowDownHintSprite;
@@ -105,6 +106,7 @@ namespace Game2
         private ResetCommand reset;
         private int monsterType;
         private Hint hint;
+        private Arrow arrow;
 
         public HUD myHUD;
         private SpriteFont font;
@@ -227,6 +229,7 @@ namespace Game2
             LinkCheeringSprite = Content.Load<Texture2D>("LinkCheering");
             LinkCheering = new Animate(LinkCheeringSprite, 1, 2);
             hint = new Hint(hintSprite, new Vector2(2000, 6100), spriteBatch);
+            arrow = new Arrow(arrowDownSprite, new Vector2(575, 6550), spriteBatch);
 
             TiledMapObject[] bats = myMap.GetLayer<TiledMapObjectLayer>("bat").Objects;
             foreach (var bat in bats)
@@ -423,7 +426,7 @@ namespace Game2
         private void Register()
         {
             bomb = Content.Load<Texture2D>("ZeldaSpriteBomb");
-            arrowDown = Content.Load<Texture2D>("ArrowDown");
+            arrowDownSprite = Content.Load<Texture2D>("ArrowDown");
             arrowUp = Content.Load<Texture2D>("ArrowUp");
             arrowLeft = Content.Load<Texture2D>("ArrowLeft");
             arrowRight = Content.Load<Texture2D>("ArrowRight");
@@ -1783,6 +1786,7 @@ namespace Game2
 
             myHUD.Draw();
             hint.Draw();
+            arrow.Draw();
 
             foreach (Bat bat in Bat.bats)
             {
@@ -1849,7 +1853,7 @@ namespace Game2
             }
 
             bombHandler.Draw(spriteBatch, bomb, BombProj.bomb,explosionSprite);
-            arrowHandler.Draw(spriteBatch, arrowDown,ArrowProj.arrowDown);
+            arrowHandler.Draw(spriteBatch, arrowDownSprite,ArrowProj.arrowDown);
             arrowHandler.Draw(spriteBatch, arrowUp, ArrowProj.arrowUp);
             arrowHandler.Draw(spriteBatch, arrowLeft, ArrowProj.arrowLeft);
             arrowHandler.Draw(spriteBatch, arrowRight, ArrowProj.arrowRight);

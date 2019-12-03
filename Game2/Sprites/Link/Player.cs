@@ -20,10 +20,10 @@ namespace Game2.Sprites.Link
     {
       
         private bool victory = false;
-        public Vector2 position = new Vector2(3140, 12800);
-        //public Vector2 position = new Vector2(2700, 6600);
-        public Vector2 camPosition = new Vector2(3200 ,12520);
-        //public Vector2 camPosition = new Vector2(3200, 6600);
+        //public Vector2 position = new Vector2(3140, 12800);
+        public Vector2 position = new Vector2(700, 6600);
+        //public Vector2 camPosition = new Vector2(3200 ,12520);
+        public Vector2 camPosition = new Vector2(700, 6600);
         public Vector2 tempCam = new Vector2(3200, 3880);
         private Dir direction = Dir.Down;
         public Animate anim;
@@ -192,7 +192,7 @@ namespace Game2.Sprites.Link
                         tempPos.X += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
                         {
                             position.X += speed * dt;
                         }
@@ -202,7 +202,7 @@ namespace Game2.Sprites.Link
                         tempPos.X -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
                         {
                             position.X -= speed * dt;
                         }
@@ -222,7 +222,7 @@ namespace Game2.Sprites.Link
                         tempPos.Y += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
-                            && !Blocks.Door.didCollideDown(tempPos, length, width))
+                            && !Blocks.Door.didCollideDown(tempPos, length, width) && !Blocks.Door.didCollideUp(tempPos, length, width))
                         {
                             position.Y += speed * dt;
                         }
