@@ -20,13 +20,6 @@ namespace Game2.Collision
         int bombNum = 0;
         public static int rm = 1;
         Random rnd = new Random();
-        private BlackHole blackHole1;
-        private BlackHole blackHole2;
-        public int RM
-        {
-            get { return rm; }
-            set { rm = value; }
-        }
         public void CollisionHandle(Player player, HUD myHUD, Game1 game)
         {
             foreach (Item it in Item.items)
@@ -85,7 +78,7 @@ namespace Game2.Collision
             foreach (Blocks upblo in Blocks.upblocks)
             {
                 int sum = player.Radius + upblo.Radius;
-                rm = rnd.Next(1, 5);
+                rm = rnd.Next(1, 10);
                 if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
 
@@ -132,6 +125,14 @@ namespace Game2.Collision
                             }
                             break;
                         case 4:
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+
+                        default:
                             player.TempSpeed = 200;
                             foreach (Bat bat in Bat.bats)
                             {
@@ -212,6 +213,13 @@ namespace Game2.Collision
                                 bat.Speed = 80;
                             }
                             break;
+                        default:
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
                     }
 
                     myHUD.HeartDown();
@@ -285,6 +293,13 @@ namespace Game2.Collision
                             }
                             player.TempSpeed = 200;
                             break;
+                        default:
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
                     }
                     myHUD.HeartLeft();
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
@@ -317,51 +332,12 @@ namespace Game2.Collision
                     player.camPosition.X = player.camPosition.X + 1280;
                     switch (rm)
                     {
-                        case 1:
-                            MySounds.random.Play();
-                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X + 100, player.position.Y - 100)));
+                        default:
                             player.TempSpeed = 200;
-                            foreach (Bat bat in Bat.bats)
-                            {
-                                bat.Speed = 150;
-                            }
-                            while (rm == 1)
-                            {
-                                rm = rnd.Next(1, 5);
-                            }
-                            break;
-                        case 2:
-                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X + 300, player.position.Y)));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 100;
-                            while (rm == 2)
-                            {
-                                rm = rnd.Next(1, 5);
-                            }
-                            break;
-                        case 3:
-
-                            player.TempSpeed = 200;
-                            BlackHoleAppear.bha.Add(new BlackHoleAppear(new Vector2(player.Position.X + 300, player.position.Y)));
-                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X + 100, player.Position.Y - 250));
-                            Game1.blackHole1.Able = true;
-                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 800, player.Position.Y + 250));
-                            Game1.blackHole2.Able = true;
-                            foreach (Bat bat in Bat.bats)
-                            {
-                                bat.Speed = 80;
-                            }
-                            break;
-                        case 4:
-                            
-                            foreach (Bat bat in Bat.bats)
-                            {
-                                bat.Speed = 80;
-                            }
-                            player.TempSpeed = 200;
                             break;
                     }
                     myHUD.HeartRight();
