@@ -22,6 +22,8 @@ For Extra Content Game:
 1: Portal for this game is in the start room
 2: Once you entered the sokoban game, you can only exit it after you push all boxes to the desired place
 3. Press Spacebar to push the box once you near it.
+4. This sokoban game's goal is to only show that we are capable of doing it instead of a real hard puzzle. This game may be very simple for you, but redesign it is very simple.
+5: Collision detection is not very precise. 
 
 For Poki ball:
 1. Press 4 to Release Poki Ball
