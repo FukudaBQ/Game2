@@ -33,6 +33,11 @@ namespace Game2.Sprites.Link
                 ex.Update(gameTime);
 
             }
+            foreach (light ex in light.lig)
+            {
+                ex.Update(gameTime);
+
+            }
 
             BombProj.bomb.RemoveAll(proj => proj.Timer <= 0);
             explosion.exp.RemoveAll(ex => ex.Timer <= 0);

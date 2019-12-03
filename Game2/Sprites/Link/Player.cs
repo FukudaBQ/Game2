@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Game2.Collision;
 using Game2.Commands;
 using Game2.Factory;
+using Game2.Object.Items;
 using Game2.Puzzle;
 using Game2.Sprites.Link.Projectile;
 using HUDManager;
@@ -17,7 +19,12 @@ namespace Game2.Sprites.Link
 {
     public class Player
     {
+      
         private bool victory = false;
+        public Vector2 position = new Vector2(3140, 12800);
+        //public Vector2 position = new Vector2(2700, 6600);
+        public Vector2 camPosition = new Vector2(3200 ,12520);
+        //public Vector2 camPosition = new Vector2(3200, 6600);
         //public Vector2 position = new Vector2(3140, 12800);
         // TODO
         public Vector2 position = new Vector2(5700, 12800);
@@ -54,7 +61,9 @@ namespace Game2.Sprites.Link
         private int numOfKeys = 0;
         public int bombNum = 5;
         private HUD myHUD;
+        private int tempSpeed = 200;
         private Sokoban mySokoban;
+
 
 
         public bool Victory
@@ -101,6 +110,11 @@ namespace Game2.Sprites.Link
         {
             get { return health; }
             set { health = value; }
+        }
+        public int TempSpeed
+        {
+            get { return tempSpeed; }
+            set { tempSpeed = value; }
         }
 
 
@@ -161,7 +175,7 @@ namespace Game2.Sprites.Link
             }
             else
             {
-                speed = 200;
+                speed = TempSpeed;
             }
             stateMachine.Update(gameTime);
             direction = stateMachine.getDirection();
@@ -179,6 +193,7 @@ namespace Game2.Sprites.Link
             {
                 healthTimer -= dt;
                 ColorTimer -= dt;
+                
             }
             if (ColorTimer > 0)
             {
@@ -194,6 +209,9 @@ namespace Game2.Sprites.Link
                     case Dir.Right:
                         tempPos.X += speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
+                        if (!Blocks.Blocks.didCollide(tempPos, length,width)&&!Blocks.Rock.didCollide(tempPos, length, width)
                             &&!mySokoban.DidCollide(tempPos, 0,0))
                         {
                             position.X += speed * dt;
@@ -202,6 +220,9 @@ namespace Game2.Sprites.Link
                         break;
                     case Dir.Left:
                         tempPos.X -= speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
@@ -212,6 +233,9 @@ namespace Game2.Sprites.Link
                     case Dir.Up:
                         tempPos.Y -= speed * dt;
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
                             position.Y -= speed * dt;
@@ -220,6 +244,9 @@ namespace Game2.Sprites.Link
                         break;
                     case Dir.Down:
                         tempPos.Y += speed * dt;
+                        if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
+                            && !Blocks.Door.didCollideLeft(tempPos, length, width) && !Blocks.Door.didCollideRight(tempPos, length, width)
+                            && !Blocks.Door.didCollideDown(tempPos, length, width))
                         if (!Blocks.Blocks.didCollide(tempPos, length, width) && !Blocks.Rock.didCollide(tempPos, length, width)
                             && !mySokoban.DidCollide(tempPos, 0, 0))
                         {
@@ -267,6 +294,38 @@ namespace Game2.Sprites.Link
             if (kState.IsKeyDown(Keys.D3) && previous.IsKeyUp(Keys.D3))
             {
                 BoomerangProj.boomerang.Add(new BoomerangProj(position, direction));
+            }
+            if (kState.IsKeyDown(Keys.D4) && previous.IsKeyUp(Keys.D4))
+            {
+                if (Pokeball.pokeballSto.Count>0)
+                {
+                    Pokeball.pokeballProj.Add(new Pokeball(new Vector2(position.X+40f,position.Y+40f), direction));
+                    Pokeball.pokeballSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
+            if (kState.IsKeyDown(Keys.D4) && previous.IsKeyUp(Keys.D4))
+            {
+                if (Pokeball.pokeballwithMonsterSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
+            if (kState.IsKeyDown(Keys.D5) && previous.IsKeyUp(Keys.D5))
+            {
+                if (PortalGun.portalGunSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
+            if (kState.IsKeyDown(Keys.D6) && previous.IsKeyUp(Keys.D6))
+            {
+                if (Pokeball.pokeballwithMonsterSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
             }
 
             previous = kState;

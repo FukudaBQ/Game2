@@ -1,4 +1,5 @@
 ﻿using Game2.Object.Items;
+using Game2.RandomEvent;
 using Game2.Sprites.Blocks;
 using Game2.Sprites.Enemies;
 using Game2.Sprites.Link;
@@ -17,9 +18,18 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
+        public int rm = 1;
+        Random rnd = new Random();
+        private BlackHole blackHole1;
+        private BlackHole blackHole2;
+        public int RM
+        {
+            get { return rm; }
+            set { rm = value; }
+        }
         public void CollisionHandle(Player player, HUD myHUD, Game1 game)
         {
-            foreach(Item it in Item.items)
+            foreach (Item it in Item.items)
             {
                 Type itemType = it.GetType();
                 int sum = player.Radius + it.Radius;
@@ -49,6 +59,14 @@ namespace Game2.Collision
                 {
                     player.Victory = true;
                 }
+                if(itemType == typeof(Button) && it.Collided)
+                {
+                    RedKnight.rknights.RemoveAll(k => k.Health > 0);
+                    GreenKnight.gknights.RemoveAll(k => k.Health > 0);
+                    YellowKnight.yknights.RemoveAll(k => k.Health > 0);
+                    BlueKnight.bknights.RemoveAll(k => k.Health > 0);
+                    game.ReloadContent();
+                }
             }
             Item.items.RemoveAll(p => p.Collided);
 
@@ -67,6 +85,7 @@ namespace Game2.Collision
             foreach (Blocks upblo in Blocks.upblocks)
             {
                 int sum = player.Radius + upblo.Radius;
+                rm = rnd.Next(1, 5);
                 if (Vector2.Distance(player.Position, upblo.Position) < sum)
                     {
 
@@ -77,6 +96,47 @@ namespace Game2.Collision
                     player.position.Y = player.position.Y - 1500;
                     player.camPosition.Y = player.camPosition.Y - 2040;
 
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            player.TempSpeed = 200;
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X-300,player.position.Y-600)));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm ==1)
+                            {
+                                rm=rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 300, player.position.Y-600)));
+                            player.TempSpeed = 100;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X-300,player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X+300, player.Position.Y-400));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
+
 
                     myHUD.HeartUP();
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() - 2040);
@@ -84,8 +144,17 @@ namespace Game2.Collision
                     myHUD.KeyNumUp();
                     myHUD.SwordUp();
                     myHUD.ArrowUp();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
                     }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                }
                 
+
             }
             foreach (Blocks dnblo in Blocks.downblocks)
             {
@@ -98,6 +167,46 @@ namespace Game2.Collision
 
                     player.position.Y = player.position.Y + 1500;
                     player.camPosition.Y = player.camPosition.Y + 2040;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            player.TempSpeed = 200;
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 300, player.position.Y + 400)));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 300, player.position.Y+400)));
+                            player.TempSpeed = 100;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                    }
 
                     myHUD.HeartDown();
                     myHUD.updateMapLoc(myHUD.getMapDestX(), myHUD.getMapDestY() + 2040);
@@ -105,7 +214,16 @@ namespace Game2.Collision
                     myHUD.KeyNumDown();
                     myHUD.SwordDown();
                     myHUD.ArrowDown();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
+                
 
             }
             foreach (Blocks leblo in Blocks.leftblocks)
@@ -117,15 +235,64 @@ namespace Game2.Collision
                     game.ClearContent();
                     game.ReloadContent();
 
-                    player.position.X = player.position.X - 300;
+                    player.position.X = player.position.X - 320;
                     player.camPosition.X = player.camPosition.X - 1280;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X - 800, player.position.Y - 100)));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            player.TempSpeed = 200;
+                            break;
+                        case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X - 600, player.position.Y)));
+                            player.TempSpeed = 100;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 3:
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            player.TempSpeed = 200;
+                            break;
+                    }
                     myHUD.HeartLeft();
                     myHUD.updateMapLoc(myHUD.getMapDestX() - 1280, myHUD.getMapDestY());
                     myHUD.indexLeft();
                     myHUD.KeyNumLeft();
                     myHUD.SwordLeft();
                     myHUD.ArrowLeft();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
+                
 
             }
             foreach (Blocks riblo in Blocks.rightblocks)
@@ -139,14 +306,68 @@ namespace Game2.Collision
 
                     player.position.X = player.position.X + 320;
                     player.camPosition.X = player.camPosition.X + 1280;
+                    switch (rm)
+                    {
+                        case 1:
+                            MySounds.random.Play();
+                            SpeedUp.spd.Add(new SpeedUp(new Vector2(player.Position.X + 100, player.position.Y - 100)));
+                            player.TempSpeed = 200;
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 150;
+                            }
+                            while (rm == 1)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 2:
+                            SlowDown.sld.Add(new SlowDown(new Vector2(player.Position.X + 300, player.position.Y)));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            player.TempSpeed = 100;
+                            while (rm == 2)
+                            {
+                                rm = rnd.Next(1, 5);
+                            }
+                            break;
+                        case 3:
+
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            break;
+                        case 4:
+                            
+                            foreach (Bat bat in Bat.bats)
+                            {
+                                bat.Speed = 80;
+                            }
+                            player.TempSpeed = 200;
+                            break;
+                    }
                     myHUD.HeartRight();
                     myHUD.updateMapLoc(myHUD.getMapDestX() + 1280, myHUD.getMapDestY());
                     myHUD.indexRight();
                     myHUD.KeyNumRight();
                     myHUD.SwordRight();
                     myHUD.ArrowRight();
+                    foreach (Bat bf in Bat.batF)
+                    {
+                        bf.Location = player.Position;
+                    }
+                    foreach (Knight bf in Knight.knightF)
+                    {
+                        bf.Location = player.Position;
+                    }
                 }
-
+                
             }
         }
 
