@@ -65,6 +65,7 @@
     <Compile Include="Object\Items\Item.cs" />
     <Compile Include="Object\Items\Pokeball.cs" />
     <Compile Include="Object\Items\PokeballHandler.cs" />
+    <Compile Include="Object\Items\PortalGun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomEvent\SlowDown.cs" />
@@ -154,6 +155,8 @@
     <Content Include="Content\bat.png" />
     <Content Include="Content\batSpeedUp.png" />
     <Content Include="Content\biggerExplosion1.png" />
+    <Content Include="Content\blackHole.png" />
+    <Content Include="Content\BlueB.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\button.jpg" />
@@ -206,12 +209,14 @@
     <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\pokeball.png" />
+    <Content Include="Content\portalGun.png" />
     <Content Include="Content\refresh.png" />
     <Content Include="Content\rock.png" />
     <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />
     <Content Include="Content\World.png" />
     <Content Include="Content\WorldOfElements.xml" />
+    <Content Include="Content\YellowB.png" />
     <Content Include="Content\ZeldaSpriteBomb.png" />
     <Content Include="Icon.ico" />
     <Content Include="ReadMe.txt" />
