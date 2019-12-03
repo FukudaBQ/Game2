@@ -122,6 +122,18 @@
 /processorParam:TextureFormat=Color
 /build:blackHole.png
 
+#begin BlueB.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BlueB.png
+
 #begin boomerang.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -145,30 +157,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Boss.png
-
-#begin box.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:box.png
-
-#begin button.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:button.jpg
 
 #begin door1.png
 /importer:TextureImporter
@@ -887,6 +875,12 @@
 /processorParam:Quality=Best
 /build:music/Dungeon.mp3
 
+#begin music/Game Over.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/Game Over.mp3
+
 #begin music/GameOver.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -961,18 +955,6 @@
 /processorParam:TextureFormat=Compressed
 /build:numOfKeys.spritefont
 
-#begin refresh.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:refresh.png
-
 #begin pokeball.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -984,6 +966,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:pokeball.png
+
+#begin portalGun.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:portalGun.png
+
+#begin refresh.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:refresh.png
 
 #begin rock.png
 /importer:TextureImporter
@@ -1032,6 +1038,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:World.png
+
+#begin YellowB.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:YellowB.png
 
 #begin youWIN.spritefont
 /importer:FontDescriptionImporter

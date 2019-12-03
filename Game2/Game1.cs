@@ -60,6 +60,7 @@ namespace Game2
         private Texture2D arrowRight;
         private Texture2D boomerang;
         private Texture2D pokeball;
+        private Texture2D portalGun;
         private Texture2D handSprite;
         private Texture2D knightSprite;
         private Texture2D batSprite;
@@ -420,6 +421,7 @@ namespace Game2
             arrowRight = Content.Load<Texture2D>("ArrowRight");
             boomerang = Content.Load<Texture2D>("boomerang");
             pokeball = Content.Load<Texture2D>("pokeball");
+            portalGun = Content.Load<Texture2D>("portalGun");
             GeneralBlockSprite = Content.Load<Texture2D>("GeneralBlock");
             batSprite = Content.Load<Texture2D>("bat");
             explosionSprite= Content.Load<Texture2D>("biggerExplosion1");
