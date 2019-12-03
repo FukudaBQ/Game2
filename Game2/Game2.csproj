@@ -66,6 +66,7 @@
     <Compile Include="Object\Items\Pokeball.cs" />
     <Compile Include="Object\Items\PokeballHandler.cs" />
     <Compile Include="Object\Items\PortalGun.cs" />
+    <Compile Include="Object\Items\portalGunHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomEvent\SlowDown.cs" />
