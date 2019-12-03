@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Game2.Object.Items
 {
-    class BlackHole
+    public class BlackHole
     {
         private Vector2 position;
         private bool collided;

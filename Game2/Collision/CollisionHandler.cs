@@ -121,8 +121,8 @@ namespace Game2.Collision
                             break;
                         case 3:
                             player.TempSpeed = 200;
-                            //tempBlackHole1Position = new Vector2(player.Position.X-300,player.Position.Y);
-                            //Game1.TempBlackHole2Position = new Vector2(player.Position.X+300, player.Position.Y-500);
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X-300,player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X+300, player.Position.Y-400));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -192,6 +192,8 @@ namespace Game2.Collision
                             break;
                         case 3:
                             player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
@@ -259,11 +261,13 @@ namespace Game2.Collision
                             }
                             break;
                         case 3:
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 200;
                             break;
                         case 4:
                             foreach (Bat bat in Bat.bats)
@@ -330,12 +334,14 @@ namespace Game2.Collision
                             }
                             break;
                         case 3:
-                            
+
+                            player.TempSpeed = 200;
+                            Game1.blackHole1 = new BlackHole(new Vector2(player.Position.X - 300, player.Position.Y));
+                            Game1.blackHole2 = new BlackHole(new Vector2(player.Position.X + 300, player.Position.Y - 400));
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;
                             }
-                            player.TempSpeed = 200;
                             break;
                         case 4:
                             

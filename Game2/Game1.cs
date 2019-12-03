@@ -86,10 +86,10 @@ namespace Game2
         public static Vector2 tempBlackHole1Position;
         public static Vector2 tempBlackHole2Position;
 
-        private BlackHole blackHole1;
-        private BlackHole blackHole2;
-        private BlackHole blackHole3;
-        private BlackHole blackHole4;
+        public static BlackHole blackHole1;
+        public static BlackHole blackHole2;
+        public static BlackHole blackHole3;
+        public static BlackHole blackHole4;
 
         private Bat bat;
         private Dragon dragon;
@@ -207,8 +207,9 @@ namespace Game2
             
             tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
             tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
-            blackHole1 = new BlackHole(tempBlackHole1Position);
-            blackHole2 = new BlackHole(tempBlackHole2Position);
+
+            blackHole1 = new BlackHole(new Vector2(2800, 6500));
+            blackHole2 = new BlackHole(new Vector2(3300, 6200));
 
             blackHole3 = new BlackHole(new Vector2(3450, 6400));
             blackHole4 = new BlackHole(new Vector2(3300, 6500));
