@@ -1,4 +1,4 @@
-﻿In this program, you can use WASD or arrow to control the sprite which is link. Then you can use 1, 2, 3 to use projectiles. In order to use sword, you can press Z or N. 
+﻿In this program, you can use WASD or arrow to control the sprite which is Link. Then you can use 1, 2, 3 to use projectiles. In order to use sword, you can press Z or N. 
 Lastly, use q to quit, use R to reset the game. We run code analysis this time, and removed as many warnings as we could, but we were not able to remove those saying class too long.  
  
 For HUD:
@@ -25,7 +25,7 @@ For Extra Content Game:
 4. This sokoban game's goal is to only show that we are capable of doing it instead of a real hard puzzle. This game may be very simple for you, but redesign it is very simple.
 5: Collision detection is not very precise. 
 
-For Poki ball:
+For Poke ball:
 1. Press 4 to Release Poki Ball
 2. If Poki ball not successfully catch the monster, you can only throw poki ball again after you picked up the poki ball
 3. AFter catch the monster, press 4 again to release that monster that is very friendly to you
@@ -36,3 +36,4 @@ For Portal:
 2. you can press 5 for portalA and 6 for portalB
 3. ONly both Portal A and B are thrown can you use the portal
 4. Thrown protal will be cleared by the dragon after you left the rooom. So Do Not try to use portal to transmit yourself between room
+5. auto detection will prevent Link to be transferred if Link would be replaced in a invalid position. 
