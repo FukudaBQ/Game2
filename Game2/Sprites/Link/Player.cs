@@ -285,6 +285,22 @@ namespace Game2.Sprites.Link
                     Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
                 }
             }
+            if (kState.IsKeyDown(Keys.D5) && previous.IsKeyUp(Keys.D5))
+            {
+                if (PortalGun.portalGunSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
+            if (kState.IsKeyDown(Keys.D6) && previous.IsKeyUp(Keys.D6))
+            {
+                if (Pokeball.pokeballwithMonsterSto.Count > 0)
+                {
+                    Pokeball.pokeballwithMonsterProj.Add(new Pokeball(new Vector2(position.X + 40f, position.Y + 40f), direction));
+                    Pokeball.pokeballwithMonsterSto.RemoveAll(p => p.Radius == 10);
+                }
+            }
 
             previous = kState;
             if (kState.IsKeyDown(Keys.Q))
