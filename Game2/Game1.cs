@@ -1885,7 +1885,7 @@ namespace Game2
                 blackHole4 = new BlackHole(tempPosition);
                 blackHole4.Able = true;
             }
-
+            player.camPosition = sokoban.Update(gameTime, player, 1, player.camPosition);
 
             cam.LookAt(player.camPosition);
 
@@ -2066,8 +2066,6 @@ namespace Game2
             {
                 spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
                 spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
-            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
-            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
             spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole5.Position.X - 30, blackHole5.Position.Y - 30), Color.White);
             sokoban.Draw();
             //spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole6.Position.X - 30, blackHole6.Position.Y - 30), Color.White);

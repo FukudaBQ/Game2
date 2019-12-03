@@ -50,7 +50,7 @@ namespace Game2.Puzzle
         {
             if (success)
             {
-                blackHole = new BlackHole(new Vector2(5540, 12800));
+                
                 Vector2 camLoc = blackHole.Update(gameTime, player, command, player.camPosition);
                 Console.WriteLine(camLoc);
                 return camLoc;
@@ -118,6 +118,7 @@ namespace Game2.Puzzle
                     return;
                 }
             }
+            blackHole = new BlackHole(new Vector2(5540, 12800));
             success = true;
         }
 
