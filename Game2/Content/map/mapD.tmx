@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="43" nextobjectid="3403">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="320" height="320" tilewidth="40" tileheight="40" infinite="0" nextlayerid="43" nextobjectid="3404">
  <tileset firstgid="1" name="d1" tilewidth="1280" tileheight="880" tilecount="1" columns="1">
   <image source="d1.png" width="1280" height="880"/>
  </tileset>
@@ -6473,6 +6473,9 @@
  </objectgroup>
  <objectgroup id="41" name="downdoor">
   <object id="3402" x="1857.33" y="5964">
+   <point/>
+  </object>
+  <object id="3403" x="3124.67" y="12078">
    <point/>
   </object>
  </objectgroup>

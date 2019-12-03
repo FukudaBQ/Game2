@@ -18,7 +18,7 @@ namespace Game2.Collision
         int rupyNum = 0;
         int keyNum = 0;
         int bombNum = 0;
-        public int rm = 1;
+        public static int rm = 1;
         Random rnd = new Random();
         private BlackHole blackHole1;
         private BlackHole blackHole2;
@@ -121,8 +121,9 @@ namespace Game2.Collision
                             break;
                         case 3:
                             player.TempSpeed = 200;
-                            //tempBlackHole1Position = new Vector2(player.Position.X-300,player.Position.Y);
-                            //Game1.TempBlackHole2Position = new Vector2(player.Position.X+300, player.Position.Y-500);
+                            explosion.exp.Add(new explosion(new Vector2(player.Position.X, player.Position.Y)));
+                            Game1.tempBlackHole1Position = new Vector2(player.Position.X-100, player.Position.Y-100);
+                            Game1.tempBlackHole2Position = new Vector2(player.Position.X+100, player.Position.Y-200);
                             foreach (Bat bat in Bat.bats)
                             {
                                 bat.Speed = 80;

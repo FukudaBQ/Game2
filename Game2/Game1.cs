@@ -108,7 +108,17 @@ namespace Game2
         public HUD myHUD;
         private SpriteFont font;
         int condition = 0;
-        
+        public Vector2 TempBlackHole1Position
+        {
+            get { return tempBlackHole1Position; }
+            set { tempBlackHole1Position = value; }
+        }
+        public Vector2 TempBlackHole2Position
+        {
+            get { return tempBlackHole2Position; }
+            set { tempBlackHole2Position = value; }
+        }
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -205,8 +215,8 @@ namespace Game2
             player.setHUD(myHUD);
 
             
-            tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
-            tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y -100);
+            tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y - 200);
             blackHole1 = new BlackHole(tempBlackHole1Position);
             blackHole2 = new BlackHole(tempBlackHole2Position);
 
@@ -474,11 +484,6 @@ namespace Game2
             {
                 player.Update(gameTime);
             }
-            else
-            {
-                //playerDying.Update(gameTime);
-            }
-            //bat.Update(gameTime,player.Position);
             dragon.Update(gameTime);
             monster.Update(gameTime);
             hand.Update(gameTime);

@@ -1,4 +1,5 @@
-﻿using Game2.Sprites.Link;
+﻿using Game2.Collision;
+using Game2.Sprites.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -22,8 +23,6 @@ namespace Game2.Object.Items
             get { return able; }
             set { able = value; }
         }
-        
-        
 
         public BlackHole(Vector2 pos,Texture2D texture)
         {
@@ -56,6 +55,11 @@ namespace Game2.Object.Items
              player.setX(dest.Position.X+30);
              player.setY(dest.Position.Y+30);
              player.HealthTimer = 1.5f;
+            }
+            if (CollisionHandler.rm == 3)
+            {
+                Game1.tempBlackHole1Position = new Vector2(player.Position.X - 100, player.Position.Y - 100);
+                Game1.tempBlackHole2Position = new Vector2(player.Position.X + 100, player.Position.Y - 200);
             }
         
         }
