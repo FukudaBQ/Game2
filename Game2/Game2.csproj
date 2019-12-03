@@ -72,6 +72,7 @@
     <Compile Include="RandomEvent\BlackHoleAppear.cs" />
     <Compile Include="RandomEvent\SlowDown.cs" />
     <Compile Include="RandomEvent\SpeedUp.cs" />
+    <Compile Include="Puzzle\Sokoban.cs" />
     <Compile Include="Sprites\Blocks\Blocks.cs" />
     <Compile Include="Sprites\Blocks\Door.cs" />
     <Compile Include="Sprites\Blocks\Rock.cs" />
@@ -161,6 +162,7 @@
     <Content Include="Content\blackHole.png" />
     <Content Include="Content\blackHolesAppear.png" />
     <Content Include="Content\BlueB.png" />
+    <Content Include="Content\blackHole.png" />
     <Content Include="Content\BombWithEffect.png" />
     <Content Include="Content\boomerang.png" />
     <Content Include="Content\button.jpg" />
@@ -168,6 +170,7 @@
     <Content Include="Content\door2.png" />
     <Content Include="Content\door3.png" />
     <Content Include="Content\door4.png" />
+    <Content Include="Content\box.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />

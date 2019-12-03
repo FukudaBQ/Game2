@@ -19,13 +19,14 @@ using Game2.Sprites.Link.Projectile;
 using Game2.Commands;
 using Microsoft.Xna.Framework.Input;
 using HUDManager;
+using Game2.Puzzle;
 using Game2.Object;
 using Game2.RandomEvent;
 //using Game2.Object.Enemies;
 
 namespace Game2
 {
-    enum Dir
+    public enum Dir
     {
         Down,Up,Left,Right,DownSword,UpSword,LeftSword,RightSword
     }
@@ -85,6 +86,7 @@ namespace Game2
         private Texture2D hintSprite;
         private Texture2D batHintSprite;
         private Texture2D slowDownHintSprite;
+        private Texture2D sokobanSprite;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
@@ -97,6 +99,8 @@ namespace Game2
         public static BlackHole blackHole2;
         public static BlackHole blackHole3;
         public static BlackHole blackHole4;
+        public static BlackHole blackHole5;
+        //public static BlackHole blackHole6;
 
         private Bat bat;
         private Dragon dragon;
@@ -109,6 +113,8 @@ namespace Game2
         private Camera2D cam;
         private Vector2 camLocation;
         private ResetCommand reset;
+        // TODO
+        private Sokoban sokoban;
         private int monsterType;
         private Hint hint;
 
@@ -231,6 +237,12 @@ namespace Game2
             //blackHole3 = new BlackHole(tempBlackHole3Position);
             //blackHole4 = new BlackHole(tempBlackHole4Position);
 
+            blackHole5 = new BlackHole(new Vector2(2980, 12800));
+            //blackHole6 = new BlackHole(new Vector2(5540, 12800));
+
+            // TODO
+            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite);
+            player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
             dragon = new Dragon(dragonSprite, new Vector2(500, 3000), spriteBatch);
@@ -487,6 +499,7 @@ namespace Game2
             slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
             blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
 
+            sokobanSprite = Content.Load<Texture2D>("box");
         }
         protected override void UnloadContent()
         {
@@ -501,6 +514,10 @@ namespace Game2
                 blackHole3.Update(gameTime, player, blackHole4);
                 blackHole4.Update(gameTime, player, blackHole3);
             }
+            blackHole3.Update(gameTime, player, blackHole4);
+            blackHole4.Update(gameTime, player, blackHole3);
+            player.camPosition = blackHole5.Update(gameTime, player, 0, player.camPosition);
+            //player.camPosition = blackHole6.Update(gameTime, player, blackHole5, 1, player.camPosition);
 
             hint.Update(gameTime);
             LinkCheering.Update(gameTime);
@@ -1868,7 +1885,7 @@ namespace Game2
                 blackHole4 = new BlackHole(tempPosition);
                 blackHole4.Able = true;
             }
-
+            player.camPosition = sokoban.Update(gameTime, player, 1, player.camPosition);
 
             cam.LookAt(player.camPosition);
 
@@ -2049,11 +2066,17 @@ namespace Game2
             {
                 spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole3.Position.X - 30, blackHole3.Position.Y - 30), Color.Blue);
                 spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole4.Position.X - 30, blackHole4.Position.Y - 30), Color.Yellow);
+            spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole5.Position.X - 30, blackHole5.Position.Y - 30), Color.White);
+            sokoban.Draw();
+            //spriteBatch.Draw(blackHoleSprite, new Vector2(blackHole6.Position.X - 30, blackHole6.Position.Y - 30), Color.White);
 
             }
 
             hint.Draw();
 
+
+            sokoban.BlackDraw();
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
