@@ -8003,7 +8003,10 @@
   </object>
  </objectgroup>
  <objectgroup id="32" name="pokeball">
-  <object id="3404" x="630" y="5656">
+  <object id="3391" x="3159.82" y="11676.2">
+   <point/>
+  </object>
+  <object id="3404" x="628" y="5514">
    <point/>
   </object>
  </objectgroup>

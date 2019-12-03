@@ -67,6 +67,7 @@
     <Compile Include="Object\Items\PokeballHandler.cs" />
     <Compile Include="Object\Items\PortalGun.cs" />
     <Compile Include="Object\Items\portalGunHandler.cs" />
+    <Compile Include="Object\Pokemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puzzle\Baggage.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Content\music\UseSword.wav" />
     <Content Include="Content\NPC.png" />
     <Content Include="Content\pokeball.png" />
+    <Content Include="Content\pokemon.jpg" />
     <Content Include="Content\portalGun.png" />
     <Content Include="Content\refresh.png" />
     <Content Include="Content\rock.png" />
