@@ -62,6 +62,20 @@ namespace Game2.Sprites.Blocks
             return false;
 
         }
+        public static bool didCollideLeft2(Vector2 otherPos, int otherL, int otherW)
+        {
+            foreach (Door d in Door.leftdoors2)
+            {
+                int Lsum = d.Length + otherL;
+                int Wsum = d.Width + otherW;
+                if (Math.Abs(d.hitPos.X - otherPos.X) <= Lsum && Math.Abs(d.hitPos.Y - otherPos.Y) <= Wsum)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
         public static bool didCollideUp(Vector2 otherPos, int otherL, int otherW)
         {
             foreach (Door d in Door.updoors)
