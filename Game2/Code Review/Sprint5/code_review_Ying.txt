@@ -1,21 +1,22 @@
 Readability review
 Author of the code review: Hangyu Ying
-Date of the code review: Nov 11, 2019
-Sprint number: 4
-Name of the .cs file being reviewed: fireball.cs
+Date of the code review: Ddc 2, 2019
+Sprint number: 5
+Name of the .cs file being reviewed: Pokeball.cs
 Author of the .cs file being reviewed: Yong Zhang
-Number of minutes taken to complete the review: 15
+Number of minutes taken to complete the review: 8
 Specific comments on what is readable and what is not: 
-Good thing is that we can easily know what each method does.
-However, it is a little bit confusing to read that switch statement. How each fireball moves is kind of hard to understand.
+
+variable names are easy to tell what each object does. 
+it's clear at a glance what makes Update() and ProjUpdate() different. 
+
 
 
 Code quality review
 Author of the code review: Hangyu Ying
-Date of the code review: Nov 11, 2019
-Sprint number: 4
-Name of the .cs file being reviewed: Enemies.cs
+Date of the code review: Dec 2, 2019
+Sprint number: 5
+Name of the .cs file being reviewed: Sokoban.cs
 
 Author of the .cs file being reviewed: Beau Qu
-Specific comments on code quality: The code is easy for maintainability. If we want to change the radius, health, and movement speed, we can just change
-the variables, which is convenient.
+Specific comments on code quality: it is simple to modify the layout/design of Sokoban room, for example, just changing baggageX, baggageY, destX, and destY.

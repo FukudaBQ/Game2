@@ -1,19 +1,18 @@
 Author of the code review: Yong Zhang
-Date of the code review: 2019/11/11
-Sprint number: 4
-Name of the .cs file being reviewed : BoomerangProj.cs
-Author of the .cs file being reviewed: Hangyu Yin
-Number of minutes taken to complete the review: 10
+Date of the code review: 2019/12/2
+Sprint number: 5
+Name of the .cs file being reviewed : BlackHole.cs
+Author of the .cs file being reviewed: Hangyu Ying
+Number of minutes taken to complete the review: 6
 Specific comments on what is readable and what is not: 
 
-All the variables and method have meaningful names. The readability of code is really high.
-However, there are some magic numbers, for example 1000, which is hard to read.
+All the variables and method have meaningful names. Code in each method is highly readable with variable names and method names.
+One method was never used; it was deleted later. 
 
 Author of the code review: Yong Zhang
-Date of the code review: 2019/11/11
-Sprint number: 4
+Date of the code review: 2019/12/2
+Sprint number: 5
 Name of the .cs file being reviewed: part of Game1.cs
-Author of the .cs file being reviewed: Hangyu Yin
+Author of the .cs file being reviewed: Hangyu Ying
 Specific comments on code quality
-The part Hangyu did is player's death, when player's health equals 0, the player starts to spin, and the game won't update.
-But the code only does one function, also he put this function into the main class, which is kind of hard to find. 
+easy and clear way of add more black holes, but it becomes difficult as the number of black holes increases.  
