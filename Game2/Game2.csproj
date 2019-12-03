@@ -205,12 +205,17 @@
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
     <Content Include="Content\monster.png" />
+    <Content Include="Content\music\catch.mp3" />
+    <Content Include="Content\music\Ccatch.wav" />
     <Content Include="Content\music\Dungeon.mp3" />
     <Content Include="Content\music\Game Over.mp3" />
     <Content Include="Content\music\GameOver.wav" />
     <Content Include="Content\music\GetFairy.wav" />
     <Content Include="Content\music\GetHeart.wav" />
     <Content Include="Content\music\GetRupy.wav" />
+    <Content Include="Content\music\laser.wav" />
+    <Content Include="Content\music\pop.mp3" />
+    <Content Include="Content\music\Ppop.wav" />
     <Content Include="Content\music\Put Bomb.wav" />
     <Content Include="Content\music\randomEvents.wav" />
     <Content Include="Content\music\Triforce.mp3" />
