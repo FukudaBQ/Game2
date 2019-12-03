@@ -36,6 +36,10 @@ namespace Game2
         public static Song overworld;
         public static SoundEffect dead;
         public static SoundEffect random;
+        public static SoundEffect pop;
+        public static SoundEffect Catch;
+        public static SoundEffect laser;
+
     }
     public class Game1 : Game
     {
@@ -473,6 +477,9 @@ namespace Game2
             MySounds.overworld = Content.Load<Song>("music/Dungeon");
             MySounds.dead = Content.Load<SoundEffect>("music/GameOver");
             MySounds.random = Content.Load<SoundEffect>("music/randomEvents");
+            MySounds.Catch = Content.Load<SoundEffect>("music/Ccatch");
+            MySounds.pop = Content.Load<SoundEffect>("music/Ppop");
+            MySounds.laser = Content.Load<SoundEffect>("music/laser");
             MediaPlayer.Play(MySounds.overworld);
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
@@ -777,6 +784,7 @@ namespace Game2
                 if (b.Speed == 0)
                 {
                     tempPosition = b.Position;
+                    
                 }
                 monsterType = b.Monster;
             }
@@ -784,10 +792,12 @@ namespace Game2
             {
                 if (monsterType == 1)
                 {
+                    MySounds.pop.Play();
                     Bat.batF.Add(new Bat(batSprite, tempPosition, spriteBatch));
                 }
                 else if (monsterType == 2)
                 {
+                    MySounds.pop.Play();
                     Knight.knightF.Add(new Knight(knightSprite, tempPosition, spriteBatch));
                 }
             }
