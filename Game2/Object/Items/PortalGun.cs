@@ -22,7 +22,10 @@ namespace Game2.Object.Items
         private bool collided = false;
 
         public static List<PortalGun> portalGuns = new List<PortalGun>();
-        public static List<PortalGun> portalGunSto = new List<PortalGun>();
+        public static List<PortalGun> portalGunStoY = new List<PortalGun>();
+        public static List<PortalGun> portalGunStoB = new List<PortalGun>();
+        public static List<PortalGun> yellowBs = new List<PortalGun>();
+        public static List<PortalGun> blueBs = new List<PortalGun>();
 
         public int Radius
         {
@@ -71,7 +74,8 @@ namespace Game2.Object.Items
             if (Vector2.Distance(player.Position, position) < sum)
             {
                 portalGuns.RemoveAll(p => p.Radius == 10);
-                portalGunSto.Add(new PortalGun(position, direction));
+                portalGunStoY.Add(new PortalGun(position, direction));
+                portalGunStoB.Add(new PortalGun(position, direction));
 
 
             }
@@ -100,6 +104,11 @@ namespace Game2.Object.Items
                     break;
                 default:
                     break;
+            }
+            if (Blocks.didCollide(new Vector2(position.X - 5f, position.Y - 5f), 25, 25))
+            {
+                speed = 0;
+                tempPosition = position;
             }
         }
 

@@ -157,6 +157,7 @@
     <Content Include="Content\bat.png" />
     <Content Include="Content\batSpeedUp.png" />
     <Content Include="Content\biggerExplosion1.png" />
+    <Content Include="Content\black.png" />
     <Content Include="Content\blackHole.png" />
     <Content Include="Content\blackHolesAppear.png" />
     <Content Include="Content\BlueB.png" />
@@ -166,6 +167,7 @@
     <Content Include="Content\door1.png" />
     <Content Include="Content\door2.png" />
     <Content Include="Content\door3.png" />
+    <Content Include="Content\door4.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />
