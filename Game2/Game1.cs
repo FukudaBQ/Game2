@@ -40,6 +40,7 @@ namespace Game2
         public static SoundEffect pop;
         public static SoundEffect Catch;
         public static SoundEffect laser;
+        public static SoundEffect explo;
 
     }
     public class Game1 : Game
@@ -519,7 +520,8 @@ namespace Game2
             MySounds.Catch = Content.Load<SoundEffect>("music/Ccatch");
             MySounds.pop = Content.Load<SoundEffect>("music/Ppop");
             MySounds.laser = Content.Load<SoundEffect>("music/laser");
-            
+            MySounds.explo = Content.Load<SoundEffect>("music/boom1");
+
             MediaPlayer.Play(MySounds.overworld);
             
             HUD = Content.Load<Texture2D>("HUD");

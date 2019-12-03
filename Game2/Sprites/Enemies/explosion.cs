@@ -35,6 +35,7 @@ namespace Game2.Sprites.Enemies
         }
         public explosion(Vector2 position)
         {
+            MySounds.explo.Play();
             this.position = position;
             timer = 1;
         }

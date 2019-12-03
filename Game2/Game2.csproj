@@ -207,6 +207,7 @@
     <Content Include="Content\map1.png" />
     <Content Include="Content\mario.jpg" />
     <Content Include="Content\monster.png" />
+    <Content Include="Content\music\boom1.wav" />
     <Content Include="Content\music\catch.mp3" />
     <Content Include="Content\music\Ccatch.wav" />
     <Content Include="Content\music\Dungeon.mp3" />

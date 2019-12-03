@@ -917,11 +917,11 @@
 /processorParam:TextureFormat=Color
 /build:monster.png
 
-#begin music/catch.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
+#begin music/boom1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:music/catch.mp3
+/build:music/boom1.wav
 
 #begin music/catch.mp3
 /importer:Mp3Importer
