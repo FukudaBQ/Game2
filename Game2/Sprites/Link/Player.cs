@@ -22,7 +22,7 @@ namespace Game2.Sprites.Link
       
         private bool victory = false;
         public Vector2 position = new Vector2(3140, 12800);
-        //public Vector2 position = new Vector2(2700, 6600);
+        //public Vector2 position = new Vector2(4000, 6600);
         public Vector2 camPosition = new Vector2(3200 ,12520);
         //public Vector2 camPosition = new Vector2(3200, 6600);
         /*
