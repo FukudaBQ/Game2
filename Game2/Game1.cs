@@ -93,6 +93,7 @@ namespace Game2
         private Texture2D slowDownHintSprite;
         private Texture2D sokobanSprite;
         private Texture2D pokemonSprite;
+        private Texture2D textForExtraContent;
         private Dir direction =Dir.Down;
         private Vector2 tempPosition;
         public static Vector2 tempBlackHole1Position;
@@ -215,6 +216,19 @@ namespace Game2
             YellowKnight.yknights.RemoveAll(yk => yk.Health > 0);
             BlueKnight.bknights.RemoveAll(bk => bk.Health > 0);
 
+            tempBlackHole1Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole2Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            blackHole1 = new BlackHole(tempBlackHole1Position);
+            blackHole2 = new BlackHole(tempBlackHole2Position);
+            tempBlackHole3Position = new Vector2(player.Position.X, player.Position.Y + 100000);
+            tempBlackHole4Position = new Vector2(player.Position.X, player.Position.Y + 200000);
+            //blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            //blackHole3.Able = true;
+            //blackHole4 = new BlackHole(new Vector2(3300, 6500));
+            //blackHole4.Able = true;
+            blackHole3 = new BlackHole(tempBlackHole3Position);
+            blackHole4 = new BlackHole(tempBlackHole4Position);
+
 
         }
         protected override void LoadContent()
@@ -239,18 +253,18 @@ namespace Game2
             blackHole2 = new BlackHole(tempBlackHole2Position);
             tempBlackHole3Position = new Vector2(player.Position.X, player.Position.Y + 100000);
             tempBlackHole4Position = new Vector2(player.Position.X, player.Position.Y + 200000);
-            blackHole3 = new BlackHole(new Vector2(3450, 6400));
+            //blackHole3 = new BlackHole(new Vector2(3450, 6400));
             //blackHole3.Able = true;
-            blackHole4 = new BlackHole(new Vector2(3300, 6500));
+            //blackHole4 = new BlackHole(new Vector2(3300, 6500));
             //blackHole4.Able = true;
-            //blackHole3 = new BlackHole(tempBlackHole3Position);
-            //blackHole4 = new BlackHole(tempBlackHole4Position);
+            blackHole3 = new BlackHole(tempBlackHole3Position);
+            blackHole4 = new BlackHole(tempBlackHole4Position);
 
             blackHole5 = new BlackHole(new Vector2(2980, 12800));
             //blackHole6 = new BlackHole(new Vector2(5540, 12800));
 
             // TODO
-            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite);
+            sokoban = new Sokoban(sokobanSprite, spriteBatch, 12360, 12920, 5340, 6220, blackHoleSprite, textForExtraContent);
             player.setSokoban(sokoban);
 
             bat = new Bat(batSprite, new Vector2(2000, 1240), spriteBatch);
@@ -509,7 +523,9 @@ namespace Game2
             MySounds.Catch = Content.Load<SoundEffect>("music/Ccatch");
             MySounds.pop = Content.Load<SoundEffect>("music/Ppop");
             MySounds.laser = Content.Load<SoundEffect>("music/laser");
+            
             MediaPlayer.Play(MySounds.overworld);
+            
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
@@ -523,7 +539,7 @@ namespace Game2
             batHintSprite = Content.Load<Texture2D>("batSpeedUp");
             slowDownHintSprite = Content.Load<Texture2D>("LinkSpeedDown");
             blackHoleAppearSprite = Content.Load<Texture2D>("blackHolesAppear");
-
+            textForExtraContent = Content.Load<Texture2D>("TextForSokoban");
             sokobanSprite = Content.Load<Texture2D>("box");
             pokemonSprite = Content.Load<Texture2D>("pokemon");
         }
@@ -1934,7 +1950,7 @@ namespace Game2
             {
 
                 PortalGun.portalGunStoB.Add(new PortalGun(tempBlackHole1Position, direction));
-                blackHole3 = new BlackHole(tempPosition);
+                blackHole3 = new BlackHole(new Vector2(tempPosition.X-10f, tempPosition.Y - 10f));
                 blackHole3.Able = true;
                 //tempBlackHole3Position = tempPosition;
 
@@ -1943,7 +1959,7 @@ namespace Game2
             if (PortalGun.yellowBs.RemoveAll(p => p.Speed == 0) == 1)
             {
                 PortalGun.portalGunStoY.Add(new PortalGun(tempBlackHole1Position, direction));
-                blackHole4 = new BlackHole(tempPosition);
+                blackHole4 = new BlackHole(new Vector2(tempPosition.X - 10f, tempPosition.Y - 10f));
                 blackHole4.Able = true;
             }
             player.camPosition = sokoban.Update(gameTime, player, 1, player.camPosition);
