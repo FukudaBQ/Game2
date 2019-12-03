@@ -167,6 +167,7 @@
     <Content Include="Content\door1.png" />
     <Content Include="Content\door2.png" />
     <Content Include="Content\door3.png" />
+    <Content Include="Content\door4.png" />
     <Content Include="Content\Dragon.png" />
     <Content Include="Content\Dungeon Tileset.png" />
     <Content Include="Content\Dungeon.png" />
