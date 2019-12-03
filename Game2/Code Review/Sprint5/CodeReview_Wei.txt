@@ -1,0 +1,21 @@
+Readability:
+Author of the code review: Zijie Wei
+Date of the code review: 11/11/2019
+Sprint number: 4
+Name of the .cs file being reviewed: HUD.cs
+Author of the .cs file being reviewed: Beau Qu
+Number of minutes taken to complete the review: 20
+
+In this class, we can see what each method do clearly. For example, when we move camera from room to room, the heart sprite will also move to the exact place.
+When the player gets hurt, the heart number will also decrease. We can easily know what we want to find in this HUD class.
+
+Maintainability:
+Author of the code review: Zijie Wei
+Date of the code review: 11/11/2019
+Sprint number: 4
+Name of the .cs file being reviewed: Bat.cs
+Author of the .cs file being reviewed: Yong Zhang
+Number of minutes taken to complete the review: 15
+
+In this class, if we want to change the radius of the enemy, we can just change the number. Sometimes when we need to add more enemies, we can just simply copy
+this class, and change the variables. Then this class becomes easy for use to maintain.
