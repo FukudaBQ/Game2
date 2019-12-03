@@ -22,7 +22,7 @@ namespace Game2.Sprites.Link
       
         private bool victory = false;
         public Vector2 position = new Vector2(3140, 12800);
-        //public Vector2 position = new Vector2(2700, 6600);
+        //public Vector2 position = new Vector2(4000, 6600);
         public Vector2 camPosition = new Vector2(3200 ,12520);
         //public Vector2 camPosition = new Vector2(3200, 6600);
         /*
@@ -314,6 +314,7 @@ namespace Game2.Sprites.Link
                 {
                     PortalGun.blueBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
                     PortalGun.portalGunStoB.RemoveAll(p => p.Radius == 10);
+                    MySounds.laser.Play();
                 }
             }
             if (kState.IsKeyDown(Keys.D6) && previous.IsKeyUp(Keys.D6))
@@ -322,6 +323,7 @@ namespace Game2.Sprites.Link
                 {
                     PortalGun.yellowBs.Add(new PortalGun(new Vector2(position.X + 40f, position.Y + 40f), direction));
                     PortalGun.portalGunStoY.RemoveAll(p => p.Radius == 10);
+                    MySounds.laser.Play();
                 }
             }
 

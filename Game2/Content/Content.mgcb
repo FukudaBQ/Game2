@@ -917,6 +917,24 @@
 /processorParam:TextureFormat=Color
 /build:monster.png
 
+#begin music/catch.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/catch.mp3
+
+#begin music/catch.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:music/catch.mp3
+
+#begin music/Ccatch.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/Ccatch.wav
+
 #begin music/Dungeon.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -952,6 +970,18 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:music/GetRupy.wav
+
+#begin music/laser.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/laser.wav
+
+#begin music/Ppop.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:music/Ppop.wav
 
 #begin music/Put Bomb.wav
 /importer:WavImporter

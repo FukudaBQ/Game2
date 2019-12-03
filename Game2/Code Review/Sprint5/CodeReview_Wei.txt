@@ -1,0 +1,18 @@
+Readability:
+Author of the code review: Zijie Wei
+Date of the code review: 12/2/2019
+Sprint number: 5
+Name of the .cs file being reviewed: Sokoban.cs
+Author of the .cs file being reviewed: Beau Qu
+Number of minutes taken to complete the review: 10
+
+This class is thorough but looks lengthy. They are so many fields
+
+Maintainability:
+Author of the code review: Zijie Wei
+Date of the code review: 12/2/2019
+Sprint number: 5
+Name of the .cs file being reviewed: Pokeball.cs
+Author of the .cs file being reviewed: Yong Zhang
+Number of minutes taken to complete the review: 10
+easy if we want to catch a new kind of monster, simply add another list for that monster kind in fields

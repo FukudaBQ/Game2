@@ -82,6 +82,7 @@ namespace Game2.Object.Items
                         if (bat.Health <= 0)
                         {
                             light.lig.Add(new light(new Vector2(bat.Location.X-70f, bat.Location.Y - 75f)));
+                            MySounds.Catch.Play();
                             Pokeball.pokeballSto.RemoveAll(p => p.Radius == 10);
 
                         }

@@ -3,11 +3,11 @@ Date of the code review: 2019/12/2
 Sprint number: 5
 Name of the .cs file being reviewed : BlackHole.cs
 Author of the .cs file being reviewed: Hangyu Ying
-Number of minutes taken to complete the review: 6
+Number of minutes taken to complete the review: 10
 Specific comments on what is readable and what is not: 
 
 All the variables and method have meaningful names. Code in each method is highly readable with variable names and method names.
-One method was never used; it was deleted later. 
+However, a method was never used, and it was deleted. 
 
 Author of the code review: Yong Zhang
 Date of the code review: 2019/12/2
@@ -15,4 +15,4 @@ Sprint number: 5
 Name of the .cs file being reviewed: part of Game1.cs
 Author of the .cs file being reviewed: Hangyu Ying
 Specific comments on code quality
-easy and clear way of add more black holes, but it becomes difficult as the number of black holes increases.  
+easy and clear way of adding more black holes but becomes difficult as number of black holes increases.
