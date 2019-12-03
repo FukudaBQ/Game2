@@ -15,10 +15,10 @@ namespace Game2.Puzzle
     {
         private Texture2D texture;
         private SpriteBatch spriteBatch;
-        private int[] baggageX = {5920, 6000, 6080};
-        private int[] baggageY = { 12600, 12600, 12600 };
-        private int[] destX = { 5950, 6030, 6110 };
-        private int[] destY = {12710, 12710, 12710 };
+        private int[] baggageX = {5920, 6000, 6080, 5840};
+        private int[] baggageY = { 12680, 12600, 12680, 12360 };
+        private int[] destX = { 5950, 6030, 6110, 6190 };
+        private int[] destY = {12710, 12710, 12710, 12790 };
         private List<Baggage> baggage = new List<Baggage>();
         private List<DestPoint> dest = new List<DestPoint>();
         private List<bool> arrived = new List<bool>();
@@ -497,12 +497,12 @@ namespace Game2.Puzzle
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.LightPink);
         }
 
-        internal int getLocX()
+        public int getLocX()
         {
             return locationX;
         }
 
-        internal int getLocY()
+        public int getLocY()
         {
             return locationY;
         }
