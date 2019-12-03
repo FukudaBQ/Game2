@@ -222,6 +222,7 @@
     <Content Include="Content\rock.png" />
     <Content Include="Content\small_map.png" />
     <Content Include="Content\StandSwordDown.png" />
+    <Content Include="Content\TextForSokoban.png" />
     <Content Include="Content\World.png" />
     <Content Include="Content\WorldOfElements.xml" />
     <Content Include="Content\YellowB.png" />

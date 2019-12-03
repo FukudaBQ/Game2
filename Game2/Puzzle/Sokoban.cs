@@ -33,8 +33,9 @@ namespace Game2.Puzzle
         private BlackHole blackHole;
         private bool success = false;
         private Texture2D blackHoleSprite;
+        private Texture2D text;
         public Sokoban(Texture2D texture, SpriteBatch spriteBatch, int upLimit, 
-            int downLimit, int leftLimit, int rightLimit, Texture2D blackHoleSprite)
+            int downLimit, int leftLimit, int rightLimit, Texture2D blackHoleSprite, Texture2D textForExtraContent)
         {
             this.texture = texture;
             this.spriteBatch = spriteBatch;
@@ -43,6 +44,7 @@ namespace Game2.Puzzle
             this.leftLimit = leftLimit;
             this.rightLimit = rightLimit;
             this.blackHoleSprite = blackHoleSprite;
+            this.text = textForExtraContent;
             populate();
         }
 
@@ -78,6 +80,7 @@ namespace Game2.Puzzle
             {
                 i.Draw();
             }
+            spriteBatch.Draw(text, new Rectangle(5080, 11960, 1300, 200), Color.White);
         }
         public void Push(Dir direction, Vector2 position)
         {

@@ -17,3 +17,20 @@ For blocks:
 1. Wall will stop all enemies and projectile
 2. Water will slow you down.
 3. Rock is the same with the wall.
+
+For Extra Content Game:
+1: Portal for this game is in the start room
+2: Once you entered the sokoban game, you can only exit it after you push all boxes to the desired place
+3. Press Spacebar to push the box once you near it.
+
+For Poki ball:
+1. Press 4 to Release Poki Ball
+2. If Poki ball not successfully catch the monster, you can only throw poki ball again after you picked up the poki ball
+3. AFter catch the monster, press 4 again to release that monster that is very friendly to you
+4. Friendly monsters can demage any enemy but the final boss the dragon
+
+For Portal:
+1. After pick up portal, you can release protal
+2. you can press 5 for portalA and 6 for portalB
+3. ONly both Portal A and B are thrown can you use the portal
+4. Thrown protal will be cleared by the dragon after you left the rooom. So Do Not try to use portal to transmit yourself between room
