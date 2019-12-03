@@ -519,7 +519,9 @@ namespace Game2
             MySounds.Catch = Content.Load<SoundEffect>("music/Ccatch");
             MySounds.pop = Content.Load<SoundEffect>("music/Ppop");
             MySounds.laser = Content.Load<SoundEffect>("music/laser");
+            
             MediaPlayer.Play(MySounds.overworld);
+            
             HUD = Content.Load<Texture2D>("HUD");
             HUDMap = Content.Load<Texture2D>("small_map");
             veryGreen = Content.Load<Texture2D>("Green");
@@ -1943,7 +1945,7 @@ namespace Game2
             {
 
                 PortalGun.portalGunStoB.Add(new PortalGun(tempBlackHole1Position, direction));
-                blackHole3 = new BlackHole(tempPosition);
+                blackHole3 = new BlackHole(new Vector2(tempPosition.X-10f, tempPosition.Y - 10f));
                 blackHole3.Able = true;
                 //tempBlackHole3Position = tempPosition;
 
@@ -1952,7 +1954,7 @@ namespace Game2
             if (PortalGun.yellowBs.RemoveAll(p => p.Speed == 0) == 1)
             {
                 PortalGun.portalGunStoY.Add(new PortalGun(tempBlackHole1Position, direction));
-                blackHole4 = new BlackHole(tempPosition);
+                blackHole4 = new BlackHole(new Vector2(tempPosition.X - 10f, tempPosition.Y - 10f));
                 blackHole4.Able = true;
             }
             player.camPosition = sokoban.Update(gameTime, player, 1, player.camPosition);
